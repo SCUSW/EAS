@@ -68,15 +68,15 @@ public class LoginAction {
 		String passwordInCode = studentInfo.getStudentPass();
 		passwordInCode = MD5Util.MD5(passwordInCode);
 		studentInfo.setStudentPass(passwordInCode);
-		logger.info("获得加密密码:"+studentInfo.getStudentPass());
+		logger.info("鑾峰緱鍔犲瘑瀵嗙爜:"+studentInfo.getStudentPass());
 		if (loginService.checkStuLogin(studentInfo)) {
 			session.put("role", "student");
 			session.put("studentNo", studentInfo.getStudentNo());
 
-			logger.info("学生登录成功:"+studentInfo.getStudentNo());
+			logger.info("瀛︾敓鐧诲綍鎴愬姛:"+studentInfo.getStudentNo());
 			return "student_success";
 		}
-		logger.info("学生登录失败:"+studentInfo.getStudentNo());
+		logger.info("瀛︾敓鐧诲綍澶辫触:"+studentInfo.getStudentNo());
 		return "error";
 	}
 	public String checkStaffLogin() {
