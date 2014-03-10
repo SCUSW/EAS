@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2014-03-10 15:57:13
+Date: 2014-03-10 18:29:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -77,7 +77,7 @@ DROP TABLE IF EXISTS `classroom_info`;
 CREATE TABLE `classroom_info` (
   `classroom_id` int(11) NOT NULL AUTO_INCREMENT,
   `classroom_addr` varchar(64) DEFAULT NULL,
-  `classroom_avai` int DEFAULT NULL,
+  `classroom_avai` int(11) DEFAULT NULL,
   `classroom_type` varchar(64) DEFAULT NULL,
   `classroom_capacity` int(11) DEFAULT NULL,
   `classroom_remark` text,
@@ -709,6 +709,7 @@ CREATE TABLE `teaching_manage_info` (
   `teach_plan` varchar(255) DEFAULT NULL,
   `lesson_plan` varchar(255) DEFAULT NULL,
   `teacher_summary` varchar(255) DEFAULT NULL,
+  `exam_state` int(11) DEFAULT NULL,
   `set_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`teaching_manage_id`),
   KEY `FK_course_teachinfo` (`course_id`),
@@ -718,9 +719,9 @@ CREATE TABLE `teaching_manage_info` (
 -- ----------------------------
 -- Records of teaching_manage_info
 -- ----------------------------
-INSERT INTO `teaching_manage_info` VALUES ('1', '1', '1教学计划的URL', '1教案的URL', '1总结的URL', '2014-03-10 13:35:07');
-INSERT INTO `teaching_manage_info` VALUES ('2', '2', '2教学计划的URL', '2教案的URL', '2总结的URL', '2014-03-10 13:35:07');
-INSERT INTO `teaching_manage_info` VALUES ('3', '3', '3教学计划的URL', '3教案的URL', '3总结的URL', '2014-03-10 13:35:07');
+INSERT INTO `teaching_manage_info` VALUES ('1', '1', '1教学计划的URL', '1教案的URL', '1总结的URL', '1', '2014-03-10 18:28:55');
+INSERT INTO `teaching_manage_info` VALUES ('2', '2', '2教学计划的URL', '2教案的URL', '2总结的URL', '1', '2014-03-10 18:28:56');
+INSERT INTO `teaching_manage_info` VALUES ('3', '3', '3教学计划的URL', '3教案的URL', '3总结的URL', '1', '2014-03-10 18:28:59');
 
 -- ----------------------------
 -- Table structure for testssh_table

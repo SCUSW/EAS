@@ -22,6 +22,9 @@
         <property name="teacherSummary" type="java.lang.String">
             <column name="teacher_summary" />
         </property>
+        <property name="examState" type="java.lang.Integer">
+            <column name="exam_state" />
+        </property>
         <property name="setTime" type="java.sql.Timestamp">
             <column name="set_time" length="19" not-null="true" />
         </property>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2014-03-10 16:26:41
+-- Generation Time: 2014-03-10 18:29:37
 -- 服务器版本： 5.5.28-log
 -- PHP Version: 5.4.13
 
@@ -89,7 +89,7 @@ INSERT INTO `classhour_info` (`classhour_id`, `classhour_start`, `classhour_end`
 CREATE TABLE IF NOT EXISTS `classroom_info` (
   `classroom_id` int(11) NOT NULL AUTO_INCREMENT,
   `classroom_addr` varchar(64) DEFAULT NULL,
-  `classroom_avai` int DEFAULT NULL,
+  `classroom_avai` int(11) DEFAULT NULL,
   `classroom_type` varchar(64) DEFAULT NULL,
   `classroom_capacity` int(11) DEFAULT NULL,
   `classroom_remark` text,
@@ -780,6 +780,7 @@ CREATE TABLE IF NOT EXISTS `teaching_manage_info` (
   `teach_plan` varchar(255) DEFAULT NULL,
   `lesson_plan` varchar(255) DEFAULT NULL,
   `teacher_summary` varchar(255) DEFAULT NULL,
+  `exam_state` int(11) DEFAULT NULL,
   `set_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`teaching_manage_id`),
   KEY `FK_course_teachinfo` (`course_id`)
@@ -789,10 +790,10 @@ CREATE TABLE IF NOT EXISTS `teaching_manage_info` (
 -- 转存表中的数据 `teaching_manage_info`
 --
 
-INSERT INTO `teaching_manage_info` (`teaching_manage_id`, `course_id`, `teach_plan`, `lesson_plan`, `teacher_summary`, `set_time`) VALUES
-(1, 1, '1教学计划的URL', '1教案的URL', '1总结的URL', '2014-03-10 05:35:07'),
-(2, 2, '2教学计划的URL', '2教案的URL', '2总结的URL', '2014-03-10 05:35:07'),
-(3, 3, '3教学计划的URL', '3教案的URL', '3总结的URL', '2014-03-10 05:35:07');
+INSERT INTO `teaching_manage_info` (`teaching_manage_id`, `course_id`, `teach_plan`, `lesson_plan`, `teacher_summary`, `exam_state`, `set_time`) VALUES
+(1, 1, '1教学计划的URL', '1教案的URL', '1总结的URL', 1, '2014-03-10 10:28:55'),
+(2, 2, '2教学计划的URL', '2教案的URL', '2总结的URL', 1, '2014-03-10 10:28:56'),
+(3, 3, '3教学计划的URL', '3教案的URL', '3总结的URL', 1, '2014-03-10 10:28:59');
 
 -- --------------------------------------------------------
 
