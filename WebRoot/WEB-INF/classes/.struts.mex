@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <include file="userstruts.xml" location="74,55" size="150,30" />
+</Struts2Diagram>
+

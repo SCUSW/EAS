@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="EAS"
+  id="myeclipse.1394008833907"
+  context-root="/EAS"
+  j2ee-spec="5.0"
+  archive="EAS.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
