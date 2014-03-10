@@ -828,11 +828,11 @@ insert into roll_state(rollstate_name,rollstate_intr) values('毕业','gtaduate'
 学生基本信息
 */
 insert into student_info(student_pass,class_id,group_id,rollstate_id,consult_id,student_no,student_name,student_sex,student_age,student_addr,student_phone,student_balance,student_school,student_major,attend_time,student_state,student_remark) 
-values('123456',1,2,1,1,'1143111121','jack1',1,18,'jack1 addr','4589651',10000,'川大','软件工程',NOW(),1,'jack1 remark');
+values('E10ADC3949BA59ABBE56E057F20F883E',1,2,1,1,'1143111065','jack1',1,18,'jack1 addr','4589651',10000,'川大','软件工程',NOW(),1,'jack1 remark');
 insert into student_info(student_pass,class_id,group_id,rollstate_id,consult_id,student_no,student_name,student_sex,student_age,student_addr,student_phone,student_balance,student_school,student_major,attend_time,student_state,student_remark) 
-values('123456',2,2,1,1,'1143111122','jack2',0,18,'jack2 addr','4589652',10000,'川大','软件工程',NOW(),1,'jack2 remark');
+values('E10ADC3949BA59ABBE56E057F20F883E',2,2,1,1,'1143111122','jack2',0,18,'jack2 addr','4589652',10000,'川大','软件工程',NOW(),1,'jack2 remark');
 insert into student_info(student_pass,class_id,group_id,rollstate_id,consult_id,student_no,student_name,student_sex,student_age,student_addr,student_phone,student_balance,student_school,student_major,attend_time,student_state,student_remark) 
-values('123456',3,2,1,1,'1143111123','jack3',1,18,'jack3 addr','4589653',10000,'川大','软件工程',NOW(),1,'jack3 remark');
+values('E10ADC3949BA59ABBE56E057F20F883E',3,2,1,1,'1143111123','jack3',1,18,'jack3 addr','4589653',10000,'川大','软件工程',NOW(),1,'jack3 remark');
 
 /*
 选课信息
