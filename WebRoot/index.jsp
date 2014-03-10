@@ -40,12 +40,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			position:relative;
 			font-family: "微软雅黑";
 			width:100%;
-			top:-20px;
+			top:0px;
 	}
 			
 		#login{
 			position:relative;
-			margin-top:-510px;
+			margin-top:-310px;
 			margin-left:180px;
 			text-align:center;
 			display:none;
@@ -57,12 +57,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	#footer{
 		width:100%;
-		margin-top:240px;
+		margin-top:160px;
 		text-align:center;
 		position:relative;
 	}
 	#content{
-		margin-top:-100px;
+		margin-top:50px;
 	}
 	</style>
     
