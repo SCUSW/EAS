@@ -100,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          			 <div class="controls">
            				 账号：<input type="text" name="loginNo" placeholder="请输入账号..." class="input-xlarge">
           				  <p class="help-block"></p>
-        				 密码：<input type="text" name="loginPass" placeholder="请输入密码..." class="input-xlarge">
+        				 密码：<input type="password" onpaste="return false;" oncopy="return false;" name="loginPass" placeholder="请输入密码..." class="input-xlarge">
            				 <p class="help-block"></p>
            				 <input type="radio" checked="checked" name="role" value="student"/>学生&nbsp;&nbsp;
            				 <input type="radio" name="role" value="staff"/>工作人员<br/><br/>
