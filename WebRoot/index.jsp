@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">
     <title>My JSP 'index.jsp' starting page</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -55,12 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			display:none;
 		}
 	
-	#footer{
-		width:100%;
-		margin-top:160px;
-		text-align:center;
-		position:relative;
-	}
+	
 	#content{
 		margin-top:50px;
 	}
@@ -119,10 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
     </div>
     
-    <div id="footer">
-    	2014年3月NaughtyKid版权所有 © NaughtyKid<br />
-			Copyright © NaughtKid <br />
-    </div>
+    <%@ include file="/include/footer.html"%>
     </div>
   </body>
 </html>
