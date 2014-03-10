@@ -9,3 +9,4 @@ hibernate.cfg.xml
 .settings/*.*
 WebRoot\WEB-INF\classes\hibernate.cfg.xml
 config\hibernate.cfg.xml
+.project
