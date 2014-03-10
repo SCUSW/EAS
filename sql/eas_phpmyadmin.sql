@@ -89,7 +89,7 @@ INSERT INTO `classhour_info` (`classhour_id`, `classhour_start`, `classhour_end`
 CREATE TABLE IF NOT EXISTS `classroom_info` (
   `classroom_id` int(11) NOT NULL AUTO_INCREMENT,
   `classroom_addr` varchar(64) DEFAULT NULL,
-  `classroom_avai` tinyint(1) DEFAULT NULL,
+  `classroom_avai` int DEFAULT NULL,
   `classroom_type` varchar(64) DEFAULT NULL,
   `classroom_capacity` int(11) DEFAULT NULL,
   `classroom_remark` text,
