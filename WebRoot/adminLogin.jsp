@@ -110,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div>
 				<br/><br/>
 			</div>			
-			<%@include file="footer.html"%>
+			<%@include file="/include/footer.html"%>
             </div>
    
    

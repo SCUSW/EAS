@@ -16,13 +16,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	
+
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
-	
+
 	<style type="text/css">
 		body{
 			background-image:url(image/background.jpg);
@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			position:relative;
 			font-family: "微软雅黑";
 		}
-	
+
 		#left_side{
 			position:relative;
 			top:0px;
@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			width:100%;
 			top:0px;
 	}
-			
+
 		#login{
 			position:relative;
 			margin-top:-310px;
@@ -55,8 +55,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		#circle{
 			display:none;
 		}
-	
-	
+
+
 	#content{
 		margin-top:50px;
 	}
@@ -110,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
 
         </div>
-						
+
 
             </div>
     </div>

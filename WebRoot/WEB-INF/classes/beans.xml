@@ -17,8 +17,7 @@
 		
 		<import resource="classpath:testssh/testssh_bean.xml"/>
 		<import resource="classpath:login/login_bean.xml"/>
-		
-		
+		<import resource="classpath:student/student_bean.xml"/>
 		
 		
 		<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
