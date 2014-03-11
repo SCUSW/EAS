@@ -17,7 +17,7 @@
             <column name="vocation_id" not-null="true" />
         </many-to-one>
         <property name="staffPass" type="java.lang.String">
-            <column name="staff_pass" length="16" />
+            <column name="staff_pass" length="32" />
         </property>
         <property name="staffName" type="java.lang.String">
             <column name="staff_name" length="64" />

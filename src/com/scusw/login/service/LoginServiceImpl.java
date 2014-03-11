@@ -1,6 +1,7 @@
 package com.scusw.login.service;
 
 import com.scusw.login.dao.LoginDao;
+import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 
 public class LoginServiceImpl implements LoginService {
@@ -22,8 +23,11 @@ public class LoginServiceImpl implements LoginService {
 		return false;
 	}
 
-	public boolean checkStaLogin() {
+	public boolean checkStaLogin(StaffInfo si) {
 		// TODO Auto-generated method stub
+		if (loginDao.checkStaffLogin(si) != null) {
+			return true;
+		}
 		return false;
 	}
 

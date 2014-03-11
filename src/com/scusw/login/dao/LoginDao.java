@@ -5,6 +5,7 @@ import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.scusw.login.action.LoginAction;
+import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 
 public class LoginDao extends HibernateDaoSupport {
@@ -15,6 +16,15 @@ public class LoginDao extends HibernateDaoSupport {
 		q.setParameter("username", si.getStudentNo());
 		q.setParameter("userpass", si.getStudentPass());
 		StudentInfo siTemp = (StudentInfo) q.uniqueResult();
+		return siTemp;
+	}
+	public StaffInfo checkStaffLogin(StaffInfo si) {
+		Query q = this.getSession().createQuery("from StaffInfo s " +
+				"where s.staffId=:username and " +
+				"s.staffPass=:userpass");
+		q.setParameter("username", si.getStaffId());
+		q.setParameter("userpass", si.getStaffPass());
+		StaffInfo siTemp = (StaffInfo) q.uniqueResult();
 		return siTemp;
 	}
 }

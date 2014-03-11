@@ -6,11 +6,13 @@ import org.apache.log4j.Logger;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.scusw.login.service.LoginService;
+import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.util.MD5Util;
 
 public class LoginAction {
 	private StudentInfo studentInfo;
+	private StaffInfo staffInfo;
 	private LoginService loginService;
 	private String loginNo;
 	private String loginPass;
@@ -45,6 +47,12 @@ public class LoginAction {
 		this.studentInfo = studentInfo;
 	}
 	
+	public StaffInfo getStaffInfo() {
+		return staffInfo;
+	}
+	public void setStaffInfo(StaffInfo staffInfo) {
+		this.staffInfo = staffInfo;
+	}
 	public LoginService getLoginService() {
 		return loginService;
 	}
@@ -64,15 +72,13 @@ public class LoginAction {
 	public String checkStuLogin() {
 		studentInfo = new StudentInfo();
 		studentInfo.setStudentNo(loginNo);
-		studentInfo.setStudentPass(loginPass);
-		String passwordInCode = studentInfo.getStudentPass();
-		passwordInCode = MD5Util.MD5(passwordInCode);
+		String passwordInCode = MD5Util.MD5(loginPass);
 		studentInfo.setStudentPass(passwordInCode);
-		logger.info("获得加密密码:"+studentInfo.getStudentPass());
+		logger.info("获得学生加密密码:"+studentInfo.getStudentPass());
 		if (loginService.checkStuLogin(studentInfo)) {
 			session.put("role", "student");
 			session.put("studentNo", studentInfo.getStudentNo());
-
+			session.put("studentID", studentInfo.getStudentId());
 			logger.info("学生登录成功:"+studentInfo.getStudentNo());
 			return "student_success";
 		}
@@ -80,7 +86,19 @@ public class LoginAction {
 		return "error";
 	}
 	public String checkStaffLogin() {
-		
+		staffInfo = new StaffInfo();
+		staffInfo.setStaffId(1);
+		String passwordInCode = MD5Util.MD5(loginPass);
+		staffInfo.setStaffPass(passwordInCode);
+		logger.info("获得员工加密密码:"+staffInfo.getStaffPass());
+		logger.info("获得员工帐号:"+staffInfo.getStaffId());
+		if (loginService.checkStaLogin(staffInfo)) {
+			session.put("role", "staff");
+			session.put("staffID", staffInfo.getStaffId());
+			logger.info("员工登录成功:"+staffInfo.getStaffId());
+			return "student_success";
+		}
+		logger.info("员工登录失败:"+staffInfo.getStaffId());
 		return "error";
 	}
 }
