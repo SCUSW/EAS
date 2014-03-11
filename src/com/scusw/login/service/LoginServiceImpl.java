@@ -3,6 +3,7 @@ package com.scusw.login.service;
 import com.scusw.login.dao.LoginDao;
 import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
+import com.scusw.model.TeacherInfo;
 
 public class LoginServiceImpl implements LoginService {
 	private LoginDao loginDao;
@@ -35,6 +36,17 @@ public class LoginServiceImpl implements LoginService {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	public int checkIfTeacher(int staffId) {
+		// TODO Auto-generated method stub
+		TeacherInfo teacherInfo = loginDao.checkIfTeacher(staffId);
+		if (teacherInfo != null) {
+			return teacherInfo.getTeacherType();
+		}
+		return -1;
+	}
+
+	
 
 	
 

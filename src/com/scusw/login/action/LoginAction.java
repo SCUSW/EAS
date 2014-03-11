@@ -87,16 +87,26 @@ public class LoginAction {
 	}
 	public String checkStaffLogin() {
 		staffInfo = new StaffInfo();
-		staffInfo.setStaffId(1);
+		staffInfo.setStaffId(2);
 		String passwordInCode = MD5Util.MD5(loginPass);
 		staffInfo.setStaffPass(passwordInCode);
 		logger.info("获得员工加密密码:"+staffInfo.getStaffPass());
 		logger.info("获得员工帐号:"+staffInfo.getStaffId());
 		if (loginService.checkStaLogin(staffInfo)) {
-			session.put("role", "staff");
-			session.put("staffID", staffInfo.getStaffId());
-			logger.info("员工登录成功:"+staffInfo.getStaffId());
-			return "student_success";
+			int type = loginService.checkIfTeacher(staffInfo.getStaffId());
+			if (type>=0) {
+				session.put("role", "teacher");
+				session.put("type", type);
+				session.put("staffID", staffInfo.getStaffId());
+				logger.info("教师登录成功:"+staffInfo.getStaffId());
+				return "teacher_success";
+			} else {
+				session.put("role", "staff");
+				session.put("staffID", staffInfo.getStaffId());
+				logger.info("员工登录成功:"+staffInfo.getStaffId());
+				return "staff_success";
+			}
+			
 		}
 		logger.info("员工登录失败:"+staffInfo.getStaffId());
 		return "error";
