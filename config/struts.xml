@@ -8,7 +8,7 @@
 		<!-- 动态方法调用 -->
 		<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
 		
-		
 		<include file="testssh/testssh_struts.xml"/>
 		<include file="login/login_struts.xml"/>
+		<include file="student/student_struts.xml"/>
 </struts>
