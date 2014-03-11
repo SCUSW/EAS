@@ -19,9 +19,17 @@
     <filter-name>struts2</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+<<<<<<< HEAD
   <jsp-config>
 <jsp-property-group>
  <description>HtmlEncoding</description>
+=======
+
+
+<jsp-config>
+	<jsp-property-group>
+ 	<description>encoding example</description>
+>>>>>>> separate footer and add the adminLogin.jsp
  <display-name>JSPConfiguration</display-name>
  <url-pattern>*.html</url-pattern>
  <el-ignored>true</el-ignored>
@@ -31,4 +39,8 @@
  <include-coda></include-coda>
 </jsp-property-group>
 </jsp-config>
+<<<<<<< HEAD
+=======
+
+>>>>>>> separate footer and add the adminLogin.jsp
 </web-app>
