@@ -1,3 +1,4 @@
+
 package com.scusw.login.action;
 
 import java.util.Map;
@@ -9,7 +10,6 @@ import com.scusw.login.service.LoginService;
 import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.util.MD5Util;
-
 public class LoginAction {
 	private StudentInfo studentInfo;
 	private StaffInfo staffInfo;
@@ -102,3 +102,4 @@ public class LoginAction {
 		return "error";
 	}
 }
+

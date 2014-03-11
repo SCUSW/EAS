@@ -14,6 +14,7 @@
      		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd"
      		default-autowire="byName"
      		 >
+		<import resource="classpath:finance/finance_bean.xml"/>
 		
 		<import resource="classpath:testssh/testssh_bean.xml"/>
 		<import resource="classpath:login/login_bean.xml"/>
