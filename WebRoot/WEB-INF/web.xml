@@ -31,8 +31,4 @@
  <include-coda></include-coda>
 </jsp-property-group>
 </jsp-config>
-<<<<<<< HEAD
 </web-app>
-=======
-</web-app>
->>>>>>> test ignore
