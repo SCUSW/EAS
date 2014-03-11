@@ -23,5 +23,9 @@ public class TeacherServiceImpl implements TeacherService{
 	public void setTeacherDao(TeacherDao teacherDao) {
 		this.teacherDao = teacherDao;
 	}
+	
+	public TeacherInfo getOwnTeacherInfo(int staffId){
+		return teacherDao.queryByTeacehrId(staffId);
+	}
 
 }

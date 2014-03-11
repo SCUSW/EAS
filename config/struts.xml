@@ -13,4 +13,5 @@
 		<include file="login/login_struts.xml"/>
 		<include file="student/student_struts.xml"/>
 		<include file="finance/finance_struts.xml"/>
+		<include file="teacher/teacher_struts.xml"/>
 </struts>

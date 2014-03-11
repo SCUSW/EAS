@@ -10,6 +10,8 @@ import com.scusw.teacher.dao.TeacherDao;
 
 
 public class TeacherDaoImpl extends HibernateDaoSupport implements TeacherDao {
-	
+	public TeacherInfo queryByTeacehrId(int staffId){
+		return null;
+	}
 
 }

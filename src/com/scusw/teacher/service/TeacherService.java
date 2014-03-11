@@ -7,6 +7,6 @@ import com.scusw.model.TeacherInfo;
 
 public interface TeacherService {
 
-
+	public TeacherInfo getOwnTeacherInfo(int staffId);
 		
 }
