@@ -127,6 +127,7 @@ public class StudentAction {
 	 * @return ：查询更新后的学生信息
 	 */
 	public String updateStudent(){
+		logger.info(studentInfo.getStudentName());
 		studentService.updateStudent(studentInfo);
 		return queryStudentByNo();	
 	}
@@ -149,7 +150,6 @@ public class StudentAction {
 		noticeInfo = studentService.noticeInfoQuery();
 		request=(Map)ActionContext.getContext().get("request");
 		request.put("noticeInfo",noticeInfo);
-		logger.info(noticeInfo.get(1).getNoticeContent());
 		return "notice";
 	}
 	

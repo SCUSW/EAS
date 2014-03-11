@@ -39,6 +39,7 @@ public class StudentDaoImpl extends HibernateDaoSupport implements StudentDao {
 	 * @param student：包含学生全部信息的实体
 	 */
 	public void updateStudent(StudentInfo student) {
+		logger.info(student.getStudentName());
 		this.getHibernateTemplate().update(student);
 	}
 	
