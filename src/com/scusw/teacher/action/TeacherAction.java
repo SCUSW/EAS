@@ -50,7 +50,7 @@ public class TeacherAction {
 	
 	public String getOwnTeacherInfo(){
 		session = ActionContext.getContext().getSession();
-		int staffId = ((String) session.get("staffID"));
+		int staffId = (Integer) session.get("staffID");
 		System.out.println(staffId);
 	//	teacher=teacherService.getOwnTeacherInfo(staffId);
 		return "getOwnTeacherInfo";
