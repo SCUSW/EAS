@@ -35,9 +35,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		<tr>
    			<td>姓名</td><td>职位</td><td>应付工资</td><td>已付工资</td><td>操作</td>
    		</tr>
-   		<tr>
-   			<td>Anna</td><td>主管教师</td><td>4000</td><td>2650</td><td><input type="button" value="支付工资"/>
-   		</tr>
    		<c:forEach items="${teacher_list}" var="t">
    		<tr>
    			<td>${t.staffInfo.staffName }</td><td>${t.teacherLevel.levelName }</td><td>${t.teacherSalary }</td><td>2650</td><td><input type="button" value="支付工资"/>

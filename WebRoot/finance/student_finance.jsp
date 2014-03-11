@@ -32,14 +32,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	
    	<table border="1">
    		<tr>
-   			<td>姓名</td><td>状态</td><td>操作</td>
+   			<td>姓名</td><td>状态</td><td>余额</td><td>操作</td>
    		</tr>
-   		<tr>
-   			<td>Marla</td><td>咨询</td><td><input type="button" value="缴费"/><input type="button" value="转正"/><input type="button" value="详细信息"/></td>
-   		</tr>
-   		<c:forEach items="${student_list}" var="sl">
+   		<c:forEach items="${student_list}" var="s">
    			<tr>
-   			<td>${sl.studentName }</td><td>${sl.rollState.rollstateName }</td><td><input type="button" value="缴费"/><input type="button" value="转正"/><input type="button" value="详细信息"/></td>
+   			<td>${s.studentName }</td><td>${s.rollState.rollstateName }</td><td>${s.studentBalance }</td><td><input type="button" value="缴费"/><input type="button" value="转正"/><input type="button" value="详细信息"/></td>
    		</tr>
    		</c:forEach>
    	</table>
