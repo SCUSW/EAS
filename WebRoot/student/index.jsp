@@ -3,7 +3,6 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -22,13 +21,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
+  
   <body>
     <h1>登录成功</h1> <br>
     <p>登录信息：</p><br>
-    <s:debug></s:debug>
-    <div align="center"><a href="<%=basePath%>student!queryStudentByNo.action?studentInfo.studentNo=${studentInfo.studentNo}">个人信息查询</a></div>
-    <div align="center"><a href="<%=basePath%>student!queryStudentBeforeUpdate.action?studentInfo.studentNo=${studentInfo.studentNo}">修改个人信息</a></div>
-    <div align="center"><a href="<%=basePath%>student!noticeInfoQuery.action">公告查询</a></div>
-    <div align="center"><a href="<%=basePath%>student!majorInfoQuery.action?studentInfo.studentNo=${studentInfo.studentNo}">专业查询</a></div>
+    role:${session.role }<br>
+    student_no:${session.studentNo }<br>
+    
   </body>
 </html>
