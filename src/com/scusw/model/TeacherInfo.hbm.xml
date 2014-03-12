@@ -10,10 +10,10 @@
             <column name="staff_id" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="teacherLevel" class="com.scusw.model.TeacherLevel" fetch="select">
+        <many-to-one name="teacherLevel" class="com.scusw.model.TeacherLevel" fetch="select" lazy="false">
             <column name="level_id" />
         </many-to-one>
-        <many-to-one name="staffInfo" class="com.scusw.model.StaffInfo" update="false" insert="false" fetch="select">
+        <many-to-one name="staffInfo" class="com.scusw.model.StaffInfo" update="false" insert="false" fetch="select" lazy="false">
             <column name="staff_id" not-null="true" unique="true" />
         </many-to-one>
         <property name="teacherNo" type="java.lang.String">
