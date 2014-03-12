@@ -20,6 +20,7 @@
 		<import resource="classpath:login/login_bean.xml"/>
 		<import resource="classpath:student/student_bean.xml"/>
 		<import resource="classpath:teacher/teacher_bean.xml"/>
+		<import resource="classpath:admin/admin_login_bean.xml"/>
 		
 		
 		<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
