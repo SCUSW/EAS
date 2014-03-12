@@ -24,6 +24,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <frameset rows="50,*">
   	<frame src="<%=basePath%>finance/finance_guide.jsp" name="guide_bar" noresize="noresize" scrolling="no">
-  	<frame src="<%=basePath%>finance/total_finance.jsp" name="info_area" noresize="noresize">
+  	<frame src="<%=basePath %>totalFinanceAction!totalFinance.action" name="info_area" noresize="noresize">
   </frameset>
 </html>

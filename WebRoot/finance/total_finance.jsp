@@ -28,21 +28,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <table>
    <tr>
    <td width="40%">
-   当前分公司余额：<br/><br/><br/>
+   当前分公司余额：${total_money }<br/><br/><br/>
    <button>查看历史明细</button>
    </td>
    <td width="60%">
-		<form>
+		<form action="<%=basePath %>totalFinanceAction!addFinance.action" method="post">
 		<h4>新增一笔收支信息</h4>
-		收支标题：<input type="text" name=""/><br/><br/>
-   		涉及金额：<input type="text" name=""/><br/><br/>
+		收支标题：<input type="text" name="financialRecords.financialFrom"/><br/><br/>
+   		涉及金额：<input type="text" name="financialRecords.financialNum"/><br/><br/>
    		收支类型：
-   		<select name="money_type">
-   			<option>支出</option>
-   			<option>收入</option>
+   		<select name="financeType">
+   			<option value="-1">支出</option>
+   			<option value="1">收入</option>
    		</select><br/><br/>
-   		描述：<textarea rows="7" cols="48"></textarea><br/><br/><br/>
-   		<input type="submit" name="" value="提交"/>
+   		描述：<textarea name="financialRecords.financialRemark" rows="7" cols="48"></textarea><br/><br/><br/>
+   		<input type="submit" value="提交"/>
    		</form>
 	</td>
 	</tr>

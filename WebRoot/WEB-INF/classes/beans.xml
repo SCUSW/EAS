@@ -40,6 +40,7 @@
 		    <tx:attributes>
 		      <tx:method name="check*" read-only="true"/>
 		      <tx:method name="update*" propagation="REQUIRED"/>
+		      <tx:method name="add*" propagation="REQUIRED"/>
 		    </tx:attributes>
 		</tx:advice>
 		

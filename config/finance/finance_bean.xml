@@ -38,4 +38,16 @@
 		<bean id="teacherFinanceAction" class="com.scusw.finance.action.TeacherFinanceAction">	
 			<property name="teacherFinanceService" ref="teacherFinanceService"></property>
 		</bean>
+		
+		<bean id="totalFinanceDao" class="com.scusw.finance.dao.TotalFinanceDaoImp">
+			 <property name="sessionFactory" ref="sessionFactory"></property>
+		</bean>
+		
+		<bean id="totalFinanceService" class="com.scusw.finance.service.TotalFinanceServiceImp">	
+			<property name="totalFinanceDao" ref="totalFinanceDao"></property>
+		</bean>
+	
+		<bean id="totalFinanceAction" class="com.scusw.finance.action.TotalFinanceAction">	
+			<property name="totalFinanceService" ref="totalFinanceService"></property>
+		</bean>
 </beans>
