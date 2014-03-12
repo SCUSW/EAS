@@ -83,15 +83,15 @@ insert into group_privilege(group_id,privilege_id) values(3,3);
 /*
 员工信息
 */
-insert into staff_info(staff_pass,vocation_id,group_id,staff_name,staff_phone,staff_qq,staff_idcard,staff_empl_time,staff_avai,staff_others) values('123456',1,1,'张三1','18255623489','147895654','354895214478596548',NOW(),1,'没有其他信息');
-insert into staff_info(staff_pass,vocation_id,group_id,staff_name,staff_phone,staff_qq,staff_idcard,staff_empl_time,staff_avai,staff_others) values('123456',2,2,'张三2','18255658989','147895654','353895214478596548',NOW(),1,'没有其他信息');
-insert into staff_info(staff_pass,vocation_id,group_id,staff_name,staff_phone,staff_qq,staff_idcard,staff_empl_time,staff_avai,staff_others) values('123456',3,3,'张三3','18345658989','147895654','356895214478596548',NOW(),1,'没有其他信息');
-insert into staff_info(staff_pass,vocation_id,group_id,staff_name,staff_phone,staff_qq,staff_idcard,staff_empl_time,staff_avai,staff_others) values('123456',4,1,'张三4','18255888989','147895654','354885214478596548',NOW(),1,'没有其他信息');
-insert into staff_info(staff_pass,vocation_id,group_id,staff_name,staff_phone,staff_qq,staff_idcard,staff_empl_time,staff_avai,staff_others) values('123456',5,2,'张三5','18255577989','147895654','350005214478596548',NOW(),1,'没有其他信息');
-insert into staff_info(staff_pass,vocation_id,group_id,staff_name,staff_phone,staff_qq,staff_idcard,staff_empl_time,staff_avai,staff_others) values('123456',6,3,'张三6','18255658989','147895654','354847214478596548',NOW(),1,'没有其他信息');
-insert into staff_info(staff_pass,vocation_id,group_id,staff_name,staff_phone,staff_qq,staff_idcard,staff_empl_time,staff_avai,staff_others) values('123456',7,1,'张三7','18241448989','147895654','354145217478596548',NOW(),1,'没有其他信息');
-insert into staff_info(staff_pass,vocation_id,group_id,staff_name,staff_phone,staff_qq,staff_idcard,staff_empl_time,staff_avai,staff_others) values('123456',8,2,'张三8','18286668989','147895654','354895227785962548',NOW(),1,'没有其他信息');
-insert into staff_info(staff_pass,vocation_id,group_id,staff_name,staff_phone,staff_qq,staff_idcard,staff_empl_time,staff_avai,staff_others) values('123456',9,3,'张三9','18258778989','147895654','354895296668596548',NOW(),1,'没有其他信息');
+insert into staff_info(staff_no,staff_pass,staff_sex,vocation_id,group_id,staff_name,staff_phone,staff_qq,staff_idcard,staff_empl_time,staff_avai,staff_others) values('s1001','e10adc3949ba59abbe56e057f20f883e',1,1,1,'张三1','18255623489','147895654','354895214478596548',NOW(),1,'没有其他信息');
+insert into staff_info(staff_no,staff_pass,staff_sex,vocation_id,group_id,staff_name,staff_phone,staff_qq,staff_idcard,staff_empl_time,staff_avai,staff_others) values('s1002','e10adc3949ba59abbe56e057f20f883e',1,2,2,'张三2','18255658989','147895654','353895214478596548',NOW(),1,'没有其他信息');
+insert into staff_info(staff_no,staff_pass,staff_sex,vocation_id,group_id,staff_name,staff_phone,staff_qq,staff_idcard,staff_empl_time,staff_avai,staff_others) values('s1003','e10adc3949ba59abbe56e057f20f883e',1,3,3,'张三3','18345658989','147895654','356895214478596548',NOW(),1,'没有其他信息');
+insert into staff_info(staff_no,staff_pass,staff_sex,vocation_id,group_id,staff_name,staff_phone,staff_qq,staff_idcard,staff_empl_time,staff_avai,staff_others) values('s1004','e10adc3949ba59abbe56e057f20f883e',1,4,1,'张三4','18255888989','147895654','354885214478596548',NOW(),1,'没有其他信息');
+insert into staff_info(staff_no,staff_pass,staff_sex,vocation_id,group_id,staff_name,staff_phone,staff_qq,staff_idcard,staff_empl_time,staff_avai,staff_others) values('s1005','e10adc3949ba59abbe56e057f20f883e',1,5,2,'张三5','18255577989','147895654','350005214478596548',NOW(),1,'没有其他信息');
+insert into staff_info(staff_no,staff_pass,staff_sex,vocation_id,group_id,staff_name,staff_phone,staff_qq,staff_idcard,staff_empl_time,staff_avai,staff_others) values('s1006','e10adc3949ba59abbe56e057f20f883e',1,6,3,'张三6','18255658989','147895654','354847214478596548',NOW(),1,'没有其他信息');
+insert into staff_info(staff_no,staff_pass,staff_sex,vocation_id,group_id,staff_name,staff_phone,staff_qq,staff_idcard,staff_empl_time,staff_avai,staff_others) values('s1007','e10adc3949ba59abbe56e057f20f883e',1,7,1,'张三7','18241448989','147895654','354145217478596548',NOW(),1,'没有其他信息');
+insert into staff_info(staff_no,staff_pass,staff_sex,vocation_id,group_id,staff_name,staff_phone,staff_qq,staff_idcard,staff_empl_time,staff_avai,staff_others) values('s1008','e10adc3949ba59abbe56e057f20f883e',1,8,2,'张三8','18286668989','147895654','354895227785962548',NOW(),1,'没有其他信息');
+insert into staff_info(staff_no,staff_pass,staff_sex,vocation_id,group_id,staff_name,staff_phone,staff_qq,staff_idcard,staff_empl_time,staff_avai,staff_others) values('s1009','e10adc3949ba59abbe56e057f20f883e',1,9,3,'张三9','18258778989','147895654','354895296668596548',NOW(),1,'没有其他信息');
 
 /*
 公告信息
@@ -138,9 +138,9 @@ insert into course_info(major_id,staff_id,course_name,course_start,course_end,co
 /*
 教学管理信息
 */
-insert into teaching_manage_info(course_id,teach_plan,lesson_plan,teacher_summary,set_time) values(1,'1教学计划的URL','1教案的URL','1总结的URL',NOW());
-insert into teaching_manage_info(course_id,teach_plan,lesson_plan,teacher_summary,set_time) values(2,'2教学计划的URL','2教案的URL','2总结的URL',NOW());
-insert into teaching_manage_info(course_id,teach_plan,lesson_plan,teacher_summary,set_time) values(3,'3教学计划的URL','3教案的URL','3总结的URL',NOW());
+insert into teaching_manage_info(course_id,teach_plan,lesson_plan,teacher_summary,set_time,exam_state) values(1,'1教学计划的URL','1教案的URL','1总结的URL',NOW(),1);
+insert into teaching_manage_info(course_id,teach_plan,lesson_plan,teacher_summary,set_time,exam_state) values(2,'2教学计划的URL','2教案的URL','2总结的URL',NOW(),1);
+insert into teaching_manage_info(course_id,teach_plan,lesson_plan,teacher_summary,set_time,exam_state) values(3,'3教学计划的URL','3教案的URL','3总结的URL',NOW(),1);
 
 /*
 课时信息
@@ -235,11 +235,11 @@ insert into roll_state(rollstate_name,rollstate_intr) values('毕业','gtaduate'
 学生基本信息
 */
 insert into student_info(student_pass,class_id,group_id,rollstate_id,consult_id,student_no,student_name,student_sex,student_age,student_addr,student_phone,student_balance,student_school,student_major,attend_time,student_state,student_remark) 
-values('123456',1,2,1,1,'1143111121','jack1',1,18,'jack1 addr','4589651',10000,'川大','软件工程',NOW(),1,'jack1 remark');
+values('e10adc3949ba59abbe56e057f20f883e',1,2,1,1,'1143111121','jack1',1,18,'jack1 addr','4589651',10000,'川大','软件工程',NOW(),1,'jack1 remark');
 insert into student_info(student_pass,class_id,group_id,rollstate_id,consult_id,student_no,student_name,student_sex,student_age,student_addr,student_phone,student_balance,student_school,student_major,attend_time,student_state,student_remark) 
-values('123456',2,2,1,1,'1143111122','jack2',0,18,'jack2 addr','4589652',10000,'川大','软件工程',NOW(),1,'jack2 remark');
+values('e10adc3949ba59abbe56e057f20f883e',2,2,1,1,'1143111122','jack2',0,18,'jack2 addr','4589652',10000,'川大','软件工程',NOW(),1,'jack2 remark');
 insert into student_info(student_pass,class_id,group_id,rollstate_id,consult_id,student_no,student_name,student_sex,student_age,student_addr,student_phone,student_balance,student_school,student_major,attend_time,student_state,student_remark) 
-values('123456',3,2,1,1,'1143111123','jack3',1,18,'jack3 addr','4589653',10000,'川大','软件工程',NOW(),1,'jack3 remark');
+values('e10adc3949ba59abbe56e057f20f883e',3,2,1,1,'1143111123','jack3',1,18,'jack3 addr','4589653',10000,'川大','软件工程',NOW(),1,'jack3 remark');
 
 /*
 选课信息
@@ -247,3 +247,9 @@ values('123456',3,2,1,1,'1143111123','jack3',1,18,'jack3 addr','4589653',10000,'
 insert into  register_info(student_id,course_id,student_course_score) values(1,1,100);
 insert into  register_info(student_id,course_id,student_course_score) values(2,2,100);
 insert into  register_info(student_id,course_id,student_course_score) values(3,3,100);
+
+/*
+管理员信息
+*/
+insert into admin_info(admin_no,admin_pass,admin_name,admin_tel,admin_email,admin_idcard,admin_set_time,admin_avai) 
+values('admin','e10adc3949ba59abbe56e057f20f883e','Tom','12345678900','cceasy@hotmail.com','987654345678909876',NOW(),1);

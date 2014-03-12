@@ -26,7 +26,7 @@ public class LoginServiceImpl implements LoginService {
 
 	public int checkStaLogin(StaffInfo si) {
 		// TODO Auto-generated method stub
-		if (loginDao.checkStaffLogin(si) != null) {
+		if ((si=loginDao.checkStaffLogin(si)) != null) {
 			return si.getStaffId();
 		}
 		return -1;

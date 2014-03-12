@@ -102,6 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            				 <input type="radio" name="role" value="staff"/>工作人员<br/><br/>
            				<div class="btn-group">
 						  <input type="submit" value="登录" class="btn btn-default"></button>
+						  <p>${request.loginstate }</p>
 						</div>         				 
        			  	 </div>
        				</div>

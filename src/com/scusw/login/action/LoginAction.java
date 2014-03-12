@@ -18,6 +18,7 @@ public class LoginAction {
 	private String loginPass;
 	private String role;
 	private Map<String, Object> session;
+	private Map<String, Object> request;
 	
 	public static Logger logger = Logger.getLogger(LoginAction.class);
 	
@@ -62,6 +63,7 @@ public class LoginAction {
 	public String checkUser() {
 		
 		session = ActionContext.getContext().getSession();
+		request = (Map<String, Object>) ActionContext.getContext().get("request");
 		if ("student".equals(role)) {
 			return checkStuLogin();
 		} else if ("staff".equals(role)) {
@@ -83,6 +85,7 @@ public class LoginAction {
 			return "student_success";
 		}
 		logger.info("学生登录失败:"+studentInfo.getStudentNo());
+		request.put("loginstate", "false");
 		return "error";
 	}
 	public String checkStaffLogin() {
@@ -92,9 +95,9 @@ public class LoginAction {
 		staffInfo.setStaffPass(passwordInCode);
 		logger.info("获得员工加密密码:"+staffInfo.getStaffPass());
 		logger.info("获得员工帐号:"+staffInfo.getStaffNo());
-		int staffId = loginService.checkStaLogin(staffInfo);
-		if (staffId != -1) {
-			int type = loginService.checkIfTeacher(staffId);
+		staffInfo.setStaffId(loginService.checkStaLogin(staffInfo));
+		if (staffInfo.getStaffId() != -1) {
+			int type = loginService.checkIfTeacher(staffInfo.getStaffId());
 			if (type>=0) {
 				session.put("role", "teacher");
 				session.put("type", type);
@@ -110,6 +113,7 @@ public class LoginAction {
 			
 		}
 		logger.info("员工登录失败:"+staffInfo.getStaffId());
+		request.put("loginstate", "false");
 		return "error";
 	}
 }
