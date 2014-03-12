@@ -87,13 +87,14 @@ public class LoginAction {
 	}
 	public String checkStaffLogin() {
 		staffInfo = new StaffInfo();
-		staffInfo.setStaffId(2);
+		staffInfo.setStaffNo(loginNo);
 		String passwordInCode = MD5Util.MD5(loginPass);
 		staffInfo.setStaffPass(passwordInCode);
 		logger.info("获得员工加密密码:"+staffInfo.getStaffPass());
-		logger.info("获得员工帐号:"+staffInfo.getStaffId());
-		if (loginService.checkStaLogin(staffInfo)) {
-			int type = loginService.checkIfTeacher(staffInfo.getStaffId());
+		logger.info("获得员工帐号:"+staffInfo.getStaffNo());
+		int staffId = loginService.checkStaLogin(staffInfo);
+		if (staffId != -1) {
+			int type = loginService.checkIfTeacher(staffId);
 			if (type>=0) {
 				session.put("role", "teacher");
 				session.put("type", type);

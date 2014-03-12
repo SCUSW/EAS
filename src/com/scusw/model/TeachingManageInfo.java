@@ -15,8 +15,8 @@ public class TeachingManageInfo implements java.io.Serializable {
 	private String teachPlan;
 	private String lessonPlan;
 	private String teacherSummary;
-	private Integer examState;
 	private Timestamp setTime;
+	private Integer examState;
 
 	// Constructors
 
@@ -31,13 +31,14 @@ public class TeachingManageInfo implements java.io.Serializable {
 
 	/** full constructor */
 	public TeachingManageInfo(CourseInfo courseInfo, String teachPlan,
-			String lessonPlan, String teacherSummary,int examState, Timestamp setTime) {
+			String lessonPlan, String teacherSummary, Timestamp setTime,
+			Integer examState) {
 		this.courseInfo = courseInfo;
 		this.teachPlan = teachPlan;
 		this.lessonPlan = lessonPlan;
 		this.teacherSummary = teacherSummary;
-		this.examState = examState;
 		this.setTime = setTime;
+		this.examState = examState;
 	}
 
 	// Property accessors
@@ -81,16 +82,6 @@ public class TeachingManageInfo implements java.io.Serializable {
 	public void setTeacherSummary(String teacherSummary) {
 		this.teacherSummary = teacherSummary;
 	}
-	
-	
-	
-	public Integer getExamState() {
-		return examState;
-	}
-
-	public void setExamState(Integer examState) {
-		this.examState = examState;
-	}
 
 	public Timestamp getSetTime() {
 		return this.setTime;
@@ -98,6 +89,14 @@ public class TeachingManageInfo implements java.io.Serializable {
 
 	public void setSetTime(Timestamp setTime) {
 		this.setTime = setTime;
+	}
+
+	public Integer getExamState() {
+		return this.examState;
+	}
+
+	public void setExamState(Integer examState) {
+		this.examState = examState;
 	}
 
 }

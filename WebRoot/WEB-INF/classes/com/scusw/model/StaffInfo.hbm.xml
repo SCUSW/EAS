@@ -16,8 +16,14 @@
         <many-to-one name="positionInfo" class="com.scusw.model.PositionInfo" fetch="select">
             <column name="vocation_id" not-null="true" />
         </many-to-one>
+        <property name="staffNo" type="java.lang.String">
+            <column name="staff_no" length="16" not-null="true" />
+        </property>
         <property name="staffPass" type="java.lang.String">
             <column name="staff_pass" length="32" />
+        </property>
+        <property name="staffSex" type="java.lang.Integer">
+            <column name="staff_sex" />
         </property>
         <property name="staffName" type="java.lang.String">
             <column name="staff_name" length="64" />
@@ -63,6 +69,12 @@
                 <column name="staff_id" not-null="true" unique="true" />
             </key>
             <one-to-many class="com.scusw.model.TeacherInfo" />
+        </set>
+        <set name="staffFeeses" inverse="true">
+            <key>
+                <column name="staff_id" />
+            </key>
+            <one-to-many class="com.scusw.model.StaffFees" />
         </set>
         <set name="salesmanInfos" inverse="true">
             <key>
