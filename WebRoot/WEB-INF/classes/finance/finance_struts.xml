@@ -13,5 +13,8 @@
 			<action name="teacherFinanceAction" class="com.scusw.finance.action.TeacherFinanceAction">
 				<result name="default">/finance/teacher_finance.jsp</result>
 			</action>
+			<action name="totalFinanceAction" class="com.scusw.finance.action.TotalFinanceAction">
+				<result name="default">/finance/total_finance.jsp</result>
+			</action>
 		</package>
 </struts>

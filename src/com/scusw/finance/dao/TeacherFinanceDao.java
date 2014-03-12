@@ -13,5 +13,6 @@ import com.scusw.model.TeacherInfo;
  */
 public interface TeacherFinanceDao {
 	public List<TeacherInfo> queryAllTeacher();
+	public List<TeacherInfo> queryTeacher(String staffName);
 
 }

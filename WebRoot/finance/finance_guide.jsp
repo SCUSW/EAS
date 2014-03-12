@@ -24,9 +24,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <div style="text-align: center">
+    	<a target="info_area" href="<%=basePath %>totalFinanceAction!totalFinance.action">总费用管理</a>
     	<a target="info_area" href="<%=basePath %>studentFinanceAction!searchAll.action">学员费用管理</a>
     	<a target="info_area" href="<%=basePath %>teacherFinanceAction!searchAll.action">教师费用管理</a>
-    	<a target="info_area" href="<%=basePath %>finance/other_finance.jsp">其他费用管理</a>
-    </div>
+    	<!--<a target="info_area" href="<%=basePath %>finance/other_finance.jsp">其他费用管理</a>
+    --></div>
   </body>
 </html>

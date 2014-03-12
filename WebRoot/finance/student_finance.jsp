@@ -26,7 +26,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div style="text-align: center">
 	<form action="studentFinanceAction!conditionSearch.action" method="post">
    		学员名称：<input type="text" name="studentInfo.studentName"/>
+   		<!--
    		入学年份：<input type="text" /> -- <input type="text" />
+   		-->
    		<input type="submit" value="搜索"/>
    	</form>
    	

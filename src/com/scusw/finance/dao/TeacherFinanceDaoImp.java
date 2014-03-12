@@ -25,4 +25,13 @@ public class TeacherFinanceDaoImp extends HibernateDaoSupport implements Teacher
 		return teachers;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.scusw.finance.dao.TeacherFinanceDao#queryTeacher(java.lang.String)
+	 */
+	public List<TeacherInfo> queryTeacher(String staffName) {
+		// TODO Auto-generated method stub
+		List<TeacherInfo> teachers = getHibernateTemplate().find("from TeacherInfo t where t.staffInfo.staffName like '%" + staffName + "%'");
+		return teachers;
+	}
+
 }

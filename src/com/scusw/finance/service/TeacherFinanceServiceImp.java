@@ -34,5 +34,11 @@ public class TeacherFinanceServiceImp implements TeacherFinanceService{
 		// TODO Auto-generated method stub
 		return teacher_list;
 	}
+	
+	public List<TeacherInfo> conditionSearch(String staffName){
+		List<TeacherInfo> teacher_list = teacherFinanceDao.queryTeacher(staffName);
+		
+		return teacher_list;
+	}
 
 }

@@ -13,5 +13,5 @@ import com.scusw.model.TeacherInfo;
  */
 public interface TeacherFinanceService {
 	public List<TeacherInfo> searchAll();
-
+	public List<TeacherInfo> conditionSearch(String staffName);
 }

@@ -43,4 +43,11 @@ public class TeacherFinanceAction {
 
 		return "default";
 	}
+	
+	public String searchTeacher(){
+		this.setRequest((Map)ActionContext.getContext().get("request"));
+		this.getRequest().put("teacher_list", teacherFinanceService.conditionSearch(teacherInfo.getStaffInfo().getStaffName()));
+
+		return "default";
+	}
 }
