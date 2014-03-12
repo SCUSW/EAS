@@ -48,11 +48,27 @@ public class TeacherAction {
 		return session;
 	}
 	
+	//获取老师个人信息
 	public String getOwnTeacherInfo(){
 		session = ActionContext.getContext().getSession();
 		int staffId = (Integer) session.get("staffID");
-		System.out.println(staffId);
-	//	teacher=teacherService.getOwnTeacherInfo(staffId);
+		teacher=teacherService.getOwnTeacherInfo(staffId);
 		return "getOwnTeacherInfo";
+	}
+	
+	//进入更新页面，更新页面中有老师原本的个人信息提示
+	public String updateOwnTeacherInfo1(){
+		session = ActionContext.getContext().getSession();
+		int staffId = (Integer) session.get("staffID");
+		teacher=teacherService.getOwnTeacherInfo(staffId);
+		return "updateOwnTeacherInfo1";
+	}
+	
+	//接收需要更新的信息并更新
+	public String updateOwnTeacherInfo2(){
+		teacherService.updateTeacher(staff);
+//		teacher = teacherService.getOwnTeacherInfo(teacher.getStaffId());
+		System.out.println(teacher.getStaffInfo().getStaffPhone());
+		return "updateOwnTeacherInfo2";
 	}
 }

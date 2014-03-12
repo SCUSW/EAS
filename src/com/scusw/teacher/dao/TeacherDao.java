@@ -7,4 +7,6 @@ import com.scusw.model.TeacherInfo;
 
 public interface TeacherDao {
 	public TeacherInfo queryByTeacehrId(int staffIdS);
+	
+	public void updateTeacher(StaffInfo staff);
 }

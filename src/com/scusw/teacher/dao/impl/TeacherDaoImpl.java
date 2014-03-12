@@ -10,8 +10,15 @@ import com.scusw.teacher.dao.TeacherDao;
 
 
 public class TeacherDaoImpl extends HibernateDaoSupport implements TeacherDao {
-	public TeacherInfo queryByTeacehrId(int staffId){
-		return null;
+	public TeacherInfo queryByTeacehrId(int staffId){	
+		Query q=this.getSession().createQuery("from TeacherInfo t " +
+				"where t.staffId=:staffId");
+		q.setParameter("staffId",staffId);
+		TeacherInfo t=(TeacherInfo)q.uniqueResult();
+		return t;
 	}
 
+	public void updateTeacher(StaffInfo staff){
+		this.getHibernateTemplate().update(staff);
+	}
 }
