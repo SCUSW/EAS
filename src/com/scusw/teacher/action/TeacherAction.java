@@ -66,8 +66,14 @@ public class TeacherAction {
 	
 	//接收需要更新的信息并更新
 	public String updateOwnTeacherInfo2(){
+		String staffPhone = staff.getStaffPhone();
+		String staffQq = staff.getStaffQq();
+		session = ActionContext.getContext().getSession();
+		int staffId = (Integer) session.get("staffID");
+		teacher=teacherService.getOwnTeacherInfo(staffId);
+		staff.setStaffPhone(staffPhone);
+		staff.setStaffQq(staffQq);
 		teacherService.updateTeacher(staff);
-//		teacher = teacherService.getOwnTeacherInfo(teacher.getStaffId());
 		System.out.println(teacher.getStaffInfo().getStaffPhone());
 		return "updateOwnTeacherInfo2";
 	}
