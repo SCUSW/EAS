@@ -10,7 +10,7 @@
             <column name="student_id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="rollState" class="com.scusw.model.RollState" fetch="select" lazy="false">
+        <many-to-one name="rollState" class="com.scusw.model.RollState" fetch="select">
             <column name="rollstate_id" />
         </many-to-one>
         <many-to-one name="groupInfo" class="com.scusw.model.GroupInfo" fetch="select">
@@ -23,7 +23,7 @@
             <column name="consult_id" />
         </many-to-one>
         <property name="studentPass" type="java.lang.String">
-            <column name="student_pass" length="32" not-null="true" />
+            <column name="student_pass" length="32" />
         </property>
         <property name="studentNo" type="java.lang.String">
             <column name="student_no" length="64" unique="true" />
@@ -66,6 +66,12 @@
                 <column name="student_id" />
             </key>
             <one-to-many class="com.scusw.model.RegisterInfo" />
+        </set>
+        <set name="studentFeeses" inverse="true">
+            <key>
+                <column name="student_id" />
+            </key>
+            <one-to-many class="com.scusw.model.StudentFees" />
         </set>
     </class>
 </hibernate-mapping>

@@ -18,6 +18,7 @@ public class BranchInfo implements java.io.Serializable {
 	private Integer branchAvai;
 	private String branchIntr;
 	private Set gradeInfos = new HashSet(0);
+	private Set financialRecordses = new HashSet(0);
 	private Set departmentInfos = new HashSet(0);
 
 	// Constructors
@@ -34,12 +35,13 @@ public class BranchInfo implements java.io.Serializable {
 	/** full constructor */
 	public BranchInfo(Timestamp branchFoundedTime, String branchName,
 			Integer branchAvai, String branchIntr, Set gradeInfos,
-			Set departmentInfos) {
+			Set financialRecordses, Set departmentInfos) {
 		this.branchFoundedTime = branchFoundedTime;
 		this.branchName = branchName;
 		this.branchAvai = branchAvai;
 		this.branchIntr = branchIntr;
 		this.gradeInfos = gradeInfos;
+		this.financialRecordses = financialRecordses;
 		this.departmentInfos = departmentInfos;
 	}
 
@@ -91,6 +93,14 @@ public class BranchInfo implements java.io.Serializable {
 
 	public void setGradeInfos(Set gradeInfos) {
 		this.gradeInfos = gradeInfos;
+	}
+
+	public Set getFinancialRecordses() {
+		return this.financialRecordses;
+	}
+
+	public void setFinancialRecordses(Set financialRecordses) {
+		this.financialRecordses = financialRecordses;
 	}
 
 	public Set getDepartmentInfos() {

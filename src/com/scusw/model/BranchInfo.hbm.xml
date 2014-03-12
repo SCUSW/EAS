@@ -28,6 +28,12 @@
             </key>
             <one-to-many class="com.scusw.model.GradeInfo" />
         </set>
+        <set name="financialRecordses" inverse="true">
+            <key>
+                <column name="branch_id" />
+            </key>
+            <one-to-many class="com.scusw.model.FinancialRecords" />
+        </set>
         <set name="departmentInfos" inverse="true">
             <key>
                 <column name="branch_id" not-null="true" />

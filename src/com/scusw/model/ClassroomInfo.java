@@ -13,7 +13,7 @@ public class ClassroomInfo implements java.io.Serializable {
 
 	private Integer classroomId;
 	private String classroomAddr;
-	private Boolean classroomAvai;
+	private Integer classroomAvai;
 	private String classroomType;
 	private Integer classroomCapacity;
 	private String classroomRemark;
@@ -26,7 +26,7 @@ public class ClassroomInfo implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public ClassroomInfo(String classroomAddr, Boolean classroomAvai,
+	public ClassroomInfo(String classroomAddr, Integer classroomAvai,
 			String classroomType, Integer classroomCapacity,
 			String classroomRemark, Set courseClasshours) {
 		this.classroomAddr = classroomAddr;
@@ -55,11 +55,11 @@ public class ClassroomInfo implements java.io.Serializable {
 		this.classroomAddr = classroomAddr;
 	}
 
-	public Boolean getClassroomAvai() {
+	public Integer getClassroomAvai() {
 		return this.classroomAvai;
 	}
 
-	public void setClassroomAvai(Boolean classroomAvai) {
+	public void setClassroomAvai(Integer classroomAvai) {
 		this.classroomAvai = classroomAvai;
 	}
 

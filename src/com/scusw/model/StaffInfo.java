@@ -15,7 +15,9 @@ public class StaffInfo implements java.io.Serializable {
 	private Integer staffId;
 	private GroupInfo groupInfo;
 	private PositionInfo positionInfo;
+	private String staffNo;
 	private String staffPass;
+	private Integer staffSex;
 	private String staffName;
 	private String staffPhone;
 	private String staffQq;
@@ -27,6 +29,7 @@ public class StaffInfo implements java.io.Serializable {
 	private Set staffAttandants = new HashSet(0);
 	private Set scheduleInfos = new HashSet(0);
 	private Set teacherInfos = new HashSet(0);
+	private Set staffFeeses = new HashSet(0);
 	private Set salesmanInfos = new HashSet(0);
 
 	// Constructors
@@ -37,22 +40,26 @@ public class StaffInfo implements java.io.Serializable {
 
 	/** minimal constructor */
 	public StaffInfo(GroupInfo groupInfo, PositionInfo positionInfo,
-			Timestamp staffEmplTime) {
+			String staffNo, Timestamp staffEmplTime) {
 		this.groupInfo = groupInfo;
 		this.positionInfo = positionInfo;
+		this.staffNo = staffNo;
 		this.staffEmplTime = staffEmplTime;
 	}
 
 	/** full constructor */
 	public StaffInfo(GroupInfo groupInfo, PositionInfo positionInfo,
-			String staffPass, String staffName, String staffPhone,
-			String staffQq, String staffIdcard, Timestamp staffEmplTime,
-			Integer staffAvai, String staffOthers, Set noticeInfos,
-			Set staffAttandants, Set scheduleInfos, Set teacherInfos,
+			String staffNo, String staffPass, Integer staffSex,
+			String staffName, String staffPhone, String staffQq,
+			String staffIdcard, Timestamp staffEmplTime, Integer staffAvai,
+			String staffOthers, Set noticeInfos, Set staffAttandants,
+			Set scheduleInfos, Set teacherInfos, Set staffFeeses,
 			Set salesmanInfos) {
 		this.groupInfo = groupInfo;
 		this.positionInfo = positionInfo;
+		this.staffNo = staffNo;
 		this.staffPass = staffPass;
+		this.staffSex = staffSex;
 		this.staffName = staffName;
 		this.staffPhone = staffPhone;
 		this.staffQq = staffQq;
@@ -64,6 +71,7 @@ public class StaffInfo implements java.io.Serializable {
 		this.staffAttandants = staffAttandants;
 		this.scheduleInfos = scheduleInfos;
 		this.teacherInfos = teacherInfos;
+		this.staffFeeses = staffFeeses;
 		this.salesmanInfos = salesmanInfos;
 	}
 
@@ -93,12 +101,28 @@ public class StaffInfo implements java.io.Serializable {
 		this.positionInfo = positionInfo;
 	}
 
+	public String getStaffNo() {
+		return this.staffNo;
+	}
+
+	public void setStaffNo(String staffNo) {
+		this.staffNo = staffNo;
+	}
+
 	public String getStaffPass() {
 		return this.staffPass;
 	}
 
 	public void setStaffPass(String staffPass) {
 		this.staffPass = staffPass;
+	}
+
+	public Integer getStaffSex() {
+		return this.staffSex;
+	}
+
+	public void setStaffSex(Integer staffSex) {
+		this.staffSex = staffSex;
 	}
 
 	public String getStaffName() {
@@ -187,6 +211,14 @@ public class StaffInfo implements java.io.Serializable {
 
 	public void setTeacherInfos(Set teacherInfos) {
 		this.teacherInfos = teacherInfos;
+	}
+
+	public Set getStaffFeeses() {
+		return this.staffFeeses;
+	}
+
+	public void setStaffFeeses(Set staffFeeses) {
+		this.staffFeeses = staffFeeses;
 	}
 
 	public Set getSalesmanInfos() {

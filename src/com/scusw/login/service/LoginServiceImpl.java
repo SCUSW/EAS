@@ -24,12 +24,12 @@ public class LoginServiceImpl implements LoginService {
 		return false;
 	}
 
-	public boolean checkStaLogin(StaffInfo si) {
+	public int checkStaLogin(StaffInfo si) {
 		// TODO Auto-generated method stub
-		if (loginDao.checkStaffLogin(si) != null) {
-			return true;
+		if ((si=loginDao.checkStaffLogin(si)) != null) {
+			return si.getStaffId();
 		}
-		return false;
+		return -1;
 	}
 
 	public boolean checkAdmLogin() {

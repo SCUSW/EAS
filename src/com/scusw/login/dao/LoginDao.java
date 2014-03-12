@@ -21,9 +21,9 @@ public class LoginDao extends HibernateDaoSupport {
 	}
 	public StaffInfo checkStaffLogin(StaffInfo si) {
 		Query q = this.getSession().createQuery("from StaffInfo s " +
-				"where s.staffId=:username and " +
+				"where s.staffNo=:username and " +
 				"s.staffPass=:userpass");
-		q.setParameter("username", si.getStaffId());
+		q.setParameter("username", si.getStaffNo());
 		q.setParameter("userpass", si.getStaffPass());
 		StaffInfo siTemp = (StaffInfo) q.uniqueResult();
 		return siTemp;

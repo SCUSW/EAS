@@ -31,6 +31,7 @@ public class StudentInfo implements java.io.Serializable {
 	private Integer studentState;
 	private String studentRemark;
 	private Set registerInfos = new HashSet(0);
+	private Set studentFeeses = new HashSet(0);
 
 	// Constructors
 
@@ -39,8 +40,7 @@ public class StudentInfo implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public StudentInfo(String studentPass, Timestamp attendTime) {
-		this.studentPass = studentPass;
+	public StudentInfo(Timestamp attendTime) {
 		this.attendTime = attendTime;
 	}
 
@@ -51,7 +51,7 @@ public class StudentInfo implements java.io.Serializable {
 			Integer studentAge, String studentAddr, String studentPhone,
 			Float studentBalance, String studentSchool, String studentMajor,
 			Timestamp attendTime, Integer studentState, String studentRemark,
-			Set registerInfos) {
+			Set registerInfos, Set studentFeeses) {
 		this.rollState = rollState;
 		this.groupInfo = groupInfo;
 		this.classInfo = classInfo;
@@ -70,6 +70,7 @@ public class StudentInfo implements java.io.Serializable {
 		this.studentState = studentState;
 		this.studentRemark = studentRemark;
 		this.registerInfos = registerInfos;
+		this.studentFeeses = studentFeeses;
 	}
 
 	// Property accessors
@@ -224,6 +225,14 @@ public class StudentInfo implements java.io.Serializable {
 
 	public void setRegisterInfos(Set registerInfos) {
 		this.registerInfos = registerInfos;
+	}
+
+	public Set getStudentFeeses() {
+		return this.studentFeeses;
+	}
+
+	public void setStudentFeeses(Set studentFeeses) {
+		this.studentFeeses = studentFeeses;
 	}
 
 }
