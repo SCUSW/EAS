@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.scusw.model.CourseInfo;
+import com.scusw.model.RegisterInfo;
 import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
@@ -87,5 +88,14 @@ public class TeacherDaoImpl extends HibernateDaoSupport implements TeacherDao {
 		q.setParameter("courseId",courseId);
 		CourseInfo c=(CourseInfo)q.uniqueResult();
 		return c;
+	}
+	
+	public RegisterInfo queryRegisterByStudentNoCourseId(int studentId,int courseId){
+		Query q=this.getSession().createQuery("from RegisterInfo r " +
+				"where r.studentInfo.studentId=:studentId and r.courseInfo.courseId=:courseId");
+		q.setParameter("studentId", studentId);
+		q.setParameter("courseId",courseId);
+		RegisterInfo r=(RegisterInfo)q.uniqueResult();
+		return r;
 	}
 }

@@ -3,6 +3,7 @@ package com.scusw.teacher.service.impl;
 import java.util.List;
 
 import com.scusw.model.CourseInfo;
+import com.scusw.model.RegisterInfo;
 import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
@@ -76,5 +77,9 @@ public class TeacherServiceImpl implements TeacherService{
 	
 	public CourseInfo getCourseById(int courseId){
 		return teacherDao.queryCourseById(courseId);
+	}
+	
+	public RegisterInfo getRegisterById(int studentId, int courseId){
+		return teacherDao.queryRegisterByStudentNoCourseId(studentId,courseId);
 	}
 }

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.scusw.model.CourseInfo;
+import com.scusw.model.RegisterInfo;
 import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
@@ -18,12 +19,14 @@ public class TeacherAction {
 	private StaffInfo staff;
 	private StudentInfo student;
 	private CourseInfo course;
+	private RegisterInfo register;
 	private Map<String,Object> request;
 	private Map<String, Object> session;
 	
 	private String studentName;
 	private String studentNo;
 	private int courseId;
+	private int registerId;
 	
 	
 	public StaffInfo getStaff() {
@@ -80,7 +83,18 @@ public class TeacherAction {
 	public CourseInfo getCourse() {
 		return course;
 	}
-	
+	public void setRegister(RegisterInfo register) {
+		this.register = register;
+	}
+	public RegisterInfo getRegister() {
+		return register;
+	}
+	public void setRegisterId(int registerId) {
+		this.registerId = registerId;
+	}
+	public int getRegisterId() {
+		return registerId;
+	}
 	
 	//获取老师个人信息
 	public String getOwnTeacherInfo(){
@@ -152,10 +166,12 @@ public class TeacherAction {
 	}
 	
 	public String getOwnStudentInfo(){
-		System.out.println(courseId);
 		student=teacherService.getStudentInfo(studentNo);
 		course=teacherService.getCourseById(courseId);
+		register=teacherService.getRegisterById(student.getStudentId(),courseId);
 		return "getOwnStudentInfo";
 	}
+	
+
 	
 }

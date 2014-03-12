@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body> 
   	课程：${course.courseName}<br>
+  	分数：${register.studentCourseScore}<br>
  	分支机构：${student.classInfo.gradeInfo.branchInfo.branchName}<br>
  	年级：${student.classInfo.gradeInfo.gradeName}<br>
  	班级：${student.classInfo.className}<br>
@@ -38,5 +39,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	专业：${student.studentMajor}<br>
  	入校时间：${student.attendTime}<br>
  	<br>
+ 	 
   </body>
 </html>

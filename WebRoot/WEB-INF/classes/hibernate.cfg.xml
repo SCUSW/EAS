@@ -19,7 +19,7 @@
 		<property name="myeclipse.connection.profile">
 			localhost
 		</property>
-		<property name="show_sql">true</property>
+	<!-- 	<property name="show_sql">true</property>	 -->
 		<property name="format_sql">true</property>
 		<mapping resource="com/scusw/model/AdminInfo.hbm.xml" />
 		<mapping resource="com/scusw/model/BranchInfo.hbm.xml" />

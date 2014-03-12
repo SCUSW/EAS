@@ -3,6 +3,7 @@ package com.scusw.teacher.service;
 import java.util.List;
 
 import com.scusw.model.CourseInfo;
+import com.scusw.model.RegisterInfo;
 import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
@@ -28,6 +29,8 @@ public interface TeacherService {
 	public List searchStudentByCourseId(int courseId);
 
 	public CourseInfo getCourseById(int courseId);
+
+	public RegisterInfo getRegisterById(int studentId, int courseId);
 
 
 		
