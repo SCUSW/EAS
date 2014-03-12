@@ -27,9 +27,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	部门：${teacher.staffInfo.positionInfo.departmentInfo.departmentName}<br>
  	职位：${teacher.staffInfo.positionInfo.vocationName}<br>
  	教师类型：${teacher.teacherType}<br>
- 	登陆账号：<br>
+ 	账号：${teacher.staffInfo.staffNo}<br>
  	姓名：${teacher.staffInfo.staffName}<br>
- 	性别：<br>
+ 	性别：${teacher.staffInfo.staffSex}<br>
  	电话号码：${teacher.staffInfo.staffPhone }<br>
  	qq：${teacher.staffInfo.staffQq }<br>
  	身份证：${teacher.staffInfo.staffIdcard }<br>

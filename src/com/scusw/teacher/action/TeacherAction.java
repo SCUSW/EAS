@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.scusw.model.StaffInfo;
+import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
 import com.scusw.teacher.service.TeacherService;
 
@@ -14,8 +15,13 @@ public class TeacherAction {
 	private TeacherService teacherService;
 	private TeacherInfo teacher;
 	private StaffInfo staff;
+	private StudentInfo student;
 	private Map<String,Object> request;
 	private Map<String, Object> session;
+	
+	private String studentName;
+	private String studentNo;
+	
 	
 	public StaffInfo getStaff() {
 		return staff;
@@ -41,12 +47,25 @@ public class TeacherAction {
 	public void setRequest(Map<String, Object> request) {
 		this.request = request;
 	}
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
 	}
-	public Map<String, Object> getSession() {
-		return session;
+	public String getStudentName() {
+		return studentName;
 	}
+	public void setStudentNo(String studentNo) {
+		this.studentNo = studentNo;
+	}
+	public String getStudentNo() {
+		return studentNo;
+	}
+	public void setStudent(StudentInfo student) {
+		this.student = student;
+	}
+	public StudentInfo getStudent() {
+		return student;
+	}
+	
 	
 	//获取老师个人信息
 	public String getOwnTeacherInfo(){
@@ -65,16 +84,35 @@ public class TeacherAction {
 	}
 	
 	//接收需要更新的信息并更新
-	public String updateOwnTeacherInfo2(){
-		String staffPhone = staff.getStaffPhone();
-		String staffQq = staff.getStaffQq();
+	public String updateOwnTeacherInfo2(){		
+		teacherService.updateTeacher(staff);
+		
 		session = ActionContext.getContext().getSession();
 		int staffId = (Integer) session.get("staffID");
 		teacher=teacherService.getOwnTeacherInfo(staffId);
-		staff.setStaffPhone(staffPhone);
-		staff.setStaffQq(staffQq);
-		teacherService.updateTeacher(staff);
-		System.out.println(teacher.getStaffInfo().getStaffPhone());
+		
 		return "updateOwnTeacherInfo2";
 	}
+
+	public String searchStudent(){
+		request=(Map)ActionContext.getContext().get("request");
+		
+		if(!studentNo.equals("")){
+			List list=teacherService.searchStudentByNo(studentNo);
+			request.put("students",list);
+		}else if(!studentName.equals("")){
+			List list=teacherService.searchStudentByName(studentName);
+			request.put("students",list);
+		}else{
+			List list=teacherService.searchStudentAll();
+			request.put("students",list);
+		}
+		return "searchStudent";
+	}
+	
+	public String getStudentInfo(){
+		student=teacherService.getStudentInfo(studentNo);
+		return "getStudentInfo";
+	}
+
 }

@@ -25,9 +25,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
      <center> <h1>修改教师个人信息面</h1><br/>
    	<form action="teacherAct!updateOwnTeacherInfo2.action" method="post">
+   		<input type="hidden" name="staff.staffId" value="${teacher.staffId}"/>
+   		<input type="hidden" name="staff.staffNo" value="${teacher.staffInfo.staffNo}"/>
+   		<input type="hidden" name="staff.positionInfo.vocationId" value="${teacher.staffInfo.positionInfo.vocationId}"/>
+   		<input type="hidden" name="staff.groupInfo.groupId" value="${teacher.staffInfo.groupInfo.groupId}"/>
+   		<input type="hidden" name="staff.staffEmplTime" value="${teacher.staffInfo.staffEmplTime}"/>
    		密码：<input type="password" name="staff.staffPass" value="${teacher.staffInfo.staffPass}"/><br/>
    		手机号码：<input type="text" name="staff.staffPhone" value="${teacher.staffInfo.staffPhone}"/><br/>
-   		QQ：<input type="text" name="staffInfo.staffQq" value="${teacher.staffInfo.staffQq}"/><br/>
+   		QQ：<input type="text" name="staff.staffQq" value="${teacher.staffInfo.staffQq}"/><br/>
    			<input type="submit" value="确定修改"/>
    </form>
    </center>

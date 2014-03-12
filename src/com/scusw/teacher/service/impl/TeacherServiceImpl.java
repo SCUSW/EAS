@@ -3,9 +3,11 @@ package com.scusw.teacher.service.impl;
 import java.util.List;
 
 import com.scusw.model.StaffInfo;
+import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
 import com.scusw.teacher.dao.TeacherDao;
 import com.scusw.teacher.service.TeacherService;
+import com.scusw.util.MD5Util;
 
 
 public class TeacherServiceImpl implements TeacherService{
@@ -22,13 +24,40 @@ public class TeacherServiceImpl implements TeacherService{
 		this.teacherDao = teacherDao;
 	}
 
-	//获取老师个人信息
+	/**
+	 * 获取老师个人信息
+	 */
 	public TeacherInfo getOwnTeacherInfo(int staffId){
 		return teacherDao.queryByTeacehrId(staffId);
 	}
 
-	//更新老师个人信息
-	public void updateTeacher(StaffInfo staff){
-		teacherDao.updateTeacher(staff);
+	/**
+	 * 更新老师个人信息
+	 */
+	public void updateTeacher(StaffInfo staff) {
+		StaffInfo ss=this.getOwnTeacherInfo(staff.getStaffId()).getStaffInfo();
+		ss.setStaffPhone(staff.getStaffPhone());
+		ss.setStaffQq(staff.getStaffQq());
+		ss.setStaffPass(MD5Util.MD5(staff.getStaffPass()));
+		teacherDao.updateTeacher(ss);
+	}
+
+	/**
+	 * 按学号查找学生
+	 */
+	public List<StudentInfo> searchStudentByNo(String studentNo){
+		return teacherDao.searchStudentByNo(studentNo);
+	}
+	
+	public List<StudentInfo> searchStudentByName(String studentName){
+		return teacherDao.searchStudentByName(studentName);
+	}
+	
+	public List<StudentInfo> searchStudentAll(){
+		return teacherDao.searchStudentAll();
+	}
+	
+	public StudentInfo getStudentInfo(String studentNo){
+		return teacherDao.queryByStudentNo(studentNo);
 	}
 }
