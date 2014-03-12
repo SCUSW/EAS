@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -30,6 +30,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			姓名：<input type="text" name="studentName"/><br/>
     			<input type="submit" value="登录"/>&nbsp;&nbsp;<input type="reset" value="重置"/>
     		</form>
+    		<center>
+    			<table border="1">
+    				<tr>
+    					<td>专业编号</td><td>专业名称</td><td>课程编号</td><td>课程名称</td><td>操作</td>
+    				</tr>
+    				<c:forEach items="${courses}" var="c">
+    				<tr> 
+    					<td>${c.majorInfo.majorId}</td>
+    					<td>${c.majorInfo.majorName}</td>
+    					<td>${c.courseId}</td>
+    					<td>${c.courseName}</td>
+    					<td><a href="teacherAct!searchOwnStudent?courseId=${c.courseId}">查看学生</a></td>
+    				</tr>
+    				</c:forEach>
+    			</table>
+    	</center>
     </div>
   </body>
 </html>

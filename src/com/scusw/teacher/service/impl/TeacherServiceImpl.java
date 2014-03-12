@@ -2,6 +2,7 @@ package com.scusw.teacher.service.impl;
 
 import java.util.List;
 
+import com.scusw.model.CourseInfo;
 import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
@@ -59,5 +60,21 @@ public class TeacherServiceImpl implements TeacherService{
 	
 	public StudentInfo getStudentInfo(String studentNo){
 		return teacherDao.queryByStudentNo(studentNo);
+	}
+	
+	public List searchStudentOwn(int staffId){
+		return teacherDao.queryStudentByTeacherId(staffId);
+	}
+	
+	public List getTeacherOwnCourse(int staffId){
+		return teacherDao.queryTeacherOenCourse(staffId);
+	}
+	
+	public List searchStudentByCourseId(int courseId){
+		return teacherDao.queryStudentByCourseId(courseId);
+	}
+	
+	public CourseInfo getCourseById(int courseId){
+		return teacherDao.queryCourseById(courseId);
 	}
 }

@@ -11,6 +11,9 @@
 				<result name="updateOwnTeacherInfo2">teacher/ownTeacherInfo.jsp</result>
 				<result name="searchStudent">teacher/studentList.jsp</result>
 				<result name="getStudentInfo">teacher/studentInfo.jsp</result>
+				<result name="searchOwnStudent">teacher/ownStudentList.jsp</result>
+				<result name="searchTeacherOwnCourse">teacher/searchStudent.jsp</result>
+				<result name="getOwnStudentInfo">teacher/ownStudentInfo.jsp</result>
 			</action>
 
 		</package>

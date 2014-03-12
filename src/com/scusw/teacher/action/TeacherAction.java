@@ -6,6 +6,7 @@ import java.util.Map;
 
 
 import com.opensymphony.xwork2.ActionContext;
+import com.scusw.model.CourseInfo;
 import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
@@ -16,11 +17,13 @@ public class TeacherAction {
 	private TeacherInfo teacher;
 	private StaffInfo staff;
 	private StudentInfo student;
+	private CourseInfo course;
 	private Map<String,Object> request;
 	private Map<String, Object> session;
 	
 	private String studentName;
 	private String studentNo;
+	private int courseId;
 	
 	
 	public StaffInfo getStaff() {
@@ -64,6 +67,18 @@ public class TeacherAction {
 	}
 	public StudentInfo getStudent() {
 		return student;
+	}
+	public int getCourseId() {
+		return courseId;
+	}
+	public void setCourseId(int courseId) {
+		this.courseId = courseId;
+	}
+	public void setCourse(CourseInfo course) {
+		this.course = course;
+	}
+	public CourseInfo getCourse() {
+		return course;
 	}
 	
 	
@@ -114,5 +129,33 @@ public class TeacherAction {
 		student=teacherService.getStudentInfo(studentNo);
 		return "getStudentInfo";
 	}
+	
+	public String searchTeacherOwnCourse(){
+		request=(Map)ActionContext.getContext().get("request");
+		
+		session = ActionContext.getContext().getSession();
+		int staffId = (Integer) session.get("staffID");
+		
+		List list=teacherService.getTeacherOwnCourse(staffId);
+		request.put("courses", list);
+		
+		return "searchTeacherOwnCourse";
+	}
 
+	public String searchOwnStudent(){
+		request=(Map)ActionContext.getContext().get("request");
+		
+		List list=teacherService.searchStudentByCourseId(courseId);
+		request.put("students",list);
+		
+		return "searchOwnStudent";
+	}
+	
+	public String getOwnStudentInfo(){
+		System.out.println(courseId);
+		student=teacherService.getStudentInfo(studentNo);
+		course=teacherService.getCourseById(courseId);
+		return "getOwnStudentInfo";
+	}
+	
 }
