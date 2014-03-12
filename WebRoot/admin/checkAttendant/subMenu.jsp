@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'subMenu.jsp' starting page</title>
+    <title>考勤信息</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -32,12 +32,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body bgcolor="#ffff99">
 
 	<div id="menu">
-    <h2>管理菜单</h2>
+    <h2>考勤信息</h2>
     <br/>
 	<ul>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
+		<li><a href="<%=basePath%>attandant.action" target="content" >学员考勤查询</a></li>
+		<li><a href="admin/checkAttendant/checkStaffAttendant.jsp" target="content" >员工考勤查询</a></li>
 		<li><a href="" target="content" ></a></li>
 		<li><a href="" target="content" ></a></li>
 		<li><a href="" target="content" ></a></li>
