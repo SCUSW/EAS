@@ -29,6 +29,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <c:forEach items="${request.info }" var="i">
    ${i.attendantTime },${i.staffInfo.staffName }<br>
    </c:forEach>
-   ${request.test }
   </body>
 </html>

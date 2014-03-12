@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts> 
+		<package name="marketing" extends="struts-default" >
+			<action name="marketing" class="com.scusw.marketing.action.MarketingAction">
+				<result name="addSuccess">/marketing/addSuccess.jsp</result>
+				<result name="addDefault">/marketing/addDefault.jsp</result>
+				<result name="querySuccess">/marketing/querySuccess.jsp</result>
+				<result name="noticeContent">/student/showNoticeContent.jsp</result>
+				<result name="update">/student/updateStudent.jsp</result>
+			</action>
+		</package>
+</struts>

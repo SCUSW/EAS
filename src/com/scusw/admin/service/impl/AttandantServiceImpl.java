@@ -5,6 +5,7 @@ import java.util.List;
 import com.scusw.admin.dao.AttandantDao;
 import com.scusw.admin.service.AttandantService;
 import com.scusw.model.StaffAttandant;
+import com.scusw.model.StudentAttendant;
 
 public class AttandantServiceImpl implements AttandantService {
 
@@ -18,10 +19,15 @@ public class AttandantServiceImpl implements AttandantService {
 		this.attandantDao = attandantDao;
 	}
 
-	public List<StaffAttandant> queryStaffAttdant() {
+	public List<StaffAttandant> queryStaffAttendant() {
 		// TODO Auto-generated method stub
 		
-		return attandantDao.queryStaffAttdant();
+		return attandantDao.queryStaffAttendant();
+	}
+
+	public List<StudentAttendant> queryStuAttendant() {
+		// TODO Auto-generated method stub
+		return attandantDao.queryStuAttendant();
 	}
 
 }

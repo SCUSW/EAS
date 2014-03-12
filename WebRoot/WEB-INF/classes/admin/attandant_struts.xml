@@ -6,8 +6,9 @@
 		
 		<package name="attandant" extends="struts-default">
 			<action name="attandant" class="attandantAction">
-				<result name="success">/admin/checkAttendant/checkStaffAttendant.jsp</result>
-				<result name="failed">/admin/checkAttendant/checkStuAttendant.jsp</result>
+				<result name="staff_success">/admin/checkAttendant/checkStaffAttendant.jsp</result>
+				<result name="stu_success">/admin/checkAttendant/checkStuAttendant.jsp</result>
+				<result name="failed">/index.jsp</result>
 			</action>
 		</package>
 </struts>

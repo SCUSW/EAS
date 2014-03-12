@@ -3,7 +3,8 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -24,5 +25,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    查询学员考勤信息 <br>
+   <s:debug></s:debug>
+   <c:forEach items="${request.stuinfo }" var="i">
+   ${i.attendantTime },${i.registerInfo.studentInfo.studentName }<br>
+   </c:forEach>
+  
   </body>
 </html>

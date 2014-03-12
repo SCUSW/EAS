@@ -10,7 +10,7 @@
             <column name="attendant_id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="registerInfo" class="com.scusw.model.RegisterInfo" fetch="select">
+        <many-to-one name="registerInfo" class="com.scusw.model.RegisterInfo" fetch="select" lazy="false">
             <column name="register_id" />
         </many-to-one>
         <property name="attendantTime" type="java.sql.Timestamp">
