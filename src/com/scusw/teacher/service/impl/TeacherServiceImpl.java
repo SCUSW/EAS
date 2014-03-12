@@ -18,14 +18,17 @@ public class TeacherServiceImpl implements TeacherService{
 		return teacherDao;
 	}
 
-
-
 	public void setTeacherDao(TeacherDao teacherDao) {
 		this.teacherDao = teacherDao;
 	}
-	
+
+	//获取老师个人信息
 	public TeacherInfo getOwnTeacherInfo(int staffId){
 		return teacherDao.queryByTeacehrId(staffId);
 	}
 
+	//更新老师个人信息
+	public void updateTeacher(StaffInfo staff){
+		teacherDao.updateTeacher(staff);
+	}
 }

@@ -5,8 +5,10 @@
 <struts> 
 		<package name="teacher" extends="struts-default">
 			<action name="teacherAct" class="com.scusw.teacher.action.TeacherAction">
-				<result name="getOwnTeacherInfo">teacher/commonTeacher.jsp</result>
+				<result name="getOwnTeacherInfo">teacher/ownTeacherInfo.jsp</result>
 				<result name="default">teacher/default.jsp</result>
+				<result name="updateOwnTeacherInfo1">teacher/updateOwnTeacherInfo.jsp</result>
+				<result name="updateOwnTeacherInfo2">teacher/ownTeacherInfo.jsp</result>
 			</action>
 
 		</package>
