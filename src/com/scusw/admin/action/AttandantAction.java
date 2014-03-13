@@ -8,9 +8,29 @@ import com.scusw.admin.service.AttandantService;
 import com.scusw.model.StudentAttendant;
 
 public class AttandantAction {
-	AttandantService attandantService;
+	private AttandantService attandantService;
+	private int nextPage;
+	private int pageSize;
+	
 	private Map<String,Object> request;
 	private Map<String,Object> session;
+	
+	public int getNextPage() {
+		return nextPage;
+	}
+
+	public void setNextPage(int nextPage) {
+		this.nextPage = nextPage;
+	}
+
+	public int getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+
 	public AttandantService getAttandantService() {
 		return attandantService;
 	}
@@ -20,14 +40,17 @@ public class AttandantAction {
 	}
 	public String checkStaffAttendant() {
 		request = (Map<String, Object>) ActionContext.getContext().get("request");
-		request.put("info", attandantService.queryStaffAttendant());
+		request.put("info", attandantService.queryStaffAttendant(nextPage,pageSize));
+		request.put("total",attandantService.getTotalStaffAttendant());
+		request.put("pageSize", pageSize);
+		request.put("currentPage", nextPage);
 		return "staff_success";
 	}
 	public String checkStuAttendant() {
 		request = (Map<String, Object>) ActionContext.getContext().get("request");
-		List<StudentAttendant> list = attandantService.queryStuAttendant();
-		request.put("testre", list.get(0).getAttendantTime());
+		List<StudentAttendant> list = attandantService.queryStuAttendant(1,20);
 		request.put("stuinfo", list);
+		request.put("total",attandantService.getTotalStuAttendant());
 		return "stu_success";
 	}
 }

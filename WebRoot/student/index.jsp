@@ -4,13 +4,12 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>My JSP 'demo.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -20,14 +19,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/bootstrap.min.css">
+	<script type="text/javascript" src="<%=basePath%>js/jquery.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/main.js"></script>
+	
+	<style type="text/css">
+		body{
+			background-image: url(image/background.jpg);
+			background-repeat: repeat;
+		}
+	</style>
   </head>
+  
   <body>
-    <h1>登录成功</h1> <br>
-    <p>登录信息：</p><br>
-    <div align="center"><a href="<%=basePath%>student!queryStudentByNo.action?studentInfo.studentNo=${studentInfo.studentNo}">个人信息查询</a></div>
-    <div align="center"><a href="<%=basePath%>student!queryStudentBeforeUpdate.action?studentInfo.studentNo=${studentInfo.studentNo}">修改个人信息</a></div>
-    <div align="center"><a href="<%=basePath%>student!noticeInfoQuery.action">公告查询</a></div>
-    <div align="center"><a href="<%=basePath%>student!majorInfoQuery.action?studentInfo.studentNo=${studentInfo.studentNo}">专业查询</a></div>
+   <div id="banner_m" class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+				
+				<%@ include file="../include/banner.jsp" %>
+		</div>
+	</div>
+	<div id="topGuide_m" class="row-fluid">
+		<div class="span12">
+			
+			<%@ include file="../include/topGuide.jsp" %>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span4">
+			<%@ include file="../include/leftGuide.jsp" %>
+		</div>	
+		<div class="span8">
+			
+		</div>
+	</div>
+</div>
   </body>
 </html>

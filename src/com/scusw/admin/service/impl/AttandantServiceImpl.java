@@ -19,15 +19,25 @@ public class AttandantServiceImpl implements AttandantService {
 		this.attandantDao = attandantDao;
 	}
 
-	public List<StaffAttandant> queryStaffAttendant() {
+	public List<StaffAttandant> queryStaffAttendant(int currentPage,int pageSize) {
 		// TODO Auto-generated method stub
 		
-		return attandantDao.queryStaffAttendant();
+		return attandantDao.queryStaffAttendant(currentPage,pageSize);
 	}
 
-	public List<StudentAttendant> queryStuAttendant() {
+	public List<StudentAttendant> queryStuAttendant(int currentPage,int pageSize) {
 		// TODO Auto-generated method stub
-		return attandantDao.queryStuAttendant();
+		return attandantDao.queryStuAttendant(currentPage,pageSize);
+	}
+
+	public int getTotalStaffAttendant() {
+		// TODO Auto-generated method stub
+		return attandantDao.getTotleStaffAttendant();
+	}
+
+	public int getTotalStuAttendant() {
+		// TODO Auto-generated method stub
+		return attandantDao.getTotleStuAttendant();
 	}
 
 }
