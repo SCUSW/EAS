@@ -96,9 +96,9 @@ public class LoginAction {
 		staffInfo.setStaffPass(passwordInCode);
 		logger.info("获得员工加密密码:"+staffInfo.getStaffPass());
 		logger.info("获得员工帐号:"+staffInfo.getStaffNo());
-		//staffInfo.setStaffId(loginService.checkStaLogin(staffInfo));
-		staffInfo = loginService.checkStaLogin(staffInfo);
-		if (staffInfo != null) {
+		Object obj = loginService.checkStaLogin(staffInfo);
+		if (obj != null) {
+			staffInfo = (StaffInfo) obj;
 			session.put("privilege", loginService.checkPrivilege(staffInfo.getGroupInfo().getGroupId()));//用户权限list
 			int type = loginService.checkIfTeacher(staffInfo.getStaffId());
 			if (type>=0) {
@@ -106,20 +106,20 @@ public class LoginAction {
 				session.put("type", type);//教师类型
 				session.put("staffId", staffInfo.getStaffId());//员工编号
 				session.put("staffName", staffInfo.getStaffName());//员工姓名
-				logger.info("教师登录成功:"+staffInfo.getStaffId());//
+				logger.info("教师登录成功:"+staffInfo.getStaffId() + " " + staffInfo.getStaffName());//
 				return "teacher_success";
 			} else {
 				
 				session.put("role", "staff");//
 				session.put("staffId", staffInfo.getStaffId());//员工编号
 				session.put("staffName", staffInfo.getStaffName());//员工姓名
-				logger.info("员工登录成功:"+staffInfo.getStaffId());
+				logger.info("员工登录成功:"+staffInfo.getStaffId() + " " + staffInfo.getStaffName());
 				logger.info("登录员工部门："+staffInfo.getPositionInfo().getDepartmentInfo().getDepartmentName());
 				return "staff_success";
 			}
 			
 		}
-		logger.info("员工登录失败:"+staffInfo.getStaffId());
+		logger.info("员工登录失败:"+loginNo);
 		request.put("loginstate", "false");
 		return "error";
 	}
