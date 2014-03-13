@@ -1,5 +1,7 @@
 package com.scusw.login.dao;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -34,5 +36,13 @@ public class LoginDao extends HibernateDaoSupport {
 		q.setParameter("staffId", staffId);
 		TeacherInfo tiTemp = (TeacherInfo) q.uniqueResult();
 		return tiTemp;
+	}
+	public List<Integer> checkPrivilege(int groupId) {
+		Query q = this.getSession().createQuery("select gp.groupPrivilegeId from GroupPrivilege gp " +
+				"where gp.groupInfo.groupId=:groupId");
+		q.setParameter("groupId", groupId);
+		List<Integer> list = q.list();
+		//System.out.println("权限："+list.get(0));
+		return list;
 	}
 }
