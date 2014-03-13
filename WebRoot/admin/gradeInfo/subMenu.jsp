@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <h2>管理菜单</h2>
     <br/>
 	<ul>
-		<li><a href="" target="content" >查询年级信息</a></li>
+		<li><a href="<%=basePath%>grade!queryGrade.action" target="content" >查询年级信息</a></li>
 		<li><a href="" target="content" >添加年级信息</a></li>
 		<li><a href="" target="content" ></a></li>
 		<li><a href="" target="content" ></a></li>
