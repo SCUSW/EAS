@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'studentList.jsp' starting page</title>
+    <title>My JSP 'commonTeacherList.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -26,19 +26,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<center>
     			<table border="1">
     				<tr>
-    					<td>分支机构</td><td>年级</td><td>班级</td><td>学号</td><td>姓名</td><td>操作</td>
+    					<td>员工号</td><td>姓名</td><td>操作</td>
     				</tr>
-    				<c:forEach items="${students}" var="s">
+    				<c:forEach items="${ownCommonTeachers}" var="t">
     				<tr> 
-    					<td>${s.classInfo.gradeInfo.branchInfo.branchName}</td>
-    					<td>${s.classInfo.gradeInfo.gradeName}</td>
-    					<td>${s.classInfo.className}</td>
-    					<td>${s.studentNo}</td>
-    					<td>${s.studentName}</td>
-    					<td><a href="teacherAct!getOwnStudentInfo.action?studentNo=${s.studentNo}&courseId=${courseId}">查看</a></td>
+    					<td>${t.staffInfo.staffNo}</td>
+    					<td>${t.staffInfo.staffName}</td>
+    					<td><a href="teacherAct!getOwnCommonTeacherInfo.action?staffId=${t.staffInfo.staffId}">查看</a></td>
     				</tr>
     				</c:forEach>
     			</table>
+    			<a href="teacherAct!addCommonTeacher1">增加任课教师</a>
     	</center>
   </body>
 </html>

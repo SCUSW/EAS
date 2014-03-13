@@ -25,6 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <a href="#">教管</a><br>
     <a href="teacherAct!searchTeacherOwnCourse.action">学生</a><br>
-    <a href="teacherAct!getOwnTeacherInfo.action">个人</a> 
+    <a href="teacherAct!getOwnTeacherInfo.action">个人</a> <br>
+    <a href="teacher/searchOwnCommonTeacher.jsp">任课老师</a> 
   </body>
 </html>

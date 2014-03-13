@@ -1,9 +1,10 @@
 package com.scusw.teacher.action;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
-
-
 
 import com.opensymphony.xwork2.ActionContext;
 import com.scusw.model.CourseInfo;
@@ -11,7 +12,9 @@ import com.scusw.model.RegisterInfo;
 import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
+import com.scusw.model.StudentAttendant;
 import com.scusw.teacher.service.TeacherService;
+import com.scusw.util.MD5Util;
 
 public class TeacherAction {
 	private TeacherService teacherService;
@@ -20,6 +23,7 @@ public class TeacherAction {
 	private StudentInfo student;
 	private CourseInfo course;
 	private RegisterInfo register;
+	private StudentAttendant studentAttendantInfo;
 	private Map<String,Object> request;
 	private Map<String, Object> session;
 	
@@ -27,7 +31,10 @@ public class TeacherAction {
 	private String studentNo;
 	private int courseId;
 	private int registerId;
-	
+	private float studentCourseScore;
+	private String staffNo;
+	private String staffName;
+	private int staffId;
 	
 	public StaffInfo getStaff() {
 		return staff;
@@ -95,6 +102,38 @@ public class TeacherAction {
 	public int getRegisterId() {
 		return registerId;
 	}
+	public void setStudentCourseScore(float studentCourseScore) {
+		this.studentCourseScore = studentCourseScore;
+	}
+	public float getStudentCourseScore() {
+		return studentCourseScore;
+	}
+	public void setStudentAttendantInfo(StudentAttendant studentAttendantInfo) {
+		this.studentAttendantInfo = studentAttendantInfo;
+	}
+	public StudentAttendant getStudentAttendantInfo() {
+		return studentAttendantInfo;
+	}
+	public void setStaffNo(String staffNo) {
+		this.staffNo = staffNo;
+	}
+	public String getStaffNo() {
+		return staffNo;
+	}
+	public void setStaffName(String staffName) {
+		this.staffName = staffName;
+	}
+	public String getStaffName() {
+		return staffName;
+	}
+	public int getStaffId() {
+		return staffId;
+	}
+	public void setStaffId(int staffId) {
+		this.staffId = staffId;
+	}
+	
+	
 	
 	//获取老师个人信息
 	public String getOwnTeacherInfo(){
@@ -168,10 +207,118 @@ public class TeacherAction {
 	public String getOwnStudentInfo(){
 		student=teacherService.getStudentInfo(studentNo);
 		course=teacherService.getCourseById(courseId);
-		register=teacherService.getRegisterById(student.getStudentId(),courseId);
+		register=teacherService.getRegisterByStudentIdCourseId(student.getStudentId(),courseId);
 		return "getOwnStudentInfo";
 	}
 	
+	public String updateStudentCourseScore(){
+		teacherService.updateStudentCourseScore(registerId, studentCourseScore);
+		this.getOwnStudentInfo();
+		return "updateStudentCourseScore";
+	}
 
+	public String getStudentAttendant(){
+		request=(Map)ActionContext.getContext().get("request");
+		
+		List list=teacherService.getStudentAttendant(registerId);
+		request.put("studentAttendants",list);
+		
+		return "getStudentAttendant";
+	}
 	
+	public String addStudentAttendant(){
+		StudentAttendant studentAttendant = new StudentAttendant();
+		RegisterInfo register=null;
+		register=teacherService.getRegisterById(registerId);
+		studentAttendant.setAttendantRemark("");
+		studentAttendant.setRegisterInfo(register);
+		
+//		Calendar ca = Calendar.getInstance();
+//		String catt;
+//		String year = java.lang.String.valueOf(ca.get(1));
+//		String month = java.lang.String.valueOf(ca.get(2)+1);
+//		if(month.length()==1)
+//			month = "0" + month;
+//		String day = java.lang.String.valueOf(ca.get(5));
+//		if(day.length()==1)
+//			day = "0" + day;
+//		String hour = java.lang.String.valueOf(ca.get(11));
+//		if(hour.length()==1)
+//			hour = "0" + hour;
+//		String minute = java.lang.String.valueOf(ca.get(12));
+//		if(minute.length()==1)
+//			minute = "0" + minute;
+//		String second = java.lang.String.valueOf(ca.get(13));
+//		if(second.length()==1)
+//			second = "0" + second;
+//		catt = year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
+//		SimpleDateFormat df = new SimpleDateFormat(catt); 
+//		String time = df.format(new java.util.Date());
+//		Timestamp ts = Timestamp.valueOf(time);   		
+//		studentAttendant.setAttendantTime(ts);
+		
+	//	Timestamp currTime = new Timestamp(System.currentTimeMillis());
+		studentAttendant.setAttendantTime(new Timestamp(System.currentTimeMillis()));
+		
+		boolean flag=teacherService.addStudentAttendant(studentAttendant);
+		if(flag){
+			this.getStudentAttendant();
+			return "addStudentAttendant";
+		}else{
+			return "addStudentAttendant_default";
+		}
+	}
+	
+	public String searchOwnCommonTeacher(){
+		request=(Map)ActionContext.getContext().get("request");
+		
+		session = ActionContext.getContext().getSession();
+		int staffId = (Integer) session.get("staffID");
+		
+		if(!staffNo.equals("")){
+			List list=teacherService.getOwnCommonTeacherByStaffNo(staffId,staffNo);
+			request.put("ownCommonTeachers",list);
+		}else if(!staffName.equals("")){
+			List list=teacherService.getOwnCommonTeacherByStaffName(staffId,staffName);
+			request.put("ownCommonTeachers",list);
+		}else{
+			List list=teacherService.getOwnCommonTeacher(staffId);
+			request.put("ownCommonTeachers",list);
+		}
+		return "searchOwnCommonTeacher";
+	}
+	
+	public String getOwnCommonTeacherInfo(){
+		teacher=teacherService.getOwnTeacherInfo(staffId);
+		return "getOwnCommonTeacherInfo";
+	}
+
+	public String addCommonTeacher1(){
+		request=(Map)ActionContext.getContext().get("request");
+		
+		List list=teacherService.searchteacherLevel();
+		request.put("teacherLevels",list);
+		
+		return "addCommonTeacher1";
+	}
+	
+	public String addCommonTeacher2(){
+		teacher.getStaffInfo().setStaffPass(MD5Util.MD5("123456"));
+		teacher.getStaffInfo().setPositionInfo(teacherService.getPositionById(2));
+		teacher.getStaffInfo().setGroupInfo(teacherService.getGroupInfoById(2));
+		teacher.getStaffInfo().setStaffEmplTime(new Timestamp(System.currentTimeMillis()));
+		teacher.getStaffInfo().setStaffAvai(1);
+		teacher.getStaffInfo().setStaffOthers("");
+		teacher.setTeacherSalary((float)0);
+		teacher.setTeacherType(0);
+		teacher.setTeacherRemark("");
+		
+		boolean flag=teacherService.addCommonTeacehr(teacher);
+		if(flag){
+			this.getStudentAttendant();
+			return "addCommonTeacher2";
+		}else{
+			return "addCommonTeacher2_default";
+		}
+	}
 }
