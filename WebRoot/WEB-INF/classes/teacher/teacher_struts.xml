@@ -21,6 +21,8 @@
 				<result name="searchOwnCommonTeacher">teacher/ownCommonTeacherList.jsp</result>
 				<result name="getOwnCommonTeacherInfo">teacher/ownCommonTeacherInfo.jsp</result>
 				<result name="addCommonTeacher1">teacher/addCommonTeacher.jsp</result>
+				<result name="addCommonTeacher2">teacher/ownCommonTeacherInfo.jsp</result>
+				<result name="addCommonTeacher2_default">teacher/default.jsp</result>
 			</action>
 
 		</package>

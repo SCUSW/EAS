@@ -10,6 +10,7 @@ import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentAttendant;
 import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
+import com.scusw.model.TeacherLevel;
 
 public interface TeacherService {
 
@@ -57,6 +58,8 @@ public interface TeacherService {
 
 	public GroupInfo getGroupInfoById(int groupId);
 
-	public boolean addCommonTeacehr(TeacherInfo teacher);
+	public boolean addCommonTeacher(TeacherInfo teacher, int levelId, StaffInfo staff);
+	
+	public TeacherLevel getTeacherLevelById(int levelId); 
 
 }

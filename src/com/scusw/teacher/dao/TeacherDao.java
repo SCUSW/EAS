@@ -10,6 +10,7 @@ import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentAttendant;
 import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
+import com.scusw.model.TeacherLevel;
 
 public interface TeacherDao {
 	public TeacherInfo queryByTeacehrId(int staffIdS);
@@ -59,4 +60,10 @@ public interface TeacherDao {
 	public GroupInfo queryGroupById(int groupId);
 
 	public void addCommonTeacehr(TeacherInfo teacher);
+
+	public TeacherLevel queryTeacherLevelById(int levelId);
+
+	public void addStaff(StaffInfo staff);
+
+	public StaffInfo queryStaffByNo(String staffNo);
 }

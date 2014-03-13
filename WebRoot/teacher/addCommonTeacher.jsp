@@ -25,16 +25,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
      <center> <h1>增加任课教师</h1><br/>
    	<form action="teacherAct!addCommonTeacher2.action" method="post">
-	   	账号：<input type="text" name="teacher.staffInfo.staffNo"/><br/>
-   		姓名：<input type="text" name="teacher.staffInfo.staffName"/><br/>
-   		性别：<input type="text" name="teacher.staffInfo.staffSex"/><br/>
-   		分身证号：<input type="text" name="teacher.staffInfo.staffIdcard"/><br/>
+	   	账号：<input type="text" name="staff.staffNo"/><br/>
+   		姓名：<input type="text" name="staff.staffName"/><br/>
+   		性别：<input type="text" name="staff.staffSex"/><br/>
+   		身份证号：<input type="text" name="staff.staffIdcard"/><br/>
    		教师证号：<input type="text" name="teacher.teacherNo"/><br/>
    		专业：<input type="text" name="teacher.teacherMajor"/><br/>
    		毕业院校：<input type="text" name="teacher.teacherGraduate"/><br/>
-   		教师等级：<input type="text" name="teacher.teacherLevel.levelId"/><br/>
-   		手机：<input type="text" name="teacher.staffInfo.staffPhone"/><br/>
-   		QQ：	<input type="text" name="teacher.staffInfo.staffQq"/><br/>
+   		教师等级：<input type="text" name="levelId"/><br/>
+   		手机：<input type="text" name="staff.staffPhone"/><br/>
+   		QQ：	<input type="text" name="staff.staffQq"/><br/>
    			<input type="submit" value="确定添加"/>
    </form>
    </center>

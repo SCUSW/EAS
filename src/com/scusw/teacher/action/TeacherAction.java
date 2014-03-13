@@ -35,6 +35,7 @@ public class TeacherAction {
 	private String staffNo;
 	private String staffName;
 	private int staffId;
+	private int levelId;
 	
 	public StaffInfo getStaff() {
 		return staff;
@@ -132,13 +133,19 @@ public class TeacherAction {
 	public void setStaffId(int staffId) {
 		this.staffId = staffId;
 	}
+	public void setLevelId(int levelId) {
+		this.levelId = levelId;
+	}
+	public int getLevelId() {
+		return levelId;
+	}
 	
 	
 	
 	//获取老师个人信息
 	public String getOwnTeacherInfo(){
 		session = ActionContext.getContext().getSession();
-		int staffId = (Integer) session.get("staffID");
+		int staffId = (Integer) session.get("staffId");
 		teacher=teacherService.getOwnTeacherInfo(staffId);
 		return "getOwnTeacherInfo";
 	}
@@ -146,7 +153,7 @@ public class TeacherAction {
 	//进入更新页面，更新页面中有老师原本的个人信息提示
 	public String updateOwnTeacherInfo1(){
 		session = ActionContext.getContext().getSession();
-		int staffId = (Integer) session.get("staffID");
+		int staffId = (Integer) session.get("staffId");
 		teacher=teacherService.getOwnTeacherInfo(staffId);
 		return "updateOwnTeacherInfo1";
 	}
@@ -156,7 +163,7 @@ public class TeacherAction {
 		teacherService.updateTeacher(staff);
 		
 		session = ActionContext.getContext().getSession();
-		int staffId = (Integer) session.get("staffID");
+		int staffId = (Integer) session.get("staffId");
 		teacher=teacherService.getOwnTeacherInfo(staffId);
 		
 		return "updateOwnTeacherInfo2";
@@ -187,7 +194,7 @@ public class TeacherAction {
 		request=(Map)ActionContext.getContext().get("request");
 		
 		session = ActionContext.getContext().getSession();
-		int staffId = (Integer) session.get("staffID");
+		int staffId = (Integer) session.get("staffId");
 		
 		List list=teacherService.getTeacherOwnCourse(staffId);
 		request.put("courses", list);
@@ -273,7 +280,7 @@ public class TeacherAction {
 		request=(Map)ActionContext.getContext().get("request");
 		
 		session = ActionContext.getContext().getSession();
-		int staffId = (Integer) session.get("staffID");
+		int staffId = (Integer) session.get("staffId");
 		
 		if(!staffNo.equals("")){
 			List list=teacherService.getOwnCommonTeacherByStaffNo(staffId,staffNo);
@@ -303,22 +310,13 @@ public class TeacherAction {
 	}
 	
 	public String addCommonTeacher2(){
-		teacher.getStaffInfo().setStaffPass(MD5Util.MD5("123456"));
-		teacher.getStaffInfo().setPositionInfo(teacherService.getPositionById(2));
-		teacher.getStaffInfo().setGroupInfo(teacherService.getGroupInfoById(2));
-		teacher.getStaffInfo().setStaffEmplTime(new Timestamp(System.currentTimeMillis()));
-		teacher.getStaffInfo().setStaffAvai(1);
-		teacher.getStaffInfo().setStaffOthers("");
-		teacher.setTeacherSalary((float)0);
-		teacher.setTeacherType(0);
-		teacher.setTeacherRemark("");
 		
-		boolean flag=teacherService.addCommonTeacehr(teacher);
+		boolean flag=teacherService.addCommonTeacher(teacher, levelId, staff);
 		if(flag){
-			this.getStudentAttendant();
 			return "addCommonTeacher2";
 		}else{
 			return "addCommonTeacher2_default";
 		}
 	}
+
 }

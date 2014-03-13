@@ -12,6 +12,7 @@ import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
 import com.scusw.model.StudentAttendant;
+import com.scusw.model.TeacherLevel;
 import com.scusw.teacher.dao.TeacherDao;
 
 
@@ -188,5 +189,23 @@ public class TeacherDaoImpl extends HibernateDaoSupport implements TeacherDao {
 	
 	public void addCommonTeacehr(TeacherInfo teacher){
 		this.getHibernateTemplate().save(teacher);
+	}
+	
+	public TeacherLevel queryTeacherLevelById(int levelId){
+		Query q=this.getSession().createQuery("from TeacherLevel f where f.levelId=:levelId");
+		q.setParameter("levelId", levelId);
+		TeacherLevel teacherLevel=(TeacherLevel) q.uniqueResult();
+		return teacherLevel;
+	}
+	
+	public void addStaff(StaffInfo staff){
+		this.getHibernateTemplate().save(staff);
+	}
+	
+	public StaffInfo queryStaffByNo(String staffNo){
+		Query q=this.getSession().createQuery("from StaffInfo s where s.staffNo=:staffNo");
+		q.setParameter("staffNo", staffNo);
+		StaffInfo staff=(StaffInfo) q.uniqueResult();
+		return staff;
 	}
 }

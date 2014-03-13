@@ -1,5 +1,6 @@
 package com.scusw.teacher.service.impl;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import com.scusw.model.CourseInfo;
@@ -10,6 +11,7 @@ import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
 import com.scusw.model.StudentAttendant;
+import com.scusw.model.TeacherLevel;
 import com.scusw.teacher.dao.TeacherDao;
 import com.scusw.teacher.service.TeacherService;
 import com.scusw.util.MD5Util;
@@ -140,12 +142,34 @@ public class TeacherServiceImpl implements TeacherService{
 		return teacherDao.queryGroupById(groupId);
 	}
 	
-	public boolean addCommonTeacehr(TeacherInfo teacher){
+	public boolean addCommonTeacher(TeacherInfo teacher, int levelId,StaffInfo staff){
+		String pass="123456";
+		staff.setStaffPass(MD5Util.MD5(pass));
+		staff.setPositionInfo(this.getPositionById(2));
+		staff.setGroupInfo(this.getGroupInfoById(2));
+		staff.setStaffEmplTime(new Timestamp(System.currentTimeMillis()));
+		staff.setStaffAvai((int)1);
+		staff.setStaffOthers("其它信息");
+
+		teacher.setTeacherSalary((float)0);
+		teacher.setTeacherType((int)0);
+		teacher.setTeacherRemark("备注信息");
+		teacher.setTeacherLevel(this.getTeacherLevelById(levelId));
+
+		
 		try {
+			teacherDao.addStaff(staff);
+			teacher.setStaffInfo(teacherDao.queryStaffByNo(staff.getStaffNo()));
+			teacher.setStaffId(staff.getStaffId());
 			teacherDao.addCommonTeacehr(teacher);
 		} catch (Exception e) {
+			System.out.println(e);
 			return false;
 		}
 		return true;
+	}
+
+	public TeacherLevel getTeacherLevelById(int levelId) {
+		return teacherDao.queryTeacherLevelById(levelId);
 	}
 }
