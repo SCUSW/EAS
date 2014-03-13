@@ -67,10 +67,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			$("#mid_side").ready(function() {
                 $("#circle,#login").show(1000);
                 $("#left_side").animate({left:'0px'},1000);
+                judge(${request.loginstate});
             });	
-		})
+		});
+		
+		
+	
 	</script>
-    
+    <script language="JavaScript">
+    function judge(isTrue){
+    	if(isTrue.toString() == "false"){
+    	document.getElementById("erro").innerHTML="密码或账号错误！";
+    	document.getElementById("erro").style.color="red";
+    	}else {
+    	}
+    }
+    </script>
   </head>
   
   <body>
@@ -101,9 +113,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            				 <input type="radio" checked="checked" name="role" value="student"/>学生&nbsp;&nbsp;
            				 <input type="radio" name="role" value="staff"/>工作人员<br/><br/>
            				<div class="btn-group">
-						  <input type="submit" value="登录" class="btn btn-default"></button>
-						  <p>${request.loginstate }</p>
-						</div>         				 
+						  <input type="submit"  value="登录" class="btn btn-default"/>
+						</div>   
+							<p id="erro"></p>      				 
        			  	 </div>
        				</div>
        				</fieldset>
@@ -112,9 +124,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
         </div>
             </div>
-    </div>
+ 
     
     <%@ include file="/include/footer.html"%>
-    </div>
+
   </body>
 </html>
