@@ -1,5 +1,8 @@
 package com.scusw.login.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.scusw.login.dao.LoginDao;
 import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
@@ -24,12 +27,15 @@ public class LoginServiceImpl implements LoginService {
 		return false;
 	}
 
-	public int checkStaLogin(StaffInfo si) {
+	public StaffInfo checkStaLogin(StaffInfo si) {
 		// TODO Auto-generated method stub
+		/*HashMap<String, Object> map = new HashMap<String, Object>();
 		if ((si=loginDao.checkStaffLogin(si)) != null) {
-			return si.getStaffId();
-		}
-		return -1;
+			map.put("staffId", si.getStaffId());
+			map.put("staffDepartment", checkStaffDepartment(si));
+			return map;
+		}*/
+		return loginDao.checkStaffLogin(si);
 	}
 
 	public boolean checkAdmLogin() {
@@ -44,6 +50,10 @@ public class LoginServiceImpl implements LoginService {
 			return teacherInfo.getTeacherType();
 		}
 		return -1;
+	}
+	
+	public int checkStaffDepartment(StaffInfo si) {
+		return si.getPositionInfo().getDepartmentInfo().getDepartmentId();
 	}
 
 	

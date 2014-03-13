@@ -81,6 +81,7 @@ public class LoginAction {
 			session.put("role", "student");
 			session.put("studentNo", studentInfo.getStudentNo());
 			session.put("studentID", studentInfo.getStudentId());
+			session.put("studentName", studentInfo.getStudentName());
 			logger.info("学生登录成功:"+studentInfo.getStudentNo());
 			return "student_success";
 		}
@@ -95,19 +96,24 @@ public class LoginAction {
 		staffInfo.setStaffPass(passwordInCode);
 		logger.info("获得员工加密密码:"+staffInfo.getStaffPass());
 		logger.info("获得员工帐号:"+staffInfo.getStaffNo());
-		staffInfo.setStaffId(loginService.checkStaLogin(staffInfo));
-		if (staffInfo.getStaffId() != -1) {
+		//staffInfo.setStaffId(loginService.checkStaLogin(staffInfo));
+		staffInfo = loginService.checkStaLogin(staffInfo);
+		if (staffInfo != null) {
 			int type = loginService.checkIfTeacher(staffInfo.getStaffId());
 			if (type>=0) {
 				session.put("role", "teacher");
 				session.put("type", type);
-				session.put("staffID", staffInfo.getStaffId());
+				session.put("staffId", staffInfo.getStaffId());
+				session.put("staffName", staffInfo.getStaffName());
 				logger.info("教师登录成功:"+staffInfo.getStaffId());
 				return "teacher_success";
 			} else {
 				session.put("role", "staff");
-				session.put("staffID", staffInfo.getStaffId());
+				session.put("staffId", staffInfo.getStaffId());
+				session.put("staffName", staffInfo.getStaffName());
+				session.put("group", staffInfo.getGroupInfo().getGroupId());
 				logger.info("员工登录成功:"+staffInfo.getStaffId());
+				logger.info("登录员工部门："+staffInfo.getPositionInfo().getDepartmentInfo().getDepartmentName());
 				return "staff_success";
 			}
 			

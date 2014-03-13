@@ -21,8 +21,8 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements AttandantDa
 	public List<StudentAttendant> queryStuAttendant() {
 		// TODO Auto-generated method stub
 		Query query = this.getSession().createQuery("from StudentAttendant sa order by sa.attendantTime desc");
-		List<StudentAttendant> list = query.list();
-		//System.out.println(list.get(0).getAttendantTime());
+		List<StudentAttendant> list = query.list();		
+		System.out.println(list.get(0).getAttendantTime());
 		return list;
 	}
 
