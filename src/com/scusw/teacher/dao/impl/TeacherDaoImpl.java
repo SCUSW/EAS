@@ -5,10 +5,13 @@ import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.scusw.model.CourseInfo;
+import com.scusw.model.GroupInfo;
+import com.scusw.model.PositionInfo;
 import com.scusw.model.RegisterInfo;
 import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
+import com.scusw.model.StudentAttendant;
 import com.scusw.teacher.dao.TeacherDao;
 
 
@@ -90,12 +93,100 @@ public class TeacherDaoImpl extends HibernateDaoSupport implements TeacherDao {
 		return c;
 	}
 	
-	public RegisterInfo queryRegisterByStudentNoCourseId(int studentId,int courseId){
+	public RegisterInfo queryRegisterByStudentIdCourseId(int studentId,int courseId){
 		Query q=this.getSession().createQuery("from RegisterInfo r " +
 				"where r.studentInfo.studentId=:studentId and r.courseInfo.courseId=:courseId");
 		q.setParameter("studentId", studentId);
 		q.setParameter("courseId",courseId);
 		RegisterInfo r=(RegisterInfo)q.uniqueResult();
 		return r;
+	}
+	
+	public RegisterInfo queryRegisterByRegisterId(int registerId){
+		Query q=this.getSession().createQuery("from RegisterInfo r where r.registerId=:registerId");
+		q.setParameter("registerId", registerId);
+		RegisterInfo r=(RegisterInfo)q.uniqueResult();
+		return r;
+	}
+	
+	public void updateStudentCourseScore(RegisterInfo rr){
+		this.getHibernateTemplate().update(rr);
+	}
+	
+	public List queryStudentAttendantByRegisterId(int registerId){
+		Query q=this.getSession().createQuery("from StudentAttendant s where s.registerInfo.registerId=:registerId");
+		q.setParameter("registerId", registerId);
+		List<StudentAttendant> studentAttendants=q.list();
+		return studentAttendants;	
+	}
+	
+	public StudentAttendant queryStudentAttendantByStudentAttendantId(int studentAttendantId){
+		Query q=this.getSession().createQuery("from StudentAttendant s where s.attendantId=:studentAttendantId");
+		q.setParameter("studentAttendantId", studentAttendantId);
+		StudentAttendant studentAttendant=(StudentAttendant)q.uniqueResult();
+		return studentAttendant;
+	}
+	
+	
+	public RegisterInfo queryRegisterByStudentAttendantId(int studentAttendantId){
+		Query q=this.getSession().createQuery("from RegisterInfo r " +
+				"inner join fetch r.studentAttendants s where s.attendantId=:studentAttendantId");
+		q.setParameter("studentAttendantId", studentAttendantId);
+		RegisterInfo register=(RegisterInfo)q.uniqueResult();
+		return register;
+	}
+	
+	public void addStudentAttendant(StudentAttendant studentAttendantInfo){
+		this.getHibernateTemplate().save(studentAttendantInfo);
+	}
+	
+	public List queryOwnCommonTeacher(int branchId){
+		Query q=this.getSession().createQuery("from TeacherInfo t where t.teacherType=0 " +
+				"and t.staffInfo.positionInfo.departmentInfo.branchInfo.branchId=:branchId");
+		q.setParameter("branchId", branchId);
+		List commonTeachers=q.list();
+		return commonTeachers;
+	}
+	
+	public List queryOwnCommonTeacherByStaffNo(int branchId, String staffNo){
+		Query q=this.getSession().createQuery("from TeacherInfo t where t.teacherType=0 " +
+		"and t.staffInfo.positionInfo.departmentInfo.branchInfo.branchId=:branchId and t.staffInfo.staffNo=:staffNo");
+		q.setParameter("branchId", branchId);
+		q.setParameter("staffNo", staffNo);
+		List commonTeachers=q.list();
+		return commonTeachers;
+	}
+	
+	public List queryOwnCommonTeacherByStaffName(int branchId, String staffName){
+		Query q=this.getSession().createQuery("from TeacherInfo t where t.teacherType=0 " +
+		"and t.staffInfo.positionInfo.departmentInfo.branchInfo.branchId=:branchId and t.staffInfo.staffName=:staffName");
+		q.setParameter("branchId", branchId);
+		q.setParameter("staffName", staffName);
+		List commonTeachers=q.list();
+		return commonTeachers;
+	}
+	
+	public List queryAllTeacherLevel(){
+		Query q=this.getSession().createQuery("from TeacherLevel");
+		List teacherLevels=q.list();
+		return teacherLevels;
+	}
+	
+	public PositionInfo queryPositionById(int vocationId){
+		Query q=this.getSession().createQuery("from PositionInfo p where p.vocationId=:vocationId");
+		q.setParameter("vocationId", vocationId);
+		PositionInfo positionInfo=(PositionInfo) q.uniqueResult();
+		return positionInfo;
+	}
+	
+	public GroupInfo queryGroupById(int groupId){
+		Query q=this.getSession().createQuery("from GroupInfo p where p.groupId=:groupId");
+		q.setParameter("groupId", groupId);
+		GroupInfo groupInfo=(GroupInfo) q.uniqueResult();
+		return groupInfo;
+	}
+	
+	public void addCommonTeacehr(TeacherInfo teacher){
+		this.getHibernateTemplate().save(teacher);
 	}
 }

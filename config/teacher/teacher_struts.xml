@@ -14,6 +14,13 @@
 				<result name="searchOwnStudent">teacher/ownStudentList.jsp</result>
 				<result name="searchTeacherOwnCourse">teacher/searchStudent.jsp</result>
 				<result name="getOwnStudentInfo">teacher/ownStudentInfo.jsp</result>
+				<result name="updateStudentCourseScore">teacher/ownStudentInfo.jsp</result>
+				<result name="getStudentAttendant">teacher/studentAttendantList.jsp</result>
+				<result name="addStudentAttendant">teacher/studentAttendantList.jsp</result>
+				<result name="addStudentAttendant_default">teacher/default.jsp</result>
+				<result name="searchOwnCommonTeacher">teacher/ownCommonTeacherList.jsp</result>
+				<result name="getOwnCommonTeacherInfo">teacher/ownCommonTeacherInfo.jsp</result>
+				<result name="addCommonTeacher1">teacher/addCommonTeacher.jsp</result>
 			</action>
 
 		</package>
