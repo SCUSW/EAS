@@ -1,6 +1,7 @@
 package com.scusw.login.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.scusw.login.dao.LoginDao;
@@ -54,6 +55,11 @@ public class LoginServiceImpl implements LoginService {
 	
 	public int checkStaffDepartment(StaffInfo si) {
 		return si.getPositionInfo().getDepartmentInfo().getDepartmentId();
+	}
+
+	public List<Integer> checkPrivilege(int groupId) {
+		// TODO Auto-generated method stub
+		return loginDao.checkPrivilege(groupId);
 	}
 
 	

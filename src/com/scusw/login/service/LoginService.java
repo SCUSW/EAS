@@ -1,5 +1,6 @@
 package com.scusw.login.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.scusw.model.StaffInfo;
@@ -10,4 +11,5 @@ public interface LoginService {
 	public StaffInfo checkStaLogin(StaffInfo si);
 	public boolean checkAdmLogin();
 	public int checkIfTeacher(int staffId);
+	public List<Integer> checkPrivilege(int groupId);
 }

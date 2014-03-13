@@ -1,4 +1,6 @@
+<%@page import="com.scusw.util.CheckPrivilege"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -25,6 +27,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     This is my JSP page. <br>
     ${session.role }<br>
-    ${session.type }
+    ${session.type }<br>
+    ${session.staffName }<br>
+    ${session.group }<br>
+    
+    以下代码进行权限检测：<br>
+    <%
+    if(com.scusw.util.CheckPrivilege.checkPrivilege(1)){
+    	%>拥有权限1<%
+    } 
+    %>
   </body>
 </html>
