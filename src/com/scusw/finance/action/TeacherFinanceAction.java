@@ -10,7 +10,7 @@ import com.scusw.finance.service.TeacherFinanceService;
 import com.scusw.model.TeacherInfo;
 
 /**
- * @author Administrator
+ * @author 杨昭远
  *
  */
 public class TeacherFinanceAction {

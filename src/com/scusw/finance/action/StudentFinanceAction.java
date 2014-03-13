@@ -63,4 +63,11 @@ public class StudentFinanceAction {
 		
 		return "default";
 	}
+	
+	public String detailInfo(){
+		this.setRequest((Map)ActionContext.getContext().get("request"));
+		this.getRequest().put("studentInfo", studentFinanceService.findByNo(studentInfo.getStudentNo()));
+		
+		return "detail";
+	}
 }

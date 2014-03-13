@@ -30,8 +30,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		<!--
    		入职年份：<input type="text" /> -- <input type="text" />
    		-->
-   		<input type="submit"  value="搜索"/><input type="button" value="设置教师工资"/>
-   	</form>
+   		<input type="submit"  value="搜索"/>
+   		<!--<input type="button" value="设置教师工资"/>-->
+   		</form>
    	
    	<table border="1">
    		<tr>

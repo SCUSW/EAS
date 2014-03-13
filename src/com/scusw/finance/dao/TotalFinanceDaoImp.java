@@ -3,13 +3,16 @@
  */
 package com.scusw.finance.dao;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.scusw.model.FinancialRecords;
+import com.scusw.model.StudentInfo;
 
 /**
- * @author Administrator
+ * @author 杨昭远
  *
  */
 public class TotalFinanceDaoImp extends HibernateDaoSupport implements TotalFinanceDao{
@@ -31,6 +34,11 @@ public class TotalFinanceDaoImp extends HibernateDaoSupport implements TotalFina
 	public void addRecord(FinancialRecords financialRecords) throws Exception{
 		// TODO Auto-generated method stub
 		this.getHibernateTemplate().save(financialRecords);
+	}
+	
+	public List<FinancialRecords> getAllRecords(){
+		List<FinancialRecords> finacialRecords = getHibernateTemplate().find("from FinancialRecords");
+		return finacialRecords;
 	}
 
 }

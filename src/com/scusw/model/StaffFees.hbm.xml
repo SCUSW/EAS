@@ -16,7 +16,7 @@
         <property name="sfeesNum" type="java.lang.Float">
             <column name="sfees_num" precision="12" scale="0" />
         </property>
-        <property name="sfeesTime" type="java.sql.Timestamp">
+        <property name="sfeesTime" type="java.sql.Timestamp" insert="false">
             <column name="sfees_time" length="19" not-null="true" />
         </property>
         <property name="sfeesFrom" type="java.lang.String">

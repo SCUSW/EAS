@@ -9,12 +9,14 @@
 				<result name="success">/finance/student_finance.jsp</result>
 				<result name="error">/finance/student_finance.jsp</result>
 				<result name="default">/finance/student_finance.jsp</result>
+				<result name="detail">/finance/student_detail.jsp</result>
 			</action>
 			<action name="teacherFinanceAction" class="com.scusw.finance.action.TeacherFinanceAction">
 				<result name="default">/finance/teacher_finance.jsp</result>
 			</action>
 			<action name="totalFinanceAction" class="com.scusw.finance.action.TotalFinanceAction">
 				<result name="default">/finance/total_finance.jsp</result>
+				<result name="history">/finance/history_finance.jsp</result>
 			</action>
 		</package>
 </struts>

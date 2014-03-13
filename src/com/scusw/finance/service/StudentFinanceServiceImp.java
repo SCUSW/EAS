@@ -9,7 +9,7 @@ import com.scusw.finance.dao.StudentFinanceDao;
 import com.scusw.model.StudentInfo;
 
 /**
- * @author Administrator
+ * @author 杨昭远
  *
  */
 public class StudentFinanceServiceImp implements StudentFinanceService{
@@ -33,6 +33,14 @@ public class StudentFinanceServiceImp implements StudentFinanceService{
 		List<StudentInfo> st = studentFinanceDao.queryStudent(studentName);
 		
 		return st;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.scusw.finance.service.StudentFinanceService#findByNo(java.lang.String)
+	 */
+	public StudentInfo findByNo(String studentNo) {
+		// TODO Auto-generated method stub
+		return studentFinanceDao.getRecordByNo(studentNo);
 	}
 
 

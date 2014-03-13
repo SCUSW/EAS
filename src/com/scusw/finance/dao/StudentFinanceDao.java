@@ -15,4 +15,6 @@ import com.scusw.model.StudentInfo;
 public interface StudentFinanceDao{
 	public List<StudentInfo> queryAllStudent();
 	public List<StudentInfo> queryStudent(String studentName);
+	public StudentInfo getRecordByNo(String studentNo);
+
 }

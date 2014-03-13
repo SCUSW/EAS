@@ -8,7 +8,7 @@ import java.util.List;
 import com.scusw.model.FinancialRecords;
 
 /**
- * @author Administrator
+ * @author 杨昭远
  *
  */
 public interface TotalFinanceService {
@@ -25,5 +25,12 @@ public interface TotalFinanceService {
 	 * return true 添加成功 false 添加失败
 	 */
 	public boolean addFinanceRecord(FinancialRecords financialRecords);
+
+	/**
+	 * 方法描述
+	 * param args0 参数0
+	 * return
+	 */
+	public List<FinancialRecords> getHistory();
 
 }
