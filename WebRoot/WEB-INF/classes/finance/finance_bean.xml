@@ -25,6 +25,7 @@
 	
 		<bean id="studentFinanceAction" class="com.scusw.finance.action.StudentFinanceAction">	
 			<property name="studentFinanceService" ref="studentFinanceService"></property>
+			<property name="totalFinanceService" ref="totalFinanceService"></property>
 		</bean>
 		
 		<bean id="teacherFinanceDao" class="com.scusw.finance.dao.TeacherFinanceDaoImp">

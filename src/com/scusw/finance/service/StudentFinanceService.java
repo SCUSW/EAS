@@ -5,6 +5,7 @@ package com.scusw.finance.service;
 
 import java.util.List;
 
+import com.scusw.model.StudentFees;
 import com.scusw.model.StudentInfo;
 
 /**
@@ -19,6 +20,18 @@ public interface StudentFinanceService {
 	 * param args0 参数0
 	 * return
 	 */
-	public StudentInfo findByNo(String studentNo);
+	public StudentInfo findById(int studentId);
+	/**
+	 * 方法描述
+	 * param args0 参数0
+	 * return
+	 */
+	public void updateBalance(StudentFees studentFees);
+	/**
+	 * 方法描述
+	 * param args0 参数0
+	 * return
+	 */
+	public void addStudentFees(StudentFees studentFees);
 
 }

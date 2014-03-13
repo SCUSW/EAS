@@ -64,11 +64,11 @@
 							${s.studentBalance }
 						</td>
 						<td>
-							<input type="button" onclick="addMoney()" value="充值" />
-							<input type="button" onclick="minusMoney()" value="扣费" />
-							<input type="button" value="转正" />
+							<input type="button" onclick="addMoney(${s.studentId})" value="充值" />
+							<input type="button" onclick="minusMoney(${s.studentId})" value="扣费" />
+							<!--<input type="button" value="转正" />-->
 							<input type="button"
-								onclick="window.location.href('<%=basePath%>studentFinanceAction!detailInfo.action?studentInfo.studentNo=${s.studentNo }')"
+								onclick="window.location.href('<%=basePath%>studentFinanceAction!detailInfo.action?studentInfo.studentId=${s.studentId }')"
 								value="详细信息" />
 						</td>
 					</tr>
@@ -79,14 +79,19 @@
 	</body>
 
 	<script type="text/javascript">
-	function addMoney(obj) {
-		var value = prompt("充值金额:", 100);
-		document.getElementById("username").value = value;
+	function addMoney(studentId) {
+		var add_money = prompt("充值金额:", 100);
+		if(add_money != "" && add_money != null){
+			window.location.href="studentFinanceAction!changeFees.action?studentFees.studentInfo.studentId=" + studentId + "&studentFees.feesNum=" + add_money;
+		}
 	}
 	
-	function minusMoney(obj) {
-		var value = window.prompt("扣费金额:", 100);
-		document.getElementById("username").value = value;
+	function minusMoney(studentId) {
+		var minus_money = window.prompt("扣费金额:", 100);
+		minus_money = 0 - minus_money;
+		if(minus_money != "" && minus_money != null){
+			window.location.href="studentFinanceAction!changeFees.action?studentFees.studentInfo.studentId=" + studentId + "&studentFees.feesNum=" + minus_money;
+		}
 	}
 </script>
 </html>
