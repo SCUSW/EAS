@@ -11,7 +11,7 @@ import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
 
 /**
- * @author Administrator
+ * @author 杨昭远
  *
  */
 public class TeacherFinanceDaoImp extends HibernateDaoSupport implements TeacherFinanceDao{

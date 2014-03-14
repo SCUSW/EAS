@@ -11,7 +11,7 @@ import com.scusw.finance.service.TotalFinanceService;
 import com.scusw.model.FinancialRecords;
 
 /**
- * @author Administrator
+ * @author 杨昭远
  *
  */
 public class TotalFinanceAction {
@@ -89,6 +89,13 @@ public class TotalFinanceAction {
 		
 		
 		return "default";
+	}
+	
+	public String historyFinance(){
+		this.setRequest((Map)ActionContext.getContext().get("request"));
+		this.getRequest().put("history_finance", totalFinanceService.getHistory());
+		
+		return "history";
 	}
 
 }

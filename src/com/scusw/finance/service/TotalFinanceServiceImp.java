@@ -3,11 +3,13 @@
  */
 package com.scusw.finance.service;
 
+import java.util.List;
+
 import com.scusw.finance.dao.TotalFinanceDao;
 import com.scusw.model.FinancialRecords;
 
 /**
- * @author Administrator
+ * @author 杨昭远
  * 
  */
 public class TotalFinanceServiceImp implements TotalFinanceService {
@@ -44,6 +46,15 @@ public class TotalFinanceServiceImp implements TotalFinanceService {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.scusw.finance.service.TotalFinanceService#getHistory()
+	 */
+	public List<FinancialRecords> getHistory() {
+		// TODO Auto-generated method stub
+		
+		return totalFinanceDao.getAllRecords();
 	}
 
 }

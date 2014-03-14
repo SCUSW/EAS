@@ -8,7 +8,7 @@ import java.util.List;
 import com.scusw.model.TeacherInfo;
 
 /**
- * @author Administrator
+ * @author 杨昭远
  *
  */
 public interface TeacherFinanceService {

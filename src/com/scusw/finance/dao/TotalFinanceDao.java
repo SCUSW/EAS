@@ -3,10 +3,12 @@
  */
 package com.scusw.finance.dao;
 
+import java.util.List;
+
 import com.scusw.model.FinancialRecords;
 
 /**
- * @author Administrator
+ * @author 杨昭远
  *
  */
 public interface TotalFinanceDao {
@@ -19,5 +21,8 @@ public interface TotalFinanceDao {
 	 * @throws Exception 
 	 */
 	public void addRecord(FinancialRecords financialRecords) throws Exception;
+	
+	public List<FinancialRecords> getAllRecords();
+	
 
 }
