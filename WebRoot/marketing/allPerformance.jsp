@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<td>${salesman.staffInfo.staffName}</td>
     			<td>${salesman.staffInfo.staffSex}</td>
     			<td>${salesman.staffInfo.positionInfo.vocationName}</td>
-    			<td>${allSalesmanPerformance[s.count-1]}</td>
+    			<td>${allSalesmanPerformance[0][s.count-1]}</td>
     			<td>${salesman.salesmanSalary}</td>
     		</tr>
     	</c:forEach>

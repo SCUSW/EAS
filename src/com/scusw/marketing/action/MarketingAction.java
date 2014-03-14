@@ -23,8 +23,7 @@ public class MarketingAction {
 	private ConsultInfo consultInfo;
 	private String queryName;
 	private String queryNo;
-	private int salesmanPerformance;
-	private int[] allSalesmanPerformance;
+	private int[][] allSalesmanPerformance;
 	private StudentConsultway studentConsultway;
 	private SalesmanInfo salesmanInfo;
 	private float royaltyRate;
@@ -45,15 +44,6 @@ public class MarketingAction {
 	/**
 	 * @return the allSalesmanPerformance
 	 */
-	public int[] getAllSalesmanPerformance() {
-		return allSalesmanPerformance;
-	}
-	/**
-	 * @param allSalesmanPerformance the allSalesmanPerformance to set
-	 */
-	public void setAllSalesmanPerformance(int[] allSalesmanPerformance) {
-		this.allSalesmanPerformance = allSalesmanPerformance;
-	}
 	/**
 	 * @return the queryNo
 	 */
@@ -61,22 +51,22 @@ public class MarketingAction {
 		return queryNo;
 	}
 	/**
+	 * @return the allSalesmanPerformance
+	 */
+	public int[][] getAllSalesmanPerformance() {
+		return allSalesmanPerformance;
+	}
+	/**
+	 * @param allSalesmanPerformance the allSalesmanPerformance to set
+	 */
+	public void setAllSalesmanPerformance(int[][] allSalesmanPerformance) {
+		this.allSalesmanPerformance = allSalesmanPerformance;
+	}
+	/**
 	 * @param queryNo the queryNo to set
 	 */
 	public void setQueryNo(String queryNo) {
 		this.queryNo = queryNo;
-	}
-	/**
-	 * @return the salesmanPerformance
-	 */
-	public int getSalesmanPerformance() {
-		return salesmanPerformance;
-	}
-	/**
-	 * @param salesmanPerformance the salesmanPerformance to set
-	 */
-	public void setSalesmanPerformance(int salesmanPerformance) {
-		this.salesmanPerformance = salesmanPerformance;
 	}
 	/**
 	 * @return the queryName
@@ -203,11 +193,16 @@ public class MarketingAction {
 	 * 			  查询失败："queryDefault" ——> queryDefault.jsp
 	 */
 	public String querySalesmanInfoByName(){
-		List<SalesmanInfo> salesman = marketingService.querySalesmanInfoByName(queryName);
-		if(salesman.size() == 0)
-			return "queryDefault";
-		request=(Map)ActionContext.getContext().get("request");
-		request.put("salesmanInfo",salesman);
+		List<SalesmanInfo> salesman;
+		if(queryName.equals("")){
+			salesman = queryAllSalesmanInfo();
+		} else {
+			salesman = marketingService.querySalesmanInfoByName(queryName);
+			if(salesman.size() == 0)
+				return "queryDefault";
+			request=(Map)ActionContext.getContext().get("request");
+			request.put("salesmanInfo",salesman);
+		}
 		return "querySuccess";
 	}
 	
@@ -220,7 +215,8 @@ public class MarketingAction {
 	public String querySalesmanPerformanceByNo(){
 		if (!checkSalesmanInfo(queryNo))
 			return "queryDefault";
-		salesmanPerformance = marketingService.querySalesmanPerformanceByNo(queryNo);
+		allSalesmanPerformance = marketingService.querySalesmanPerformanceByNo(queryNo);
+		marketingService.updateSalesmanSalary(allSalesmanPerformance);
 		querySalesmanInfoByNo();
 		return "performance";
 	}
@@ -232,6 +228,7 @@ public class MarketingAction {
 	public String queryAllSalesmanPerformance(){
 		List<SalesmanInfo> salesman = queryAllSalesmanInfo();
 		allSalesmanPerformance = marketingService.queryAllSalesmanPerformance(salesman);
+		marketingService.updateSalesmanSalary(allSalesmanPerformance);
 		salesman = queryAllSalesmanInfo();
 		return "allPerformance";
 	}
