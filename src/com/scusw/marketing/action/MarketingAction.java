@@ -166,8 +166,8 @@ public class MarketingAction {
 	 * 		   false ："addDefault" ——> addDefault.jsp
 	 */
 	public String addConsultInfo(){
-//		if(checkSalesmanInfo(consultInfo.getSalesmanInfo().getStaffInfo().getStaffNo()) == false)
-//			return "addDefault";
+		if(checkSalesmanInfo(consultInfo.getSalesmanInfo().getStaffInfo().getStaffNo()) == false)
+			return "addDefault";
 		boolean flag = marketingService.addConsultInfo(consultInfo,studentConsultway);
 		if(flag){
 			return "addSuccess";
