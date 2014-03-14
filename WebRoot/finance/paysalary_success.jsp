@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'finance_guide.jsp' starting page</title>
+    <title>My JSP 'paysalary_success.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,11 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <div style="text-align: center">
-    	<a target="info_area" href="<%=basePath %>totalFinanceAction!totalFinance.action">总费用管理</a>
-    	<a target="info_area" href="<%=basePath %>studentFinanceAction!searchAll.action">学员费用管理</a>
-    	<!--<a target="info_area" href="<%=basePath %>teacherFinanceAction!searchAll.action">教师费用管理</a>-->
-    	<a target="info_area" href="<%=basePath %>staffFinanceAction!searchAll.action">职工费用管理</a>
-    </div>
+    支付成功！<br>
+    <button onclick="window.location.href('<%=basePath %>staffFinanceAction!searchAll.action')">返回</button>
   </body>
 </html>

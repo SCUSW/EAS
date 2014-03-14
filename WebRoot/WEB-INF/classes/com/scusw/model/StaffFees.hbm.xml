@@ -10,7 +10,7 @@
             <column name="sfees_id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="staffInfo" class="com.scusw.model.StaffInfo" fetch="select">
+        <many-to-one name="staffInfo" class="com.scusw.model.StaffInfo" fetch="select" lazy="false">
             <column name="staff_id" />
         </many-to-one>
         <property name="sfeesNum" type="java.lang.Float">

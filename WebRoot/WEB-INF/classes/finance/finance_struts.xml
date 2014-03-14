@@ -20,6 +20,8 @@
 			</action>
 			<action name="staffFinanceAction" class="com.scusw.finance.action.StaffFinanceAction">
 				<result name="default">/finance/staff_finance.jsp</result>
+				<result name="paysalary_success">/finance/paysalary_success.jsp</result>
+				<result name="history">/finance/stafffees_history.jsp</result>
 			</action>
 		</package>
 </struts>

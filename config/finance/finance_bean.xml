@@ -51,4 +51,17 @@
 		<bean id="totalFinanceAction" class="com.scusw.finance.action.TotalFinanceAction">	
 			<property name="totalFinanceService" ref="totalFinanceService"></property>
 		</bean>
+		
+		<bean id="staffFinanceDao" class="com.scusw.finance.dao.StaffFinanceDaoImp">
+			 <property name="sessionFactory" ref="sessionFactory"></property>
+		</bean>
+		
+		<bean id="staffFinanceService" class="com.scusw.finance.service.StaffFinanceServiceImp">	
+			<property name="staffFinanceDao" ref="staffFinanceDao"></property>
+		</bean>
+	
+		<bean id="staffFinanceAction" class="com.scusw.finance.action.StaffFinanceAction">	
+			<property name="staffFinanceService" ref="staffFinanceService"></property>
+			<property name="totalFinanceService" ref="totalFinanceService"></property>
+		</bean>
 </beans>

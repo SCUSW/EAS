@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'history_finance.jsp' starting page</title>
+    <title>My JSP 'stafffees_history.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -24,17 +24,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    公司收支明细 <br>
+    员工收支明细 <br>
     <table border="1">
     	<tr>
-    		<td>时间</td><td>标题</td><td>金额</td><td>余额</td><td>描述</td>
+    		<td>时间</td><td>员工编号</td><td>员工姓名</td><td>金额</td><td>描述</td>
     	</tr>
-    	<c:forEach items="${history_finance }" var="h">
+    	<c:forEach items="${stafffees_history }" var="h">
     	<tr>
-    		<td>${h.financialTime }&nbsp;</td><td>${h.financialFrom }&nbsp;</td><td>${h.financialNum }&nbsp;</td><td>${h.totalMoney }&nbsp;</td><td>${h.financialRemark }&nbsp;</td>
+    		<td>${h.sfeesTime }&nbsp;</td><td>${h.staffInfo.staffNo }&nbsp;</td><td>${h.staffInfo.staffName }&nbsp;</td><td>${h.sfeesNum }&nbsp;</td><td>${h.sfeesFrom }&nbsp;</td>
     	</tr>
     	</c:forEach>
     </table>
-    <button onclick="window.location.href('<%=basePath %>totalFinanceAction!totalFinance.action')">返回</button>
+    <button onclick="window.location.href('<%=basePath %>staffFinanceAction!searchAll.action')">返回</button>
   </body>
 </html>
