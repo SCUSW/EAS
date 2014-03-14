@@ -77,7 +77,9 @@ public class LoginAction {
 		String passwordInCode = MD5Util.MD5(loginPass);
 		studentInfo.setStudentPass(passwordInCode);
 		logger.info("获得学生加密密码:"+studentInfo.getStudentPass());
-		if (loginService.checkStuLogin(studentInfo)) {
+		Object obj = loginService.checkStuLogin(studentInfo);
+		if (obj != null) {
+			studentInfo = (StudentInfo) obj;
 			session.put("role", "student");
 			session.put("studentNo", studentInfo.getStudentNo());
 			session.put("studentID", studentInfo.getStudentId());
@@ -126,6 +128,7 @@ public class LoginAction {
 	public String loginOut() {
 		session = ActionContext.getContext().getSession();
 		session.clear();
+		logger.info("退出登录");
 		return "error"; 
 	}
 }
