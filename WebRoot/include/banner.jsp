@@ -1,4 +1,4 @@
-
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -35,6 +35,16 @@
 			margin-top:-155px;
 			margin-left:863px;
 		}
+		#banner_text{
+			position:relative;
+			text-align:center;
+			font-size:20px;
+			font-family:"张海山锐线体简";
+			margin-top:-28px;
+			margin-left:-1155px;
+			top:-90px;
+			display:none;
+		}
 	</style>
 	<script>
 			
@@ -42,6 +52,7 @@
 			$("#left").ready(function(){
 				$("#left").animate({marginLeft:'0px'},200);
 				$("#right").animate({marginLeft:'263px'},200);
+				$("#banner_text").show(3000);
 			});
 		})
 	
@@ -50,7 +61,14 @@
 	</head>
   <body>
   	<div id="left"><img src="image/banner_left.png"/></div>
-  	<div id="right"><img src="image/banner_right.png"/></div>
+  	<div id="right"><img src="image/banner_right.png" border="0" usemap="#Map"/>
+      <map name="Map">
+        <area shape="rect" coords="966,126,1026,147" href="#">
+        <area shape="rect" coords="1033,127,1093,146" href="#">
+      </map>
+  	</div>
+  	<div id="banner_text">欢迎您!<br/>${studentInfo.studentName} </div>
+  
   </body>
 </html>
 

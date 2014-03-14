@@ -18,26 +18,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 
   </head>
   
   <body>
-    <center> <h1>个人信息界面</h1><br/>
-    	学号：${studentInfo.studentNo}<br/>
-    	姓名：${studentInfo.studentName}<br/>
-    	性别：${studentInfo.studentSex}<br/>
-   		年龄：${studentInfo.studentAge}<br/>
-   		班级：${studentInfo.classInfo.classId}<br/>
-   		学校：${studentInfo.studentSchool}<br/>
-   		住址：${studentInfo.studentAddr}<br/>
-   		电话：${studentInfo.studentPhone}<br/>
-   		专业：${studentInfo.studentMajor}<br/>
-   		余额：${studentInfo.studentBalance}<br/>
-   		入学时间：${studentInfo.attendTime}<br/>
-   		备注：${studentInfo.studentRemark}<br/>
+    <center> <h1>个人信息</h1><br/>
+    	<table border="1" style="width:600px;text-align:left;" class="table table-hover">
+    		<tr class="active">
+    			<td>学号：</td><td>${studentInfo.studentNo}</td>
+    			<td>姓名：</td><td>${studentInfo.studentName}</td>
+    		</tr>
+    		<tr class="success">
+    			<td>性别：</td><td>${studentInfo.studentSex}</td>
+    			<td>年龄：</td><td>${studentInfo.studentAge}</td>
+    		</tr>
+    		<tr class="warning">
+    			<td>班级：</td><td>${studentInfo.classInfo.classId}</td>
+    			<td>学校：</td><td>${studentInfo.studentSchool}</td>
+    		</tr>
+    		<tr class="danger">
+    			<td>住址：</td><td>${studentInfo.studentAddr}</td>
+    			<td>电话：</td><td>${studentInfo.studentPhone}</td>
+    		</tr>
+    		<tr class="active">
+    			<td>专业：</td><td>${studentInfo.studentMajor}</td>
+    			<td>余额：</td><td>${studentInfo.studentBalance}</td>
+    		</tr>
+    		<tr class="success">
+    			<td>入学时间：</td><td>${studentInfo.attendTime}</td>
+    			<td>备注：</td><td>${studentInfo.studentRemark}</td>
+    		</tr>
+    	</table>
    </center>
   </body>
 </html>
