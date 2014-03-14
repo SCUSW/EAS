@@ -123,5 +123,10 @@ public class LoginAction {
 		request.put("loginstate", "false");
 		return "error";
 	}
+	public String loginOut() {
+		session = ActionContext.getContext().getSession();
+		session.clear();
+		return "error"; 
+	}
 }
 

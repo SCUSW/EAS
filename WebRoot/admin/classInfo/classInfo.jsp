@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'gradeInfo.jsp' starting page</title>
+    <title>My JSP 'classInfoForGrade.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -30,12 +30,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <table border="1">
     <thead>
     <tr>
-    <td>年级名</td><td>班级数量</td><td>查看</td><td>删除</td>
+    <td>年级名</td><td>班级</td><td>删除</td>
     </tr>
     </thead>
-    <c:forEach items="${request.grade }" var="i">
+    <c:forEach items="${request.class }" var="i">
     <tr>
-    <td>${i.gradeName }</td><td>${fn:length(i.classInfos) }</td><td><a href="<%=basePath%>class!checkClassForGrade.action?gradeId=${i.gradeId }">查看详情</a></td>
+    <td>${i.gradeInfo.gradeName }</td><td>${i.className }</td><td>删除</td>
     </tr>
     </c:forEach>
     </table>

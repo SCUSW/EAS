@@ -5,6 +5,7 @@
 <struts> 
 		<include file="admin/attandant_struts.xml"/>
 		<include file="admin/grade_struts.xml"/>
+		<include file="admin/class_struts.xml"/>
 		<package name="adminLogin" extends="struts-default">
 			<action name="adminLogin" class="adminLoginAction">
 				<result name="admin_login_success">/admin/admin.jsp</result>

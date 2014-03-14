@@ -16,7 +16,8 @@
      		 <!-- default-autowire="byName" -->
      		 
      	<import resource="classpath:admin/attandant_bean.xml"/>
-     	<import resource="classpath:admin/grade_bean.xml"/>	 
+     	<import resource="classpath:admin/grade_bean.xml"/>	
+     	<import resource="classpath:admin/class_bean.xml"/>	 
 			
 		<bean id="adminLoginDao" class="com.scusw.admin.dao.impl.LoginDaoImpl">
 			<property name="sessionFactory" ref="sessionFactory"></property>

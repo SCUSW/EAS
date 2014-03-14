@@ -15,19 +15,17 @@
      		 >
      		 <!-- default-autowire="byName" -->
      		 
-     	<import resource="classpath:admin/attandant_bean.xml"/>
-     	<import resource="classpath:admin/grade_bean.xml"/>	
-     	<import resource="classpath:admin/class_bean.xml"/>	 
+     		 
 			
-		<bean id="adminLoginDao" class="com.scusw.admin.dao.impl.LoginDaoImpl">
+		<bean id="classDao" class="com.scusw.admin.dao.impl.ClassDaoImpl">
 			<property name="sessionFactory" ref="sessionFactory"></property>
 		</bean>
 		
-		<bean id="adminLoginService" class="com.scusw.admin.service.impl.LoginServiceImpl">	
-			<property name="loginDao" ref="adminLoginDao"></property>
+		<bean id="classService" class="com.scusw.admin.service.impl.ClassServiceImpl">	
+			<property name="classDao" ref="classDao"></property>
 		</bean>
 	
-		<bean id="adminLoginAction" class="com.scusw.admin.action.LoginAction">	
-			<property name="loginService" ref="adminLoginService"></property>
+		<bean id="classAction" class="com.scusw.admin.action.ClassAction">	
+			<property name="classService" ref="classService"></property>
 		</bean>
 </beans>
