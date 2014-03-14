@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    	<center> <h1>查询营销人员绩效信息界面</h1><br/>
-   	    <div align="center"><a href="<%=basePath%>marketing!queryAllSalesmanPerformance.action">查询所有营销人员效绩</a></div>
+   	    <div align="center"><a href="<%=basePath%>marketing!queryAllSalesmanPerformance.action">查询所有营销人员绩效</a></div>
    	    <div align="center"><a href="<%=basePath%>marketing/setSalesmanRoyaltyRate.jsp">设置营销人员提成比例</a></div>
    		<form action="marketing!querySalesmanPerformanceByNo.action" method="post">
    			员工编号：<input type="text" name="queryNo"/><br/>
