@@ -1,4 +1,4 @@
-package com.scusw.student.action;
+﻿package com.scusw.student.action;
 
 import java.util.List;
 import java.util.Map;
@@ -24,10 +24,23 @@ public class StudentAction {
 	private StudentInfo studentInfo;
 	private MajorInfo majorInfo;
 	private String noticeContent;
+	private int noticeId;
 	private List<NoticeInfo> noticeInfo;
 	private Map<String,Object> request;
 	public static Logger logger = Logger.getLogger(LoginAction.class);
 
+	/**
+	 * @return the noticeId
+	 */
+	public int getNoticeId() {
+		return noticeId;
+	}
+	/**
+	 * @param noticeId the noticeId to set
+	 */
+	public void setNoticeId(int noticeId) {
+		this.noticeId = noticeId;
+	}
 	/**
 	 * @return the studentService
 	 */
@@ -157,6 +170,7 @@ public class StudentAction {
 	 * @return ："noticeContent" ——> showNoticeContent.jsp
 	 */
 	public String showNoticeContent(){
+		noticeContent = studentService.queryNoticeContent(noticeId);
 		return "noticeContent";
 	}
 	

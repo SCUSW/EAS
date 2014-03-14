@@ -18,4 +18,5 @@ public interface StudentDao {
 	public MajorInfo apply(StudentInfo student);
 	public List<NoticeInfo> noticeInfoQuery();
 	public MajorInfo majorInfoQuery(String majorName);
+	public String queryNoticeContent(int noticeId);
 }

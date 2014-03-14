@@ -27,10 +27,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
-
-
+	
   </head>
-  
+
   <body>
     <center> 
     <table border="1" class="table table-hover">
@@ -41,10 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<tr class="active"> 
     			<td>${notice.noticeId}</td>
     			<td colspan="2">
-    				<form id="title" action="student!showNoticeContent.action" method="post">
-    					<input type="hidden" name="noticeContent" value="${notice.noticeContent}"/>
-    					<a href="javascript:title.submit();">${notice.noticeTitle}</a>
-    				</form>
+					<a href="student!showNoticeContent.action?noticeId=${notice.noticeId}">${notice.noticeTitle}</a>	
     			</td>
     			<td>${notice.noticeType}</td>
     			<td>${notice.staffInfo.staffId}</td>
