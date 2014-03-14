@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'userlogin.jsp' starting page</title>
+    <title>My JSP 'updateuser.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,13 +23,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <div align="center">
-    		<form action="teacherAct!searchStudent.action" method="post">
-    			<h1>查找学生</h1><br/>
-    			学号：<input type="text" name="student.studentNo"/><br/>
-    			姓名：<input type="text" name="student.studentName"/><br/>
-    			<input type="submit" value="查找"/>&nbsp;&nbsp;<input type="reset" value="重置"/>
-    		</form>
-    </div>
+     <center> <h1>增加课程</h1><br/>
+   	<form action="teacherAct!addOwnCourse2.action" method="post">
+	   	专业：<input type="text" name="major.majorId"/><br/>
+   		名称：<input type="text" name="course.courseName"/><br/>
+   		开课时间：<input type="text" name="course.courseStart"/><br/>
+   		结课时间：<input type="text" name="course.courseEnd"/><br/>
+   		课程介绍：<input type="text" name="course.courseDesc"/><br/>
+   			<input type="submit" value="确定添加"/>
+   </form>
+   </center>
   </body>
 </html>

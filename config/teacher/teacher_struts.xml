@@ -23,6 +23,15 @@
 				<result name="addCommonTeacher1">teacher/addCommonTeacher.jsp</result>
 				<result name="addCommonTeacher2">teacher/ownCommonTeacherInfo.jsp</result>
 				<result name="addCommonTeacher2_default">teacher/default.jsp</result>
+				<result name="getCommonTeacherAttandant">teacher/commonTeacherAttandantList.jsp</result>
+				<result name="addCommonTeacherAttandant">teacher/commonTeacherAttandantList.jsp</result>
+				<result name="getOwnCourse">teacher/ownCourseList.jsp</result>
+				<result name="addOwnCourse1">teacher/addOwnCourse.jsp</result>
+				<result name="addOwnCourse2">teacher/ownCourseList.jsp</result>
+				<result name="getCommonTeacherCourseList">teacher/commonTeacherCourseList.jsp</result>
+				<result name="commonTeacherCourseInfo">teacher/commonTeacherCourseInfo.jsp</result>
+				<result name="updateCommonTeacherCoursePrice">teacher/commonTeacherCourseInfo.jsp</result>
+				<result name="updateCommonTeacherCoursePrice_default">teacher/default.jsp</result>
 			</action>
 
 		</package>

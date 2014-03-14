@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		教师证号：<input type="text" name="teacher.teacherNo"/><br/>
    		专业：<input type="text" name="teacher.teacherMajor"/><br/>
    		毕业院校：<input type="text" name="teacher.teacherGraduate"/><br/>
-   		教师等级：<input type="text" name="levelId"/><br/>
+   		教师等级：<input type="text" name="teacherLevel.levelId"/><br/>
    		手机：<input type="text" name="staff.staffPhone"/><br/>
    		QQ：	<input type="text" name="staff.staffQq"/><br/>
    			<input type="submit" value="确定添加"/>

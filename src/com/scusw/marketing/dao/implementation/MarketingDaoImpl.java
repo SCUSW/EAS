@@ -25,6 +25,8 @@ public class MarketingDaoImpl extends HibernateDaoSupport implements MarketingDa
 	 */
 	private static float royaltyRate = 100;
 	
+	
+	
 	/**
 	 * @return the royaltyRate
 	 */
@@ -99,37 +101,25 @@ public class MarketingDaoImpl extends HibernateDaoSupport implements MarketingDa
 	 * @param queryNo 被查询账号
 	 * @return 与该营销人员有关的咨询表的数量
 	 */
-	public int querySalesmanPerformanceByNo(String queryNo){
-		int performance = getHibernateTemplate().find("from ConsultInfo c where c.salesmanInfo.staffInfo.staffNo=?",queryNo).size();
-		updateSalesmanSalary(performance,queryNo);
-		return performance;
+	public int[][] querySalesmanPerformanceByNo(String queryNo){
+		int[][] allPerformance = new int[2][1];
+		allPerformance[0][0] = getHibernateTemplate().find("from ConsultInfo c where c.salesmanInfo.staffInfo.staffNo=?",queryNo).size();
+		allPerformance[1][0] = querySalesmanInfoByNo(queryNo).getStaffId();
+		return allPerformance;
 	}
 	
 	/**
 	 * 方法描述：查询所有营销人员的绩效
 	 * @return 包含所有营销人员效绩的int数组
 	 */
-	public int[] queryAllSalesmanPerformance(List<SalesmanInfo> salesman){
+	public int[][] queryAllSalesmanPerformance(List<SalesmanInfo> salesman){
 		int salesmanNum = salesman.size();
-		int[] allPerformance = new int[salesmanNum];
+		int[][] allPerformance = new int[2][salesmanNum];
 		for(int i = 0; i < salesmanNum; i++){
-			allPerformance[i] = getHibernateTemplate().find("from ConsultInfo c where c.salesmanInfo.staffId=?", salesman.get(i).getStaffId()).size();
-			updateSalesmanSalary(allPerformance[i],salesman.get(i).getStaffId());
+			allPerformance[0][i] = getHibernateTemplate().find("from ConsultInfo c where c.salesmanInfo.staffId=?", salesman.get(i).getStaffId()).size();
+			allPerformance[1][i] = salesman.get(i).getStaffId();
 		}
 		return allPerformance;
-	}
-	
-	/**
-	 * 方法描述：更新营销人员提成工资
-	 * @param performance ：员工绩效 ; queryNo ： 员工账号
-	 */
-	public void updateSalesmanSalary(int performance, String queryNo){
-		float salesmanSalary = royaltyRate * performance;
-		int salesmanId = querySalesmanInfoByNo(queryNo).getStaffId();
-		SalesmanInfo salesman = (SalesmanInfo)this.getHibernateTemplate().get(SalesmanInfo.class,salesmanId);
-		salesman.setSalesmanSalary(salesmanSalary);
-		this.getHibernateTemplate().update(salesman);
-		this.getSession().beginTransaction().commit();
 	}
 	
 	/**
@@ -141,7 +131,6 @@ public class MarketingDaoImpl extends HibernateDaoSupport implements MarketingDa
 		SalesmanInfo salesman = (SalesmanInfo)this.getHibernateTemplate().get(SalesmanInfo.class,salesmanId);
 		salesman.setSalesmanSalary(salesmanSalary);
 		this.getHibernateTemplate().update(salesman);
-		this.getSession().beginTransaction().commit();
 	}
 	
 	/**

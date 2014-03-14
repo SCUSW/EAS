@@ -26,8 +26,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div align="center">
     		<form action="teacherAct!searchOwnCommonTeacher.action" method="post">
     			<h1>查找任课老师</h1><br/>
-    			员工号：<input type="text" name="staffNo"/><br/>
-    			姓名：<input type="text" name="staffName"/><br/>
+    			员工号：<input type="text" name="staff.staffNo"/><br/>
+    			姓名：<input type="text" name="staff.staffName"/><br/>
     			<input type="submit" value="查找"/>&nbsp;&nbsp;<input type="reset" value="重置"/>
     		</form>
     		

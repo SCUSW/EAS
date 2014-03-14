@@ -84,7 +84,7 @@ public class MarketingServiceImpl implements MarketingService {
 	 * 方法描述：通过员工账号查询员工绩效，调用dao层接口
 	 * @return 与该员工有关的咨询表的数量
 	 */
-	public int querySalesmanPerformanceByNo(String queryNo){
+	public int[][] querySalesmanPerformanceByNo(String queryNo){
 		return marketingDao.querySalesmanPerformanceByNo(queryNo);
 		
 	}
@@ -93,7 +93,7 @@ public class MarketingServiceImpl implements MarketingService {
 	 * 方法描述：查询所有员工绩效，调用dao层接口
 	 * @return 所有员工的效绩
 	 */
-	public int[] queryAllSalesmanPerformance(List<SalesmanInfo> salesman){
+	public int[][] queryAllSalesmanPerformance(List<SalesmanInfo> salesman){
 		return marketingDao.queryAllSalesmanPerformance(salesman);
 	}
 	
@@ -102,5 +102,10 @@ public class MarketingServiceImpl implements MarketingService {
 	 */
 	public void setSalesmanRoyaltyRate(float royaltyRate){
 		marketingDao.setSalesmanRoyaltyRate(royaltyRate);
+	}
+	
+	public void updateSalesmanSalary(int[][] allPerformance){
+		for(int i = 0; i < allPerformance[0].length; i++)
+			marketingDao.updateSalesmanSalary(allPerformance[0][i],allPerformance[1][i]);
 	}
 }

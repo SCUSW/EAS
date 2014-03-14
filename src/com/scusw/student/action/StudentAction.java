@@ -1,4 +1,4 @@
-﻿package com.scusw.student.action;
+package com.scusw.student.action;
 
 import java.util.List;
 import java.util.Map;
