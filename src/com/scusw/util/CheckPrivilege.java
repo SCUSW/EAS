@@ -9,6 +9,9 @@ public class CheckPrivilege {
 	public static boolean checkPrivilege(int privilege_id) {
 		Map<String, Object> sessionMap = ActionContext.getContext().getSession();
 		List<Integer> list = (List<Integer>) sessionMap.get("privilege");
-		return list.contains(privilege_id);
+		if(list != null) {
+			return list.contains(privilege_id);
+		}
+		return false;
 	}
 }
