@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'querySalesman.jsp' starting page</title>
+    <title>My JSP 'setSalesmanRoyaltyRate.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,10 +23,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-   	<center> <h1>查询营销人员信息界面</h1><br/>
-   		<form action="marketing!querySalesmanInfoByName.action" method="post">
-   			员工姓名：<input type="text" name="queryName"/><br/>
-   			<input type="submit" value="查询"/>
+  	<center> <h1>设置营销人员提成比例</h1><br/>
+       	<form action="marketing!setSalesmanRoyaltyRate.action" method="post">
+   			提成比例：<input type="text" name="royaltyRate"/><br/>
+   			<input type="submit" value="确定"/>
    		</form>
    	</center>
   </body>

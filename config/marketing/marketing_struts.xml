@@ -8,8 +8,10 @@
 				<result name="addSuccess">/marketing/addSuccess.jsp</result>
 				<result name="addDefault">/marketing/addDefault.jsp</result>
 				<result name="querySuccess">/marketing/querySuccess.jsp</result>
-				<result name="noticeContent">/student/showNoticeContent.jsp</result>
-				<result name="update">/student/updateStudent.jsp</result>
+				<result name="queryDefault">/marketing/queryDefault.jsp</result>
+				<result name="performance">/marketing/performance.jsp</result>
+				<result name="allPerformance">/marketing/allPerformance.jsp</result>
+				<result name="queryPerformance">/marketing/queryPerformance.jsp</result>
 			</action>
 		</package>
 </struts>
