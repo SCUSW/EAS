@@ -26,8 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <center> <h1>添加咨询信息界面</h1><br/>
    		<form action="marketing!addConsultInfo.action" method="post">
-   			<!-- 员工编号：<input type="hidden" name="consultInfo.salesmanInfo.staffId" value=session.staffId/><br/>
-   			员工账号：<input type="hidden" name="consultInfo.salesmanInfo.staffInfo.staffNo" value=session.staffNo/><br/> -->
+   			员工编号：<input type="text" name="consultInfo.salesmanInfo.staffId"/><br/>
    			学生姓名：<input type="text" name="consultInfo.studentName"/><br/>
    			学生性别：<input type="text" name="consultInfo.studentSex"/><br/>
    			学生年龄：<input type="text" name="consultInfo.studentAge"/><br/>

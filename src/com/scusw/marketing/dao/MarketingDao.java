@@ -17,11 +17,6 @@ import com.scusw.model.StudentConsultway;
  */
 public interface MarketingDao {
 	public void addConsultInfo(ConsultInfo consultInfo,StudentConsultway studentConsultway);
-	public boolean checkSalesmanInfo(String staffNo);
-	public SalesmanInfo querySalesmanInfoByNo(String queryNo);
-	public List<SalesmanInfo> querySalesmanInfoByName(String queryName);
-	public List<SalesmanInfo> queryAllSalesmanInfo();
-	public int querySalesmanPerformanceByNo(String queryNo);
-	public int[] queryAllSalesmanPerformance(List<SalesmanInfo> salesman);
-	public void setSalesmanRoyaltyRate(float royaltyRate);
+	public boolean checkSalesmanInfo(int staffId);
+	public List<SalesmanInfo> querySalesmanInfo(String salesmanName);
 }

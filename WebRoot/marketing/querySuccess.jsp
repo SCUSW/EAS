@@ -28,13 +28,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <center> <h1>营销人员信息界面</h1><br/>
     <table border="1">
     	<tr>
-    		<td>编号</td><td>姓名</td><td>性别</td><td>职位</td><td>手机</td><td>QQ</td><td>身份证号</td><td>入职时间</td><td>基本工资</td><td>提成工资</td><td>备注</td>
+    		<td>编号</td><td>姓名</td><td>职位</td><td>手机</td><td>QQ</td><td>身份证号</td><td>入职时间</td><td>基本工资</td><td>提成工资</td><td>备注</td>
     	</tr>
     	<c:forEach items="${salesmanInfo}" var="salesman">
     		<tr> 
-    			<td>${salesman.staffInfo.staffNo}</td>
+    			<td>${salesman.staffId}</td>
     			<td>${salesman.staffInfo.staffName}</td>
-    			<td>${salesman.staffInfo.staffSex}</td>
     			<td>${salesman.staffInfo.positionInfo.vocationName}</td>
     			<td>${salesman.staffInfo.staffPhone}</td>
     			<td>${salesman.staffInfo.staffQq}</td>

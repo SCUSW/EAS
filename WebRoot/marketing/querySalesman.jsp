@@ -24,8 +24,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    	<center> <h1>查询营销人员信息界面</h1><br/>
-   		<form action="marketing!querySalesmanInfoByName.action" method="post">
-   			员工姓名：<input type="text" name="queryName"/><br/>
+   		<form action="marketing!querySalesmanInfo.action" method="post">
+   			员工姓名：<input type="text" name="salesmanName"/><br/>
    			<input type="submit" value="查询"/>
    		</form>
    	</center>

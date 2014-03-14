@@ -21,86 +21,21 @@ import com.scusw.model.StudentConsultway;
 public class MarketingAction {
 	private MarketingService marketingService;
 	private ConsultInfo consultInfo;
-	private String queryName;
-	private String queryNo;
-	private int salesmanPerformance;
-	private int[] allSalesmanPerformance;
+	private String salesmanName;
 	private StudentConsultway studentConsultway;
-	private SalesmanInfo salesmanInfo;
-	private float royaltyRate;
 	private Map<String,Object> request;
 	
 	/**
-	 * @return the royaltyRate
+	 * @return the salesmanName
 	 */
-	public float getRoyaltyRate() {
-		return royaltyRate;
+	public String getSalesmanName() {
+		return salesmanName;
 	}
 	/**
-	 * @param royaltyRate the royaltyRate to set
+	 * @param salesmanName the salesmanName to set
 	 */
-	public void setRoyaltyRate(float royaltyRate) {
-		this.royaltyRate = royaltyRate;
-	}
-	/**
-	 * @return the allSalesmanPerformance
-	 */
-	public int[] getAllSalesmanPerformance() {
-		return allSalesmanPerformance;
-	}
-	/**
-	 * @param allSalesmanPerformance the allSalesmanPerformance to set
-	 */
-	public void setAllSalesmanPerformance(int[] allSalesmanPerformance) {
-		this.allSalesmanPerformance = allSalesmanPerformance;
-	}
-	/**
-	 * @return the queryNo
-	 */
-	public String getQueryNo() {
-		return queryNo;
-	}
-	/**
-	 * @param queryNo the queryNo to set
-	 */
-	public void setQueryNo(String queryNo) {
-		this.queryNo = queryNo;
-	}
-	/**
-	 * @return the salesmanPerformance
-	 */
-	public int getSalesmanPerformance() {
-		return salesmanPerformance;
-	}
-	/**
-	 * @param salesmanPerformance the salesmanPerformance to set
-	 */
-	public void setSalesmanPerformance(int salesmanPerformance) {
-		this.salesmanPerformance = salesmanPerformance;
-	}
-	/**
-	 * @return the queryName
-	 */
-	public String getQueryName() {
-		return queryName;
-	}
-	/**
-	 * @param queryName the queryName to set
-	 */
-	public void setQueryName(String queryName) {
-		this.queryName = queryName;
-	}
-	/**
-	 * @return the salesmanInfo
-	 */
-	public SalesmanInfo getSalesmanInfo() {
-		return salesmanInfo;
-	}
-	/**
-	 * @param salesmanInfo the salesmanInfo to set
-	 */
-	public void setSalesmanInfo(SalesmanInfo salesmanInfo) {
-		this.salesmanInfo = salesmanInfo;
+	public void setSalesmanName(String salesmanName) {
+		this.salesmanName = salesmanName;
 	}
 	/**
 	 * @return the request
@@ -150,14 +85,13 @@ public class MarketingAction {
 	public void setStudentConsultway(StudentConsultway studentConsultway) {
 		this.studentConsultway = studentConsultway;
 	}
-	
 	/**
 	 * 方法描述：检验该员工是否为营销人员，调用service层接口
-	 * @param staffNo ：员工账号
+	 * @param staffId ：员工编号
 	 * @return 是->true；否->false
 	 */
-	public boolean checkSalesmanInfo(String staffNo){
-		return marketingService.checkSalesmanInfo(staffNo);
+	public boolean checkSalesmanInfo(int staffId){
+		return marketingService.checkSalesmanInfo(staffId);
 	}
 	
 	/**
@@ -166,9 +100,9 @@ public class MarketingAction {
 	 * 		   false ："addDefault" ——> addDefault.jsp
 	 */
 	public String addConsultInfo(){
-//		if(checkSalesmanInfo(consultInfo.getSalesmanInfo().getStaffInfo().getStaffNo()) == false)
-//			return "addDefault";
-		boolean flag = marketingService.addConsultInfo(consultInfo,studentConsultway);
+		if(checkSalesmanInfo(consultInfo.getSalesmanInfo().getStaffId()) == false)
+			return "addDefault";
+		boolean flag=marketingService.addConsultInfo(consultInfo,studentConsultway);
 		if(flag){
 			return "addSuccess";
 		}else{
@@ -176,76 +110,26 @@ public class MarketingAction {
 		}
 	}
 	
-	/**
-	 * 方法描述：通过员工账号查询员工信息，调用service层接口
-	 * @param queryNo ：被查询账号
-	 */
-	public void querySalesmanInfoByNo(){
-		salesmanInfo = marketingService.querySalesmanInfoByNo(queryNo);
-	}
-	
-	/**
-	 * 方法描述：查询所有员工的信息，调用service层接口
-	 * @return 查询失败："queryDefault" ——> addDefault.jsp
-	 * 		     查询成功：null
-	 */
-	public List<SalesmanInfo> queryAllSalesmanInfo(){
-		List<SalesmanInfo> salesman = marketingService.queryAllSalesmanInfo();
-		request=(Map)ActionContext.getContext().get("request");
-		request.put("salesmanInfo",salesman);
-		return salesman;
+	public void writeWorkLog(){
+		
 	}
 	
 	/**
 	 * 方法描述：通过姓名查询营销人员信息，调用service层接口
-	 * @param queryName ：被查询姓名
-	 * @return ：查询成功："queryDefault" ——> addDefault.jsp
-	 * 			  查询失败："queryDefault" ——> queryDefault.jsp
+	 * @param salesmanName ：被查询姓名
+	 * @return ：符合该姓名的所有营销人员的集合
 	 */
-	public String querySalesmanInfoByName(){
-		List<SalesmanInfo> salesman = marketingService.querySalesmanInfoByName(queryName);
-		if(salesman.size() == 0)
-			return "queryDefault";
+	public String querySalesmanInfo(){
+		System.out.println(salesmanName);
+		List<SalesmanInfo> salesman=marketingService.querySalesmanInfo(salesmanName);
 		request=(Map)ActionContext.getContext().get("request");
 		request.put("salesmanInfo",salesman);
 		return "querySuccess";
 	}
-	
-	/**
-	 * 方法描述：通过员工账号查询员工绩效，调用service层接口
-	 * @return "queryDefault" ——> queryDefault.jsp
-	 * 			"performance" ——> performance.jsp
-	 * @throws InterruptedException 
-	 */
-	public String querySalesmanPerformanceByNo(){
-		if (!checkSalesmanInfo(queryNo))
-			return "queryDefault";
-		salesmanPerformance = marketingService.querySalesmanPerformanceByNo(queryNo);
-		querySalesmanInfoByNo();
-		return "performance";
+	public void setMarketerSalary(){
+		
 	}
-	
-	/**
-	 * 方法描述：查询所有营销人员的绩效，调用service层接口
-	 * @return
-	 */
-	public String queryAllSalesmanPerformance(){
-		List<SalesmanInfo> salesman = queryAllSalesmanInfo();
-		allSalesmanPerformance = marketingService.queryAllSalesmanPerformance(salesman);
-		salesman = queryAllSalesmanInfo();
-		return "allPerformance";
-	}
-	
-	/**
-	 * 方法描述：设置营销人员提成方式，调用service层接口
-	 * @return "queryPerformance" ——> queryPerformance.jsp
-	 */
-	public String setSalesmanRoyaltyRate(){
-		marketingService.setSalesmanRoyaltyRate(royaltyRate);
-		return "queryPerformance";
-	}
-	
-	public void writeWorkLog(){
+	public void setSalaryCalculation(){
 		
 	}
 }
