@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'querySuccess.jsp' starting page</title>
+    <title>My JSP 'allPerformance.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -25,27 +25,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <center> <h1>营销人员信息界面</h1><br/>
+    <center> <h1>所有营销人员绩效界面</h1><br/>
     <table border="1">
     	<tr>
-    		<td>编号</td><td>姓名</td><td>性别</td><td>职位</td><td>手机</td><td>QQ</td><td>身份证号</td><td>入职时间</td><td>基本工资</td><td>提成工资</td><td>备注</td>
+    		<td>编号</td><td>姓名</td><td>性别</td><td>职位</td><td>基本工资</td><td>员工绩效</td><td>提成工资</td>
     	</tr>
-    	<c:forEach items="${salesmanInfo}" var="salesman">
+    	<c:forEach items="${salesmanInfo}" var="salesman" varStatus="s"> 
     		<tr> 
     			<td>${salesman.staffInfo.staffNo}</td>
     			<td>${salesman.staffInfo.staffName}</td>
     			<td>${salesman.staffInfo.staffSex}</td>
     			<td>${salesman.staffInfo.positionInfo.vocationName}</td>
-    			<td>${salesman.staffInfo.staffPhone}</td>
-    			<td>${salesman.staffInfo.staffQq}</td>
-    			<td>${salesman.staffInfo.staffIdcard}</td>
-    			<td>${salesman.staffInfo.staffEmplTime}</td>
     			<td>${salesman.staffInfo.positionInfo.wageBase}</td>
+    			<td>${allSalesmanPerformance[s.count-1]}</td>
     			<td>${salesman.salesmanSalary}</td>
-    			<td>${salesman.staffsmanRemark}</td>
     		</tr>
     	</c:forEach>
     </table>
+
     </center>
   </body>
 </html>

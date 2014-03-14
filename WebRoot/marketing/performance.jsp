@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'querySalesman.jsp' starting page</title>
+    <title>My JSP 'performance.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,11 +23,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-   	<center> <h1>查询营销人员信息界面</h1><br/>
-   		<form action="marketing!querySalesmanInfoByName.action" method="post">
-   			员工姓名：<input type="text" name="queryName"/><br/>
-   			<input type="submit" value="查询"/>
-   		</form>
-   	</center>
+    <center> <h1>营销人员绩效界面</h1><br/>
+    <table border="1">
+    	<tr>
+    		<td>编号</td><td>姓名</td><td>性别</td><td>职位</td><td>基本工资</td><td>员工效绩</td><td>提成工资</td>
+    	</tr>
+    		<tr> 
+    			<td>${salesmanInfo.staffInfo.staffNo}</td>
+    			<td>${salesmanInfo.staffInfo.staffName}</td>
+    			<td>${salesmanInfo.staffInfo.staffSex}</td>
+    			<td>${salesmanInfo.staffInfo.positionInfo.vocationName}</td>
+    			<td>${salesmanInfo.staffInfo.positionInfo.wageBase}</td>
+    			<td>${salesmanPerformance}</td>
+    			<td>${salesmanInfo.salesmanSalary}</td>
+    		</tr>
+    </table>
+    </center>
   </body>
 </html>
