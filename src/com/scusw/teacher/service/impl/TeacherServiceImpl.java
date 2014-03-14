@@ -5,8 +5,10 @@ import java.util.List;
 
 import com.scusw.model.CourseInfo;
 import com.scusw.model.GroupInfo;
+import com.scusw.model.MajorInfo;
 import com.scusw.model.PositionInfo;
 import com.scusw.model.RegisterInfo;
+import com.scusw.model.StaffAttandant;
 import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
@@ -41,12 +43,12 @@ public class TeacherServiceImpl implements TeacherService{
 	/**
 	 * 更新老师个人信息
 	 */
-	public void updateTeacher(StaffInfo staff) {
+	public void updateTeacherStaff(StaffInfo staff) {
 		StaffInfo ss=this.getOwnTeacherInfo(staff.getStaffId()).getStaffInfo();
 		ss.setStaffPhone(staff.getStaffPhone());
 		ss.setStaffQq(staff.getStaffQq());
 		ss.setStaffPass(MD5Util.MD5(staff.getStaffPass()));
-		teacherDao.updateTeacher(ss);
+		teacherDao.updateTeacherStaff(ss);
 	}
 
 	/**
@@ -151,12 +153,26 @@ public class TeacherServiceImpl implements TeacherService{
 		staff.setStaffAvai((int)1);
 		staff.setStaffOthers("其它信息");
 
-		teacher.setTeacherSalary((float)0);
+		float teacherSalary=staff.getPositionInfo().getWageBase();
+		
+		teacher.setTeacherSalary(teacherSalary);
 		teacher.setTeacherType((int)0);
 		teacher.setTeacherRemark("备注信息");
 		teacher.setTeacherLevel(this.getTeacherLevelById(levelId));
 
+		if((StaffInfo)teacherDao.queryStaffByNo(staff.getStaffNo())!=null){
+			return false;
+		}
+			
 		
+		if((StaffInfo)teacherDao.queryStaffByIdcard(staff.getStaffIdcard())!=null){
+			return false;
+		}
+		
+		if((TeacherInfo)teacherDao.queryTeacherByNo(teacher.getTeacherNo())!=null){
+			return false;
+		}
+
 		try {
 			teacherDao.addStaff(staff);
 			teacher.setStaffInfo(teacherDao.queryStaffByNo(staff.getStaffNo()));
@@ -171,5 +187,49 @@ public class TeacherServiceImpl implements TeacherService{
 
 	public TeacherLevel getTeacherLevelById(int levelId) {
 		return teacherDao.queryTeacherLevelById(levelId);
+	}
+	
+	public List getCommonTeacherAttandantByStaffId(Integer staffId){
+		return teacherDao.queryStaffAttandantByStaffId(staffId);
+	}
+	
+	public boolean addStaffAttandant(StaffAttandant staffAttandant){
+		try {
+			teacherDao.addStaffAttandant(staffAttandant);
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+		return true;
+	}
+	
+	public List searchOwnCourseByStaffId(int staffId){
+		return teacherDao.queryCourseByStaffId(staffId);
+	}
+	
+	public List searchMajor(){
+		return teacherDao.queryAllMajor();
+	}
+	
+	public boolean addOwnCourse(CourseInfo course){
+		try{
+			teacherDao.addCourse(course);
+			return true;
+		}catch(Exception e){
+			System.out.println(e);
+			return false;
+		}
+	}
+	
+	public MajorInfo getMajorById(Integer majorId){
+		return teacherDao.queryMajorById(majorId);
+	}
+	
+	public void updateCourse(CourseInfo course){
+		teacherDao.updateCourse(course);
+	}
+	
+	public void updateTeacher(TeacherInfo teacher){
+		teacherDao.updateTeacher(teacher);
 	}
 }

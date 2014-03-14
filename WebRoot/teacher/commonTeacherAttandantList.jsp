@@ -26,18 +26,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<center>
     			<table border="1">
     				<tr>
-    					<td>课程</td><td>学号</td><td>姓名</td><td>时间</td>
+    					<td>账号</td><td>姓名</td><td>时间</td>
     				</tr>
-    				<c:forEach items="${studentAttendants}" var="s">
+    				<c:forEach items="${commonTeacherAttandants}" var="t">
     				<tr> 
-    					<td>${s.registerInfo.courseInfo.courseName}</td>
-    					<td>${s.registerInfo.studentInfo.studentNo}</td>
-    					<td>${s.registerInfo.studentInfo.studentName}</td>
-    					<td>${s.attendantTime}</td>
+    					<td>${t.staffInfo.staffNo}</td>
+    					<td>${t.staffInfo.staffName}</td>
+    					<td>${t.attendantTime}</td>
     				</tr>
     				</c:forEach>
     			</table>
-    			<a href="teacherAct!addStudentAttendant.action?register.registerId=${register.registerId}">增加</a>
+    			<a href="teacherAct!addCommonTeacherAttandant.action?staff.staffId=${staff.staffId}">增加</a>
     	</center>
   </body>
 </html>

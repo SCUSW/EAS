@@ -4,8 +4,10 @@ import java.util.List;
 
 import com.scusw.model.CourseInfo;
 import com.scusw.model.GroupInfo;
+import com.scusw.model.MajorInfo;
 import com.scusw.model.PositionInfo;
 import com.scusw.model.RegisterInfo;
+import com.scusw.model.StaffAttandant;
 import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentAttendant;
 import com.scusw.model.StudentInfo;
@@ -15,7 +17,7 @@ import com.scusw.model.TeacherLevel;
 public interface TeacherDao {
 	public TeacherInfo queryByTeacehrId(int staffIdS);
 	
-	public void updateTeacher(StaffInfo staff);
+	public void updateTeacherStaff(StaffInfo staff);
 
 	public List<StudentInfo> searchStudentByNo(String studentNo);
 
@@ -66,4 +68,24 @@ public interface TeacherDao {
 	public void addStaff(StaffInfo staff);
 
 	public StaffInfo queryStaffByNo(String staffNo);
+
+	public TeacherInfo queryTeacherByNo(String teacherNo);
+
+	public StaffInfo queryStaffByIdcard(String staffIdcard);
+
+	public List queryStaffAttandantByStaffId(Integer staffId);
+
+	public void addStaffAttandant(StaffAttandant staffAttandant);
+
+	public List queryCourseByStaffId(int staffId);
+
+	public List queryAllMajor();
+
+	public void addCourse(CourseInfo course);
+
+	public MajorInfo queryMajorById(Integer majorId);
+
+	public void updateCourse(CourseInfo course);
+
+	public void updateTeacher(TeacherInfo teacher);
 }

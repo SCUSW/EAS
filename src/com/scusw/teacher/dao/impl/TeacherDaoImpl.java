@@ -6,8 +6,10 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.scusw.model.CourseInfo;
 import com.scusw.model.GroupInfo;
+import com.scusw.model.MajorInfo;
 import com.scusw.model.PositionInfo;
 import com.scusw.model.RegisterInfo;
+import com.scusw.model.StaffAttandant;
 import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
@@ -26,7 +28,7 @@ public class TeacherDaoImpl extends HibernateDaoSupport implements TeacherDao {
 		return t;
 	}
 
-	public void updateTeacher(StaffInfo staff){
+	public void updateTeacherStaff(StaffInfo staff){
 		this.getHibernateTemplate().update(staff);
 	}
 	
@@ -207,5 +209,62 @@ public class TeacherDaoImpl extends HibernateDaoSupport implements TeacherDao {
 		q.setParameter("staffNo", staffNo);
 		StaffInfo staff=(StaffInfo) q.uniqueResult();
 		return staff;
+	}
+	
+	public TeacherInfo queryTeacherByNo(String teacherNo){
+		Query q=this.getSession().createQuery("from TeacherInfo t where t.teacherNo=:teacherNo");
+		q.setParameter("teacherNo", teacherNo);
+		TeacherInfo teacher=(TeacherInfo) q.uniqueResult();
+		return teacher;
+	}
+	
+	public StaffInfo queryStaffByIdcard(String staffIdcard){
+		Query q=this.getSession().createQuery("from StaffInfo s where s.staffIdcard=:staffIdcard");
+		q.setParameter("staffIdcard", staffIdcard);
+		StaffInfo staff=(StaffInfo) q.uniqueResult();
+		return staff;
+	}
+	
+	public List queryStaffAttandantByStaffId(Integer staffId){
+		Query q=this.getSession().createQuery("from StaffAttandant s where s.staffInfo.staffId=:staffId");
+		q.setParameter("staffId", staffId);
+		List staffAttandants=q.list();
+		return  staffAttandants;
+	}
+	
+	public void addStaffAttandant(StaffAttandant staffAttandant){
+		this.getHibernateTemplate().save(staffAttandant);
+	}
+	
+	public List queryCourseByStaffId(int staffId){
+		Query q=this.getSession().createQuery("from CourseInfo c where c.teacherInfo.staffId=:staffId");
+		q.setParameter("staffId", staffId);
+		List courses=q.list();
+		return courses;
+	}
+	
+	public List queryAllMajor(){
+		Query q=this.getSession().createQuery("from MajorInfo m");
+		List majors=q.list();
+		return majors;
+	}
+	
+	public void addCourse(CourseInfo course){
+		this.getHibernateTemplate().save(course);
+	}
+	
+	public MajorInfo queryMajorById(Integer majorId){
+		Query q=this.getSession().createQuery("from MajorInfo m where m.majorId=:majorId");
+		q.setParameter("majorId", majorId);
+		MajorInfo major=(MajorInfo) q.uniqueResult();
+		return major;
+	}
+	
+	public void updateCourse(CourseInfo course){
+		this.getHibernateTemplate().update(course);
+	}
+	
+	public void updateTeacher(TeacherInfo teacher){
+		this.getHibernateTemplate().update(teacher);
 	}
 }

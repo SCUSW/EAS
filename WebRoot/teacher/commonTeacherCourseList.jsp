@@ -24,12 +24,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <div align="center">
-    		<form action="teacherAct!searchStudent.action" method="post">
-    			<h1>查找学生</h1><br/>
-    			学号：<input type="text" name="student.studentNo"/><br/>
-    			姓名：<input type="text" name="student.studentName"/><br/>
-    			<input type="submit" value="查找"/>&nbsp;&nbsp;<input type="reset" value="重置"/>
-    		</form>
+    		<center>
+    			<table border="1">
+    				<tr>
+    					<td>专业编号</td><td>专业名称</td><td>课程编号</td><td>课程名称</td><td>价格</td><td>操作</td>
+    				</tr>
+    				<c:forEach items="${courses}" var="c">
+    				<tr> 
+    					<td>${c.majorInfo.majorId}</td>
+    					<td>${c.majorInfo.majorName}</td>
+    					<td>${c.courseId}</td>
+    					<td>${c.courseName}</td>
+    					<td>${c.coursePrice}</td>
+    					<td><a href="teacherAct!commonTeacherCourseInfo?course.courseId=${c.courseId }">查看</a></td>
+    				</tr>
+    				</c:forEach>
+    			</table>
+    	</center>
     </div>
   </body>
 </html>

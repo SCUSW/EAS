@@ -4,8 +4,10 @@ import java.util.List;
 
 import com.scusw.model.CourseInfo;
 import com.scusw.model.GroupInfo;
+import com.scusw.model.MajorInfo;
 import com.scusw.model.PositionInfo;
 import com.scusw.model.RegisterInfo;
+import com.scusw.model.StaffAttandant;
 import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentAttendant;
 import com.scusw.model.StudentInfo;
@@ -16,7 +18,7 @@ public interface TeacherService {
 
 	public TeacherInfo getOwnTeacherInfo(int staffId);
 	
-	public void updateTeacher(StaffInfo staff);
+	public void updateTeacherStaff(StaffInfo staff);
 
 	public List<StudentInfo> searchStudentByNo(String studentNo);
 
@@ -60,6 +62,22 @@ public interface TeacherService {
 
 	public boolean addCommonTeacher(TeacherInfo teacher, int levelId, StaffInfo staff);
 	
-	public TeacherLevel getTeacherLevelById(int levelId); 
+	public TeacherLevel getTeacherLevelById(int levelId);
+
+	public List getCommonTeacherAttandantByStaffId(Integer staffId);
+
+	public boolean addStaffAttandant(StaffAttandant staffAttandant);
+
+	public List searchOwnCourseByStaffId(int staffId);
+
+	public List searchMajor();
+
+	public boolean addOwnCourse(CourseInfo course);
+
+	public MajorInfo getMajorById(Integer majorId);
+
+	public void updateCourse(CourseInfo course);
+
+	public void updateTeacher(TeacherInfo teacher); 
 
 }
