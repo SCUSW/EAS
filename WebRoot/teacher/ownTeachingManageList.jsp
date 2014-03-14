@@ -4,12 +4,12 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'userlogin.jsp' starting page</title>
+    <title>My JSP 'commonTeacherList.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -19,30 +19,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	
   </head>
   
   <body>
-    <div align="center">
-    		<center>
+    	<center>
     			<table border="1">
     				<tr>
-    					<td>专业编号</td><td>专业名称</td><td>课程编号</td><td>课程名称</td><td>价格</td><td colspan="2">操作</td>
+    					<td>时间</td><td>审核状态</td><td>操作</td>
     				</tr>
-    				<c:forEach items="${courses}" var="c">
+    				<c:forEach items="${ownTeachingManageInfos}" var="t">
     				<tr> 
-    					<td>${c.majorInfo.majorId}</td>
-    					<td>${c.majorInfo.majorName}</td>
-    					<td>${c.courseId}</td>
-    					<td>${c.courseName}</td>
-    					<td>${c.coursePrice}</td>
-    					<td><a href="teacherAct!ownCourseInfo.action?course.courseId=${c.courseId}">查看</a></td>
-    					<td><a href="teacherAct!searchOwnStudent.action?course.courseId=${c.courseId}">学生</a></td>
+    					<td>${t.setTime}</td>
+    					<td>${t.examState}</td>
+    					<td><a href="teacherAct!getOwnCommonTeacherInfo.action">下载</a></td>
     				</tr>
     				</c:forEach>
     			</table>
-    			<a href="teacherAct!addOwnCourse1">增设课程</a>
+    			<a href="teacherAct!addCommonTeacher1">增加任课教师</a>
     	</center>
-    </div>
   </body>
 </html>

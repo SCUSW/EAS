@@ -88,4 +88,6 @@ public interface TeacherDao {
 	public void updateCourse(CourseInfo course);
 
 	public void updateTeacher(TeacherInfo teacher);
+
+	public List queryOwnTeachingManageByCourseId(Integer courseId);
 }

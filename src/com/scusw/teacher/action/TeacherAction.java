@@ -371,4 +371,18 @@ public class TeacherAction {
 		this.commonTeacherCourseInfo();
 		return "updateCommonTeacherCoursePrice";
 	}
+	
+	public String ownCourseInfo(){
+		course=teacherService.getCourseById(course.getCourseId());
+		return "ownCourseInfo";
+	}
+	
+	public String getOwnTeachingManageList(){
+		request=(Map)ActionContext.getContext().get("request");
+		
+		List list=teacherService.searchOwnTeachingManageByCourseId(course.getCourseId());
+		request.put("ownTeachingManageInfos",list);
+		
+		return "getOwnTeachingManageList";
+	}
 }

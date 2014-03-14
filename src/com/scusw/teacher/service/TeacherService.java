@@ -78,6 +78,8 @@ public interface TeacherService {
 
 	public void updateCourse(CourseInfo course);
 
-	public void updateTeacher(TeacherInfo teacher); 
+	public void updateTeacher(TeacherInfo teacher);
+
+	public List searchOwnTeachingManageByCourseId(Integer courseId); 
 
 }

@@ -32,6 +32,8 @@
 				<result name="commonTeacherCourseInfo">teacher/commonTeacherCourseInfo.jsp</result>
 				<result name="updateCommonTeacherCoursePrice">teacher/commonTeacherCourseInfo.jsp</result>
 				<result name="updateCommonTeacherCoursePrice_default">teacher/default.jsp</result>
+				<result name="ownCourseInfo">teacher/ownCourseInfo.jsp</result>
+				<result name="getOwnTeachingManageList">teacher/ownTeachingManageList.jsp</result>
 			</action>
 
 		</package>

@@ -232,4 +232,8 @@ public class TeacherServiceImpl implements TeacherService{
 	public void updateTeacher(TeacherInfo teacher){
 		teacherDao.updateTeacher(teacher);
 	}
+	
+	public List searchOwnTeachingManageByCourseId(Integer courseId){
+		return teacherDao.queryOwnTeachingManageByCourseId(courseId);
+	}
 }

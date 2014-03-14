@@ -267,4 +267,11 @@ public class TeacherDaoImpl extends HibernateDaoSupport implements TeacherDao {
 	public void updateTeacher(TeacherInfo teacher){
 		this.getHibernateTemplate().update(teacher);
 	}
+	
+	public List queryOwnTeachingManageByCourseId(Integer courseId){
+		Query q=this.getSession().createQuery("from TeachingManageInfo t where t.courseInfo.courseId=:courseId");
+		q.setParameter("courseId", courseId);
+		List teachingManageInfos=q.list();
+		return teachingManageInfos;
+	}
 }
