@@ -4,7 +4,6 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -74,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			<input onclick="window.location.href('<%=basePath %>staffFinanceAction!payStaff.action?staffFees.sfeesNum=<%=totalSalary %>&staffFees.staffInfo.staffId=<%=s.getStaffId() %>')" type="button" value="支付工资"/>
    			<input onclick="window.location.href('<%=basePath %>staffFinanceAction!checkHistoryById.action?staffFees.staffInfo.staffId=<%=s.getStaffId() %>')" type="button" value="历史纪录"/>
    			</td>
-   			<td>&nbsp;</td>
+   			<td>${test }</td>
    			</tr>
    			<%
    		}
