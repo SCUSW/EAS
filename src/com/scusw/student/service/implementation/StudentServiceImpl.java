@@ -65,6 +65,10 @@ public class StudentServiceImpl implements StudentService {
 		return studentDao.noticeInfoQuery();
 	}
 
+	public String queryNoticeContent(int noticeId){
+		return studentDao.queryNoticeContent(noticeId);
+	}
+	
 	/**
 	 * 方法描述：学生查询专业信息，调用Dao层接口
 	 * @param majorName：专业名

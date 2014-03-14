@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     					<td>${s.classInfo.className}</td>
     					<td>${s.studentNo}</td>
     					<td>${s.studentName}</td>
-    					<td><a href="teacherAct!getOwnStudentInfo.action?studentNo=${s.studentNo}&courseId=${courseId}">查看</a></td>
+    					<td><a href="teacherAct!getOwnStudentInfo.action?student.studentNo=${s.studentNo}&course.courseId=${course.courseId}">查看</a></td>
     				</tr>
     				</c:forEach>
     			</table>

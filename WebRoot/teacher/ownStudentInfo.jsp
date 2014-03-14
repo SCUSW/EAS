@@ -40,12 +40,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	入校时间：${student.attendTime}<br>
  	<br>
  	 <form action="teacherAct!updateStudentCourseScore.action" method="post">  		
- 	 <input type="hidden" name="registerId" value="${register.registerId}"/>
- 	 <input type="hidden" name="studentNo" value="${student.studentNo}"/>
- 	 <input type="hidden" name="courseId" value="${course.courseId}"/>	
-   	 评分：<input type="text" name="studentCourseScore"/><br/>
+ 	 <input type="hidden" name="register.registerId" value="${register.registerId}"/>
+ 	 <input type="hidden" name="student.studentNo" value="${student.studentNo}"/>
+ 	 <input type="hidden" name="course.courseId" value="${course.courseId}"/>	
+   	 评分：<input type="text" name="register.studentCourseScore"/><br/>
     <input type="submit" value="提交"/>
     		</form>
-    <a href="teacherAct!getStudentAttendant.action?registerId=${register.registerId}">考勤情况</a> 
+    <a href="teacherAct!getStudentAttendant.action?register.registerId=${register.registerId}">考勤情况</a> 
   </body>
 </html>

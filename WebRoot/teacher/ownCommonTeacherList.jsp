@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				<tr> 
     					<td>${t.staffInfo.staffNo}</td>
     					<td>${t.staffInfo.staffName}</td>
-    					<td><a href="teacherAct!getOwnCommonTeacherInfo.action?staffId=${t.staffInfo.staffId}">查看</a></td>
+    					<td><a href="teacherAct!getOwnCommonTeacherInfo.action?staff.staffId=${t.staffInfo.staffId}">查看</a></td>
     				</tr>
     				</c:forEach>
     			</table>

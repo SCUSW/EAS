@@ -37,6 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	QQ：${teacher.staffInfo.staffQq}<br>
  	聘用时间：${teacher.staffInfo.staffEmplTime}<br>
  	<br>
- 	<a href="teacherAct!updateOwnTeacherInfo1.action">教师考勤</a>
+ 	<a href="teacherAct!getCommonTeacherAttandant.action?staff.staffId=${teacher.staffId}">教师考勤</a>
+ 	<a href="teacherAct!getCommonTeacherCourseList.action?staff.staffId=${teacher.staffId}">开设课程</a>
   </body>
 </html>

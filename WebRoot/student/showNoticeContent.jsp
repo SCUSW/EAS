@@ -30,6 +30,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    ${noticeContent}<br>
+    ${noticeContent }<br>
   </body>
 </html>

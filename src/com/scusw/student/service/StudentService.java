@@ -18,4 +18,5 @@ public interface StudentService {
 	public MajorInfo apply(StudentInfo student);
 	public List<NoticeInfo> noticeInfoQuery();
 	public MajorInfo majorInfoQuery(String studentNo);
+	public String queryNoticeContent(int noticeId);
 }

@@ -65,6 +65,17 @@ public class StudentDaoImpl extends HibernateDaoSupport implements StudentDao {
 	}
 	
 	/**
+	 * 方法描述：通过公告ID查看公告内容
+	 * @param noticeId 公告ID
+	 * @return 公告内容
+	 */
+	public String queryNoticeContent(int noticeId){
+		Query q = this.getSession().createQuery("from NoticeInfo n where n.noticeId=:noticeId");
+		q.setParameter("noticeId", noticeId);
+		NoticeInfo notice = (NoticeInfo) q.uniqueResult();
+		return notice.getNoticeContent();
+	}
+	/**
 	 * 方法描述：学生查询专业信息
 	 * @param majorName：专业名
 	 * @return major：包含专业信息的实体

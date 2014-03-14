@@ -8,11 +8,14 @@ import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.scusw.model.CourseInfo;
+import com.scusw.model.MajorInfo;
 import com.scusw.model.RegisterInfo;
+import com.scusw.model.StaffAttandant;
 import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
 import com.scusw.model.StudentAttendant;
+import com.scusw.model.TeacherLevel;
 import com.scusw.teacher.service.TeacherService;
 import com.scusw.util.MD5Util;
 
@@ -24,18 +27,11 @@ public class TeacherAction {
 	private CourseInfo course;
 	private RegisterInfo register;
 	private StudentAttendant studentAttendantInfo;
+	private MajorInfo major;
+	private TeacherLevel teacherLevel;
 	private Map<String,Object> request;
 	private Map<String, Object> session;
 	
-	private String studentName;
-	private String studentNo;
-	private int courseId;
-	private int registerId;
-	private float studentCourseScore;
-	private String staffNo;
-	private String staffName;
-	private int staffId;
-	private int levelId;
 	
 	public StaffInfo getStaff() {
 		return staff;
@@ -61,29 +57,11 @@ public class TeacherAction {
 	public void setRequest(Map<String, Object> request) {
 		this.request = request;
 	}
-	public void setStudentName(String studentName) {
-		this.studentName = studentName;
-	}
-	public String getStudentName() {
-		return studentName;
-	}
-	public void setStudentNo(String studentNo) {
-		this.studentNo = studentNo;
-	}
-	public String getStudentNo() {
-		return studentNo;
-	}
 	public void setStudent(StudentInfo student) {
 		this.student = student;
 	}
 	public StudentInfo getStudent() {
 		return student;
-	}
-	public int getCourseId() {
-		return courseId;
-	}
-	public void setCourseId(int courseId) {
-		this.courseId = courseId;
 	}
 	public void setCourse(CourseInfo course) {
 		this.course = course;
@@ -97,47 +75,23 @@ public class TeacherAction {
 	public RegisterInfo getRegister() {
 		return register;
 	}
-	public void setRegisterId(int registerId) {
-		this.registerId = registerId;
-	}
-	public int getRegisterId() {
-		return registerId;
-	}
-	public void setStudentCourseScore(float studentCourseScore) {
-		this.studentCourseScore = studentCourseScore;
-	}
-	public float getStudentCourseScore() {
-		return studentCourseScore;
-	}
 	public void setStudentAttendantInfo(StudentAttendant studentAttendantInfo) {
 		this.studentAttendantInfo = studentAttendantInfo;
 	}
 	public StudentAttendant getStudentAttendantInfo() {
 		return studentAttendantInfo;
 	}
-	public void setStaffNo(String staffNo) {
-		this.staffNo = staffNo;
+	public void setMajor(MajorInfo major) {
+		this.major = major;
 	}
-	public String getStaffNo() {
-		return staffNo;
+	public MajorInfo getMajor() {
+		return major;
 	}
-	public void setStaffName(String staffName) {
-		this.staffName = staffName;
+	public TeacherLevel getTeacherLevel() {
+		return teacherLevel;
 	}
-	public String getStaffName() {
-		return staffName;
-	}
-	public int getStaffId() {
-		return staffId;
-	}
-	public void setStaffId(int staffId) {
-		this.staffId = staffId;
-	}
-	public void setLevelId(int levelId) {
-		this.levelId = levelId;
-	}
-	public int getLevelId() {
-		return levelId;
+	public void setTeacherLevel(TeacherLevel teacherLevel) {
+		this.teacherLevel = teacherLevel;
 	}
 	
 	
@@ -160,7 +114,7 @@ public class TeacherAction {
 	
 	//接收需要更新的信息并更新
 	public String updateOwnTeacherInfo2(){		
-		teacherService.updateTeacher(staff);
+		teacherService.updateTeacherStaff(staff);
 		
 		session = ActionContext.getContext().getSession();
 		int staffId = (Integer) session.get("staffId");
@@ -172,11 +126,11 @@ public class TeacherAction {
 	public String searchStudent(){
 		request=(Map)ActionContext.getContext().get("request");
 		
-		if(!studentNo.equals("")){
-			List list=teacherService.searchStudentByNo(studentNo);
+		if(!student.getStudentNo().equals("")){
+			List list=teacherService.searchStudentByNo(student.getStudentNo());
 			request.put("students",list);
-		}else if(!studentName.equals("")){
-			List list=teacherService.searchStudentByName(studentName);
+		}else if(!student.getStudentName().equals("")){
+			List list=teacherService.searchStudentByName(student.getStudentName());
 			request.put("students",list);
 		}else{
 			List list=teacherService.searchStudentAll();
@@ -186,7 +140,7 @@ public class TeacherAction {
 	}
 	
 	public String getStudentInfo(){
-		student=teacherService.getStudentInfo(studentNo);
+		student=teacherService.getStudentInfo(student.getStudentNo());
 		return "getStudentInfo";
 	}
 	
@@ -205,21 +159,21 @@ public class TeacherAction {
 	public String searchOwnStudent(){
 		request=(Map)ActionContext.getContext().get("request");
 		
-		List list=teacherService.searchStudentByCourseId(courseId);
+		List list=teacherService.searchStudentByCourseId(course.getCourseId());
 		request.put("students",list);
 		
 		return "searchOwnStudent";
 	}
 	
 	public String getOwnStudentInfo(){
-		student=teacherService.getStudentInfo(studentNo);
-		course=teacherService.getCourseById(courseId);
-		register=teacherService.getRegisterByStudentIdCourseId(student.getStudentId(),courseId);
+		student=teacherService.getStudentInfo(student.getStudentNo());
+		course=teacherService.getCourseById(course.getCourseId());
+		register=teacherService.getRegisterByStudentIdCourseId(student.getStudentId(),course.getCourseId());
 		return "getOwnStudentInfo";
 	}
 	
 	public String updateStudentCourseScore(){
-		teacherService.updateStudentCourseScore(registerId, studentCourseScore);
+		teacherService.updateStudentCourseScore(register.getRegisterId(), register.getStudentCourseScore());
 		this.getOwnStudentInfo();
 		return "updateStudentCourseScore";
 	}
@@ -227,7 +181,7 @@ public class TeacherAction {
 	public String getStudentAttendant(){
 		request=(Map)ActionContext.getContext().get("request");
 		
-		List list=teacherService.getStudentAttendant(registerId);
+		List list=teacherService.getStudentAttendant(register.getRegisterId());
 		request.put("studentAttendants",list);
 		
 		return "getStudentAttendant";
@@ -235,8 +189,7 @@ public class TeacherAction {
 	
 	public String addStudentAttendant(){
 		StudentAttendant studentAttendant = new StudentAttendant();
-		RegisterInfo register=null;
-		register=teacherService.getRegisterById(registerId);
+		register=teacherService.getRegisterById(register.getRegisterId());
 		studentAttendant.setAttendantRemark("");
 		studentAttendant.setRegisterInfo(register);
 		
@@ -282,11 +235,11 @@ public class TeacherAction {
 		session = ActionContext.getContext().getSession();
 		int staffId = (Integer) session.get("staffId");
 		
-		if(!staffNo.equals("")){
-			List list=teacherService.getOwnCommonTeacherByStaffNo(staffId,staffNo);
+		if(!staff.getStaffNo().equals("")){
+			List list=teacherService.getOwnCommonTeacherByStaffNo(staffId,staff.getStaffNo());
 			request.put("ownCommonTeachers",list);
-		}else if(!staffName.equals("")){
-			List list=teacherService.getOwnCommonTeacherByStaffName(staffId,staffName);
+		}else if(!staff.getStaffName().equals("")){
+			List list=teacherService.getOwnCommonTeacherByStaffName(staffId,staff.getStaffName());
 			request.put("ownCommonTeachers",list);
 		}else{
 			List list=teacherService.getOwnCommonTeacher(staffId);
@@ -296,7 +249,7 @@ public class TeacherAction {
 	}
 	
 	public String getOwnCommonTeacherInfo(){
-		teacher=teacherService.getOwnTeacherInfo(staffId);
+		teacher=teacherService.getOwnTeacherInfo(staff.getStaffId());
 		return "getOwnCommonTeacherInfo";
 	}
 
@@ -310,13 +263,112 @@ public class TeacherAction {
 	}
 	
 	public String addCommonTeacher2(){
-		
-		boolean flag=teacherService.addCommonTeacher(teacher, levelId, staff);
+		boolean flag=teacherService.addCommonTeacher(teacher, teacherLevel.getLevelId(), staff);
 		if(flag){
 			return "addCommonTeacher2";
 		}else{
 			return "addCommonTeacher2_default";
 		}
 	}
+	
+	public String getCommonTeacherAttandant(){
+		request=(Map)ActionContext.getContext().get("request");
+		
+		List list=teacherService.getCommonTeacherAttandantByStaffId(staff.getStaffId());
+		request.put("commonTeacherAttandants",list);
+		
+		return "getCommonTeacherAttandant";
+	}
 
+	public String addCommonTeacherAttandant(){
+		StaffAttandant staffAttandant = new StaffAttandant();
+		staffAttandant.setStaffInfo(teacherService.getOwnTeacherInfo(staff.getStaffId()).getStaffInfo());
+		staffAttandant.setAttendantRemark("");
+		staffAttandant.setAttendantTime(new Timestamp(System.currentTimeMillis()));
+		
+		boolean flag=teacherService.addStaffAttandant(staffAttandant);
+		if(flag){
+			this.getCommonTeacherAttandant();
+			return "addCommonTeacherAttandant";
+		}else{
+			return "addCommonTeacherAttandant_default";
+		}
+	}
+	
+	public String getOwnCourse(){
+		request=(Map)ActionContext.getContext().get("request");
+		
+		session = ActionContext.getContext().getSession();
+		int staffId = (Integer) session.get("staffId");
+		
+		List list=teacherService.searchOwnCourseByStaffId(staffId);
+		request.put("courses",list);
+		
+		return "getOwnCourse";
+	}
+	
+	public String addOwnCourse1(){
+		request=(Map)ActionContext.getContext().get("request");
+		
+		List list=teacherService.searchMajor();
+		request.put("majors",list);
+		
+		return "addOwnCourse1";
+	}
+	public String addOwnCourse2(){
+		session = ActionContext.getContext().getSession();
+		int staffId = (Integer) session.get("staffId");
+		
+		course.setMajorInfo(teacherService.getMajorById(major.getMajorId()));
+		course.setCoursePrice((float)0);
+		course.setTeacherInfo(teacherService.getOwnTeacherInfo(staffId));
+		course.setCourseAvai((int)1);
+		
+
+		
+		boolean flag=teacherService.addOwnCourse(course);
+		if(flag){
+//			System.out.println(course.getMajorInfo().getMajorName());
+//			System.out.println(course.getTeacherInfo().getStaffInfo().getStaffName());
+//			System.out.println(course.getCourseName());
+//			System.out.println(course.getCourseStart());
+//			System.out.println(course.getCourseEnd());
+//			System.out.println(course.getCoursePrice());
+//			System.out.println(course.getCourseAvai());
+//			System.out.println(course.getCourseDesc());
+			
+			this.getOwnCourse();
+			return "addOwnCourse2";
+		}else{
+			return "addOwnCourse2_default";
+		}
+	}
+	
+	public String getCommonTeacherCourseList(){
+		request=(Map)ActionContext.getContext().get("request");
+		
+		List list=teacherService.searchOwnCourseByStaffId(staff.getStaffId());
+		request.put("courses",list);
+		
+		return "getCommonTeacherCourseList";
+	}
+	
+	public String commonTeacherCourseInfo(){
+		course=teacherService.getCourseById(course.getCourseId());
+		return "commonTeacherCourseInfo";
+	}
+	
+	public String updateCommonTeacherCoursePrice(){
+		float coursePrice=course.getCoursePrice();
+		if(coursePrice!=0)
+			return	"updateCommonTeacherCoursePrice_default";
+		course=teacherService.getCourseById(course.getCourseId());
+		course.setCoursePrice(coursePrice);
+		teacherService.updateCourse(course);
+		teacher=course.getTeacherInfo();
+		teacher.setTeacherSalary(course.getCoursePrice()+teacher.getTeacherSalary());
+		teacherService.updateTeacher(teacher);
+		this.commonTeacherCourseInfo();
+		return "updateCommonTeacherCoursePrice";
+	}
 }

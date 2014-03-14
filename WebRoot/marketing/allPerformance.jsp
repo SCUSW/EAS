@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <center> <h1>所有营销人员绩效界面</h1><br/>
     <table border="1">
     	<tr>
-    		<td>编号</td><td>姓名</td><td>性别</td><td>职位</td><td>基本工资</td><td>员工绩效</td><td>提成工资</td>
+    		<td>编号</td><td>姓名</td><td>性别</td><td>职位</td><td>员工绩效</td><td>提成工资</td>
     	</tr>
     	<c:forEach items="${salesmanInfo}" var="salesman" varStatus="s"> 
     		<tr> 
@@ -36,8 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<td>${salesman.staffInfo.staffName}</td>
     			<td>${salesman.staffInfo.staffSex}</td>
     			<td>${salesman.staffInfo.positionInfo.vocationName}</td>
-    			<td>${salesman.staffInfo.positionInfo.wageBase}</td>
-    			<td>${allSalesmanPerformance[s.count-1]}</td>
+    			<td>${allSalesmanPerformance[0][s.count-1]}</td>
     			<td>${salesman.salesmanSalary}</td>
     		</tr>
     	</c:forEach>

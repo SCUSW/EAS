@@ -9,7 +9,7 @@ import com.scusw.finance.dao.TeacherFinanceDao;
 import com.scusw.model.TeacherInfo;
 
 /**
- * @author Administrator
+ * @author 杨昭远
  *
  */
 public class TeacherFinanceServiceImp implements TeacherFinanceService{

@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				</tr>
     				</c:forEach>
     			</table>
-    			<a href="teacherAct!addStudentAttendant.action?registerId=${registerId}">增加</a>
+    			<a href="teacherAct!addStudentAttendant.action?register.registerId=${register.registerId}">增加</a>
     	</center>
   </body>
 </html>
