@@ -20,12 +20,9 @@ public class LoginServiceImpl implements LoginService {
 		this.loginDao = loginDao;
 	}
 
-	public boolean checkStuLogin(StudentInfo si) {
+	public StudentInfo checkStuLogin(StudentInfo si) {
 		// TODO Auto-generated method stub
-		if (loginDao.checkStuLogin(si) != null) {
-			return true;
-		}
-		return false;
+		return loginDao.checkStuLogin(si);
 	}
 
 	public StaffInfo checkStaLogin(StaffInfo si) {
