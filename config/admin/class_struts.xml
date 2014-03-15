@@ -8,6 +8,7 @@
 			<action name="class" class="classAction">
 				<result name="success">/admin/classInfo/classInfo.jsp</result>
 				<result name="failed">/index.jsp</result>
+				<result name="update_success">/admin/classInfo/updateClass.jsp</result>
 			</action>
 		</package>
 </struts>

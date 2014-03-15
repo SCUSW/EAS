@@ -23,6 +23,7 @@
 		
 		<bean id="classService" class="com.scusw.admin.service.impl.ClassServiceImpl">	
 			<property name="classDao" ref="classDao"></property>
+			<property name="gradeService" ref="gradeService"></property>
 		</bean>
 	
 		<bean id="classAction" class="com.scusw.admin.action.ClassAction">	
