@@ -10,6 +10,24 @@ import com.scusw.model.GradeInfo;
 public class GradeAction {
 	private GradeService gradeService;
 	private Map<String,Object> request;
+	private int gradeId;
+	
+	public Map<String, Object> getRequest() {
+		return request;
+	}
+
+	public void setRequest(Map<String, Object> request) {
+		this.request = request;
+	}
+
+	public int getGradeId() {
+		return gradeId;
+	}
+
+	public void setGradeId(int gradeId) {
+		this.gradeId = gradeId;
+	}
+
 	public GradeService getGradeService() {
 		return gradeService;
 	}
@@ -23,5 +41,9 @@ public class GradeAction {
 		request = (Map<String, Object>) ActionContext.getContext().get("request");
 		request.put("grade", list);
 		return "success";
+	}
+	public String deleteGrade() {
+		gradeService.deleteGrade(gradeId, false);
+		return this.queryGrade();
 	}
 }

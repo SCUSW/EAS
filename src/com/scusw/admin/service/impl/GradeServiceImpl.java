@@ -23,4 +23,15 @@ public class GradeServiceImpl implements GradeService{
 		return gradeDao.queryGrade();
 	}
 
+	public void deleteGrade(int gradeId, boolean deleteClass) {
+		// TODO Auto-generated method stub
+		if (deleteClass) {
+			
+		} else {
+			gradeDao.updateClassForDelGrade(gradeId);
+			gradeDao.deleteGrade(gradeId);
+		}
+		
+	}
+
 }

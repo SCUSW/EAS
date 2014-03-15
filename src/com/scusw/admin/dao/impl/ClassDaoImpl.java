@@ -25,4 +25,15 @@ public class ClassDaoImpl extends HibernateTemplate implements ClassDao {
 		return list;
 	}
 
+	public void deleteClassForGrade(int gradeId) {
+		// TODO Auto-generated method stub
+		List<ClassInfo> list = (List<ClassInfo>) this.getSession().get(ClassInfo.class,gradeId);
+		this.getSession().delete(list);
+	}
+
+	public void deleteClass() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

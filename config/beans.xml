@@ -44,6 +44,7 @@
 		      <tx:method name="query*" read-only="true"/>
 		      <tx:method name="update*" propagation="REQUIRED"/>
 		      <tx:method name="add*" propagation="REQUIRED"/>
+		      <tx:method name="delete*" propagation="REQUIRED"/>
 		    </tx:attributes>
 		</tx:advice>
 		
