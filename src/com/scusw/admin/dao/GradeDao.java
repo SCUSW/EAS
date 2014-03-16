@@ -8,4 +8,6 @@ public interface GradeDao {
 	public List<GradeInfo> queryGrade();
 	public void deleteGrade(int gradeId);
 	public void updateClassForDelGrade(int gradeId);
+	public GradeInfo checkGrade(int gradeId);
+	public void addGrade(GradeInfo gi);
 }

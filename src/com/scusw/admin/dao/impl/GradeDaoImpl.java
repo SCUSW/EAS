@@ -32,6 +32,15 @@ public class GradeDaoImpl extends HibernateTemplate implements GradeDao {
 		int updatedEntities = this.getSession().createQuery(hqlUpdate).setParameter("gradeId",gradeId).executeUpdate();
 		logger.info("更新该年级的班级数量："+updatedEntities);
 	}
+	public GradeInfo checkGrade(int gradeId) {
+		return (GradeInfo) this.getSession().get(GradeInfo.class, gradeId);
+	}
+
+	public void addGrade(GradeInfo gi) {
+		// TODO Auto-generated method stub
+		this.getSession().save(gi);
+		logger.info("添加年级：" + gi.getGradeName());
+	}
 	
 
 }

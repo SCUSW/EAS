@@ -8,6 +8,8 @@
 			<action name="grade" class="gradeAction">
 				<result name="success">/admin/gradeInfo/gradeInfo.jsp</result>
 				<result name="failed">/index.jsp</result>
+				<result name="update_success">/admin/gradeInfo/updateGrade.jsp</result>
+				<result name="add_grade">/admin/gradeInfo/addGrade.jsp</result>
 			</action>
 		</package>
 </struts>

@@ -12,4 +12,6 @@ public interface GradeService {
 	 * @param deleteClass 是否删除该年级的班级，如果是则删除所有属于该年级的班级，否则将所有该年级的班级置为null
 	 */
 	public void deleteGrade(int gradeId,boolean deleteClass);
+	public GradeInfo checkGrade(int gradeId);
+	public void addGrade(String gradeName, int branchId);
 }

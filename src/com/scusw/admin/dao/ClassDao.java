@@ -15,4 +15,5 @@ public interface ClassDao {
 	public void updateGradeIdOfClass(int classId,int gradeId);
 	public void updateGradeIdOfClass(int classId);
 	public void updateClassNameOfClass(int classId,String className);
+	public void addClass(ClassInfo ci);
 }

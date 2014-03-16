@@ -47,7 +47,7 @@ public class ClassServiceImpl implements ClassService {
 		classDao.deleteClass(classId);
 	}
 
-	public List<GradeInfo> updateClass(int classId) {
+	public List<GradeInfo> queryGrade(int classId) {
 		// TODO Auto-generated method stub
 		return gradeService.queryGrade();
 	}
@@ -71,7 +71,14 @@ public class ClassServiceImpl implements ClassService {
 		} else if (ci.getGradeInfo() == null && gradeId !=0) {
 			classDao.updateGradeIdOfClass(classId, gradeId);
 		}
-		classDao.closeSession();
+	}
+
+	public void addClass(String className, int gradeId) {
+		// TODO Auto-generated method stub
+		ClassInfo ci = new ClassInfo();
+		ci.setClassName(className);
+		ci.setGradeInfo(gradeService.checkGrade(gradeId));
+		classDao.addClass(ci);
 	}
 
 }

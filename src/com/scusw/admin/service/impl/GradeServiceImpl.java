@@ -34,4 +34,17 @@ public class GradeServiceImpl implements GradeService{
 		
 	}
 
+	public GradeInfo checkGrade(int gradeId) {
+		// TODO Auto-generated method stub
+		return gradeDao.checkGrade(gradeId);
+	}
+
+	public void addGrade(String gradeName, int branchId) {
+		// TODO Auto-generated method stub
+		GradeInfo gi = new GradeInfo();
+		gi.setGradeName(gradeName);
+		gi.setBranchInfo(null);
+		gradeDao.addGrade(gi);
+	}
+
 }

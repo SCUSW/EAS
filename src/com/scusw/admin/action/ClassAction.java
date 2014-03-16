@@ -76,7 +76,7 @@ public class ClassAction {
 		return this.queryClass();
 	}
 	public String updateClass() {
-		List<GradeInfo> list = classService.updateClass(classId);
+		List<GradeInfo> list = classService.queryGrade(classId);
 		request = (Map<String, Object>) ActionContext.getContext().get("request");
 		request.put("grade", list);
 		ClassInfo classInfo = classService.checkClass(classId);
@@ -89,5 +89,16 @@ public class ClassAction {
 		request = (Map<String, Object>) ActionContext.getContext().get("request");
 		request.put("flush", true);
 		return "update_success";
+	}
+	public String addClass() {
+		
+		List<GradeInfo> list = classService.queryGrade(classId);
+		request = (Map<String, Object>) ActionContext.getContext().get("request");
+		request.put("grade", list);
+		return "add_class";
+	}
+	public String addClassInfo() {
+		classService.addClass(className, gradeId);
+		return this.queryClass();
 	}
 }

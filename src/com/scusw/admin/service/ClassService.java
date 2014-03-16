@@ -9,7 +9,8 @@ public interface ClassService {
 	public List<ClassInfo> queryClass();
 	public List<ClassInfo> checkClassForGrade(int id);
 	public void deleteClass(int classId);
-	public List<GradeInfo> updateClass(int classId);
+	public List<GradeInfo> queryGrade(int classId);
 	public ClassInfo checkClass(int classId);
 	public void updateClassInfo(int classId,String className, int gradeId);
+	public void addClass(String className, int gradeId);
 }

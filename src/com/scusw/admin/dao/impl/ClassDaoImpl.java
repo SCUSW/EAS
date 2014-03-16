@@ -72,6 +72,12 @@ public class ClassDaoImpl extends HibernateTemplate implements ClassDao {
 		int updatedEntities = this.getSession().createQuery(hqlUpdate).setParameter("className",className).setParameter("classId", classId).executeUpdate();
 		logger.info("更新班级名称：" + classId + "--->" + className);
 	}
+
+	public void addClass(ClassInfo ci) {
+		// TODO Auto-generated method stub
+		this.getSession().save(ci);
+		logger.info("添加班级：" + ci.getClassName());
+	}
 	
 
 }

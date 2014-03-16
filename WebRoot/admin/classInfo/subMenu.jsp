@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <br/>
 	<ul>
 		<li><a href="<%=basePath%>class!queryClass.action" target="content" >查询班级信息</a></li>
-		<li><a href="" target="content" ></a></li>
+		<li><a href="<%=basePath%>class!addClass.action" target="content" >添加班级</a></li>
 		<li><a href="" target="content" ></a></li>
 		<li><a href="" target="content" ></a></li>
 		<li><a href="" target="content" ></a></li>

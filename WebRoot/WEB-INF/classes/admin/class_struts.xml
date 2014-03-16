@@ -9,6 +9,8 @@
 				<result name="success">/admin/classInfo/classInfo.jsp</result>
 				<result name="failed">/index.jsp</result>
 				<result name="update_success">/admin/classInfo/updateClass.jsp</result>
+				<result name="add_class">/admin/classInfo/addClass.jsp</result>
+				
 			</action>
 		</package>
 </struts>
