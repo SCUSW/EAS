@@ -3,6 +3,7 @@ package com.scusw.admin.dao.impl;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.hibernate.FlushMode;
 import org.hibernate.Query;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
@@ -59,7 +60,7 @@ public class ClassDaoImpl extends HibernateTemplate implements ClassDao {
 	}
 	
 	public void updateGradeIdOfClass(int classId) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub、
 		String hqlUpdate = "update ClassInfo ci set ci.gradeInfo=null where ci.classId=:classId";
 		int updatedEntities = this.getSession().createQuery(hqlUpdate).setParameter("classId", classId).executeUpdate();
 		logger.info("更新班级所属年级：" + classId + "--->null");
@@ -71,5 +72,6 @@ public class ClassDaoImpl extends HibernateTemplate implements ClassDao {
 		int updatedEntities = this.getSession().createQuery(hqlUpdate).setParameter("className",className).setParameter("classId", classId).executeUpdate();
 		logger.info("更新班级名称：" + classId + "--->" + className);
 	}
+	
 
 }
