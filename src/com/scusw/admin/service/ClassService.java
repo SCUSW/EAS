@@ -11,4 +11,5 @@ public interface ClassService {
 	public void deleteClass(int classId);
 	public List<GradeInfo> updateClass(int classId);
 	public ClassInfo checkClass(int classId);
+	public void updateClassInfo(int classId,String className, int gradeId);
 }

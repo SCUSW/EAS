@@ -12,4 +12,7 @@ public interface ClassDao {
 	public void deleteClass(int classId);
 	public void updateStudentForDelClass(int classId);
 	public ClassInfo checkClass(int classId);
+	public void updateGradeIdOfClass(int classId,int gradeId);
+	public void updateGradeIdOfClass(int classId);
+	public void updateClassNameOfClass(int classId,String className);
 }

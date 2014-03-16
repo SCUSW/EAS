@@ -51,4 +51,25 @@ public class ClassDaoImpl extends HibernateTemplate implements ClassDao {
 		return (ClassInfo) this.getSession().get(ClassInfo.class, classId);
 	}
 
+	public void updateGradeIdOfClass(int classId, int gradeId) {
+		// TODO Auto-generated method stub
+		String hqlUpdate = "update ClassInfo ci set ci.gradeInfo.gradeId=:gradeId where ci.classId=:classId";
+		int updatedEntities = this.getSession().createQuery(hqlUpdate).setParameter("gradeId",gradeId).setParameter("classId", classId).executeUpdate();
+		logger.info("更新班级所属年级：" + classId + "--->" + gradeId);
+	}
+	
+	public void updateGradeIdOfClass(int classId) {
+		// TODO Auto-generated method stub
+		String hqlUpdate = "update ClassInfo ci set ci.gradeInfo=null where ci.classId=:classId";
+		int updatedEntities = this.getSession().createQuery(hqlUpdate).setParameter("classId", classId).executeUpdate();
+		logger.info("更新班级所属年级：" + classId + "--->null");
+	}
+
+	public void updateClassNameOfClass(int classId, String className) {
+		// TODO Auto-generated method stub
+		String hqlUpdate = "update ClassInfo ci set ci.className=:className where ci.classId=:classId";
+		int updatedEntities = this.getSession().createQuery(hqlUpdate).setParameter("className",className).setParameter("classId", classId).executeUpdate();
+		logger.info("更新班级名称：" + classId + "--->" + className);
+	}
+
 }

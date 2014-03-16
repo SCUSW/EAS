@@ -54,4 +54,20 @@ public class ClassServiceImpl implements ClassService {
 		return classDao.checkClass(classId);
 	}
 
+	public void updateClassInfo(int classId, String className, int gradeId) {
+		// TODO Auto-generated method stub
+		ClassInfo ci = this.checkClass(classId);
+		if (!ci.getClassName().equals(className)) {
+			classDao.updateClassNameOfClass(classId, className);
+		}
+		if (ci.getGradeInfo() != null & gradeId != 0 & ci.getGradeInfo().getGradeId() != gradeId) {
+			classDao.updateGradeIdOfClass(classId, gradeId);
+		} else if (ci.getGradeInfo() != null & gradeId ==0) {
+			classDao.updateGradeIdOfClass(classId);
+		} else if (ci.getGradeInfo() == null & gradeId !=0) {
+			classDao.updateGradeIdOfClass(classId, gradeId);
+		}
+		
+	}
+
 }

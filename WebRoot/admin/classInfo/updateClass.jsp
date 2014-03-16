@@ -29,18 +29,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     This is my JSP page. <br>
     
     <center>
-    <form action="">
-    	班级名<input value="${request.classInfo.className }"><br>
-    	所属年级<select >
+    <form action="<%=basePath%>class!updateClassInfo.action?classId=${request.classInfo.classId }" method="post">
+    	班级名<input type="text" value="${request.classInfo.className }" name="className"><br>
+    	所属年级<select name="gradeIdStr">
     	<c:forEach items="${request.grade }" var="i">
-    		<option>
+    		<option value=${i.gradeId } ${request.classInfo.gradeInfo.gradeId eq i.gradeId?"selected":"" }>
     		${i.gradeName }
     		</option>
     	</c:forEach>
-    		<option>
+    		<option value=0 ${empty request.classInfo.gradeInfo.gradeId?"selected":"" }>
     		不属于任何年级
     		</option>
     	</select>
+    	<input type="submit" value="提交修改">
     </form>
     </center>
   </body>
