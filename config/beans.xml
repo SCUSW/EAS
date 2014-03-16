@@ -28,6 +28,10 @@
 		<import resource="classpath:admin/department_bean.xml"/>
 		<import resource="classpath:admin/teaLevel_bean.xml"/>
 		<import resource="classpath:admin/vocation_bean.xml"/>
+		<import resource="classpath:admin/attandant_bean.xml"/>
+     	<import resource="classpath:admin/grade_bean.xml"/>	
+     	<import resource="classpath:admin/class_bean.xml"/>	 
+		
 		
 		
 		<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">

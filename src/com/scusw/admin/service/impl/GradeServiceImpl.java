@@ -3,13 +3,24 @@ package com.scusw.admin.service.impl;
 import java.util.List;
 
 import com.scusw.admin.dao.GradeDao;
+import com.scusw.admin.service.BranchService;
 import com.scusw.admin.service.GradeService;
+import com.scusw.model.BranchInfo;
 import com.scusw.model.GradeInfo;
 
 public class GradeServiceImpl implements GradeService{
 
 	private GradeDao gradeDao;
+	private BranchService branchService;
 	
+	public BranchService getBranchService() {
+		return branchService;
+	}
+
+	public void setBranchService(BranchService branchService) {
+		this.branchService = branchService;
+	}
+
 	public GradeDao getGradeDao() {
 		return gradeDao;
 	}
@@ -43,8 +54,13 @@ public class GradeServiceImpl implements GradeService{
 		// TODO Auto-generated method stub
 		GradeInfo gi = new GradeInfo();
 		gi.setGradeName(gradeName);
-		gi.setBranchInfo(null);
+		gi.setBranchInfo(branchService.queryBranchById(branchId));
 		gradeDao.addGrade(gi);
+	}
+
+	public List<BranchInfo> queryBranch() {
+		// TODO Auto-generated method stub
+		return branchService.queryAllBranch();
 	}
 
 }

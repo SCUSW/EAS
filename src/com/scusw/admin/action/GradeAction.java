@@ -71,7 +71,7 @@ public class GradeAction {
 		return this.queryGrade();
 	}
 	public String addGrade() {
-		List<BranchInfo> list = null;//classService.queryGrade(classId);
+		List<BranchInfo> list = gradeService.queryBranch();
 		request = (Map<String, Object>) ActionContext.getContext().get("request");
 		request.put("branch", list);
 		return "add_grade";

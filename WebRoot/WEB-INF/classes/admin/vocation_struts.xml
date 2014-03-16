@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts> 
+		
+		<package name="vocationManage" extends="struts-default">
+			<action name="vocationManage" class="vocationAction">
+				<result name="listVocation">/admin/wageInfo/listVocation.jsp</result>
+				<result name="updateVocation">/admin/wageInfo/updateVocation.jsp</result>
+				<result name="addVocation">/admin/wageInfo/addVocation.jsp</result>
+			</action>
+		</package>
+</struts>

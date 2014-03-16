@@ -17,16 +17,16 @@
      		 
      		 
 			
-		<bean id="gradeDao" class="com.scusw.admin.dao.impl.GradeDaoImpl">
+		<bean id="branchDao" class="com.scusw.admin.dao.impl.BranchDaoImpl">
 			<property name="sessionFactory" ref="sessionFactory"></property>
 		</bean>
 		
-		<bean id="gradeService" class="com.scusw.admin.service.impl.GradeServiceImpl">	
-			<property name="gradeDao" ref="gradeDao"></property>
-			<property name="branchService" ref="branchService"></property>
+		<bean id="branchService" class="com.scusw.admin.service.impl.BranchServiceImpl">	
+			<property name="branchDao" ref="branchDao"></property>
 		</bean>
 	
-		<bean id="gradeAction" class="com.scusw.admin.action.GradeAction">	
-			<property name="gradeService" ref="gradeService"></property>
+		<bean id="branchAction" class="com.scusw.admin.action.BranchAction">	
+			<property name="branchService" ref="branchService"></property>
 		</bean>
+		
 </beans>

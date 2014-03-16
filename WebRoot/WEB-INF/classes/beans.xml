@@ -21,7 +21,17 @@
 		<import resource="classpath:student/student_bean.xml"/>
 		<import resource="classpath:marketing/marketing_bean.xml"/>
 		<import resource="classpath:teacher/teacher_bean.xml"/>
+		<import resource="classpath:login/login_bean.xml"/>
 		<import resource="classpath:admin/admin_login_bean.xml"/>
+		<import resource="classpath:admin/privilege_bean.xml"/>
+		<import resource="classpath:admin/branch_bean.xml"/>
+		<import resource="classpath:admin/department_bean.xml"/>
+		<import resource="classpath:admin/teaLevel_bean.xml"/>
+		<import resource="classpath:admin/vocation_bean.xml"/>
+		<import resource="classpath:admin/attandant_bean.xml"/>
+     	<import resource="classpath:admin/grade_bean.xml"/>	
+     	<import resource="classpath:admin/class_bean.xml"/>	 
+		
 		
 		
 		<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">

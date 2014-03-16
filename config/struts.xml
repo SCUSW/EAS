@@ -22,4 +22,8 @@
 		<include file="admin/department_struts.xml"/>
 		<include file="admin/teaLevel_struts.xml"/>
 		<include file="admin/vocation_struts.xml"/>
+		<include file="admin/attandant_struts.xml"/>
+		<include file="admin/grade_struts.xml"/>
+		<include file="admin/class_struts.xml"/>
+		
 </struts>

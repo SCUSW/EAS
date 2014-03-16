@@ -2,6 +2,7 @@ package com.scusw.admin.service;
 
 import java.util.List;
 
+import com.scusw.model.BranchInfo;
 import com.scusw.model.GradeInfo;
 
 public interface GradeService {
@@ -14,4 +15,5 @@ public interface GradeService {
 	public void deleteGrade(int gradeId,boolean deleteClass);
 	public GradeInfo checkGrade(int gradeId);
 	public void addGrade(String gradeName, int branchId);
+	public List<BranchInfo> queryBranch();
 }
