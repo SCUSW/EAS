@@ -9,7 +9,7 @@ public class CheckLogin {
 	public static boolean checkLogin() {
 		Map<String, Object> sessionMap = ActionContext.getContext().getSession();
 		String role = (String) sessionMap.get("role");
-		if ("student".equals(role)||"staff".equals(role)) {
+		if ("student".equals(role)||"staff".equals(role)||"teacher".equals(role)) {
 			return true;
 		}
 		return false;
