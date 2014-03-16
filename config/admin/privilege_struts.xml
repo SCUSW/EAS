@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts> 
+		
+		<package name="privilegeManage" extends="struts-default">
+			<action name="privilegeManage" class="privilegeAction">
+				<result name="listPrivilege">/admin/setPrivilege/listPrivilege.jsp</result>
+				<result name="listGroup">/admin/setPrivilege/listGroup.jsp</result>
+				<result name="updateGroup">/admin/setPrivilege/updateGroup.jsp</result>
+				<result name="addGroup">/admin/setPrivilege/addGroup.jsp</result>
+				<result name="addPrivError">/admin/setPrivilege/error.jsp</result>
+				<result name="addGroupError">/admin/setPrivilege/error.jsp</result>
+			</action>
+		</package>
+</struts>

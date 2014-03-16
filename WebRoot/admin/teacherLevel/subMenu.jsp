@@ -24,7 +24,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	div#menu {background-color:#ffff99;}
 	h2 {margin-bottom:0; font-size:14px;}
 	ul {margin:0;}
-	li {list-style:none;}
+	li {list-style:none;margin-top: 5px;}
+	a {text-decoration:none;}
 	</style>
 
   </head>
@@ -32,18 +33,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body bgcolor="#ffff99">
 
 	<div id="menu">
-    <h2>管理菜单</h2>
+    <h2>管理教师等级信息</h2>
     <br/>
 	<ul>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
+		<li><a href="<%=basePath %>teaLevelManage!listTeaLevel.action" target="content" >查看教师等级信息</a></li>
+		<li><a href="admin/teacherLevel/addTeaLevel.jsp" target="content" >添加教师等级信息</a></li>
 	</ul>
     </div>
 

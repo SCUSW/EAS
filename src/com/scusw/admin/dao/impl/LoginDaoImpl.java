@@ -6,6 +6,13 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import com.scusw.admin.dao.LoginDao;
 import com.scusw.model.AdminInfo;
 
+
+/**
+ * manage privilege
+ * @author liu jiahao
+ *
+ */
+
 public class LoginDaoImpl extends HibernateDaoSupport implements LoginDao{
 
 	/**

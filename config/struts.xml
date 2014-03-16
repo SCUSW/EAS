@@ -16,4 +16,10 @@
 		<include file="finance/finance_struts.xml"/>
 		<include file="teacher/teacher_struts.xml"/>
 		<include file="admin/admin_login_struts.xml"/>
+		<include file="login/login_struts.xml"/>
+		<include file="admin/privilege_struts.xml"/>
+		<include file="admin/branch_struts.xml"/>
+		<include file="admin/department_struts.xml"/>
+		<include file="admin/teaLevel_struts.xml"/>
+		<include file="admin/vocation_struts.xml"/>
 </struts>

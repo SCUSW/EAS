@@ -10,6 +10,13 @@ import com.scusw.admin.service.LoginService;
 import com.scusw.model.AdminInfo;
 import com.scusw.util.MD5Util;
 
+
+/**
+ * manage privilege
+ * @author liu jiahao
+ *
+ */
+
 public class LoginAction {
 	private AdminInfo adminInfo;
 	private LoginService loginService;
@@ -51,13 +58,7 @@ public class LoginAction {
 		this.loginPass = loginPass;
 	}
 
-	public Map<String, Object> getSession() {
-		return session;
-	}
-
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
-	}
+	
 
 	public static Logger getLogger() {
 		return logger;
@@ -82,7 +83,7 @@ public class LoginAction {
 		logger.info("login no: " + adminInfo.getAdminNo() + "\nlogin password: " + adminInfo.getAdminPass());
 		
 		if(loginService.checkAdminInfo(adminInfo)){
-			session.put("adminId", adminInfo.getAdminId());
+			session.put("adminId", adminInfo.getAdminNo());
 			return "admin_login_success";
 		}
 		return "admin_login_failed";

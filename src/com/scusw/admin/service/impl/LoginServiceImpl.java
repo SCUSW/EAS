@@ -4,6 +4,12 @@ import com.scusw.admin.dao.LoginDao;
 import com.scusw.admin.service.LoginService;
 import com.scusw.model.AdminInfo;
 
+/**
+ * manage privilege
+ * @author liu jiahao
+ *
+ */
+
 public class LoginServiceImpl implements LoginService {
 	
 	private LoginDao loginDao;

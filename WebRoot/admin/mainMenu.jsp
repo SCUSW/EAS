@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<li><a href="admin/setPrivilege/subMenu.jsp" target="left" >用户权限</a></li>
   		<li><a href="admin/branchInfo/subMenu.jsp" target="left" >分支机构</a></li>
   		<li><a href="admin/deptInfo/subMenu.jsp" target="left" >部门信息</a></li>
-  		<li><a href="admin/teacLevel/subMenu.jsp" target="left" >教师等级</a></li>
+  		<li><a href="admin/teacherLevel/subMenu.jsp" target="left" >教师等级</a></li>
   		<li><a href="admin/checkAttendant/subMenu.jsp" target="left" >考勤信息</a></li>
   		<li><a href="admin/wageInfo/subMenu.jsp" target="left" >工资管理</a></li>
   		<li><a href="admin/gradeInfo/subMenu.jsp" target="left" >年级管理</a></li>

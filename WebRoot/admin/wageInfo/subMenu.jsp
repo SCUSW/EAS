@@ -32,18 +32,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body bgcolor="#ffff99">
 
 	<div id="menu">
-    <h2>管理菜单</h2>
+    <h2>工资与职类管理</h2>
     <br/>
 	<ul>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
+		<li><a href="<%=basePath %>vocationManage!listVocation.action" target="content" >查看职类信息</a></li>
+		<li><a href="<%=basePath %>vocationManage!addVocation1.action" target="content" >增加职类信息</a></li>
 	</ul>
     </div>
 

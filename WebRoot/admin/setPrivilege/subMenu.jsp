@@ -36,14 +36,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <h2>设置权限(组)</h2>
     <br/>
 	<ul>
-		<li><a href="admin/setPrivilege/listPrivilege.jsp" target="content" >权限列表</a></li>
-		<li><a href="admin/setPrivilege/addPrivilege.jsp" target="content" >增加权限</a></li>
-		<li><a href="admin/setPrivilege/delPrivilege.jsp" target="content" >删除权限</a></li>
-		<li><a href="admin/setPrivilege/altPrivilege.jsp" target="content" >修改权限</a></li>
-		<li><a href="admin/setPrivilege/listGroup.jsp" target="content" >查看用户组</a></li>
-		<li><a href="admin/setPrivilege/addGroup.jsp" target="content" >增加用户组</a></li>
-		<li><a href="admin/setPrivilege/delGroup.jsp" target="content" >删除用户组</a></li>
-		<li><a href="admin/setPrivilege/altgroup.jsp" target="content" >修改用户组</a></li>
+		<li><a href="<%=basePath %>privilegeManage!listPrivilege.action" target="content" >权限列表</a></li>
+		<li><a href="admin/setPrivilege/addPrivilege.jsp" target="content" ></a>增加权限</li>
+		<li><a href="admin/setPrivilege/delPrivilege.jsp" target="content" ></a>删除权限</li>
+		<li><a href="admin/setPrivilege/altPrivilege.jsp" target="content" ></a>修改权限</li>
+		<li><a href="<%=basePath %>privilegeManage!listGroup.action" target="content" >查看用户组</a></li>
+		<li><a href="<%=basePath %>privilegeManage!addGroup1.action" target="content" >增加用户组</a></li>
 		<li><a href="admin/setPrivilege/xxx.jsp" target="content" ></a></li>
 	</ul>
     </div>

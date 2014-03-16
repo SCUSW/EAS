@@ -24,7 +24,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	div#menu {background-color:#ffff99;}
 	h2 {margin-bottom:0; font-size:14px;}
 	ul {margin:0;}
-	li {list-style:none;}
+	li {list-style:none;margin-top: 5px;}
+	a {text-decoration:none;}
 	</style>
 
   </head>
@@ -32,18 +33,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body bgcolor="#ffff99">
 
 	<div id="menu">
-    <h2>管理菜单</h2>
+    <h2>管理部门</h2>
     <br/>
 	<ul>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
-		<li><a href="" target="content" ></a></li>
+		<li><a href="<%=basePath %>departmentManage!listDepartment.action" target="content" >查看部门信息</a></li>
+		<li><a href="<%=basePath %>departmentManage!getBranchs.action" target="content" >添加部门信息</a></li>
 	</ul>
     </div>
 

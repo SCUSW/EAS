@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts> 
+		
+		<package name="branchManage" extends="struts-default">
+			<action name="branchManage" class="branchAction">
+				<result name="listBranch">/admin/branchInfo/listBranch.jsp</result>
+				<result name="updateBranch">/admin/branchInfo/updateBranch.jsp</result>
+			</action>
+		</package>
+</struts>

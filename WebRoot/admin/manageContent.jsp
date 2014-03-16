@@ -21,6 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 	
 	<style type="text/css">
+	*{text-align: center;}
 	div#content {background-color:#EEEEEE;}
 	h1 {margin-bottom:0;}
 	h2 {margin-bottom:0; font-size:14px;}
@@ -30,9 +31,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
-  <body bgcolor="#EEEEEE">
+  <body bgcolor="#EEEEEE" >
   	<div id="content">
-    This is my JSP page.
+    content.
 	</div>
   </body>
 </html>
