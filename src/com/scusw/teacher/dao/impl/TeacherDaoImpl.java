@@ -15,6 +15,7 @@ import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
 import com.scusw.model.StudentAttendant;
 import com.scusw.model.TeacherLevel;
+import com.scusw.model.TeachingManageInfo;
 import com.scusw.teacher.dao.TeacherDao;
 
 
@@ -273,5 +274,20 @@ public class TeacherDaoImpl extends HibernateDaoSupport implements TeacherDao {
 		q.setParameter("courseId", courseId);
 		List teachingManageInfos=q.list();
 		return teachingManageInfos;
+	}
+	
+	public void addTeachingManage(TeachingManageInfo teachingManage){
+		this.getHibernateTemplate().save(teachingManage);
+	}
+	
+	public TeachingManageInfo queryTeachingManageById(Integer teachingManageId){
+		Query q=this.getSession().createQuery("from TeachingManageInfo t where t.teachingManageId=:teachingManageId");
+		q.setParameter("teachingManageId", teachingManageId);
+		TeachingManageInfo teachingManage=(TeachingManageInfo) q.uniqueResult();
+		return teachingManage;
+	}
+
+	public void updateTeachingManage(TeachingManageInfo teachingManage){
+		this.getHibernateTemplate().update(teachingManage);
 	}
 }

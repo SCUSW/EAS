@@ -13,6 +13,7 @@ import com.scusw.model.StudentAttendant;
 import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
 import com.scusw.model.TeacherLevel;
+import com.scusw.model.TeachingManageInfo;
 
 public interface TeacherDao {
 	public TeacherInfo queryByTeacehrId(int staffIdS);
@@ -90,4 +91,10 @@ public interface TeacherDao {
 	public void updateTeacher(TeacherInfo teacher);
 
 	public List queryOwnTeachingManageByCourseId(Integer courseId);
+
+	public void addTeachingManage(TeachingManageInfo teachingManage);
+
+	public TeachingManageInfo queryTeachingManageById(Integer teachingManageId);
+
+	public void updateTeachingManage(TeachingManageInfo teachingManage);
 }

@@ -14,6 +14,7 @@ import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
 import com.scusw.model.StudentAttendant;
 import com.scusw.model.TeacherLevel;
+import com.scusw.model.TeachingManageInfo;
 import com.scusw.teacher.dao.TeacherDao;
 import com.scusw.teacher.service.TeacherService;
 import com.scusw.util.MD5Util;
@@ -235,5 +236,23 @@ public class TeacherServiceImpl implements TeacherService{
 	
 	public List searchOwnTeachingManageByCourseId(Integer courseId){
 		return teacherDao.queryOwnTeachingManageByCourseId(courseId);
+	}
+	
+	public boolean addTeachingManage(TeachingManageInfo teachingManage){
+		try{
+			teacherDao.addTeachingManage(teachingManage);
+			return true;
+		}catch(Exception e){
+			System.out.println(e);
+			return false;
+		}
+	}
+	
+	public TeachingManageInfo getTeachingManageById(Integer teachingManageId){
+		return teacherDao.queryTeachingManageById(teachingManageId);
+	}
+	
+	public void updateTeachingManage(TeachingManageInfo teachingManage){
+		teacherDao.updateTeachingManage(teachingManage);
 	}
 }

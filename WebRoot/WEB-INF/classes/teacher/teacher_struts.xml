@@ -3,6 +3,9 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts> 
+
+	<constant name="struts.multipart.saveDir" value="/tmp"></constant>
+
 		<package name="teacher" extends="struts-default">
 			<action name="teacherAct" class="com.scusw.teacher.action.TeacherAction">
 				<result name="getOwnTeacherInfo">teacher/ownTeacherInfo.jsp</result>
@@ -34,6 +37,15 @@
 				<result name="updateCommonTeacherCoursePrice_default">teacher/default.jsp</result>
 				<result name="ownCourseInfo">teacher/ownCourseInfo.jsp</result>
 				<result name="getOwnTeachingManageList">teacher/ownTeachingManageList.jsp</result>
+				<result name="uploadTeachPlan">teacher/ownTeachingManageList.jsp</result>
+				<result name="uploadTeachPlan_default">teacher/default.jsp</result>
+				<result name="uploadLessonPlan">teacher/ownTeachingManageList.jsp</result>
+				<result name="uploadLessonPlan_default">teacher/default.jsp</result>
+				<result name="uploadTeacherSummary">teacher/ownTeachingManageList.jsp</result>
+				<result name="uploadTeacherSummary_default">teacher/default.jsp</result>
+				<result name="getCommonTeachingManageList">teacher/commonTeachingManageList.jsp</result>
+				<result name="examTeachingManage">teacher/commonTeachingManageList.jsp</result>
+				
 			</action>
 
 		</package>

@@ -1,12 +1,27 @@
 package com.scusw.teacher.action;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;  
+import java.io.File;  
+import java.io.FileInputStream;  
+import java.io.FileNotFoundException;  
+import java.io.FileOutputStream;  
+import java.io.IOException;  
+import java.io.InputStream;  
+import java.io.OutputStream;  
+import java.util.List; 
+
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 import com.scusw.model.CourseInfo;
 import com.scusw.model.MajorInfo;
 import com.scusw.model.RegisterInfo;
@@ -16,10 +31,11 @@ import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
 import com.scusw.model.StudentAttendant;
 import com.scusw.model.TeacherLevel;
+import com.scusw.model.TeachingManageInfo;
 import com.scusw.teacher.service.TeacherService;
 import com.scusw.util.MD5Util;
 
-public class TeacherAction {
+public class TeacherAction extends ActionSupport{
 	private TeacherService teacherService;
 	private TeacherInfo teacher;
 	private StaffInfo staff;
@@ -29,9 +45,12 @@ public class TeacherAction {
 	private StudentAttendant studentAttendantInfo;
 	private MajorInfo major;
 	private TeacherLevel teacherLevel;
+	private TeachingManageInfo teachingManage;
 	private Map<String,Object> request;
-	private Map<String, Object> session;
+	private Map<String, Object> session;	
 	
+	private File file;
+	private InputStream downloadInputStream;
 	
 	public StaffInfo getStaff() {
 		return staff;
@@ -92,6 +111,27 @@ public class TeacherAction {
 	}
 	public void setTeacherLevel(TeacherLevel teacherLevel) {
 		this.teacherLevel = teacherLevel;
+	}
+	public File getFile() {
+		return file;
+	}
+	public void setFile(File file) {
+		this.file = file;
+	}
+	public String downloadTeachingPlan(){
+		return "downloadTeachingPlan";
+	}
+	public void setDownloadInputStream(InputStream downloadInputStream) {
+		this.downloadInputStream = downloadInputStream;
+	}
+	public InputStream getDownloadInputStream() {
+		return downloadInputStream;
+	}
+	public void setTeachingManage(TeachingManageInfo teachingManage) {
+		this.teachingManage = teachingManage;
+	}
+	public TeachingManageInfo getTeachingManage() {
+		return teachingManage;
 	}
 	
 	
@@ -384,5 +424,143 @@ public class TeacherAction {
 		request.put("ownTeachingManageInfos",list);
 		
 		return "getOwnTeachingManageList";
+	}
+	
+//	public String uploadTeachPlan(){
+//	try{
+//		 InputStream in = new FileInputStream(file);
+//		 course=teacherService.getCourseById(course.getCourseId());
+//		 String path=UPLOADDIR+course.getTeacherInfo().getStaffInfo().getStaffName()+"//"+course.getCourseName();
+//         String dir = ServletActionContext.getRequest().getRealPath(path);  
+//         File fileLocation = new File(dir);  
+//         //此处也可以在应用根目录手动建立目标上传目录  
+//         if(!fileLocation.exists()){  
+//             boolean isCreated  = fileLocation.mkdir();  
+//             if(!isCreated) {  
+//                 //目标上传目录创建失败,可做其他处理,例如抛出自定义异常等,一般应该不会出现这种情况。  
+//                 return "uploadTeachPlan_default";  
+//             }  
+//         }  
+//         String fileName=file.getName();  
+//         File uploadFile = new File(dir, fileName);   
+//         OutputStream out = new FileOutputStream(uploadFile);   
+//         byte[] buffer = new byte[1024 * 1024];   
+//         int length;   
+//         while ((length = in.read(buffer)) > 0) {   
+//             out.write(buffer, 0, length);   
+//         }   
+//         in.close();   
+//         out.close();   
+//         
+//         this.getOwnTeachingManageList();
+//         
+//         return "uploadTeachPlan";
+//     } catch (Exception e) {   
+//    	 System.out.println(e);
+//         e.printStackTrace();   
+//         return "uploadTeachPlan_default";
+//     } 
+//	}
+	
+	public String uploadTeachPlan(){  
+        try {
+        	String targetDirectory = ServletActionContext.getServletContext().getRealPath("/upload");
+        	
+//            String targetFileName = course.getTeacherInfo().getStaffInfo().getStaffName()
+//            +"_"+course.getCourseName()+"_"+Calendar.getInstance();
+            
+        	String targetFileName = file.getName();
+  
+            File target = new File(targetDirectory, targetFileName);   
+            
+			FileUtils.copyFile(file, target);
+			
+			TeachingManageInfo teachingManage = new TeachingManageInfo();
+			teachingManage.setCourseInfo(teacherService.getCourseById(course.getCourseId()));
+			teachingManage.setExamState(0);
+			teachingManage.setSetTime(new Timestamp(System.currentTimeMillis()));
+			teachingManage.setTeachPlan("upload/"+targetFileName);
+			
+			
+			
+			boolean flag=teacherService.addTeachingManage(teachingManage);
+			if(flag){
+				this.getOwnTeachingManageList();
+		        return "uploadTeachPlan";  
+			}else{
+				return "addCommonTeacherAttandant_default";
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "addCommonTeacherAttandant_default";
+		}   
+	}
+
+	public String uploadLessonPlan(){
+		try {
+        	String targetDirectory = ServletActionContext.getServletContext().getRealPath("/upload");
+        	
+        	String targetFileName = file.getName();
+  
+            File target = new File(targetDirectory, targetFileName);   
+            
+			FileUtils.copyFile(file, target);
+			
+			teachingManage = teacherService.getTeachingManageById(teachingManage.getTeachingManageId());
+			teachingManage.setLessonPlan("upload/"+targetFileName);
+			
+			teacherService.updateTeachingManage(teachingManage);
+			
+			this.getOwnTeachingManageList();
+			return "uploadLessonPlan";
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "uploadLessonPlan_default";
+		}   
+	}
+	
+	public String uploadTeacherSummary(){
+		try {
+        	String targetDirectory = ServletActionContext.getServletContext().getRealPath("/upload");
+        	
+        	String targetFileName = file.getName();
+  
+            File target = new File(targetDirectory, targetFileName);   
+            
+			FileUtils.copyFile(file, target);
+			
+			teachingManage = teacherService.getTeachingManageById(teachingManage.getTeachingManageId());
+			teachingManage.setTeacherSummary("upload/"+targetFileName);
+			
+			teacherService.updateTeachingManage(teachingManage);
+			
+			this.getOwnTeachingManageList();
+			return "uploadTeacherSummary";
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "uploadTeacherSummary_default";
+		}   
+	}
+	
+	public String getCommonTeachingManageList(){
+		request=(Map)ActionContext.getContext().get("request");
+		
+		List list=teacherService.searchOwnTeachingManageByCourseId(course.getCourseId());
+		request.put("ownTeachingManageInfos",list);
+		
+		return "getCommonTeachingManageList";
+	}
+	
+	public String examTeachingManage(){
+		int examState=teachingManage.getExamState();
+		teachingManage=teacherService.getTeachingManageById(teachingManage.getTeachingManageId());
+		teachingManage.setExamState(examState);
+		teacherService.updateTeachingManage(teachingManage);
+		
+		this.getOwnTeachingManageList();
+		return "examTeachingManage";
 	}
 }

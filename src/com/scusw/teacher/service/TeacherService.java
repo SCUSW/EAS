@@ -13,6 +13,7 @@ import com.scusw.model.StudentAttendant;
 import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
 import com.scusw.model.TeacherLevel;
+import com.scusw.model.TeachingManageInfo;
 
 public interface TeacherService {
 
@@ -80,6 +81,12 @@ public interface TeacherService {
 
 	public void updateTeacher(TeacherInfo teacher);
 
-	public List searchOwnTeachingManageByCourseId(Integer courseId); 
+	public List searchOwnTeachingManageByCourseId(Integer courseId);
+
+	public boolean addTeachingManage(TeachingManageInfo teachingManage);
+
+	public TeachingManageInfo getTeachingManageById(Integer teachingManageId);
+
+	public void updateTeachingManage(TeachingManageInfo teachingManage); 
 
 }

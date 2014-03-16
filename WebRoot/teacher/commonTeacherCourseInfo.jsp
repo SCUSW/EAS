@@ -36,5 +36,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	 设置价格：<input type="text" name="course.coursePrice"/><br/>
     <input type="submit" value="提交"/>
     </form>
+    <a href="teacherAct!getCommonTeachingManageList.action?course.courseId=${course.courseId }">教学管理</a>
   </body>
 </html>
