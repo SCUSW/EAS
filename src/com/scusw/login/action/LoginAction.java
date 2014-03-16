@@ -83,7 +83,7 @@ public class LoginAction {
 			session.put("role", "student");
 			session.put("studentNo", studentInfo.getStudentNo());
 			session.put("studentID", studentInfo.getStudentId());
-			session.put("studentName", studentInfo.getStudentName());
+			session.put("name", studentInfo.getStudentName());
 			logger.info("学生登录成功:"+studentInfo.getStudentNo());
 			return "student_success";
 		}
@@ -107,14 +107,14 @@ public class LoginAction {
 				session.put("role", "teacher");//教师角色
 				session.put("type", type);//教师类型
 				session.put("staffId", staffInfo.getStaffId());//员工编号
-				session.put("staffName", staffInfo.getStaffName());//员工姓名
+				session.put("name", staffInfo.getStaffName());//员工姓名
 				logger.info("教师登录成功:"+staffInfo.getStaffId() + " " + staffInfo.getStaffName());//
 				return "teacher_success";
 			} else {
 				
 				session.put("role", "staff");//
 				session.put("staffId", staffInfo.getStaffId());//员工编号
-				session.put("staffName", staffInfo.getStaffName());//员工姓名
+				session.put("name", staffInfo.getStaffName());//员工姓名
 				logger.info("员工登录成功:"+staffInfo.getStaffId() + " " + staffInfo.getStaffName());
 				logger.info("登录员工部门："+staffInfo.getPositionInfo().getDepartmentInfo().getDepartmentName());
 				return "staff_success";
