@@ -26,12 +26,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <%
+  if(request.getAttribute("flush") != null ) {
+  %>
+  <meta http-equiv="refresh" content="0;URL=<%=basePath%>class!queryClass.action"> 
+  <%} %>
     This is my JSP page. <br>
     
     <center>
     <form action="<%=basePath%>class!updateClassInfo.action?classId=${request.classInfo.classId }" method="post">
     	班级名<input type="text" value="${request.classInfo.className }" name="className"><br>
-    	所属年级<select name="gradeIdStr">
+    	所属年级<select name="gradeId">
     	<c:forEach items="${request.grade }" var="i">
     		<option value=${i.gradeId } ${request.classInfo.gradeInfo.gradeId eq i.gradeId?"selected":"" }>
     		${i.gradeName }

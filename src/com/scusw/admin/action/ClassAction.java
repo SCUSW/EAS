@@ -84,8 +84,10 @@ public class ClassAction {
 		return "update_success";
 	}
 	public String updateClassInfo() {
-		logger.info(gradeIdStr);
-		//classService.updateClassInfo(classId, className, gradeId);
-		return queryClass();
+		logger.info(classId+" " + className + " " + gradeId);
+		classService.updateClassInfo(classId, className, gradeId);
+		request = (Map<String, Object>) ActionContext.getContext().get("request");
+		request.put("flush", true);
+		return "update_success";
 	}
 }

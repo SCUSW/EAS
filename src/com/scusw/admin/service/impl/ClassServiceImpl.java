@@ -2,6 +2,8 @@ package com.scusw.admin.service.impl;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.scusw.admin.dao.ClassDao;
 import com.scusw.admin.service.ClassService;
 import com.scusw.admin.service.GradeService;
@@ -11,7 +13,8 @@ import com.scusw.model.GradeInfo;
 public class ClassServiceImpl implements ClassService {
 	ClassDao classDao;
 	private GradeService gradeService;
-
+	public static Logger logger = Logger.getLogger(ClassServiceImpl.class);
+	
 	public GradeService getGradeService() {
 		return gradeService;
 	}
@@ -57,17 +60,18 @@ public class ClassServiceImpl implements ClassService {
 	public void updateClassInfo(int classId, String className, int gradeId) {
 		// TODO Auto-generated method stub
 		ClassInfo ci = this.checkClass(classId);
+		logger.info(ci.getClassName());
 		if (!ci.getClassName().equals(className)) {
 			classDao.updateClassNameOfClass(classId, className);
 		}
-		if (ci.getGradeInfo() != null & gradeId != 0 & ci.getGradeInfo().getGradeId() != gradeId) {
+		if (ci.getGradeInfo() != null && gradeId != 0 && ci.getGradeInfo().getGradeId() != gradeId) {
 			classDao.updateGradeIdOfClass(classId, gradeId);
-		} else if (ci.getGradeInfo() != null & gradeId ==0) {
+		} else if (ci.getGradeInfo() != null && gradeId ==0) {
 			classDao.updateGradeIdOfClass(classId);
-		} else if (ci.getGradeInfo() == null & gradeId !=0) {
+		} else if (ci.getGradeInfo() == null && gradeId !=0) {
 			classDao.updateGradeIdOfClass(classId, gradeId);
 		}
-		
+		classDao.closeSession();
 	}
 
 }
