@@ -27,25 +27,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	查询员工考勤信息
 	<br>
 	<a href=""></a>
+	<form action="<%=basePath%>attandant!checkStaffAttendant.action" method="get">
+		<input name="nextPage" value="1"  type="hidden">
+		每页显示数量
+		<select name="pageSize" >
+			<option value="10" ${request.pageSize eq 10?"selected":"" }>10</option>
+			<option value="15" ${request.pageSize eq 15?"selected":"" }>15</option>
+			<option value="20" ${request.pageSize eq 20?"selected":"" }>20</option>
+			<option value="25" ${request.pageSize eq 25?"selected":"" }>25</option>
+			<option value="40" ${request.pageSize eq 40?"selected":"" }>40</option>
+		</select><br>
+		姓名:<input type="text" value="${request.staffName }" name="staffName"><br>
+		员工号:<input type="text" value="${request.staffNo }" name="staffNo"><br>
+		部门:<select name="departmentId">
+		<c:forEach items="${request.department }" var="i">
+    		<option value=${i.departmentId } ${request.departmentId eq i.departmentId?"selected":"" }>
+    		${i.departmentName }
+    		</option>
+    	</c:forEach>
+    		<option value=0 ${request.departmentId eq 0?"selected":"" }>
+    		所有部门
+    		</option>
+		</select>
+		<input type="submit" value="提交">
+	</form>
 	<c:forEach items="${request.info }" var="i">
-   ${i.attendantTime },${i.staffInfo.staffName },${i.staffInfo.positionInfo.departmentInfo.departmentName }<br>
+   ${i.attendantTime },${i.staffInfo.staffName },${i.staffInfo.staffNo},${i.staffInfo.positionInfo.departmentInfo.departmentName }<br>
 	</c:forEach>
 	总共：${request.total }
 	每页显示：${request.pageSize }<br>
-	<%if((Integer)request.getAttribute("total")>(Integer)request.getAttribute("pageSize")) { 
+	<%
+	if (request.getAttribute("staffName")!=null)
+		request.setAttribute("staffName", java.net.URLEncoder.encode((String)request.getAttribute("staffName"),"utf-8"));
+	 %>
+	<%/* if((Integer)request.getAttribute("total")>(Integer)request.getAttribute("pageSize")) {  */
 		if((Integer)request.getAttribute("currentPage")!=1){	
 	%>
 	
-	<a href="<%=basePath%>attandant!checkStaffAttendant.action?nextPage=1&pageSize=${request.pageSize }">首页</a>
-	<a href="<%=basePath%>attandant!checkStaffAttendant.action?nextPage=<%=((Integer)request.getAttribute("currentPage")-1) %>&pageSize=${request.pageSize }">上一页</a>
+	<a href="<%=basePath%>attandant!checkStaffAttendant.action?nextPage=1&pageSize=${request.pageSize }&departmentId=${request.departmentId}&staffName=${request.staffName}&staffNo=${request.staffNo }">首页</a>
+	<a href="<%=basePath%>attandant!checkStaffAttendant.action?nextPage=<%=((Integer)request.getAttribute("currentPage")-1) %>&pageSize=${request.pageSize }&departmentId=${request.departmentId}&staffName=${request.staffName}&staffNo=${request.staffNo }">上一页</a>
 	<%} %>
 	当前第${request.currentPage }页
 	<%
 	if((Integer)request.getAttribute("currentPage")<(Integer)request.getAttribute("total")/(Integer)request.getAttribute("pageSize")+1){	
 	%>
-	<a href="<%=basePath%>attandant!checkStaffAttendant.action?nextPage=<%=((Integer)request.getAttribute("currentPage")+1) %>&pageSize=${request.pageSize }">下一页</a>
-	<a href="<%=basePath%>attandant!checkStaffAttendant.action?nextPage=<%=((Integer)request.getAttribute("total")/(Integer)request.getAttribute("pageSize")+1) %>&pageSize=${request.pageSize }">末页</a>
+	<a href="<%=basePath%>attandant!checkStaffAttendant.action?nextPage=<%=((Integer)request.getAttribute("currentPage")+1) %>&pageSize=${request.pageSize }&departmentId=${request.departmentId}&staffName=${request.staffName}&staffNo=${request.staffNo }">下一页</a>
+	<a href="<%=basePath%>attandant!checkStaffAttendant.action?nextPage=<%=((Integer)request.getAttribute("total")/(Integer)request.getAttribute("pageSize")+1) %>&pageSize=${request.pageSize }&departmentId=${request.departmentId}&staffName=${request.staffName}&staffNo=${request.staffNo }">末页</a>
 	<%} 
-	}%>
+	/* } */%>
 </body>
 </html>

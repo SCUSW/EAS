@@ -1,16 +1,15 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>查询考勤情况</title>
+    <title>My JSP 'finance_guide.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -24,11 +23,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-   查询学员考勤信息 <br>
-   <s:debug></s:debug>
-   <c:forEach items="${request.stuinfo }" var="i">
-   ${i.attendantTime },${i.registerInfo.studentInfo.studentName },${i.registerInfo.studentInfo.studentNo }<br>
-   </c:forEach>
-  
+    <div style="text-align: center">
+    	<a target="info_area" href="<%=basePath %>totalFinanceAction!totalFinance.action">总费用管理</a>
+    	<a target="info_area" href="<%=basePath %>studentFinanceAction!searchAll.action">学员费用管理</a>
+    	<a target="info_area" href="<%=basePath %>teacherFinanceAction!searchAll.action">教师费用管理</a>
+    	<!--<a target="info_area" href="<%=basePath %>finance/other_finance.jsp">其他费用管理</a>
+    --></div>
   </body>
 </html>
