@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</c:forEach> 
     	</table>
     	<input type="hidden" name="studentInfo.studentNo" value="${session.studentNo}"/><br/>
-    	<input type="submit" value="submit"></form> 
+    	<input type="submit" value="确认选课"></form> 
 	</center>
   </body>
 </html>

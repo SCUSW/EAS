@@ -33,8 +33,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<div style="width:300px;">
     		<form>
     			<fieldset>
-    				员工编号：<input type="hidden" name="consultInfo.salesmanInfo.staffId" value=session.staffId/><br/>
-	   				员工账号：<input type="hidden" name="consultInfo.salesmanInfo.staffInfo.staffNo" value=session.staffNo/><br/>
+    				<input type="hidden" name="consultInfo.salesmanInfo.staffId" value="${session.staffId}"/>
+	   				<input type="hidden" name="consultInfo.salesmanInfo.staffInfo.staffNo" value="${session.staffNo}"/><br/>
     				
     				<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">学生姓名</span>
@@ -103,32 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<input class="btn btn-default" type="submit" value="确定添加"/>
     			</fieldset>
     		</form>
-	   		<!--<form action="marketing!addConsultInfo.action" method="post">
-	   			员工编号：<input type="hidden" name="consultInfo.salesmanInfo.staffId" value=session.staffId/><br/>
-	   			员工账号：<input type="hidden" name="consultInfo.salesmanInfo.staffInfo.staffNo" value=session.staffNo/><br/>
-	   			
-	   			学生姓名：<input type="text" name="consultInfo.studentName"/><br/>
-	   			学生性别：<input type="text" name="consultInfo.studentSex"/><br/>
-	   			学生年龄：<input type="text" name="consultInfo.studentAge"/><br/>
-	   			学生学校：<input type="text" name="consultInfo.studentSchool"/><br/>
-	   			学生住址：<input type="text" name="consultInfo.studentAddr"/><br/>
-	   			学生电话：<input type="text" name="consultInfo.studentPhone"/><br/>
-	   			学生专业：<input type="text" name="consultInfo.studentMajor"/><br/>
-				咨询时间：<input type="text" name="consultInfo.consultTime"/><br/>
-	   			咨询方式：<input type="radio" checked="checked" name="consultInfo.consultType" value="现场咨询"/>现场咨询
-						 <input type="radio" name="consultInfo.consultType" value="电话咨询"/>电话咨询
-						 <input type="radio" name="consultInfo.consultType" value="网站咨询"/>网站咨询<br/>
-				了解渠道：<input type="radio" name="studentConsultway.consultwayInfo.consultwayId" value="1">广告宣传
-						<input type="radio" name="studentConsultway.consultwayInfo.consultwayId" value="2">活动宣传
-						<input type="radio" name="studentConsultway.consultwayInfo.consultwayId" value="3">网络渠道
-						<input type="radio" name="studentConsultway.consultwayInfo.consultwayId" value="4">朋友介绍
-						<input type="radio" name="studentConsultway.consultwayInfo.consultwayId" value="5">学生介绍
-						<input type="radio" name="studentConsultway.consultwayInfo.consultwayId" value="6">教师介绍<br/>
-						<input type="hidden" name="studentConsultway.consultInfo.consultId" value="3">
-	   			备注：<input type="text" name="consultInfo.studentRemark"/><br/>
-	   			<input type="submit" value="确定添加"/>
-	   		</form>
-   		--></div>
+		</div>
    </center>
   </body>
 </html>

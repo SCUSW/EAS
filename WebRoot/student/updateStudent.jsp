@@ -44,9 +44,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</head>
 	<body><center>
 	
-	
-	
-	
 	<div style="width:300px;">		
   <form action="student!updateStudent.action" method="post" class="form-horizontal">
     <fieldset >
@@ -63,7 +60,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div>
     	  <div id="legend" class=""><legend>修改个人信息</legend></div>
      </div>
-      
      		<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">姓名</span>
 				<input name="studentInfo.studentName" value="${studentInfo.studentName}" type="text" class="form-control" placeholder="Username">
@@ -85,18 +81,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<br/>
 			
-			
-			
-				
-		
-			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">班级</span>
 				<input  name="studentInfo.classInfo.classId" value="${studentInfo.classInfo.classId}" type="text" class="form-control" placeholder="Username">
 			</div>
 			<br/>
-			
-			
 			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">学校</span>
@@ -104,13 +93,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<br/>
 			
-			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">住址</span>
 				<input  name="studentInfo.studentAddr" value="${studentInfo.studentAddr}" type="text" class="form-control" placeholder="Username">
 			</div>
 			<br/>
-			
 			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">电话</span>
@@ -123,7 +110,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input name="studentInfo.studentMajor" value="${studentInfo.studentMajor}" type="text" class="form-control" placeholder="Username">
 			</div>
 			<br/>
-			
 			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">备注</span>

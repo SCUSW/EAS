@@ -163,6 +163,7 @@ public class StudentAction {
 	
 	/**
 	 * 方法描述：学生修改个人信息
+	 */
 	public String updateStudent(){
 		studentService.updateStudent(studentInfo);
 		return queryStudentByNo();	
@@ -232,7 +233,7 @@ public class StudentAction {
 	
 	/**
 	 * 方法描述：添加学生所选课程
-	 * @return ： true ——> selectCourses.jsp
+	 * @return ： true ——> queryCourse()
 	 * 			 false ——> selectCourseDefault.jsp
 	 */
 	public String addRegisterInfo(){
