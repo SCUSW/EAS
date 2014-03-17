@@ -115,7 +115,7 @@ public class StaffFinanceServiceImp implements StaffFinanceService {
 					+ staffInfo.getStaffNo() + "职工姓名："
 					+ staffInfo.getStaffName());
 
-			totalFinanceService.addFinanceRecord(financialRecords);
+			totalFinanceService.addFinanceRecord(financialRecords , -1);
 		}
 
 	}

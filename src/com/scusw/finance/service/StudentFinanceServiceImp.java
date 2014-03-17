@@ -148,7 +148,7 @@ public class StudentFinanceServiceImp implements StudentFinanceService {
 					+ studentInfo.getStudentNo() + "学生姓名："
 					+ studentInfo.getStudentName());
 
-			totalFinanceService.addFinanceRecord(financialRecords);
+			totalFinanceService.addFinanceRecord(financialRecords , 1);
 
 		}
 	}
