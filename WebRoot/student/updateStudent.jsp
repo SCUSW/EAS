@@ -56,7 +56,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		<input type="hidden" name="studentInfo.studentState" value="${studentInfo.studentState}"/>
    		<input type="hidden" name="studentInfo.consultInfo.consultId" value="${studentInfo.consultInfo.consultId}"/>
     	<input type="hidden" name="studentInfo.studentPass" value="${studentInfo.studentPass}">
-    
+    	<input type="hidden" name="studentInfo.classInfo.classId" value="${studentInfo.classInfo.classId}"/>
+    	
     <div>
     	  <div id="legend" class=""><legend>修改个人信息</legend></div>
      </div>
@@ -77,43 +78,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">年龄</span>
-				<input  name="studentInfo.studentAge" value="${studentInfo.studentAge}" type="text" class="form-control" placeholder="Username">
-			</div>
-			<br/>
-			
-			<div class="input-group input-group-sm">
- 	 			<span class="input-group-addon">班级</span>
-				<input  name="studentInfo.classInfo.classId" value="${studentInfo.classInfo.classId}" type="text" class="form-control" placeholder="Username">
+				<input  name="studentInfo.studentAge" value="${studentInfo.studentAge}" type="text" class="form-control" placeholder="Age">
 			</div>
 			<br/>
 			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">学校</span>
-				<input name="studentInfo.studentSchool" value="${studentInfo.studentSchool}" type="text" class="form-control" placeholder="Username">
+				<input name="studentInfo.studentSchool" value="${studentInfo.studentSchool}" type="text" class="form-control" placeholder="School">
 			</div>
 			<br/>
 			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">住址</span>
-				<input  name="studentInfo.studentAddr" value="${studentInfo.studentAddr}" type="text" class="form-control" placeholder="Username">
+				<input  name="studentInfo.studentAddr" value="${studentInfo.studentAddr}" type="text" class="form-control" placeholder="Address">
 			</div>
 			<br/>
 			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">电话</span>
-				<input name="studentInfo.studentPhone" value="${studentInfo.studentPhone}" type="text" class="form-control" placeholder="Username">
+				<input name="studentInfo.studentPhone" value="${studentInfo.studentPhone}" type="text" class="form-control" placeholder="PhoneNumber">
 			</div>
 			<br/>
 			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">专业</span>
-				<input name="studentInfo.studentMajor" value="${studentInfo.studentMajor}" type="text" class="form-control" placeholder="Username">
+				<input name="studentInfo.studentMajor" value="${studentInfo.studentMajor}" type="text" class="form-control" placeholder="Major">
 			</div>
 			<br/>
 			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">备注</span>
-				<input name="studentInfo.studentRemark" value="${studentInfo.studentRemark}" type="text" class="form-control" placeholder="Username">
+				<input name="studentInfo.studentRemark" value="${studentInfo.studentRemark}" type="text" class="form-control" placeholder="Remark">
 			</div>
 			<br/>
 			<input class="btn btn-default" type="submit" value="确定修改"/>

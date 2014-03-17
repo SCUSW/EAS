@@ -112,6 +112,8 @@ public class StudentServiceImpl implements StudentService {
 	 * 			添加失败——>false
 	 */
 	public boolean addRegisterInfo(int[] selectCourseId, String studentNo){
+		if(selectCourseId == null || selectCourseId.length == 0 )
+			return false;
 		StudentInfo studentInfo= queryStudentByNo(studentNo);//fuckshen
 		if(!studentDao.checkIsCourseSelect(studentInfo.getStudentId(),selectCourseId))
 			return false;

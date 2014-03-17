@@ -8,7 +8,6 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.scusw.student.dao.StudentDao;
 import com.scusw.login.action.LoginAction;
-import com.scusw.model.ConsultInfo;
 import com.scusw.model.CourseInfo;
 import com.scusw.model.MajorInfo;
 import com.scusw.model.NoticeInfo;
