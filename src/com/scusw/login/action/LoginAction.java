@@ -104,6 +104,7 @@ public class LoginAction {
 		if (obj != null) {
 			staffInfo = (StaffInfo) obj;
 			session.put("privilege", loginService.checkPrivilege(staffInfo.getGroupInfo().getGroupId()));//用户权限list
+			session.put("staffNo", staffInfo.getStaffNo());
 			int type = loginService.checkIfTeacher(staffInfo.getStaffId());
 			if (type>=0) {
 				session.put("role", "teacher");//教师角色

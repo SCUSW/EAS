@@ -13,7 +13,7 @@
         <many-to-one name="groupInfo" class="com.scusw.model.GroupInfo" fetch="select">
             <column name="group_id" not-null="true" />
         </many-to-one>
-        <many-to-one name="positionInfo" class="com.scusw.model.PositionInfo" fetch="select" lazy="false">
+        <many-to-one name="positionInfo" class="com.scusw.model.PositionInfo" fetch="select">
             <column name="vocation_id" not-null="true" />
         </many-to-one>
         <property name="staffNo" type="java.lang.String">

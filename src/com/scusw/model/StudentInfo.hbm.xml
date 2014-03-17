@@ -10,7 +10,7 @@
             <column name="student_id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="rollState" class="com.scusw.model.RollState" fetch="select" lazy="false">
+        <many-to-one name="rollState" class="com.scusw.model.RollState" fetch="select">
             <column name="rollstate_id" />
         </many-to-one>
         <many-to-one name="groupInfo" class="com.scusw.model.GroupInfo" fetch="select">
