@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.scusw.login.service.LoginService;
+import com.scusw.model.AdminInfo;
 import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.util.MD5Util;
@@ -63,6 +64,7 @@ public class LoginAction {
 	public String checkUser() {
 		
 		session = ActionContext.getContext().getSession();
+		session.clear();
 		request = (Map<String, Object>) ActionContext.getContext().get("request");
 		if ("student".equals(role)) {
 			return checkStuLogin();
@@ -124,6 +126,22 @@ public class LoginAction {
 		logger.info("员工登录失败:"+loginNo);
 		request.put("loginstate", "false");
 		return "error";
+	}
+	public String checkAdminLogin(){
+		session = ActionContext.getContext().getSession();
+		session.clear();
+		AdminInfo adminInfo = new AdminInfo();
+		adminInfo.setAdminNo(loginNo);
+		String passwordCoded = MD5Util.MD5(loginPass);
+		adminInfo.setAdminPass(passwordCoded);
+		
+		logger.info("管理员登录: " + adminInfo.getAdminNo() + " 加密密码: " + adminInfo.getAdminPass());
+		
+		if(loginService.checkAdminInfo(adminInfo)){
+			session.put("adminId", adminInfo.getAdminNo());
+			return "admin_login_success";
+		}
+		return "admin_login_error";
 	}
 	public String loginOut() {
 		session = ActionContext.getContext().getSession();

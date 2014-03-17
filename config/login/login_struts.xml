@@ -10,6 +10,8 @@
 				<result name="teacher_success">/staffModlePage/demo.jsp</result>
 				<result name="staff_success">/staffModlePage/demo.jsp</result>
 				<result name="error">/index.jsp</result>
+				<result name="admin_login_success">/admin/admin.jsp</result>
+				<result name="admin_login_failed">/admin/loginError.jsp</result>
 			</action>
 		</package>
 </struts>

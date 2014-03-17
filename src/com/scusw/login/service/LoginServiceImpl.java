@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.scusw.login.dao.LoginDao;
+import com.scusw.model.AdminInfo;
 import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
@@ -58,7 +59,13 @@ public class LoginServiceImpl implements LoginService {
 		// TODO Auto-generated method stub
 		return loginDao.checkPrivilege(groupId);
 	}
-
+	public boolean checkAdminInfo(AdminInfo adminInfo) {
+		
+		if(loginDao.checkAdminLogin(adminInfo) == null){
+			return false;
+		}
+		return true;
+	}
 	
 
 	

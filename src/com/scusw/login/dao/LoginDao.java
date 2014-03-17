@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.scusw.login.action.LoginAction;
+import com.scusw.model.AdminInfo;
 import com.scusw.model.StaffInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.model.TeacherInfo;
@@ -44,5 +45,12 @@ public class LoginDao extends HibernateDaoSupport {
 		List<Integer> list = q.list();
 		//System.out.println("权限："+list.get(0));
 		return list;
+	}
+	public AdminInfo checkAdminLogin(AdminInfo adminInfo) {
+		Query query = this.getSession().createQuery("from AdminInfo a " + "where a.adminNo=:id " + "and a.adminPass=:pass");
+		query.setParameter("id", adminInfo.getAdminNo());
+		query.setParameter("pass", adminInfo.getAdminPass());
+		AdminInfo admin = (AdminInfo)query.uniqueResult();
+		return admin;
 	}
 }

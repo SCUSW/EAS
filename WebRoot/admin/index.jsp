@@ -16,13 +16,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	
+
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
-	
+
 	<style type="text/css">
 		body{
 			background-image:url(image/background.jpg);
@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			position:relative;
 			font-family: "微软雅黑";
 		}
-	
+
 		#left_side{
 			position:relative;
 			top:0px;
@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			width:100%;
 			top:0px;
 	}
-			
+
 		#login{
 			position:relative;
 			margin-top:-310px;
@@ -55,8 +55,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		#circle{
 			display:none;
 		}
-	
-	
+
+
 	#content{
 		margin-top:50px;
 	}
@@ -67,10 +67,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			$("#mid_side").ready(function() {
                 $("#circle,#login").show(1000);
                 $("#left_side").animate({left:'0px'},1000);
+                judge(${request.loginstate});
             });	
-		})
+		});
+		
+		
+	
 	</script>
-    
+    <script language="JavaScript">
+    function judge(isTrue){
+    	if(isTrue.toString() == "false"){
+    	document.getElementById("erro").innerHTML="密码或账号错误！";
+    	document.getElementById("erro").style.color="red";
+    	}else {
+    	}
+    }
+    </script>
   </head>
   
   <body>
@@ -88,25 +100,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          
         </table>
         <div id="login">
-			 <form class="form-horizontal" action="<%=basePath %>adminLogin!checkAdminLogin.action" method="post">
+			 <form class="form-horizontal" action="<%=basePath %>login!checkAdminLogin.action" method="post">
 				<fieldset>
 					<center style="font-size:26px;font-family:'微软雅黑'">请登录</center>
 					<div class="control-group">
          			 <label class="control-label" for="input01"></label>
          			 <div class="controls">
-           				 账号：<input type="text" name="loginNo" placeholder="请输入管理员账号..." class="input-xlarge">
+           				 账号：<input type="text" name="loginNo" placeholder="请输入账号..." class="input-xlarge">
           				  <p class="help-block"></p>
         				 密码：<input type="password" onpaste="return false;" oncopy="return false;" name="loginPass" placeholder="请输入密码..." class="input-xlarge">
            				 <p class="help-block"></p>
-           				 
-           				<!--  
-           				 <input type="radio" checked="checked" name="role" value="student"/>学生&nbsp;&nbsp;
-           				 <input type="radio" name="role" value="staff"/>工作人员<br/><br/> 
-           				 -->
-           				 
            				<div class="btn-group">
-						  <input type="submit" value="登录" class="btn btn-default"></button>
-						</div>         				 
+						  <input type="submit"  value="登录" class="btn btn-default"/>
+						</div>   
+							<p id="erro"></p>      				 
        			  	 </div>
        				</div>
        				</fieldset>
@@ -114,12 +121,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
 
         </div>
-						
-
-    </div>
-    </div>
+            </div>
+ 
     
     <%@ include file="/include/footer.html"%>
-    </div>
+
   </body>
 </html>

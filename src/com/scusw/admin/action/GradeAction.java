@@ -63,7 +63,7 @@ public class GradeAction {
 		List<GradeInfo> list = gradeService.queryGrade();
 		request = (Map<String, Object>) ActionContext.getContext().get("request");
 		request.put("grade", list);
-		logger.info("queryGrade");
+		//logger.info("queryGrade");
 		return "success";
 	}
 	public String deleteGrade() {
