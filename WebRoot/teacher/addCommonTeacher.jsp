@@ -42,6 +42,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	 			<span class="input-group-addon">账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</span>
 				<input name="staff.staffNo" type="text" class="form-control">
 			</div>
+				<div class="input-group input-group-sm">
+ 	 			<span class="input-group-addon">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</span>
+				<input name="staff.staffName" type="text" class="form-control">
+			</div>
 			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</span>

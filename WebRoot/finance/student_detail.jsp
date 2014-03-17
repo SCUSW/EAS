@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		<tr class="success"><td>入学时间：${studentInfo.attendTime}</td></tr>
    		<tr class="success"><td>备注：${studentInfo.studentRemark}</td></tr>
    	</table>	
-   		<button class="btn btn-default" onclick="window.location.href('<%=basePath %>studentFinanceAction!searchAll.action')">返回</button><br/>
+   		<button class="btn btn-default" onclick="window.location.href='<%=basePath %>studentFinanceAction!searchAll.action'">返回</button><br/>
    </center>
   </body>
 </html>

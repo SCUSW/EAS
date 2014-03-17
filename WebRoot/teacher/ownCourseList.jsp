@@ -16,32 +16,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 
   </head>
   
   <body>
     <div align="center">
     		<center>
-    			<table border="1">
-    				<tr>
+    			<table class="table table-hover" border="1">
+    				<tr class="warning">
     					<td>专业编号</td><td>专业名称</td><td>课程编号</td><td>课程名称</td><td>价格</td><td colspan="2">操作</td>
     				</tr>
     				<c:forEach items="${courses}" var="c">
-    				<tr> 
+    				<tr class="success"> 
     					<td>${c.majorInfo.majorId}</td>
     					<td>${c.majorInfo.majorName}</td>
     					<td>${c.courseId}</td>
     					<td>${c.courseName}</td>
     					<td>${c.coursePrice}</td>
-    					<td><a href="teacherAct!ownCourseInfo.action?course.courseId=${c.courseId}">查看</a></td>
-    					<td><a href="teacherAct!searchOwnStudent.action?course.courseId=${c.courseId}">学生</a></td>
+    					<td><button class="btn btn-default" onclick="window.location.href='teacherAct!ownCourseInfo.action?course.courseId=${c.courseId}'"><span class="glyphicon glyphicon-eye-open"></span> 查看</button></td>
+    					<td><button class="btn btn-default" onclick="window.location.href='teacherAct!searchOwnStudent.action?course.courseId=${c.courseId}'"><span class="glyphicon glyphicon-user"></span> 学生</button></td>
     				</tr>
     				</c:forEach>
+    				<tr style="text-align:center;" class="success"><td colspan="7"><button class="btn btn-default" onclick="window.location.href='teacherAct!addOwnCourse1'"><span class="glyphicon glyphicon-plus"></span> 增设课程</button></td></tr>
     			</table>
-    			<a href="teacherAct!addOwnCourse1">增设课程</a>
+    			
     	</center>
     </div>
   </body>

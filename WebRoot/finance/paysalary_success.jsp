@@ -31,6 +31,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     支付成功！<br>
-    <button class="btn btn-default" onclick="window.location.href('<%=basePath %>staffFinanceAction!searchAll.action')">返回</button>
+    <button class="btn btn-default" onclick="window.location.href='<%=basePath %>staffFinanceAction!searchAll.action'">返回</button>
   </body>
 </html>

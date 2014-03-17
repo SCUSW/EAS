@@ -16,36 +16,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 
   </head>
   
   <body> 
-  	课程：${course.courseName}<br>
-  	分数：${register.studentCourseScore}<br>
- 	分支机构：${student.classInfo.gradeInfo.branchInfo.branchName}<br>
- 	年级：${student.classInfo.gradeInfo.gradeName}<br>
- 	班级：${student.classInfo.className}<br>
- 	学号：${student.studentNo}<br>
- 	姓名：${student.studentName}<br>
- 	性别：${student.studentSex}<br>
- 	学籍状态：${student.rollState.rollstateName}<br>
- 	年龄：${student.studentAge}<br>
- 	地址：${student.studentAddr}<br>
- 	电话号码：${student.studentPhone }<br>
- 	院校：${student.studentSchool}<br>
- 	专业：${student.studentMajor}<br>
- 	入校时间：${student.attendTime}<br>
- 	<br>
+  <table style="text-align:center" class="table table-hover">
+  	<tr class="success"><td>课程：${course.courseName}</td></tr>
+  	<tr class="success"><td>分数：${register.studentCourseScore}</td></tr>
+ 	<tr class="success"><td>分支机构：${student.classInfo.gradeInfo.branchInfo.branchName}</td></tr>
+ 	<tr class="success"><td>年级：${student.classInfo.gradeInfo.gradeName}</td></tr>
+ 	<tr class="success"><td>班级：${student.classInfo.className}</td></tr>
+ 	<tr class="success"><td>学号：${student.studentNo}</td></tr>
+ 	<tr class="success"><td>姓名：${student.studentName}</td></tr>
+ 	<tr class="success"><td>性别：${student.studentSex}</td></tr>
+ 	<tr class="success"><td>学籍状态：${student.rollState.rollstateName}</td></tr>
+ 	<tr class="success"><td>年龄：${student.studentAge}</td></tr>
+ 	<tr class="success"><td>地址：${student.studentAddr}</td></tr>
+ 	<tr class="success"><td>电话号码：${student.studentPhone }</td></tr>
+ 	<tr class="success"><td>院校：${student.studentSchool}</td></tr>
+ 	<tr class="success"><td>专业：${student.studentMajor}</td></tr>
+ 	<tr class="success"><td>入校时间：${student.attendTime}</td></tr>
+ 	<tr class="success"><td>
  	 <form action="teacherAct!updateStudentCourseScore.action" method="post">  		
  	 <input type="hidden" name="register.registerId" value="${register.registerId}"/>
  	 <input type="hidden" name="student.studentNo" value="${student.studentNo}"/>
  	 <input type="hidden" name="course.courseId" value="${course.courseId}"/>	
-   	 评分：<input type="text" name="register.studentCourseScore"/><br/>
-    <input type="submit" value="提交"/>
+   	 评分：<input type="text" name="register.studentCourseScore"/>
+    <input class="btn btn-default" type="submit" value="提交"/>
     		</form>
-    <a href="teacherAct!getStudentAttendant.action?register.registerId=${register.registerId}">考勤情况</a> 
+    	</td></tr>	
+    <tr class="success"><td><button class="btn btn-default" onclick="window.location.href='teacherAct!getStudentAttendant.action?register.registerId=${register.registerId}'"><span class="glyphicon glyphicon-list-alt"></span> 考勤情况</button></td></tr> 
+  </table>
   </body>
 </html>

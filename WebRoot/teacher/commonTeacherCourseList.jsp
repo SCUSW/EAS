@@ -16,21 +16,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 
   </head>
   
   <body>
     <div align="center">
     		<center>
-    			<table border="1">
-    				<tr>
+    			<table class="table table-hover" border="1">
+    				<tr class="warning">
     					<td>专业编号</td><td>专业名称</td><td>课程编号</td><td>课程名称</td><td>价格</td><td>操作</td>
     				</tr>
     				<c:forEach items="${courses}" var="c">
-    				<tr> 
+    				<tr class="success"> 
     					<td>${c.majorInfo.majorId}</td>
     					<td>${c.majorInfo.majorName}</td>
     					<td>${c.courseId}</td>

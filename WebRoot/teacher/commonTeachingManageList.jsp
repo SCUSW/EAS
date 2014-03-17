@@ -16,21 +16,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 	
   </head>
   
   <body>
     	<center>
-    			<table border="1">
-    				<tr>
+    			<table border="1" class="table table-hover">
+    				<tr class="warning">
     					<td>时间</td><td>审核状态</td><td>教学计划</td><td>教案</td><td>总结</td>
     					<td colspan="4">操作</td>
     				</tr>
     				<c:forEach items="${ownTeachingManageInfos}" var="t">
-    				<tr> 
+    				<tr class="success"> 
     					<td>${t.setTime}</td>
     					<td>${t.examState}</td>
     					<td>${t.teachPlan}</td>

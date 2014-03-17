@@ -16,24 +16,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 
   </head>
   
   <body>
-     <center> <h1>修改教师个人信息面</h1><br/>
+     <center> <h1>修改个人信息</h1><br/>
    	<form action="teacherAct!updateOwnTeacherInfo2.action" method="post">
    		<input type="hidden" name="staff.staffId" value="${teacher.staffId}"/>
    		<input type="hidden" name="staff.staffNo" value="${teacher.staffInfo.staffNo}"/>
    		<input type="hidden" name="staff.positionInfo.vocationId" value="${teacher.staffInfo.positionInfo.vocationId}"/>
    		<input type="hidden" name="staff.groupInfo.groupId" value="${teacher.staffInfo.groupInfo.groupId}"/>
    		<input type="hidden" name="staff.staffEmplTime" value="${teacher.staffInfo.staffEmplTime}"/>
-   		密码：<input type="password" name="staff.staffPass" value="${teacher.staffInfo.staffPass}"/><br/>
-   		手机号码：<input type="text" name="staff.staffPhone" value="${teacher.staffInfo.staffPhone}"/><br/>
-   		QQ：<input type="text" name="staff.staffQq" value="${teacher.staffInfo.staffQq}"/><br/>
-   			<input type="submit" value="确定修改"/>
+   		<span style="margin-left:-200px;">密码：</span><center><input style="width:200px;margin-top:-23px;margin-left:80px;height:30px;" value="${teacher.staffInfo.staffPass}" class="form-control" type="password" name="staff.staffPass"/><br/></center>
+   		<span style="margin-left:-200px;">手机号码：</span><center><input style="width:200px;margin-top:-23px;margin-left:80px;height:30px;" value="${teacher.staffInfo.staffPhone}" class="form-control" type="text" name="staff.staffPhone"/><br/></center>
+   		<span style="margin-left:-200px;">QQ：</span><center><input style="width:200px;margin-top:-23px;margin-left:80px;height:30px;" value="${teacher.staffInfo.staffPhone}" class="form-control" type="text" name="staff.staffQq"/><br/></center>
+   			<input class="btn btn-default" type="submit" value="确定修改"/>
    </form>
    </center>
   </body>

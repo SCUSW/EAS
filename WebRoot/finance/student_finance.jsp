@@ -75,7 +75,7 @@
 							<input class="btn btn-default" type="button" onclick="minusMoney(${s.studentId})" value="扣费" />
 							<!--<input type="button" value="转正" />-->
 							<input class="btn btn-default" type="button"
-								onclick="window.location.href('<%=basePath%>studentFinanceAction!detailInfo.action?studentInfo.studentId=${s.studentId }')"
+								onclick="window.location.href='<%=basePath%>studentFinanceAction!detailInfo.action?studentInfo.studentId=${s.studentId }'"
 								value="详细信息" />
 						</td>
 					</tr>

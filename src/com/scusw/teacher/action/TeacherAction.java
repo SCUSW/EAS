@@ -303,6 +303,8 @@ public class TeacherAction extends ActionSupport{
 	}
 	
 	public String addCommonTeacher2(){
+		System.out.println(teacher.getStaffInfo().getStaffName());
+		
 		boolean flag=teacherService.addCommonTeacher(teacher, teacherLevel.getLevelId(), staff);
 		if(flag){
 			return "addCommonTeacher2";

@@ -41,6 +41,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</tr>
     	</c:forEach>
     </table>
-    <button class="btn btn-default" onclick="window.location.href('<%=basePath %>totalFinanceAction!totalFinance.action')">返回</button>
+    <button class="btn btn-default" onclick="window.location.href='<%=basePath %>totalFinanceAction!totalFinance.action'">返回</button>
   </body>
 </html>

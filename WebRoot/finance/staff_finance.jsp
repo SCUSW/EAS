@@ -79,8 +79,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			</td>
    			<td><%=totalSalary %></td>
    			<td>
-   			<input onclick="window.location.href('<%=basePath %>staffFinanceAction!payStaff.action?staffFees.sfeesNum=<%=totalSalary %>&staffFees.staffInfo.staffId=<%=s.getStaffId() %>')" type="button" class="btn btn-default" value="支付工资"/>
-   			<input onclick="window.location.href('<%=basePath %>staffFinanceAction!checkHistoryById.action?staffFees.staffInfo.staffId=<%=s.getStaffId() %>')" type="button" class="btn btn-default" value="历史纪录"/>
+   			<input onclick="window.location.href='<%=basePath %>staffFinanceAction!payStaff.action?staffFees.sfeesNum=<%=totalSalary %>&staffFees.staffInfo.staffId=<%=s.getStaffId() %>'" type="button" class="btn btn-default" value="支付工资"/>
+   			<input onclick="window.location.href='<%=basePath %>staffFinanceAction!checkHistoryById.action?staffFees.staffInfo.staffId=<%=s.getStaffId() %>'" type="button" class="btn btn-default" value="历史纪录"/>
    			</td>
    			<td>&nbsp;</td>
    			</tr>
