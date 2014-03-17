@@ -17,7 +17,8 @@ import com.scusw.model.StudentConsultway;
  */
 public interface MarketingService {
 	
-	public boolean addConsultInfo(ConsultInfo consultInfo,StudentConsultway studentConsultway);
+	public boolean addConsultInfo(ConsultInfo consultInfo);
+	public boolean addSelectConsultwayInfo(int[] selectConsultwayId, ConsultInfo consultInfo);
 	public boolean checkSalesmanInfo(String staffNo);
 	public SalesmanInfo querySalesmanInfoByNo(String queryNo);
 	public List<SalesmanInfo> querySalesmanInfoByName(String queryName);

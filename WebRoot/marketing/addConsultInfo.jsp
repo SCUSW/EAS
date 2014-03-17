@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <center> <h1>添加咨询信息</h1><br/>
     	<div style="width:300px;">
-    		<form>
+    		<form  action="marketing!addConsultInfo.action" method="post">
     			<fieldset>
     				<input type="hidden" name="consultInfo.salesmanInfo.staffId" value="${session.staffId}"/>
 	   				<input type="hidden" name="consultInfo.salesmanInfo.staffInfo.staffNo" value="${session.staffNo}"/><br/>
@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">学生住址</span>
-						<input name="consultInfo.studentSchool" type="text" class="form-control">
+						<input name="consultInfo.studentAddr" type="text" class="form-control">
 					</div>
 					<br/>
 					
@@ -87,13 +87,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					咨询方式：<input type="radio" checked="checked" name="consultInfo.consultType" value="现场咨询"/>现场咨询
 						 <input type="radio" name="consultInfo.consultType" value="电话咨询"/>电话咨询
 						 <input type="radio" name="consultInfo.consultType" value="网站咨询"/>网站咨询<br/>
-					了解渠道：<input type="radio" name="studentConsultway.consultwayInfo.consultwayId" value="1">广告宣传
-						<input type="radio" name="studentConsultway.consultwayInfo.consultwayId" value="2">活动宣传
-						<input type="radio" name="studentConsultway.consultwayInfo.consultwayId" value="3">网络渠道
-						<input type="radio" name="studentConsultway.consultwayInfo.consultwayId" value="4">朋友介绍
-						<input type="radio" name="studentConsultway.consultwayInfo.consultwayId" value="5">学生介绍
-						<input type="radio" name="studentConsultway.consultwayInfo.consultwayId" value="6">教师介绍<br/>
-						
+					了解渠道：广告宣传<input type="checkbox" name="selectConsultwayId" value="1">&nbsp;
+							   活动宣传<input type="checkbox" name="selectConsultwayId" value="2">&nbsp;
+							   网络渠道<input type="checkbox" name="selectConsultwayId" value="3">&nbsp;<br/>
+							   朋友介绍<input type="checkbox" name="selectConsultwayId" value="4">&nbsp;
+							   学生介绍<input type="checkbox" name="selectConsultwayId" value="5">&nbsp;
+							   教师介绍<input type="checkbox" name="selectConsultwayId" value="6"><br/>
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</span>
 						<input name="consultInfo.studentRemark" type="text" class="form-control">

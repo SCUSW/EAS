@@ -60,11 +60,14 @@ public class MarketingDaoImpl extends HibernateDaoSupport implements MarketingDa
 	 * 方法描述：添加咨询信息
 	 * @param consultInfo ：包含全部咨询信息的实体
 	 */
-	public void addConsultInfo(ConsultInfo consultInfo,StudentConsultway studentConsultway){
+	public void addConsultInfo(ConsultInfo consultInfo){
 		this.getHibernateTemplate().save(consultInfo);
-		this.getHibernateTemplate().save(studentConsultway);
 	}
-	
+	public void addSelectConsultwayInfo(List<StudentConsultway> studentConsultway){
+		for(int i = 0; i < studentConsultway.size(); i ++){
+			this.getHibernateTemplate().save(studentConsultway.get(i));
+		}
+	}
 	/**
 	 * 方法描述：通过员工账号查询员工信息
 	 * @param queryNo ：被查询账号

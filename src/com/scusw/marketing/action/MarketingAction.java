@@ -10,7 +10,6 @@ import com.opensymphony.xwork2.ActionContext;
 import com.scusw.marketing.service.MarketingService;
 import com.scusw.model.ConsultInfo;
 import com.scusw.model.SalesmanInfo;
-import com.scusw.model.StudentConsultway;
 
 /**
  * 类描述：营销人员动作层实现类
@@ -24,11 +23,24 @@ public class MarketingAction {
 	private String queryName;
 	private String queryNo;
 	private int[][] allSalesmanPerformance;
-	private StudentConsultway studentConsultway;
+	private int[] selectConsultwayId;
 	private SalesmanInfo salesmanInfo;
 	private float royaltyRate;
 	private Map<String,Object> request;
 	
+	
+	/**
+	 * @return the selectConsultwayId
+	 */
+	public int[] getSelectConsultwayId() {
+		return selectConsultwayId;
+	}
+	/**
+	 * @param selectConsultwayId the selectConsultwayId to set
+	 */
+	public void setSelectConsultwayId(int[] selectConsultwayId) {
+		this.selectConsultwayId = selectConsultwayId;
+	}
 	/**
 	 * @return the royaltyRate
 	 */
@@ -128,18 +140,6 @@ public class MarketingAction {
 	public void setConsultInfo(ConsultInfo consultInfo) {
 		this.consultInfo = consultInfo;
 	}
-	/**
-	 * @return the studentConsultway
-	 */
-	public StudentConsultway getStudentConsultway() {
-		return studentConsultway;
-	}
-	/**
-	 * @param studentConsultway the studentConsultway to set
-	 */
-	public void setStudentConsultway(StudentConsultway studentConsultway) {
-		this.studentConsultway = studentConsultway;
-	}
 	
 	/**
 	 * 方法描述：检验该员工是否为营销人员
@@ -158,12 +158,16 @@ public class MarketingAction {
 	public String addConsultInfo(){
 		if(checkSalesmanInfo(consultInfo.getSalesmanInfo().getStaffInfo().getStaffNo()) == false)
 			return "addDefault";
-		boolean flag = marketingService.addConsultInfo(consultInfo,studentConsultway);
-		if(flag){
+		boolean flag1 = marketingService.addConsultInfo(consultInfo);
+		boolean flag2 = marketingService.addSelectConsultwayInfo(selectConsultwayId, consultInfo);
+		if(flag1 && flag2){
 			return "addSuccess";
 		}else{
 			return "addDefault";
 		}
+	}
+	public boolean addSelectConsultwayInfo(int[] selectConsultwayId, ConsultInfo consultInfo){
+		return marketingService.addSelectConsultwayInfo(selectConsultwayId, consultInfo);
 	}
 	
 	/**

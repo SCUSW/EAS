@@ -16,7 +16,8 @@ import com.scusw.model.StudentConsultway;
  * version 1.0
  */
 public interface MarketingDao {
-	public void addConsultInfo(ConsultInfo consultInfo,StudentConsultway studentConsultway);
+	public void addConsultInfo(ConsultInfo consultInfo);
+	public void addSelectConsultwayInfo(List<StudentConsultway> studentConsultway);
 	public boolean checkSalesmanInfo(String staffNo);
 	public SalesmanInfo querySalesmanInfoByNo(String queryNo);
 	public List<SalesmanInfo> querySalesmanInfoByName(String queryName);

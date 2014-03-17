@@ -1,10 +1,12 @@
 package com.scusw.marketing.service.implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.scusw.marketing.dao.MarketingDao;
 import com.scusw.marketing.service.MarketingService;
 import com.scusw.model.ConsultInfo;
+import com.scusw.model.ConsultwayInfo;
 import com.scusw.model.SalesmanInfo;
 import com.scusw.model.StudentConsultway;
 
@@ -45,15 +47,31 @@ public class MarketingServiceImpl implements MarketingService {
 	 * @param consultInfo ：包含全部咨询信息的实体
 	 * @return Exception->false  else->true
 	 */
-	public boolean addConsultInfo(ConsultInfo consultInfo,StudentConsultway studentConsultway){
+	public boolean addConsultInfo(ConsultInfo consultInfo){	
 		try {
-			marketingDao.addConsultInfo(consultInfo,studentConsultway);
+			marketingDao.addConsultInfo(consultInfo);
 		} catch (Exception e) {
 			return false;
 		}		
 		return true;
 	}
-	
+	public boolean addSelectConsultwayInfo(int[] selectConsultwayId, ConsultInfo consultInfo){
+		List<StudentConsultway> studentConsultway = new ArrayList<StudentConsultway>();
+		for(int i = 0; i < selectConsultwayId.length; i ++){
+			StudentConsultway consultway = new StudentConsultway();
+			consultway.setConsultInfo(consultInfo);
+			ConsultwayInfo consultwayInfo = new ConsultwayInfo();
+			consultwayInfo.setConsultwayId(selectConsultwayId[i]);
+			consultway.setConsultwayInfo(consultwayInfo);
+			studentConsultway.add(consultway);
+		}
+		try {
+			marketingDao.addSelectConsultwayInfo(studentConsultway);
+		} catch (Exception e) {
+			return false;
+		}		
+		return true;
+	}
 	/**
 	 * 方法描述：通过员工账号查询员工信息
 	 * @param queryNo ：被查询账号
