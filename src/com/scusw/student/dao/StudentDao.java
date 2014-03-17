@@ -2,8 +2,10 @@ package com.scusw.student.dao;
 
 import java.util.List;
 
+import com.scusw.model.CourseInfo;
 import com.scusw.model.MajorInfo;
 import com.scusw.model.NoticeInfo;
+import com.scusw.model.RegisterInfo;
 import com.scusw.model.StudentInfo;
 
 /**
@@ -19,4 +21,8 @@ public interface StudentDao {
 	public List<NoticeInfo> noticeInfoQuery();
 	public MajorInfo majorInfoQuery(String majorName);
 	public String queryNoticeContent(int noticeId);
+	public List<Object[]> queryCourse(String studentNo);
+	public List<CourseInfo> queryAllCourse();
+	public boolean checkIsCourseSelect(int studentId,int[] courseInfo);
+	public void addRegisterInfo(List<RegisterInfo> registerInfos);
 }

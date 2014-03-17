@@ -142,7 +142,7 @@ public class MarketingAction {
 	}
 	
 	/**
-	 * 方法描述：检验该员工是否为营销人员，调用service层接口
+	 * 方法描述：检验该员工是否为营销人员
 	 * @param staffNo ：员工账号
 	 * @return 是->true；否->false
 	 */
@@ -151,7 +151,7 @@ public class MarketingAction {
 	}
 	
 	/**
-	 * 方法描述：添加咨询信息的方法，调用service层接口
+	 * 方法描述：添加咨询信息的方法
 	 * @return true  ："addSuccess" ——> addSuccess.jsp
 	 * 		   false ："addDefault" ——> addDefault.jsp
 	 */
@@ -167,7 +167,7 @@ public class MarketingAction {
 	}
 	
 	/**
-	 * 方法描述：通过员工账号查询员工信息，调用service层接口
+	 * 方法描述：通过员工账号查询员工信息
 	 * @param queryNo ：被查询账号
 	 */
 	public void querySalesmanInfoByNo(){
@@ -175,7 +175,7 @@ public class MarketingAction {
 	}
 	
 	/**
-	 * 方法描述：查询所有员工的信息，调用service层接口
+	 * 方法描述：查询所有员工的信息
 	 * @return 查询失败："queryDefault" ——> addDefault.jsp
 	 * 		     查询成功：null
 	 */
@@ -187,7 +187,7 @@ public class MarketingAction {
 	}
 	
 	/**
-	 * 方法描述：通过姓名查询营销人员信息，调用service层接口
+	 * 方法描述：通过姓名查询营销人员信息
 	 * @param queryName ：被查询姓名
 	 * @return ：查询成功："queryDefault" ——> addDefault.jsp
 	 * 			  查询失败："queryDefault" ——> queryDefault.jsp
@@ -207,7 +207,7 @@ public class MarketingAction {
 	}
 	
 	/**
-	 * 方法描述：通过员工账号查询员工绩效，调用service层接口
+	 * 方法描述：通过员工账号查询员工绩效
 	 * @return "queryDefault" ——> queryDefault.jsp
 	 * 			"performance" ——> performance.jsp
 	 * @throws InterruptedException 
@@ -222,7 +222,7 @@ public class MarketingAction {
 	}
 	
 	/**
-	 * 方法描述：查询所有营销人员的绩效，调用service层接口
+	 * 方法描述：查询所有营销人员的绩效
 	 * @return
 	 */
 	public String queryAllSalesmanPerformance(){
@@ -234,7 +234,7 @@ public class MarketingAction {
 	}
 	
 	/**
-	 * 方法描述：设置营销人员提成方式，调用service层接口
+	 * 方法描述：设置营销人员提成方式
 	 * @return "queryPerformance" ——> queryPerformance.jsp
 	 */
 	public String setSalesmanRoyaltyRate(){

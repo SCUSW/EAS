@@ -1,9 +1,12 @@
 package com.scusw.student.service.implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.scusw.model.CourseInfo;
 import com.scusw.model.MajorInfo;
 import com.scusw.model.NoticeInfo;
+import com.scusw.model.RegisterInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.student.dao.StudentDao;
 import com.scusw.student.service.StudentService;
@@ -16,6 +19,7 @@ import com.scusw.student.service.StudentService;
  */
 public class StudentServiceImpl implements StudentService {
 
+	private List<Object[]> Obj;
 	private StudentDao studentDao;
 	
 	/**
@@ -32,7 +36,7 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	/**
-	 * 方法描述：学生通过学号查询自己的信息，调用Dao层接口
+	 * 方法描述：学生通过学号查询自己的信息
 	 * @param studentNo：学生学号
 	 * @return ：包含学生全部信息的实体
 	 */
@@ -41,7 +45,7 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	/**
-	 * 方法描述：学生修改自己的信息，调用Dao层接口
+	 * 方法描述：学生修改自己的信息
 	 * @param ：包含学生全部信息的实体
 	 */
 	public void updateStudent(StudentInfo student) {
@@ -49,7 +53,7 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	/**
-	 * 方法描述：学生报名，调用Dao层接口
+	 * 方法描述：学生报名
 	 * @param student：包含学生全部信息的实体
 	 * @return ：学生报名专业所有信息的实体
 	 */
@@ -58,7 +62,7 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	/**
-	 * 方法描述：学生查询公告信息，调用Dao层接口
+	 * 方法描述：学生查询公告信息
 	 * @return ：包含公告信息的实体的集合
 	 */
 	public List<NoticeInfo> noticeInfoQuery() {
@@ -70,12 +74,67 @@ public class StudentServiceImpl implements StudentService {
 	}
 	
 	/**
-	 * 方法描述：学生查询专业信息，调用Dao层接口
+	 * 方法描述：学生查询专业信息
 	 * @param majorName：专业名
 	 * @return ：包含专业信息的实体
 	 */
 	public MajorInfo majorInfoQuery(String studentNo) {
 		return studentDao.majorInfoQuery(studentNo);
 	}
-
+	
+	/**
+	 * 方法描述：查询所选课程，并将数据类型转换为CourseInfo
+	 * @param studentNo ： 学生学号
+	 * @return ：包含该学生所有课程的List对象
+	 */
+	public List<CourseInfo> queryCourse(String studentNo){
+		Obj = studentDao.queryCourse(studentNo);
+		List<CourseInfo> courseInfo = new ArrayList<CourseInfo>();
+		for(int i = 0; i < Obj.size(); i++) {
+			courseInfo.add((CourseInfo)(Obj.get(i))[0]);
+		}
+		return courseInfo;
+	}
+	
+	/**
+	 * 方法描述：查询所有课程
+	 * @return ：包含所有课程信息的实体的集合
+	 */
+	public List<CourseInfo> queryAllCourse(){
+		return studentDao.queryAllCourse();
+	}
+	
+	/**
+	 * 方法描述：添加学生所选课程，并判断是否冲突
+	 * @param selectCourseId ：包含学生所选所有课程的ID
+	 * @param studentNo ：该学生学号
+	 * @return  添加成功——>true
+	 * 			添加失败——>false
+	 */
+	public boolean addRegisterInfo(int[] selectCourseId, String studentNo){
+		StudentInfo studentInfo= queryStudentByNo(studentNo);//fuckshen
+		if(!studentDao.checkIsCourseSelect(studentInfo.getStudentId(),selectCourseId))
+			return false;
+		
+		List<RegisterInfo> registerInfos = new ArrayList<RegisterInfo>();
+		for(int i = 0; i < selectCourseId.length; i ++){
+			RegisterInfo registerInfo = new RegisterInfo();
+			StudentInfo student = new StudentInfo();
+			student.setStudentId(studentInfo.getStudentId());
+			CourseInfo course = new CourseInfo();
+			course.setCourseId(selectCourseId[i]);
+			registerInfo.setStudentInfo(student);
+			registerInfo.setCourseInfo(course);
+			registerInfo.setStudentCourseScore((float) 0);
+			registerInfos.add(registerInfo);
+		}
+		
+		try{
+			studentDao.addRegisterInfo(registerInfos);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

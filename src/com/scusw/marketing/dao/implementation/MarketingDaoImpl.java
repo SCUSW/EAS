@@ -104,7 +104,7 @@ public class MarketingDaoImpl extends HibernateDaoSupport implements MarketingDa
 	public int[][] querySalesmanPerformanceByNo(String queryNo){
 		int[][] allPerformance = new int[2][1];
 		allPerformance[0][0] = getHibernateTemplate().find("from ConsultInfo c where c.salesmanInfo.staffInfo.staffNo=?",queryNo).size();
-		allPerformance[1][0] = querySalesmanInfoByNo(queryNo).getStaffId();
+		allPerformance[1][0] = querySalesmanInfoByNo(queryNo).getStaffId();//fuckshen
 		return allPerformance;
 	}
 	
@@ -124,7 +124,8 @@ public class MarketingDaoImpl extends HibernateDaoSupport implements MarketingDa
 	
 	/**
 	 * 方法描述：更新营销人员提成工资
-	 * @param performance ：员工绩效 ; salesmanId ： 员工编号
+	 * @param performance ：员工绩效 
+	 * @param salesmanId ： 员工编号
 	 */
 	public void updateSalesmanSalary(int performance, int salesmanId){
 		float salesmanSalary = royaltyRate * performance;

@@ -2,11 +2,11 @@ package com.scusw.student.action;
 
 import java.util.List;
 import java.util.Map;
-
 import org.apache.log4j.Logger;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.scusw.login.action.LoginAction;
+import com.scusw.model.CourseInfo;
 import com.scusw.model.MajorInfo;
 import com.scusw.model.NoticeInfo;
 import com.scusw.model.StudentInfo;
@@ -26,9 +26,36 @@ public class StudentAction {
 	private String noticeContent;
 	private int noticeId;
 	private List<NoticeInfo> noticeInfo;
+	private List<CourseInfo> courseInfo;
 	private Map<String,Object> request;
+	private int[] selectCourseId;
 	public static Logger logger = Logger.getLogger(LoginAction.class);
 
+	
+	/**
+	 * @return the courseInfo
+	 */
+	public List<CourseInfo> getCourseInfo() {
+		return courseInfo;
+	}
+	/**
+	 * @param courseInfo the courseInfo to set
+	 */
+	public void setCourseInfo(List<CourseInfo> courseInfo) {
+		this.courseInfo = courseInfo;
+	}
+	/**
+	 * @return the selectCourseId
+	 */
+	public int[] getSelectCourseId() {
+		return selectCourseId;
+	}
+	/**
+	 * @param selectCourseId the selectCourseId to set
+	 */
+	public void setSelectCourseId(int[] selectCourseId) {
+		this.selectCourseId = selectCourseId;
+	}
 	/**
 	 * @return the noticeId
 	 */
@@ -115,7 +142,7 @@ public class StudentAction {
 	}
 	
 	/**
-	 * 方法描述：学生通过学号查询个人信息，调用service层接口
+	 * 方法描述：学生通过学号查询个人信息
 	 * @param studentNo：学号
 	 * @return ："success" ——> showInfo.jsp
 	 */
@@ -125,7 +152,7 @@ public class StudentAction {
 	}
 	
 	/**
-	 * 方法描述：更新之前的查询操作，调用service层接口
+	 * 方法描述：更新之前的查询操作
 	 * @param studentId：学号
 	 * @return ："update" ——> updateStudent.jsp
 	 */
@@ -135,17 +162,14 @@ public class StudentAction {
 	}
 	
 	/**
-	 * 方法描述：学生修改个人信息，调用service层接口
-	 * @param student：包含学生所有信息的实体
-	 * @return ：查询更新后的学生信息
-	 */
+	 * 方法描述：学生修改个人信息
 	public String updateStudent(){
 		studentService.updateStudent(studentInfo);
 		return queryStudentByNo();	
 	}
 	
 	/**
-	 * 方法描述：学生报名入学，调用service层接口
+	 * 方法描述：学生报名入学
 	 * @param student：包含学生所有信息的实体
 	 * @return ："majorInfo" ——>showMajorInfo.jsp
 	 */
@@ -155,7 +179,7 @@ public class StudentAction {
 	}
 	
 	/**
-	 * 方法描述：查询所有公告信息，调用service层接口
+	 * 方法描述：查询所有公告信息
 	 * @return : "notice" ——> showNotice.jsp
 	 */
 	public String noticeInfoQuery(){
@@ -175,7 +199,7 @@ public class StudentAction {
 	}
 	
 	/**
-	 * 方法描述：专业信息查询，调用service层接口
+	 * 方法描述：专业信息查询
 	 * @param majorName：专业名
 	 * @return ："majorInfo" ——>showMajorInfo.jsp
 	 */
@@ -184,4 +208,38 @@ public class StudentAction {
 		return "majorInfo";
 	}
 	
+	/**
+	 * 方法描述：查询所选课程
+	 * @return ："courseInfo" ——> queryCourseInfo.jsp
+	 */
+	public String queryCourse(){
+		courseInfo = studentService.queryCourse(studentInfo.getStudentNo());
+		request=(Map)ActionContext.getContext().get("request");
+		request.put("courseInfo",courseInfo);
+		return "courseInfo";
+	}
+	
+	/**
+	 * 方法描述：查询所有课程
+	 * @return ："allCourseInfo" ——>  selectCourses.jsp
+	 */
+	public String queryAllCourse(){
+		courseInfo = studentService.queryAllCourse();
+		request=(Map)ActionContext.getContext().get("request");
+		request.put("courseInfo",courseInfo);
+		return "allCourseInfo";
+	}
+	
+	/**
+	 * 方法描述：添加学生所选课程
+	 * @return ： true ——> selectCourses.jsp
+	 * 			 false ——> selectCourseDefault.jsp
+	 */
+	public String addRegisterInfo(){
+		boolean flag = studentService.addRegisterInfo(selectCourseId,studentInfo.getStudentNo());
+		if(flag)
+			return queryCourse();
+		else
+			return "selectCourseDefault";
+	}
 }

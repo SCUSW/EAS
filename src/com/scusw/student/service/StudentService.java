@@ -2,6 +2,7 @@ package com.scusw.student.service;
 
 import java.util.List;
 
+import com.scusw.model.CourseInfo;
 import com.scusw.model.MajorInfo;
 import com.scusw.model.NoticeInfo;
 import com.scusw.model.StudentInfo;
@@ -19,4 +20,7 @@ public interface StudentService {
 	public List<NoticeInfo> noticeInfoQuery();
 	public MajorInfo majorInfoQuery(String studentNo);
 	public String queryNoticeContent(int noticeId);
+	public List<CourseInfo> queryCourse(String studentNo);
+	public List<CourseInfo> queryAllCourse();
+	public boolean addRegisterInfo(int[] selectCourseId,String studentNo);
 }
