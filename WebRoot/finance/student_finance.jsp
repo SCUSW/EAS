@@ -13,32 +13,39 @@
 
 		<title>My JSP 'student_finance.jsp' starting page</title>
 
-		<meta http-equiv="pragma" content="no-cache">
-		<meta http-equiv="cache-control" content="no-cache">
-		<meta http-equiv="expires" content="0">
-		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-		<meta http-equiv="description" content="This is my page">
-		<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	
 
 	</head>
 
 	<body>
 		<div style="text-align: center">
+			<br/>
 			<form
 				action="<%=basePath%>studentFinanceAction!conditionSearch.action"
 				method="post">
-				学员名称：
-				<input type="text" name="studentInfo.studentName" />
-				<!--
-   		入学年份：<input type="text" /> -- <input type="text" />
-   		-->
-				<input type="submit" value="搜索" />
+				
+				<span style="margin-left:-200px;">学员名称：</span><center><input style="width:200px;margin-top:-23px;margin-left:80px;height:30px;" class="form-control" type="text" name="studentInfo.studentName"/><br/></center>
+   		
+   		<input style="margin-top:0px;margin-left:0px;font-size:10px;" type="submit" class="btn btn-default" value="搜索"/>
 			</form>
 
-			<table border="1">
-				<tr>
+			<table border="1" class="table table-hover">
+				<tr class="warning">
 					<td>
 						姓名
 					</td>
@@ -53,7 +60,7 @@
 					</td>
 				</tr>
 				<c:forEach items="${student_list}" var="s">
-					<tr>
+					<tr class="success">
 						<td>
 							${s.studentName }
 						</td>
@@ -64,10 +71,10 @@
 							${s.studentBalance }
 						</td>
 						<td>
-							<input type="button" onclick="addMoney(${s.studentId})" value="充值" />
-							<input type="button" onclick="minusMoney(${s.studentId})" value="扣费" />
+							<input class="btn btn-default" type="button" onclick="addMoney(${s.studentId})" value="充值" />
+							<input class="btn btn-default" type="button" onclick="minusMoney(${s.studentId})" value="扣费" />
 							<!--<input type="button" value="转正" />-->
-							<input type="button"
+							<input class="btn btn-default" type="button"
 								onclick="window.location.href('<%=basePath%>studentFinanceAction!detailInfo.action?studentInfo.studentId=${s.studentId }')"
 								value="详细信息" />
 						</td>

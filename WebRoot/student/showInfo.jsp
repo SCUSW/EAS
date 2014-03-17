@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<td>姓名：</td><td>${studentInfo.studentName}</td>
     		</tr>
     		<tr class="success">
-    			<td>性别：</td><td>${studentInfo.studentSex}</td>
+    			<td>性别：</td><td>${studentInfo.studentSex == 1 ? "男" : "女"}</td>
     			<td>年龄：</td><td>${studentInfo.studentAge}</td>
     		</tr>
     		<tr class="warning">
@@ -59,6 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<td>备注：</td><td>${studentInfo.studentRemark}</td>
     		</tr>
     	</table>
+    	
    </center>
   </body>
 </html>

@@ -14,7 +14,7 @@
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -32,28 +32,41 @@
 			
 		}
 		#right{
-			
-			margin-top:-155px;
+			background-color:black;
+			margin-top:-154px;
 			margin-left:863px;
 		}
 		#banner_text{
 			position:relative;
-			text-align:center;
+			text-align:left;
 			font-size:20px;
 			font-family:"张海山锐线体简";
-			margin-top:-28px;
-			margin-left:-1155px;
-			top:-90px;
+			margin-top:-57px;
+			top:-59px;
+			left:65px;
 			display:none;
 		}
+		
 	</style>
 	<script>
-			
+		
+		
+		
 		$(document).ready(function(){
 			$("#left").ready(function(){
 				$("#left").animate({marginLeft:'0px'},200);
 				$("#right").animate({marginLeft:'263px'},200);
-				$("#banner_text").show(3000);
+				$("#banner_text").show(1000,function(){
+					$("#left").animate({marginTop:'-125px'},200);
+				
+				});
+			});
+			
+			$("#right_im").click(function(){
+				$("#left").animate({marginTop:'0px'},200);
+			});
+			$("#right_im").mouseout(function(){
+				$("#left").animate({marginTop:'-125px'},200);
 			});
 		})
 	
@@ -61,16 +74,18 @@
 		
 	</head>
   <body>
-  	<div id="left"><img src="image/banner_left.png"/></div>
-  	<div id="right"><img src="image/banner_right.png" border="0" usemap="#Map"/>
+  	<div id="left"><img id="left_im" src="image/banner_left.png"/>
+  		<div id="banner_text">欢迎您!<br/>&nbsp;${session.name} </div>
+  	</div>
+  	<div id="right"><img id="right_im" src="image/banner_right.png" border="0" usemap="#Map"/>
       <map name="Map">
         <area shape="rect" coords="966,126,1026,147" href="./demo.jsp">
         <area shape="rect" coords="1033,127,1093,146" href="./login!loginOut.action">
+        
       </map>
+      	
   	</div>
-  	<div id="banner_text">欢迎您!<br/>${session.studentName} </div>
-  	<s:debug></s:debug>
-  
+  	
   </body>
 </html>
 

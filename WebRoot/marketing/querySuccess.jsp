@@ -18,20 +18,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 
   </head>
   
   <body>
-    <center> <h1>营销人员信息界面</h1><br/>
-    <table border="1">
-    	<tr>
+    <center> 
+    <table class="table table-hover" border="1">
+    	<tr class="warning">
     		<td>编号</td><td>姓名</td><td>性别</td><td>职位</td><td>手机</td><td>QQ</td><td>身份证号</td><td>入职时间</td><td>基本工资</td><td>提成工资</td><td>备注</td>
     	</tr>
     	<c:forEach items="${salesmanInfo}" var="salesman">
-    		<tr> 
+    		<tr class="success"> 
     			<td>${salesman.staffInfo.staffNo}</td>
     			<td>${salesman.staffInfo.staffName}</td>
     			<td>${salesman.staffInfo.staffSex}</td>

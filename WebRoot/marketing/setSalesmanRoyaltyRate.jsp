@@ -16,17 +16,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 
   </head>
   
   <body>
-  	<center> <h1>设置营销人员提成比例</h1><br/>
+  	<center> <h1></h1><br/>
        	<form action="marketing!setSalesmanRoyaltyRate.action" method="post">
-   			提成比例：<input type="text" name="royaltyRate"/><br/>
-   			<input type="submit" value="确定"/>
+       		<span style="margin-left:-200px;">提成比例：</span><center><input style="width:200px;margin-top:-23px;margin-left:80px;height:30px;" class="form-control" type="text" name="royaltyRate"/><br/></center>
+   		
+   		<input style="margin-top:0px;margin-left:0px;font-size:10px;" type="submit" class="btn btn-default" value="确定"/>
    		</form>
    	</center>
   </body>

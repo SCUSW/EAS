@@ -30,15 +30,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <table border="1">
     <thead>
     <tr>
-    <td>年级名</td><td>所属分支</td><td>班级数量</td><td>查看</td><td>删除</td>
+    <td>年级名</td><td>班级数量</td><td>查看</td><td>删除</td>
     </tr>
     </thead>
     <c:forEach items="${request.grade }" var="i">
     <tr>
     <td>${i.gradeName }</td>
-   	<td>${i.branchInfo.branchName }</td>
     <td>${fn:length(i.classInfos) }</td>
-    <td><a href="<%=basePath%>class!checkClassForGrade.action?gradeId=${i.gradeId }">查看班级</a></td>
+    <td><a href="<%=basePath%>class!checkClassForGrade.action?gradeId=${i.gradeId }">查看详情</a></td>
     <td><a href="<%=basePath%>grade!deleteGrade.action?gradeId=${i.gradeId }">删除年级</a></td>
     </tr>
     </c:forEach>

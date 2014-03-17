@@ -11,33 +11,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>My JSP 'show.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
+   <meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	
 
   </head>
   
   <body>
-    <center> <h1>个人信息界面</h1><br/>
-    	学号：${studentInfo.studentNo}<br/>
-    	姓名：${studentInfo.studentName}<br/>
-    	性别：${studentInfo.studentSex == 1 ? "男" : "女"}<br/>
-   		年龄：${studentInfo.studentAge}<br/>
-   		班级：${studentInfo.classInfo.classId}<br/>
-   		学校：${studentInfo.studentSchool}<br/>
-   		住址：${studentInfo.studentAddr}<br/>
-   		电话：${studentInfo.studentPhone}<br/>
-   		专业：${studentInfo.studentMajor}<br/>
-   		余额：${studentInfo.studentBalance}<br/>
-   		入学时间：${studentInfo.attendTime}<br/>
-   		备注：${studentInfo.studentRemark}<br/>
-   		<button onclick="window.location.href('<%=basePath %>studentFinanceAction!searchAll.action')">返回</button><br/>
+    <center> <h1></h1><br/>
+    <table class="table table-hover" style="text-align:center">
+    	<tr class="success"><td>学号：${studentInfo.studentNo}</td></tr>
+    	<tr class="success"><td>姓名：${studentInfo.studentName}</td></tr>
+    	<tr class="success"><td>性别：${studentInfo.studentSex == 1 ? "男" : "女"}</td></tr>
+   		<tr class="success"><td>年龄：${studentInfo.studentAge}</td></tr>
+   		<tr class="success"><td>班级：${studentInfo.classInfo.classId}</td></tr>
+   		<tr class="success"><td>学校：${studentInfo.studentSchool}</td></tr>
+   		<tr class="success"><td>住址：${studentInfo.studentAddr}</td></tr>
+   		<tr class="success"><td>电话：${studentInfo.studentPhone}</td></tr>
+   		<tr class="success"><td>专业：${studentInfo.studentMajor}</td></tr>
+   		<tr class="success"><td>余额：${studentInfo.studentBalance}</td></tr>
+   		<tr class="success"><td>入学时间：${studentInfo.attendTime}</td></tr>
+   		<tr class="success"><td>备注：${studentInfo.studentRemark}</td></tr>
+   	</table>	
+   		<button class="btn btn-default" onclick="window.location.href('<%=basePath %>studentFinanceAction!searchAll.action')">返回</button><br/>
    </center>
   </body>
 </html>

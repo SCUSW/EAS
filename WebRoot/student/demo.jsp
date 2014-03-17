@@ -1,3 +1,4 @@
+<%@page import="com.scusw.util.CheckPrivilege"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -94,6 +95,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <% 
+  if(!com.scusw.util.CheckLogin.checkLogin()){ 
+%>
+<jsp:forward page="../"/>
+<%
+}
+   %>
    <div class="container-fluid">
 	<div class="row-fluid" >
 		<div class="span12">
@@ -111,8 +119,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td id="td"><a class="mytable" href="<%=basePath%>student!queryStudentBeforeUpdate.action?studentInfo.studentNo=${studentInfo.studentNo}" target="text">修改信息</a></td>
 						<td id="td"><a class="mytable" href="<%=basePath%>student!noticeInfoQuery.action" target="text">公告查询</a></td>
 						<td id="td"><a class="mytable" href="<%=basePath%>student!majorInfoQuery.action?studentInfo.studentNo=${studentInfo.studentNo}" target="text">专业查询</a></td>
-						<td id="td">&nbsp;&nbsp;&nbsp;&nbsp;</td>
-						<td id="td">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td id="td"><a class="mytable" href="<%=basePath%>student!queryCourse.action?studentInfo.studentNo=${studentInfo.studentNo}" target="text">已选课程</a></td>
+						<td id="td"><a class="mytable" href="<%=basePath%>student!queryAllCourse.action" target="text">在线选课</a></td>
 					</tr>
 				</table>
 			</div>

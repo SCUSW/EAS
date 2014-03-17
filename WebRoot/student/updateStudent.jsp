@@ -31,6 +31,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	</style>
 	
+	<script>
+		$(document).ready(function(){
+			if(${studentInfo.studentSex}){
+				document.getElementById("select")[2].selected=true;
+			}
+			else{
+				document.getElementById("select")[1].selected=true;
+			}
+		})
+	</script>
 	</head>
 	<body><center>
 	
@@ -62,9 +72,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<div class="input-group input-group-sm">
  	 			<span  class="input-group-addon">性别</span>
-				<select  name="studentInfo.studentSex" value="${studentInfo.studentSex}"  class="form-control" >
-				<option>男</option>
-     			 <option>女</option>
+				<select id="select" name="studentInfo.studentSex"  class="form-control" >
+				<option value=1>男</option>
+     			 <option value=0>女</option>
      			 </select>
 			</div>
 			<br/>

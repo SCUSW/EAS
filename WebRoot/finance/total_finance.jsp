@@ -17,36 +17,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	
+	
+	<style type="text/css">
+	body{
+		width:100%;
+	}
+	</style>
   </head>
   
-  <body>
-   <div style="text-align:center">
-   <table border="1">
+  <body><center>
+  	
+   <div style="">
+   
+   <table border="1" style="position:relative;height:500px;" class="table table-hover">
    <tr>
-   <td width="40%">
-   当前分公司余额：${totalMoney }<br/><br/><br/>
-   <input type="button" onclick="window.location.href('<%=basePath %>totalFinanceAction!historyFinance.action')" value="查看历史明细"/>
-   </td>
-   <td width="60%">
+  	 <td  style="width:40%" class="warning">
+  		 <center><br/><br/><br/><br/>当前分公司余额：${total_money }<br/><br/><br/></center>
+  		 <center><input type="button" class="btn btn-default" onclick="window.location.href('<%=basePath %>totalFinanceAction!historyFinance.action')" value="查看历史明细"/></center>
+  	 </td>
+   	 <td class="success">
 		<form action="<%=basePath %>totalFinanceAction!addFinance.action" method="post">
-		<h4>新增一笔收支信息</h4>
-		收支标题：<input type="text" name="financialRecords.financialFrom"/><br/><br/>
-   		涉及金额：<input type="text" name="financialRecords.financialNum"/><br/><br/>
+		<center>新增一笔收支信息<br/><br/></center>
+		<center><SPAN style="margin-left:-150px;">收支标题：</SPAN><input style="width:200px;margin-top:-23px;margin-left:130px;height:25px;" class="form-control" type="text" name="financialRecords.financialFrom"/><br/>
+   				<SPAN style="margin-left:-150px;">涉及金额：</SPAN><input style="width:200px;margin-top:-23px;margin-left:130px;height:25px;" class="form-control" type="text" name="financialRecords.financialNum"/><br/>
    		收支类型：
-   		<select name="financeType">
+   		<select class="btn btn-default" name="financeType">
    			<option value="-1">支出</option>
    			<option value="1">收入</option>
    		</select><br/><br/>
-   		描述：<textarea name="financialRecords.financialRemark" rows="7" cols="48"></textarea><br/><br/><br/>
-   		<input type="submit" value="提交"/>
+   		描述：<textarea name="financialRecords.financialRemark" rows="7" cols="48"></textarea><br/><br/>
+   		<input type="submit" class="btn btn-default" value="提交"/></center>
    		</form>
 	</td>
 	</tr>
    	</table>
    	</div>
+   </center>	
   </body>
 </html>
