@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    查询学员考勤信息 <br>
    <s:debug></s:debug>
    <c:forEach items="${request.stuinfo }" var="i">
-   ${i.attendantTime },${i.registerInfo.studentInfo.studentName },${i.registerInfo.studentInfo.studentNo }<br>
+   ${i.attendantTime },${i.registerInfo.studentInfo.studentName },${i.registerInfo.studentInfo.studentNo },${i.registerInfo.studentInfo.classInfo.className },${i.registerInfo.studentInfo.classInfo.gradeInfo.gradeName },${i.registerInfo.courseInfo.courseName }<br>
    </c:forEach>
   
   </body>

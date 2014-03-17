@@ -13,12 +13,14 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements
 		AttandantDao {
 
 	public List<StaffAttandant> queryStaffAttendant(int currentPage,
-			int pageSize, String staffName,String staffNo) {
+			int pageSize, String staffName, String staffNo) {
 		// TODO Auto-generated method stub
-		Query query = this.getSession().createQuery(
-				"from StaffAttandant sa "
-						+ "where sa.staffInfo.staffName like :staffName  and sa.staffInfo.staffNo like :staffNo "
-						+ "order by sa.attendantTime desc");
+		Query query = this
+				.getSession()
+				.createQuery(
+						"from StaffAttandant sa "
+								+ "where sa.staffInfo.staffName like :staffName  and sa.staffInfo.staffNo like :staffNo "
+								+ "order by sa.attendantTime desc");
 		query.setParameter("staffName", "%" + staffName + "%");
 		query.setParameter("staffNo", "%" + staffNo + "%");
 		int startRow = (currentPage - 1) * pageSize;
@@ -29,7 +31,8 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements
 	}
 
 	public List<StaffAttandant> queryStaffAttendantByDepartment(
-			int currentPage, int pageSize, int departmentId, String staffName,String staffNo) {
+			int currentPage, int pageSize, int departmentId, String staffName,
+			String staffNo) {
 		// TODO Auto-generated method stub
 		Query query = this
 				.getSession()
@@ -49,39 +52,21 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements
 		return list;
 	}
 
-	public List<StudentAttendant> queryStuAttendant(int currentPage,
-			int pageSize) {
-		// TODO Auto-generated method stub
-		Query query = this.getSession().createQuery(
-				"from StudentAttendant sa order by sa.attendantTime desc");
-		int startRow = (currentPage - 1) * pageSize;
-		query.setFirstResult(startRow);
-		query.setMaxResults(pageSize);
-		List<StudentAttendant> list = query.list();
-		return list;
-	}
-
-	public int getTotleStaffAttendant(String staffName,String staffNo) {
+	public int getTotleStaffAttendant(String staffName, String staffNo) {
 		// TODO Auto-generated method stub
 		List<StaffAttandant> list = (List<StaffAttandant>) this
 				.getSession()
 				.createQuery(
 						"from StaffAttandant sa where sa.staffInfo.staffName like :staffName and sa.staffInfo.staffNo like :staffNo")
-				.setParameter("staffName", "%" + staffName + "%").setParameter("staffNo", "%" + staffNo + "%")
+				.setParameter("staffName", "%" + staffName + "%")
+				.setParameter("staffNo", "%" + staffNo + "%")
 				.setParameter("staffNo", "%" + staffNo + "%").list();
 
 		return list.size();
 	}
 
-	public int getTotleStuAttendant() {
-		// TODO Auto-generated method stub
-		List<StudentAttendant> list = this.getHibernateTemplate().find(
-				"from StudentAttendant");
-
-		return list.size();
-	}
-
-	public int getTotleStaffAttendant(String staffName, int departmentId ,String staffNo) {
+	public int getTotleStaffAttendant(String staffName, int departmentId,
+			String staffNo) {
 		// TODO Auto-generated method stub
 		List<StaffAttandant> list = (List<StaffAttandant>) this
 				.getSession()
@@ -92,6 +77,146 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements
 				.setParameter("departmentId", departmentId).list();
 
 		return list.size();
+	}
+
+	public int getTotleStuAttendant(String studentName, String studentNo) {
+		// TODO Auto-generated method stub
+		List<StudentAttendant> list = (List<StudentAttendant>) this
+				.getSession()
+				.createQuery(
+						"from StudentAttandant sa where sa.registerInfo.studentInfo.studentName like :studentName and sa.registerInfo.studentInfo.studentNo like :studentNo ")
+				.setParameter("studentName", "%" + studentName + "%")
+				.setParameter("studentNo", "%" + studentNo + "%").list();
+
+		return list.size();
+	}
+
+	public int getTotleStuAttendantByGrade(String studentName,
+			String studentNo, int gradeId) {
+		// TODO Auto-generated method stub
+		List<StudentAttendant> list = (List<StudentAttendant>) this
+				.getSession()
+				.createQuery(
+						"from StudentAttandant sa where sa.registerInfo.studentInfo.studentName like :studentName and sa.registerInfo.studentInfo.studentNo like :studentNo and sa.registerInfo.studentInfo.classInfo.gradeInfo.gradeId=:gradeId")
+				.setParameter("studentName", "%" + studentName + "%")
+				.setParameter("studentNo", "%" + studentNo + "%")
+				.setParameter("gradeId", gradeId).list();
+
+		return list.size();
+	}
+
+	public int getTotleStuAttendantByCourse(String studentName,
+			String studentNo, int courseId) {
+		// TODO Auto-generated method stub
+		List<StudentAttendant> list = (List<StudentAttendant>) this
+				.getSession()
+				.createQuery(
+						"from StudentAttandant sa where sa.registerInfo.studentInfo.studentName like :studentName and sa.registerInfo.studentInfo.studentNo like :studentNo and sa.registerInfo.courseInfo.courseId=:courseId")
+				.setParameter("studentName", "%" + studentName + "%")
+				.setParameter("studentNo", "%" + studentNo + "%")
+				.setParameter("courseId", courseId).list();
+
+		return list.size();
+	}
+
+	public int getTotleStuAttendant(String studentName, String studentNo,
+			int gradeId, int courseId) {
+		// TODO Auto-generated method stub
+		List<StudentAttendant> list = (List<StudentAttendant>) this
+				.getSession()
+				.createQuery(
+						"from StudentAttandant sa where sa.registerInfo.studentInfo.studentName like :studentName and sa.registerInfo.studentInfo.studentNo like :studentNo and sa.registerInfo.studentInfo.classInfo.gradeInfo.gradeId=:gradeId and sa.registerInfo.courseInfo.courseId=:courseId")
+				.setParameter("studentName", "%" + studentName + "%")
+				.setParameter("studentNo", "%" + studentNo + "%")
+				.setParameter("gradeId", gradeId)
+				.setParameter("courseId", courseId).list();
+
+		return list.size();
+	}
+
+	public List<StudentAttendant> queryStuAttendant(int currentPage,
+			int pageSize, String studentName, String studentNo) {
+		// TODO Auto-generated method stub
+		Query query = this
+				.getSession()
+				.createQuery(
+						"from StudentAttendant sa "
+								+ "sa.registerInfo.studentInfo.studentName like :studentName "
+								+ "sa.registerInfo.studentInfo.studentNo like :studentNo "
+								+ "order by sa.attendantTime desc");
+		query.setParameter("studentName", "%" + studentName + "%");
+		query.setParameter("studentNo", "%" + studentNo + "%");
+		int startRow = (currentPage - 1) * pageSize;
+		query.setFirstResult(startRow);
+		query.setMaxResults(pageSize);
+		List<StudentAttendant> list = query.list();
+		return list;
+	}
+
+	public List<StudentAttendant> queryStuAttendantByGrade(int currentPage,
+			int pageSize, String studentName, String studentNo, int gradeId) {
+		// TODO Auto-generated method stub
+		Query query = this
+				.getSession()
+				.createQuery(
+						"from StudentAttendant sa "
+								+ "sa.registerInfo.studentInfo.studentName like :studentName "
+								+ "sa.registerInfo.studentInfo.studentNo like :studentNo "
+								+ "sa.registerInfo.studentInfo.classInfo.gradeInfo.gradeId=:gradeId "
+								+ "order by sa.attendantTime desc");
+		query.setParameter("studentName", "%" + studentName + "%");
+		query.setParameter("studentNo", "%" + studentNo + "%");
+		query.setParameter("gradeId", gradeId);
+		int startRow = (currentPage - 1) * pageSize;
+		query.setFirstResult(startRow);
+		query.setMaxResults(pageSize);
+		List<StudentAttendant> list = query.list();
+		return list;
+	}
+
+	public List<StudentAttendant> queryStuAttendantByCourse(int currentPage,
+			int pageSize, String studentName, String studentNo, int courseId) {
+		// TODO Auto-generated method stub
+		Query query = this
+				.getSession()
+				.createQuery(
+						"from StudentAttendant sa "
+								+ "sa.registerInfo.studentInfo.studentName like :studentName "
+								+ "sa.registerInfo.studentInfo.studentNo like :studentNo "
+								+ "sa.registerInfo.courseInfo.courseId=:courseId "
+								+ "order by sa.attendantTime desc");
+		query.setParameter("studentName", "%" + studentName + "%");
+		query.setParameter("studentNo", "%" + studentNo + "%");
+		query.setParameter("courseId", courseId);
+		int startRow = (currentPage - 1) * pageSize;
+		query.setFirstResult(startRow);
+		query.setMaxResults(pageSize);
+		List<StudentAttendant> list = query.list();
+		return list;
+	}
+
+	public List<StudentAttendant> queryStuAttendant(int currentPage,
+			int pageSize, String studentName, String studentNo, int gradeId,
+			int courseId) {
+		// TODO Auto-generated method stub
+		Query query = this
+				.getSession()
+				.createQuery(
+						"from StudentAttendant sa "
+								+ "sa.registerInfo.studentInfo.studentName like :studentName "
+								+ "sa.registerInfo.studentInfo.studentNo like :studentNo "
+								+ "sa.registerInfo.studentInfo.classInfo.gradeInfo.gradeId=:gradeId "
+								+ "sa.registerInfo.courseInfo.courseId=:courseId "
+								+ "order by sa.attendantTime desc");
+		query.setParameter("studentName", "%" + studentName + "%");
+		query.setParameter("studentNo", "%" + studentNo + "%");
+		query.setParameter("courseId", courseId);
+		query.setParameter("gradeId", gradeId);
+		int startRow = (currentPage - 1) * pageSize;
+		query.setFirstResult(startRow);
+		query.setMaxResults(pageSize);
+		List<StudentAttendant> list = query.list();
+		return list;
 	}
 
 }
