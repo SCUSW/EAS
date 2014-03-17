@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <table border="1" style="position:relative;height:500px;" class="table table-hover">
    <tr>
   	 <td  style="width:40%" class="warning">
-  		 <center><br/><br/><br/><br/>当前分公司余额：${total_money }<br/><br/><br/></center>
+  		 <center><br/><br/><br/><br/>当前分公司余额：${totalMoney }<br/><br/><br/></center>
   		 <center><input type="button" class="btn btn-default" onclick="window.location.href('<%=basePath %>totalFinanceAction!historyFinance.action')" value="查看历史明细"/></center>
   	 </td>
    	 <td class="success">
