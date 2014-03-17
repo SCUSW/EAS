@@ -91,7 +91,7 @@ public class AttandantAction {
 				e.printStackTrace();
 			}
 		}
-		//request.put("department", attandantService.queryDepartmentInfo());
+		request.put("department", attandantService.queryDepartmentInfo());
 		request.put("departmentId", departmentId);
 		request.put("staffName", staffName);
 		request.put("staffNo", staffNo);
