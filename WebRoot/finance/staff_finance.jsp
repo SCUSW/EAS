@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			<input onclick="window.location.href('<%=basePath %>staffFinanceAction!payStaff.action?staffFees.sfeesNum=<%=totalSalary %>&staffFees.staffInfo.staffId=<%=s.getStaffId() %>')" type="button" value="支付工资"/>
    			<input onclick="window.location.href('<%=basePath %>staffFinanceAction!checkHistoryById.action?staffFees.staffInfo.staffId=<%=s.getStaffId() %>')" type="button" value="历史纪录"/>
    			</td>
-   			<td>${test }</td>
+   			<td><%= ((HashMap<String, String>)request.getAttribute("lastPayTime")).get(s.getStaffId().toString()) == null ? "无支付信息" : ((HashMap<String, String>)request.getAttribute("lastPayTime")).get(s.getStaffId().toString()) %></td>
    			</tr>
    			<%
    		}

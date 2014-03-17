@@ -38,10 +38,30 @@ public class TotalFinanceServiceImp implements TotalFinanceService {
 		}
 	}
 
-	public boolean addFinanceRecord(FinancialRecords financialRecords) {
+	public boolean addFinanceRecord(FinancialRecords financialRecords , int financeType) {
 		try {
-			totalFinanceDao.addRecord(financialRecords);
-			return true;
+			double totalMoney = this.getTotalMoney();
+			if (financialRecords != null) {
+				if (financialRecords.getFinancialFrom() != null
+						&& financialRecords.getFinancialNum() != null) {
+					financialRecords.setFinancialNum(financialRecords
+							.getFinancialNum()
+							* financeType);
+					totalMoney += financialRecords.getFinancialNum();
+					financialRecords.setTotalMoney(totalMoney);
+					System.out.println(financialRecords.getTotalMoney());
+					System.out.println(financialRecords.getFinancialNum());
+					System.out.println(financialRecords.getFinancialFrom());
+					System.out.println(financialRecords.getFinancialRemark());
+
+					totalFinanceDao.addRecord(financialRecords);
+					
+					return true;
+				}
+			}
+			
+			return false;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

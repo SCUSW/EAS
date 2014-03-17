@@ -27,7 +27,7 @@ public interface StaffFinanceDao {
 	 * param args0 参数0
 	 * return
 	 */
-	public void addRecord(StaffFees staffFees);
+	public void addFeesRecord(StaffFees staffFees);
 
 	/**
 	 * 方法描述
@@ -43,4 +43,6 @@ public interface StaffFinanceDao {
 	 * @param staffid 
 	 */
 	public List<StaffFees> getRecordsById(int staffId);
+	
+	public List<StaffFees> getAllFeesRecords();
 }

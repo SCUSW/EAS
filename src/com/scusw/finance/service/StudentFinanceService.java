@@ -13,14 +13,26 @@ import com.scusw.model.StudentInfo;
  *
  */
 public interface StudentFinanceService {
+	/**
+	 * 
+	 * 方法描述
+	 * param args0 参数0
+	 * return
+	 */
 	public List<StudentInfo> searchAll();
-	public List<StudentInfo> conditionSearch(String studentName);
+	/**
+	 * 
+	 * 方法描述
+	 * param args0 参数0
+	 * return
+	 */
+	public List<StudentInfo> conditionSearch(StudentInfo studentInfo);
 	/**
 	 * 方法描述
 	 * param args0 参数0
 	 * return
 	 */
-	public StudentInfo findById(int studentId);
+	public StudentInfo findById(StudentInfo studentInfo);
 	/**
 	 * 方法描述
 	 * param args0 参数0
@@ -33,5 +45,17 @@ public interface StudentFinanceService {
 	 * return
 	 */
 	public void addStudentFees(StudentFees studentFees);
+	/**
+	 * 方法描述
+	 * param args0 参数0
+	 * return
+	 */
+	public StudentInfo findById(StudentFees studentFees);
+	/**
+	 * 方法描述
+	 * param args0 参数0
+	 * return
+	 */
+	public void updateStudentFees(StudentFees studentFees);
 
 }

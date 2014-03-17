@@ -9,7 +9,6 @@ import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.scusw.model.FinancialRecords;
-import com.scusw.model.StudentInfo;
 
 /**
  * @author 杨昭远
@@ -25,7 +24,9 @@ public class TotalFinanceDaoImp extends HibernateDaoSupport implements TotalFina
 		q.setFirstResult(0);
 		q.setMaxResults(1);
 		FinancialRecords financialRecords = (FinancialRecords) q.uniqueResult();
+		System.out.println(financialRecords.getTotalMoney());
 		return financialRecords;
+		
 	}
 
 	/* (non-Javadoc)
@@ -37,7 +38,7 @@ public class TotalFinanceDaoImp extends HibernateDaoSupport implements TotalFina
 	}
 	
 	public List<FinancialRecords> getAllRecords(){
-		List<FinancialRecords> finacialRecords = getHibernateTemplate().find("from FinancialRecords");
+		List<FinancialRecords> finacialRecords = getHibernateTemplate().find("from FinancialRecords order by financialTime DESC");
 		return finacialRecords;
 	}
 

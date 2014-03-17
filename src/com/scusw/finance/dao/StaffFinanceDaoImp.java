@@ -39,7 +39,7 @@ public class StaffFinanceDaoImp extends HibernateDaoSupport implements StaffFina
 	/* (non-Javadoc)
 	 * @see com.scusw.finance.dao.StaffFinanceDao#addRecord(com.scusw.model.StaffFees)
 	 */
-	public void addRecord(StaffFees staffFees) {
+	public void addFeesRecord(StaffFees staffFees) {
 		// TODO Auto-generated method stub
 		this.getHibernateTemplate().save(staffFees);
 	}
@@ -63,6 +63,15 @@ public class StaffFinanceDaoImp extends HibernateDaoSupport implements StaffFina
 		// TODO Auto-generated method stub
 		List<StaffFees> s = this.getHibernateTemplate().find("from StaffFees s where s.staffInfo.staffId = " + staffId);
 		return s;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.scusw.finance.dao.StaffFinanceDao#getAllFeesRecords()
+	 */
+	public List<StaffFees> getAllFeesRecords() {
+		// TODO Auto-generated method stub
+		
+		return this.getHibernateTemplate().find("from StaffFees order by sfeesTime ASC");
 	}
 	
 }

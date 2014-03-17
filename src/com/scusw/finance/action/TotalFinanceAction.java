@@ -3,7 +3,6 @@
  */
 package com.scusw.finance.action;
 
-import java.sql.Timestamp;
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -20,6 +19,15 @@ public class TotalFinanceAction {
 	private FinancialRecords financialRecords;
 	private int financeType;
 	private Map<String, Object> request;
+	private double totalMoney;
+
+	public double getTotalMoney() {
+		return totalMoney;
+	}
+
+	public void setTotalMoney(double totalMoney) {
+		this.totalMoney = totalMoney;
+	}
 
 	public int getFinanceType() {
 		return financeType;
@@ -56,9 +64,10 @@ public class TotalFinanceAction {
 	public String totalFinance() {
 		if (CheckPrivilege.checkPrivilege(2)) {
 
-			this.setRequest((Map) ActionContext.getContext().get("request"));
-			this.getRequest().put("total_money",
-					totalFinanceService.getTotalMoney());
+			totalMoney = totalFinanceService.getTotalMoney();
+//			this.setRequest((Map) ActionContext.getContext().get("request"));
+//			this.getRequest().put("total_money",
+//					totalFinanceService.getTotalMoney());
 
 			return "default";
 		}
@@ -68,28 +77,29 @@ public class TotalFinanceAction {
 
 	public String addFinance() {
 		if (CheckPrivilege.checkPrivilege(3)) {
-			double totalMoney = totalFinanceService.getTotalMoney();
-			System.out.println(totalMoney);
+//			totalMoney = totalFinanceService.getTotalMoney();
+//			System.out.println(totalMoney);
 
-			if (financialRecords != null) {
-				if (financialRecords.getFinancialFrom() != null
-						&& financialRecords.getFinancialNum() != null) {
-					financialRecords.setFinancialNum(financialRecords
-							.getFinancialNum()
-							* financeType);
-					totalMoney += financialRecords.getFinancialNum();
-					financialRecords.setTotalMoney(totalMoney);
-					System.out.println(financialRecords.getTotalMoney());
-					System.out.println(financialRecords.getFinancialNum());
-					System.out.println(financialRecords.getFinancialFrom());
-					System.out.println(financialRecords.getFinancialRemark());
+//			if (financialRecords != null) {
+//				if (financialRecords.getFinancialFrom() != null
+//						&& financialRecords.getFinancialNum() != null) {
+//					financialRecords.setFinancialNum(financialRecords
+//							.getFinancialNum()
+//							* financeType);
+//					totalMoney += financialRecords.getFinancialNum();
+//					financialRecords.setTotalMoney(totalMoney);
+//					System.out.println(financialRecords.getTotalMoney());
+//					System.out.println(financialRecords.getFinancialNum());
+//					System.out.println(financialRecords.getFinancialFrom());
+//					System.out.println(financialRecords.getFinancialRemark());
 
-					totalFinanceService.addFinanceRecord(financialRecords);
-				}
-			}
-
-			this.setRequest((Map) ActionContext.getContext().get("request"));
-			this.getRequest().put("total_money", totalMoney);
+					totalFinanceService.addFinanceRecord(financialRecords , financeType);
+//				}
+//			}
+			
+			totalMoney = totalFinanceService.getTotalMoney();
+//			this.setRequest((Map) ActionContext.getContext().get("request"));
+//			this.getRequest().put("total_money", totalMoney);
 
 			return "default";
 		}

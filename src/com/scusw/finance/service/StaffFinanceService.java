@@ -3,7 +3,9 @@
  */
 package com.scusw.finance.service;
 
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 import com.scusw.model.StaffFees;
 import com.scusw.model.StaffInfo;
@@ -26,14 +28,14 @@ public interface StaffFinanceService {
 	 * param args0 参数0
 	 * return
 	 */
-	public List<StaffInfo> conditionSearch(String staffName);
+	public List<StaffInfo> conditionSearch(StaffInfo staffInfo);
 
 	/**
 	 * 方法描述
 	 * param args0 参数0
 	 * return
 	 */
-	public void addStaffFees(StaffFees staffFees);
+	public void addStaffSalaryFees(StaffFees staffFees);
 
 	/**
 	 * 方法描述
@@ -48,7 +50,14 @@ public interface StaffFinanceService {
 	 * return
 	 * @param staffid 
 	 */
-	public List<StaffFees> getFeesHistory(int staffId);
+	public List<StaffFees> getFeesHistory(StaffFees staffFees);
+
+	/**
+	 * 方法描述
+	 * param args0 参数0
+	 * return
+	 */
+	public Map<String, String> getLastPayTime();
 	
 
 }

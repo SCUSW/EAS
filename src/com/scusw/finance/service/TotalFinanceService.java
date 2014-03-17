@@ -23,8 +23,9 @@ public interface TotalFinanceService {
 	 * 添加一条收支信息
 	 * param financialRecords 收支的对象
 	 * return true 添加成功 false 添加失败
+	 * @param financeType 
 	 */
-	public boolean addFinanceRecord(FinancialRecords financialRecords);
+	public boolean addFinanceRecord(FinancialRecords financialRecords, int financeType);
 
 	/**
 	 * 方法描述

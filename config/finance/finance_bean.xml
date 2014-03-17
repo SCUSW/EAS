@@ -21,11 +21,11 @@
 		
 		<bean id="studentFinanceService" class="com.scusw.finance.service.StudentFinanceServiceImp">	
 			<property name="studentFinanceDao" ref="studentFinanceDao"></property>
+			<property name="totalFinanceService" ref="totalFinanceService"></property>
 		</bean>
 	
 		<bean id="studentFinanceAction" class="com.scusw.finance.action.StudentFinanceAction">	
 			<property name="studentFinanceService" ref="studentFinanceService"></property>
-			<property name="totalFinanceService" ref="totalFinanceService"></property>
 		</bean>
 		
 		<bean id="teacherFinanceDao" class="com.scusw.finance.dao.TeacherFinanceDaoImp">
@@ -58,10 +58,10 @@
 		
 		<bean id="staffFinanceService" class="com.scusw.finance.service.StaffFinanceServiceImp">	
 			<property name="staffFinanceDao" ref="staffFinanceDao"></property>
+			<property name="totalFinanceService" ref="totalFinanceService"></property>
 		</bean>
 	
 		<bean id="staffFinanceAction" class="com.scusw.finance.action.StaffFinanceAction">	
 			<property name="staffFinanceService" ref="staffFinanceService"></property>
-			<property name="totalFinanceService" ref="totalFinanceService"></property>
 		</bean>
 </beans>
