@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				<span class="glyphicon glyphicon-plus"></span> 增加
     				</button></td></tr>
     			</table>
-    			
     	</center>
+    	<button class="btn btn-default" onclick=" window.history.back()">返回</button>
   </body>
 </html>

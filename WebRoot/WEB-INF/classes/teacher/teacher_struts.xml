@@ -53,7 +53,7 @@
 				<result name="addCommonTeacher1">teacher/addCommonTeacher.jsp</result>
 				
 				<result name="addCommonTeacher2">teacher/ownCommonTeacherInfo.jsp</result>
-				<result name="addCommonTeacher2_default">teacher/addCommonTeacher2_default.jsp</result>
+				<result name="addCommonTeacher2_default">teacher/default.jsp</result>
 				
 				<result name="getCommonTeacherAttandant">teacher/commonTeacherAttandantList.jsp</result>
 				

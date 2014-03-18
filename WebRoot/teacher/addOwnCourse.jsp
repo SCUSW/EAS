@@ -64,6 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		</fieldset>
    </form>
    </div>
+   <button class="btn btn-default" onclick=" window.history.back()">返回</button>
    </center>
   </body>
 </html>

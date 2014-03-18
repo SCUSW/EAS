@@ -43,7 +43,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				</tr>
     				</c:forEach>
     			</table>
-    			<a href="teacherAct!addCommonTeacherAttandant.action?staff.staffId=${staff.staffId}">增加</a>
+    			<a href="teacherAct!addCommonTeacherAttandant.action?staff.staffId=${staff.staffId}">增加</a><br>
+    			<button class="btn btn-default" onclick=" window.history.back()">返回</button>
     	</center>
   </body>
 </html>

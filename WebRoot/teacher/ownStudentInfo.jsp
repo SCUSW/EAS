@@ -57,5 +57,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</td></tr>	
     <tr class="success"><td><button class="btn btn-default" onclick="window.location.href='teacherAct!getStudentAttendant.action?register.registerId=${register.registerId}'"><span class="glyphicon glyphicon-list-alt"></span> 考勤情况</button></td></tr> 
   </table>
+  <center><button class="btn btn-default" onclick=" window.history.back()">返回</button></center>
   </body>
 </html>

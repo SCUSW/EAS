@@ -23,6 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    网络繁忙 >_< <br>
+    ${errorMessage} <br>
+    <button class="btn btn-default" onclick=" window.history.back()">返回</button>
   </body>
 </html>

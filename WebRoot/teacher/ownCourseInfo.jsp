@@ -39,5 +39,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	<tr class="success"><td>介绍：${course.courseDesc}</td></tr>
    	<tr class="success" style="text-align:center;"><td><button class="btn btn-default" onclick="window.location.href='teacherAct!getOwnTeachingManageList.action?course.courseId=${course.courseId }'"><span class="glyphicon glyphicon-edit"></span> 教学管理</button></td></tr>
   </table> 	 
+  <center><button class="btn btn-default" onclick=" window.history.back()">返回</button></center>
   </body>
 </html>

@@ -48,7 +48,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>	
     <input class="btn btn-default" type="submit" value="提交"/>
     </form>
-    <a href="teacherAct!getCommonTeachingManageList.action?course.courseId=${course.courseId }">教学管理</a>
+    <a href="teacherAct!getCommonTeachingManageList.action?course.courseId=${course.courseId }">教学管理</a><br>
+    <button class="btn btn-default" onclick=" window.history.back()">返回</button>
   	</center>
   </body>
  	 

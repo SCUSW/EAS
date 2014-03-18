@@ -44,6 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		<span style="margin-left:-200px;">QQ：</span><center><input style="width:200px;margin-top:-23px;margin-left:80px;height:30px;" value="${teacher.staffInfo.staffPhone}" class="form-control" type="text" name="staff.staffQq"/><br/></center>
    			<input class="btn btn-default" type="submit" value="确定修改"/>
    </form>
+   <button class="btn btn-default" onclick=" window.history.back()">返回</button>
    </center>
   </body>
 </html>

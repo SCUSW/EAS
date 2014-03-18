@@ -47,5 +47,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 
 	 	<tr class="success"><td><button class="btn btn-default" onclick="window.location.href='teacherAct!updateOwnTeacherInfo1.action'"><span class="glyphicon glyphicon-edit"></span> 修改</button></td></tr>
   	</table>
+  	<button class="btn btn-default" onclick=" window.history.back()">返回</button>
   </body>
 </html>

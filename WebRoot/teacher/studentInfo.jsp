@@ -45,5 +45,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	<tr class="success"><td>专业：${student.studentMajor}</td></tr>
  	<tr class="success"><td>入校时间：${student.attendTime}</td></tr>
  </table>
+ <button class="btn btn-default" onclick=" window.history.back()">返回</button>
   </body>
 </html>

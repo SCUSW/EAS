@@ -70,6 +70,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<input type="file"  name="doc"/><br />  
          			<input type="submit" value="上传教学计划">  
      			</form>  
+     			<br>
+     			<button class="btn btn-default" onclick=" window.history.back()">返回</button>
     	</center>
   </body>
 </html>

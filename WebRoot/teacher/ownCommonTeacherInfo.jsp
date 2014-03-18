@@ -47,7 +47,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	</table>
  	<center>
  		<button onclick="window.location.href='teacherAct!getCommonTeacherAttandant.action?staff.staffId=${teacher.staffId}'" class="btn btn-default">教师考勤</button><br/>
- 		<button onclick="window.location.href='teacherAct!getCommonTeacherCourseList.action?staff.staffId=${teacher.staffId}'" class="btn btn-default">开设课程</button>
+ 		<button onclick="window.location.href='teacherAct!getCommonTeacherCourseList.action?staff.staffId=${teacher.staffId}'" class="btn btn-default">开设课程</button><br>
+		<button class="btn btn-default" onclick=" window.history.back()">返回</button>
 	</center>
   </body>
 </html>

@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				</c:forEach>
     				<tr class="success"><td style="text-align:center;" colspan="3"><button class="btn btn-default" onclick="window.location.href='teacherAct!addCommonTeacher1'"><span class="glyphicon glyphicon-plus"></span> 增加任课教师 </button></td></tr>
     			</table>
-    			
+    		<button class="btn btn-default" onclick=" window.history.back()">返回</button>
     	</center>
   </body>
 </html>

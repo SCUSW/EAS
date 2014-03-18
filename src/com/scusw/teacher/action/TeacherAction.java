@@ -66,7 +66,7 @@ public class TeacherAction extends ActionSupport{
 
 	private File doc;
 	
-	private String errorMessage ; 
+	private String errorMessage = "网络繁忙 >_<"; 
 /*	private String fileName;   
     private String contentType;
     private ServletContext context; 
@@ -560,8 +560,10 @@ public class TeacherAction extends ActionSupport{
 
 			course = teacherService.getCourseById(course.getCourseId());
 
-			if (course.getCoursePrice() != 0)
+			if (course.getCoursePrice() != 0){
+				errorMessage="已设置过价格";
 				return "updateCommonTeacherCoursePrice_default";
+			}
 
 			course.setCoursePrice(coursePrice);
 			teacherService.updateCourse(course);
@@ -572,7 +574,7 @@ public class TeacherAction extends ActionSupport{
 			this.commonTeacherCourseInfo();
 			return "updateCommonTeacherCoursePrice";
 		} catch (Exception e) {
-			return "updateCommonTeacherCoursePrice_default";
+			return "default";
 		}
 		
 	}
