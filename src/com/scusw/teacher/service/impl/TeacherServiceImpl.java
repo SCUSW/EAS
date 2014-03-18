@@ -48,7 +48,8 @@ public class TeacherServiceImpl implements TeacherService{
 		StaffInfo ss=this.getOwnTeacherInfo(staff.getStaffId()).getStaffInfo();
 		ss.setStaffPhone(staff.getStaffPhone());
 		ss.setStaffQq(staff.getStaffQq());
-		ss.setStaffPass(MD5Util.MD5(staff.getStaffPass()));
+		if(!staff.getStaffPass().equals(""))
+			ss.setStaffPass(MD5Util.MD5(staff.getStaffPass()));
 		teacherDao.updateTeacherStaff(ss);
 	}
 
@@ -153,10 +154,8 @@ public class TeacherServiceImpl implements TeacherService{
 		staff.setStaffEmplTime(new Timestamp(System.currentTimeMillis()));
 		staff.setStaffAvai((int)1);
 		staff.setStaffOthers("其它信息");
-
-		float teacherSalary=staff.getPositionInfo().getWageBase();
 		
-		teacher.setTeacherSalary(teacherSalary);
+		teacher.setTeacherSalary((float)0);
 		teacher.setTeacherType((int)0);
 		teacher.setTeacherRemark("备注信息");
 		teacher.setTeacherLevel(this.getTeacherLevelById(levelId));

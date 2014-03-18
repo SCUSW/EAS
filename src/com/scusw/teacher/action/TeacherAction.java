@@ -4,13 +4,21 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;  
+import org.apache.struts2.util.ServletContextAware;
+
 import java.io.File;  
 import java.io.FileInputStream;  
 import java.io.FileNotFoundException;  
@@ -19,6 +27,11 @@ import java.io.IOException;
 import java.io.InputStream;  
 import java.io.OutputStream;  
 import java.util.List; 
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -49,8 +62,27 @@ public class TeacherAction extends ActionSupport{
 	private Map<String,Object> request;
 	private Map<String, Object> session;	
 	
-	private File file;
 	private InputStream downloadInputStream;
+
+	private File doc;
+/*	private String fileName;   
+    private String contentType;
+    private ServletContext context; 
+
+	
+    public void setDocFileName(String fileName) {   
+        this.fileName = fileName;   
+    }   
+       
+    public void setDocContentType(String contentType) {   
+        this.contentType = contentType;   
+    }   
+       
+    public void setServletContext(ServletContext context) {   
+        this.context = context;   
+    }   
+    */
+	
 	
 	public StaffInfo getStaff() {
 		return staff;
@@ -112,12 +144,6 @@ public class TeacherAction extends ActionSupport{
 	public void setTeacherLevel(TeacherLevel teacherLevel) {
 		this.teacherLevel = teacherLevel;
 	}
-	public File getFile() {
-		return file;
-	}
-	public void setFile(File file) {
-		this.file = file;
-	}
 	public String downloadTeachingPlan(){
 		return "downloadTeachingPlan";
 	}
@@ -133,7 +159,12 @@ public class TeacherAction extends ActionSupport{
 	public TeachingManageInfo getTeachingManage() {
 		return teachingManage;
 	}
-	
+	public File getDoc() {
+		return doc;
+	}
+	public void setDoc(File doc) {
+		this.doc = doc;
+	}
 	
 	
 	//获取老师个人信息
@@ -303,8 +334,6 @@ public class TeacherAction extends ActionSupport{
 	}
 	
 	public String addCommonTeacher2(){
-		System.out.println(teacher.getStaffInfo().getStaffName());
-		
 		boolean flag=teacherService.addCommonTeacher(teacher, teacherLevel.getLevelId(), staff);
 		if(flag){
 			return "addCommonTeacher2";
@@ -402,9 +431,12 @@ public class TeacherAction extends ActionSupport{
 	
 	public String updateCommonTeacherCoursePrice(){
 		float coursePrice=course.getCoursePrice();
-		if(coursePrice!=0)
-			return	"updateCommonTeacherCoursePrice_default";
+		
 		course=teacherService.getCourseById(course.getCourseId());
+		
+		if(course.getCoursePrice()!=0)
+			return	"updateCommonTeacherCoursePrice_default";
+		
 		course.setCoursePrice(coursePrice);
 		teacherService.updateCourse(course);
 		teacher=course.getTeacherInfo();
@@ -464,18 +496,78 @@ public class TeacherAction extends ActionSupport{
 //     } 
 //	}
 	
+//	public String uploadTeachPlan(){  
+//        try {
+//        	String targetDirectory = ServletActionContext.getServletContext().getRealPath("/upload");
+//        	
+////            String targetFileName = course.getTeacherInfo().getStaffInfo().getStaffName()
+////            +"_"+course.getCourseName()+"_"+Calendar.getInstance();
+//            
+//        	
+//        	String targetFileName = doc.getName();
+//        	
+//            File target = new File(targetDirectory, targetFileName);   
+//            
+//			FileUtils.copyFile(doc, target);
+//			
+//			TeachingManageInfo teachingManage = new TeachingManageInfo();
+//			teachingManage.setCourseInfo(teacherService.getCourseById(course.getCourseId()));
+//			teachingManage.setExamState(0);
+//			teachingManage.setSetTime(new Timestamp(System.currentTimeMillis()));
+//			teachingManage.setTeachPlan("upload/"+targetFileName);
+//			
+//			
+//			
+//			boolean flag=teacherService.addTeachingManage(teachingManage);
+//			if(flag){
+//				this.getOwnTeachingManageList();
+//		        return "uploadTeachPlan";  
+//			}else{
+//				return "uploadTeachPlan_default";
+//			}
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return "uploadTeachPlan_default";
+//		}   
+//	}	
+	
 	public String uploadTeachPlan(){  
         try {
         	String targetDirectory = ServletActionContext.getServletContext().getRealPath("/upload");
+       
+        	course=teacherService.getCourseById(course.getCourseId());
+       
         	
-//            String targetFileName = course.getTeacherInfo().getStaffInfo().getStaffName()
-//            +"_"+course.getCourseName()+"_"+Calendar.getInstance();
-            
-        	String targetFileName = file.getName();
-  
+    		Calendar ca = Calendar.getInstance();
+    		String catt;
+    		String year = java.lang.String.valueOf(ca.get(1));
+    		String month = java.lang.String.valueOf(ca.get(2)+1);
+    		if(month.length()==1)
+    			month = "0" + month;
+    		String day = java.lang.String.valueOf(ca.get(5));
+    		if(day.length()==1)
+    			day = "0" + day;
+    		String hour = java.lang.String.valueOf(ca.get(11));
+    		if(hour.length()==1)
+    			hour = "0" + hour;
+    		String minute = java.lang.String.valueOf(ca.get(12));
+    		if(minute.length()==1)
+    			minute = "0" + minute;
+    		String second = java.lang.String.valueOf(ca.get(13));
+    		if(second.length()==1)
+    			second = "0" + second;
+    		catt = year+"-"+month+"-"+day+"_"+hour+"-"+minute+"-"+second;
+
+        	
+            String targetFileName = course.getCourseId()+"_"+"teachPlan"+"_"+catt+".doc";
+        	 	
             File target = new File(targetDirectory, targetFileName);   
             
-			FileUtils.copyFile(file, target);
+			FileUtils.copyFile(doc, target);
+			
+			
+			
 			
 			TeachingManageInfo teachingManage = new TeachingManageInfo();
 			teachingManage.setCourseInfo(teacherService.getCourseById(course.getCourseId()));
@@ -490,24 +582,96 @@ public class TeacherAction extends ActionSupport{
 				this.getOwnTeachingManageList();
 		        return "uploadTeachPlan";  
 			}else{
-				return "addCommonTeacherAttandant_default";
+				return "uploadTeachPlan_default";
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "addCommonTeacherAttandant_default";
+			return "uploadTeachPlan_default";
 		}   
 	}
+	
+	
+//	public String uploadTeachPlan(){  
+//        try {
+//        	String targetDirectory = ServletActionContext.getServletContext().getRealPath("/upload");
+//        	
+////            String targetFileName = course.getTeacherInfo().getStaffInfo().getStaffName()
+////            +"_"+course.getCourseName()+"_"+Calendar.getInstance();
+//            
+//        	System.out.println(fileName);
+//        	
+//        	String targetFileName = generateFileName(fileName);
+//        	
+//            File target = new File(targetDirectory, targetFileName);   
+//            
+//			FileUtils.copyFile(doc, target);
+//			
+//			TeachingManageInfo teachingManage = new TeachingManageInfo();
+//			teachingManage.setCourseInfo(teacherService.getCourseById(course.getCourseId()));
+//			teachingManage.setExamState(0);
+//			teachingManage.setSetTime(new Timestamp(System.currentTimeMillis()));
+//			teachingManage.setTeachPlan("upload/"+targetFileName);
+//
+//			boolean flag=teacherService.addTeachingManage(teachingManage);
+//			if(flag){
+//				this.getOwnTeachingManageList();
+//		        return "uploadTeachPlan";  
+//			}else{
+//				return "uploadTeachPlan_default";
+//			}
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return "uploadTeachPlan_default";
+//		}   
+//	}
+
+//	private String generateFileName(String fileName) {   
+//        DateFormat format = new SimpleDateFormat("yyMMddHHmmss");   
+//        String formatDate = format.format(new Date());   
+//           
+//        int random = new Random().nextInt(10000);   
+//           
+//        int position = fileName.lastIndexOf(".");   
+//        String extension = fileName.substring(position);   
+//           
+//        return formatDate + random + extension;   
+//    }      
+	
 
 	public String uploadLessonPlan(){
 		try {
-        	String targetDirectory = ServletActionContext.getServletContext().getRealPath("/upload");
+        	String targetDirectory = ServletActionContext.getServletContext().getRealPath("/upload");    	
+            
+        	course=teacherService.getCourseById(course.getCourseId());
+       
+    		Calendar ca = Calendar.getInstance();
+    		String catt;
+    		String year = java.lang.String.valueOf(ca.get(1));
+    		String month = java.lang.String.valueOf(ca.get(2)+1);
+    		if(month.length()==1)
+    			month = "0" + month;
+    		String day = java.lang.String.valueOf(ca.get(5));
+    		if(day.length()==1)
+    			day = "0" + day;
+    		String hour = java.lang.String.valueOf(ca.get(11));
+    		if(hour.length()==1)
+    			hour = "0" + hour;
+    		String minute = java.lang.String.valueOf(ca.get(12));
+    		if(minute.length()==1)
+    			minute = "0" + minute;
+    		String second = java.lang.String.valueOf(ca.get(13));
+    		if(second.length()==1)
+    			second = "0" + second;
+    		catt = year+"-"+month+"-"+day+"_"+hour+"-"+minute+"-"+second;
+
         	
-        	String targetFileName = file.getName();
+            String targetFileName = course.getCourseId()+"_"+"lessonPlan"+"_"+catt+".doc";
   
             File target = new File(targetDirectory, targetFileName);   
             
-			FileUtils.copyFile(file, target);
+			FileUtils.copyFile(doc, target);
 			
 			teachingManage = teacherService.getTeachingManageById(teachingManage.getTeachingManageId());
 			teachingManage.setLessonPlan("upload/"+targetFileName);
@@ -525,13 +689,37 @@ public class TeacherAction extends ActionSupport{
 	
 	public String uploadTeacherSummary(){
 		try {
-        	String targetDirectory = ServletActionContext.getServletContext().getRealPath("/upload");
+			String targetDirectory = ServletActionContext.getServletContext().getRealPath("/upload");
+		       
+        	course=teacherService.getCourseById(course.getCourseId());
+       
         	
-        	String targetFileName = file.getName();
+    		Calendar ca = Calendar.getInstance();
+    		String catt;
+    		String year = java.lang.String.valueOf(ca.get(1));
+    		String month = java.lang.String.valueOf(ca.get(2)+1);
+    		if(month.length()==1)
+    			month = "0" + month;
+    		String day = java.lang.String.valueOf(ca.get(5));
+    		if(day.length()==1)
+    			day = "0" + day;
+    		String hour = java.lang.String.valueOf(ca.get(11));
+    		if(hour.length()==1)
+    			hour = "0" + hour;
+    		String minute = java.lang.String.valueOf(ca.get(12));
+    		if(minute.length()==1)
+    			minute = "0" + minute;
+    		String second = java.lang.String.valueOf(ca.get(13));
+    		if(second.length()==1)
+    			second = "0" + second;
+    		catt = year+"-"+month+"-"+day+"_"+hour+"-"+minute+"-"+second;
+
+        	
+            String targetFileName = course.getCourseId()+"_"+"teacherSummary"+"_"+catt+".doc";
   
             File target = new File(targetDirectory, targetFileName);   
             
-			FileUtils.copyFile(file, target);
+			FileUtils.copyFile(doc, target);
 			
 			teachingManage = teacherService.getTeachingManageById(teachingManage.getTeachingManageId());
 			teachingManage.setTeacherSummary("upload/"+targetFileName);
@@ -564,5 +752,5 @@ public class TeacherAction extends ActionSupport{
 		
 		this.getOwnTeachingManageList();
 		return "examTeachingManage";
-	}
+	} 
 }
