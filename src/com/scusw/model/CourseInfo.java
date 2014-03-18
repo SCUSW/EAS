@@ -19,6 +19,7 @@ public class CourseInfo implements java.io.Serializable {
 	private Date courseStart;
 	private Date courseEnd;
 	private Float coursePrice;
+	private Integer courseTimes;
 	private Integer courseAvai;
 	private String courseDesc;
 	private Set registerInfos = new HashSet(0);
@@ -34,14 +35,16 @@ public class CourseInfo implements java.io.Serializable {
 	/** full constructor */
 	public CourseInfo(TeacherInfo teacherInfo, MajorInfo majorInfo,
 			String courseName, Date courseStart, Date courseEnd,
-			Float coursePrice, Integer courseAvai, String courseDesc,
-			Set registerInfos, Set courseClasshours, Set teachingManageInfos) {
+			Float coursePrice, Integer courseTimes, Integer courseAvai,
+			String courseDesc, Set registerInfos, Set courseClasshours,
+			Set teachingManageInfos) {
 		this.teacherInfo = teacherInfo;
 		this.majorInfo = majorInfo;
 		this.courseName = courseName;
 		this.courseStart = courseStart;
 		this.courseEnd = courseEnd;
 		this.coursePrice = coursePrice;
+		this.courseTimes = courseTimes;
 		this.courseAvai = courseAvai;
 		this.courseDesc = courseDesc;
 		this.registerInfos = registerInfos;
@@ -105,6 +108,14 @@ public class CourseInfo implements java.io.Serializable {
 
 	public void setCoursePrice(Float coursePrice) {
 		this.coursePrice = coursePrice;
+	}
+
+	public Integer getCourseTimes() {
+		return this.courseTimes;
+	}
+
+	public void setCourseTimes(Integer courseTimes) {
+		this.courseTimes = courseTimes;
 	}
 
 	public Integer getCourseAvai() {

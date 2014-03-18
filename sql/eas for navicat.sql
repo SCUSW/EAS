@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2014-03-13 10:36:58
+Date: 2014-03-18 17:26:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -84,13 +84,14 @@ CREATE TABLE `classhour_info` (
   `classhour_start` time DEFAULT NULL,
   `classhour_end` time DEFAULT NULL,
   `classhour_avai` int(11) DEFAULT NULL,
+  `classhour_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`classhour_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of classhour_info
 -- ----------------------------
-INSERT INTO `classhour_info` VALUES ('1', '12:08:46', '12:08:46', '1');
+INSERT INTO `classhour_info` VALUES ('1', '12:08:46', '12:08:46', '1', '周一第一节');
 
 -- ----------------------------
 -- Table structure for classroom_info
@@ -124,20 +125,16 @@ CREATE TABLE `class_info` (
   `class_avai` int(11) DEFAULT NULL,
   PRIMARY KEY (`class_id`),
   KEY `FK_class_grade` (`grade_id`),
-  CONSTRAINT `FK_class_grade` FOREIGN KEY (`grade_id`) REFERENCES `grade_info` (`grade_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+  CONSTRAINT `FK_class_grade` FOREIGN KEY (`grade_id`) REFERENCES `grade_info` (`grade_id`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of class_info
 -- ----------------------------
-INSERT INTO `class_info` VALUES ('1', '1', '1班', '1');
-INSERT INTO `class_info` VALUES ('2', '1', '2班', '1');
-INSERT INTO `class_info` VALUES ('3', '1', '3班', '1');
-INSERT INTO `class_info` VALUES ('4', '2', '1班', '1');
-INSERT INTO `class_info` VALUES ('5', '2', '2班', '1');
-INSERT INTO `class_info` VALUES ('6', '2', '3班', '1');
-INSERT INTO `class_info` VALUES ('7', '3', '1班', '1');
-INSERT INTO `class_info` VALUES ('8', '3', '2班', '1');
+INSERT INTO `class_info` VALUES ('5', '4', '2班', '1');
+INSERT INTO `class_info` VALUES ('6', '4', '3班', '1');
+INSERT INTO `class_info` VALUES ('7', '4', '1班', '1');
+INSERT INTO `class_info` VALUES ('8', '5', '2班', '1');
 INSERT INTO `class_info` VALUES ('9', '3', '3班', '1');
 INSERT INTO `class_info` VALUES ('10', '4', '1班', '1');
 INSERT INTO `class_info` VALUES ('11', '4', '2班', '1');
@@ -148,6 +145,8 @@ INSERT INTO `class_info` VALUES ('15', '5', '3班', '1');
 INSERT INTO `class_info` VALUES ('16', '6', '1班', '1');
 INSERT INTO `class_info` VALUES ('17', '6', '2班', '1');
 INSERT INTO `class_info` VALUES ('18', '6', '3班', '1');
+INSERT INTO `class_info` VALUES ('19', '3', '我靠', null);
+INSERT INTO `class_info` VALUES ('20', null, '你妹啊', null);
 
 -- ----------------------------
 -- Table structure for consultway_info
@@ -232,6 +231,7 @@ CREATE TABLE `course_info` (
   `course_start` date DEFAULT NULL,
   `course_end` date DEFAULT NULL,
   `course_price` float DEFAULT NULL,
+  `course_times` int(11) DEFAULT NULL,
   `course_avai` int(11) DEFAULT NULL,
   `course_desc` text,
   PRIMARY KEY (`course_id`),
@@ -240,14 +240,26 @@ CREATE TABLE `course_info` (
   KEY `FK_teacher_course` (`staff_id`),
   CONSTRAINT `FK_course_major` FOREIGN KEY (`major_id`) REFERENCES `major_info` (`major_id`),
   CONSTRAINT `FK_teacher_course` FOREIGN KEY (`staff_id`) REFERENCES `teacher_info` (`staff_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of course_info
 -- ----------------------------
-INSERT INTO `course_info` VALUES ('1', '1', '2', '线性代数', '2014-03-12', '2014-03-12', '20', '1', '线性代数简介');
-INSERT INTO `course_info` VALUES ('2', '2', '3', '广义相对论', '2014-03-12', '2014-03-12', '20', '1', '广义相对论简介');
-INSERT INTO `course_info` VALUES ('3', '3', '4', '大学英语', '2014-03-12', '2014-03-12', '20', '1', '大学英语简介');
+INSERT INTO `course_info` VALUES ('1', '1', '2', '线性代数', '2014-03-12', '2014-03-12', '20', null, '1', '线性代数简介');
+INSERT INTO `course_info` VALUES ('2', '2', '3', '广义相对论', '2014-03-12', '2014-03-12', '20', null, '1', '广义相对论简介');
+INSERT INTO `course_info` VALUES ('3', '3', '4', '大学英语', '2014-03-12', '2014-03-12', '20', null, '1', '大学英语简介');
+INSERT INTO `course_info` VALUES ('4', '1', '2', '狭义相对论', '2014-03-18', '2014-03-12', '1', null, '1', null);
+INSERT INTO `course_info` VALUES ('5', '2', '3', '量子物理', '2014-03-18', '2014-03-12', '2', null, '1', null);
+INSERT INTO `course_info` VALUES ('6', '3', '4', '原子力学', '2014-03-18', '2014-03-12', '3', null, '1', null);
+INSERT INTO `course_info` VALUES ('7', '2', '2', '语文', '2014-03-18', '2014-03-12', '4', null, '1', null);
+INSERT INTO `course_info` VALUES ('8', '3', '3', '数学', '2014-03-18', '2014-03-12', '5', null, '1', null);
+INSERT INTO `course_info` VALUES ('10', '1', '4', '英语', '2014-03-18', '2014-03-12', '3', null, '1', null);
+INSERT INTO `course_info` VALUES ('11', '2', '2', '化学', '2014-03-18', '2014-03-12', '7', null, '1', null);
+INSERT INTO `course_info` VALUES ('12', '3', '2', '生物', '2014-03-18', '2014-03-12', '8', null, '1', null);
+INSERT INTO `course_info` VALUES ('13', '1', '3', '物理', '2014-03-18', '2014-03-12', '9', null, '1', null);
+INSERT INTO `course_info` VALUES ('14', '2', '4', '政治', '2014-03-18', '2014-03-12', '0', null, '1', null);
+INSERT INTO `course_info` VALUES ('15', '3', '3', '历史', '2014-03-18', '2014-03-12', '1', null, '1', null);
+INSERT INTO `course_info` VALUES ('16', '2', '2', '地理', '2014-03-18', '2014-03-12', '2', null, '1', null);
 
 -- ----------------------------
 -- Table structure for department_info
@@ -293,11 +305,13 @@ CREATE TABLE `financial_records` (
   PRIMARY KEY (`financial_id`),
   KEY `FK_branch_company_financial` (`branch_id`),
   CONSTRAINT `FK_branch_company_financial` FOREIGN KEY (`branch_id`) REFERENCES `branch_info` (`branch_id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of financial_records
 -- ----------------------------
+INSERT INTO `financial_records` VALUES ('1', '1', '1', '2014-03-17 11:21:43', '1', '1', '1');
+INSERT INTO `financial_records` VALUES ('2', null, '7678', '2014-03-17 11:24:14', '7679', 'yzy sb', '');
 
 -- ----------------------------
 -- Table structure for grade_info
@@ -312,17 +326,20 @@ CREATE TABLE `grade_info` (
   PRIMARY KEY (`grade_id`),
   KEY `FK_grade_branch` (`branch_id`),
   CONSTRAINT `FK_grade_branch` FOREIGN KEY (`branch_id`) REFERENCES `branch_info` (`branch_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of grade_info
 -- ----------------------------
-INSERT INTO `grade_info` VALUES ('1', '1', '1年级', '1', '1年级only');
-INSERT INTO `grade_info` VALUES ('2', '1', '2年级', '1', '2年级only');
 INSERT INTO `grade_info` VALUES ('3', '1', '3年级', '1', '3年级only');
 INSERT INTO `grade_info` VALUES ('4', '2', '1年级', '1', '1年级only');
 INSERT INTO `grade_info` VALUES ('5', '2', '2年级', '1', '2年级only');
 INSERT INTO `grade_info` VALUES ('6', '2', '3年级', '1', '3年级only');
+INSERT INTO `grade_info` VALUES ('7', null, '刘家豪你妹', null, null);
+INSERT INTO `grade_info` VALUES ('8', null, '刘家豪你妹', null, null);
+INSERT INTO `grade_info` VALUES ('9', null, '刘家豪你妹', null, null);
+INSERT INTO `grade_info` VALUES ('10', '1', '刘家豪你妹', null, null);
+INSERT INTO `grade_info` VALUES ('12', '1', '你好', null, null);
 
 -- ----------------------------
 -- Table structure for group_info
@@ -464,14 +481,35 @@ CREATE TABLE `privilege_info` (
   `privilege_name` varchar(64) DEFAULT NULL,
   `privilege_desc` text,
   PRIMARY KEY (`privilege_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of privilege_info
 -- ----------------------------
-INSERT INTO `privilege_info` VALUES ('1', '系统管理员', '管理系统');
-INSERT INTO `privilege_info` VALUES ('2', '学生', '学生权限');
-INSERT INTO `privilege_info` VALUES ('3', '教务老师', '教务老师权限');
+INSERT INTO `privilege_info` VALUES ('1', '系统管理员', '管理系统权限');
+INSERT INTO `privilege_info` VALUES ('2', '查看公司账单', '财务');
+INSERT INTO `privilege_info` VALUES ('3', '增加公司账单记录', '财务');
+INSERT INTO `privilege_info` VALUES ('4', '查看学员详细信息', '财务');
+INSERT INTO `privilege_info` VALUES ('5', '修改学员余额', '财务');
+INSERT INTO `privilege_info` VALUES ('6', '查看职工详细信息', '财务');
+INSERT INTO `privilege_info` VALUES ('7', '查看职工收入明细', '财务');
+INSERT INTO `privilege_info` VALUES ('8', '修改营销人员绩效', '财务');
+INSERT INTO `privilege_info` VALUES ('9', '修改教师提成', '财务');
+INSERT INTO `privilege_info` VALUES ('10', '查看学生信息', '教师');
+INSERT INTO `privilege_info` VALUES ('11', '查看自己开设的课程', '教师');
+INSERT INTO `privilege_info` VALUES ('12', '给课程学生评分', '教师');
+INSERT INTO `privilege_info` VALUES ('13', '查看学生考勤', '教师');
+INSERT INTO `privilege_info` VALUES ('14', '增加学生考勤', '教师');
+INSERT INTO `privilege_info` VALUES ('15', '开设课程', '教师');
+INSERT INTO `privilege_info` VALUES ('16', '上传教案', '教师');
+INSERT INTO `privilege_info` VALUES ('17', '上传总结', '教师');
+INSERT INTO `privilege_info` VALUES ('18', '查看任课教师信息', '教师');
+INSERT INTO `privilege_info` VALUES ('19', '查看任课教师考勤', '教师');
+INSERT INTO `privilege_info` VALUES ('20', '增加任课教师考勤', '教师');
+INSERT INTO `privilege_info` VALUES ('21', '查看任课教师课程', '教师');
+INSERT INTO `privilege_info` VALUES ('22', '设置任课教师课程价格', '教师');
+INSERT INTO `privilege_info` VALUES ('23', '查看任课教师教案', '教师');
+INSERT INTO `privilege_info` VALUES ('24', '查看任课教师总结', '教师');
 
 -- ----------------------------
 -- Table structure for register_info
@@ -487,7 +525,7 @@ CREATE TABLE `register_info` (
   KEY `FK_student_registercourse` (`student_id`),
   CONSTRAINT `FK_course_register` FOREIGN KEY (`course_id`) REFERENCES `course_info` (`course_id`),
   CONSTRAINT `FK_student_registercourse` FOREIGN KEY (`student_id`) REFERENCES `student_info` (`student_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of register_info
@@ -495,6 +533,18 @@ CREATE TABLE `register_info` (
 INSERT INTO `register_info` VALUES ('1', '1', '1', '100');
 INSERT INTO `register_info` VALUES ('2', '2', '2', '100');
 INSERT INTO `register_info` VALUES ('3', '3', '3', '100');
+INSERT INTO `register_info` VALUES ('4', '1', '2', '0');
+INSERT INTO `register_info` VALUES ('5', '1', '3', '0');
+INSERT INTO `register_info` VALUES ('6', '1', '4', '0');
+INSERT INTO `register_info` VALUES ('7', '1', '5', '0');
+INSERT INTO `register_info` VALUES ('8', '1', '6', '0');
+INSERT INTO `register_info` VALUES ('9', '1', '7', '0');
+INSERT INTO `register_info` VALUES ('10', '1', '8', '0');
+INSERT INTO `register_info` VALUES ('11', '1', '10', '0');
+INSERT INTO `register_info` VALUES ('12', '1', '11', '0');
+INSERT INTO `register_info` VALUES ('13', '1', '12', '0');
+INSERT INTO `register_info` VALUES ('14', '1', '13', '0');
+INSERT INTO `register_info` VALUES ('15', '1', '16', '0');
 
 -- ----------------------------
 -- Table structure for roll_state
@@ -568,7 +618,7 @@ CREATE TABLE `staff_attandant` (
   PRIMARY KEY (`attendant_id`),
   KEY `FK_staff_attendant` (`staff_id`),
   CONSTRAINT `FK_staff_attendant` FOREIGN KEY (`staff_id`) REFERENCES `staff_info` (`staff_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of staff_attandant
@@ -576,6 +626,108 @@ CREATE TABLE `staff_attandant` (
 INSERT INTO `staff_attandant` VALUES ('1', '1', '2014-03-12 17:33:43', null);
 INSERT INTO `staff_attandant` VALUES ('2', '2', '2014-03-12 18:59:43', null);
 INSERT INTO `staff_attandant` VALUES ('3', '4', '2014-03-12 16:59:59', null);
+INSERT INTO `staff_attandant` VALUES ('4', '4', '2014-03-12 16:59:59', '');
+INSERT INTO `staff_attandant` VALUES ('5', '1', '2014-03-13 15:15:52', null);
+INSERT INTO `staff_attandant` VALUES ('6', '2', '2014-03-13 15:15:53', null);
+INSERT INTO `staff_attandant` VALUES ('7', '3', '2014-03-13 15:15:53', null);
+INSERT INTO `staff_attandant` VALUES ('8', '4', '2014-03-13 15:15:54', null);
+INSERT INTO `staff_attandant` VALUES ('9', '5', '2014-03-13 15:15:56', null);
+INSERT INTO `staff_attandant` VALUES ('10', '6', '2014-03-13 15:16:01', null);
+INSERT INTO `staff_attandant` VALUES ('11', '7', '2014-03-13 15:16:02', null);
+INSERT INTO `staff_attandant` VALUES ('12', '8', '2014-03-13 15:16:14', null);
+INSERT INTO `staff_attandant` VALUES ('13', '9', '2014-03-13 15:16:14', null);
+INSERT INTO `staff_attandant` VALUES ('14', '1', '2014-03-13 15:16:20', null);
+INSERT INTO `staff_attandant` VALUES ('15', '2', '2014-03-13 15:16:21', null);
+INSERT INTO `staff_attandant` VALUES ('16', '3', '2014-03-13 15:16:21', null);
+INSERT INTO `staff_attandant` VALUES ('17', '4', '2014-03-13 15:16:23', null);
+INSERT INTO `staff_attandant` VALUES ('18', '5', '2014-03-13 15:18:26', null);
+INSERT INTO `staff_attandant` VALUES ('19', '6', '2014-03-13 15:18:26', null);
+INSERT INTO `staff_attandant` VALUES ('20', '7', '2014-03-13 15:18:27', null);
+INSERT INTO `staff_attandant` VALUES ('21', '8', '2014-03-13 15:18:27', null);
+INSERT INTO `staff_attandant` VALUES ('22', '9', '2014-03-13 15:18:28', null);
+INSERT INTO `staff_attandant` VALUES ('23', '1', '2014-03-13 15:18:30', null);
+INSERT INTO `staff_attandant` VALUES ('24', '2', '2014-03-13 15:18:31', null);
+INSERT INTO `staff_attandant` VALUES ('25', '3', '2014-03-13 15:18:33', null);
+INSERT INTO `staff_attandant` VALUES ('26', '4', '2014-03-13 15:18:34', null);
+INSERT INTO `staff_attandant` VALUES ('27', '5', '2014-03-13 15:18:37', null);
+INSERT INTO `staff_attandant` VALUES ('28', '6', '2014-03-13 15:18:35', null);
+INSERT INTO `staff_attandant` VALUES ('29', '7', '2014-03-13 15:18:36', null);
+INSERT INTO `staff_attandant` VALUES ('30', '8', '2014-03-13 15:18:40', null);
+INSERT INTO `staff_attandant` VALUES ('31', '9', '2014-03-13 16:28:38', null);
+INSERT INTO `staff_attandant` VALUES ('32', '1', '2014-03-13 16:28:40', null);
+INSERT INTO `staff_attandant` VALUES ('33', '2', '2014-03-13 16:28:40', null);
+INSERT INTO `staff_attandant` VALUES ('34', '3', '2014-03-13 16:28:41', null);
+INSERT INTO `staff_attandant` VALUES ('35', '4', '2014-03-13 16:28:41', null);
+INSERT INTO `staff_attandant` VALUES ('36', '5', '2014-03-13 16:28:42', null);
+INSERT INTO `staff_attandant` VALUES ('37', '6', '2014-03-13 16:28:42', null);
+INSERT INTO `staff_attandant` VALUES ('38', '7', '2014-03-13 16:28:43', null);
+INSERT INTO `staff_attandant` VALUES ('39', '8', '2014-03-13 16:28:43', null);
+INSERT INTO `staff_attandant` VALUES ('40', '9', '2014-03-13 16:28:44', null);
+INSERT INTO `staff_attandant` VALUES ('41', '1', '2014-03-13 16:28:45', null);
+INSERT INTO `staff_attandant` VALUES ('42', '2', '2014-03-13 16:28:45', null);
+INSERT INTO `staff_attandant` VALUES ('43', '3', '2014-03-13 16:28:45', null);
+INSERT INTO `staff_attandant` VALUES ('44', '4', '2014-03-13 16:28:46', null);
+INSERT INTO `staff_attandant` VALUES ('45', '5', '2014-03-13 16:28:46', null);
+INSERT INTO `staff_attandant` VALUES ('46', '6', '2014-03-13 16:28:47', null);
+INSERT INTO `staff_attandant` VALUES ('47', '7', '2014-03-13 16:28:47', null);
+INSERT INTO `staff_attandant` VALUES ('48', '8', '2014-03-13 16:28:48', null);
+INSERT INTO `staff_attandant` VALUES ('49', '9', '2014-03-13 16:28:48', null);
+INSERT INTO `staff_attandant` VALUES ('50', '1', '2014-03-13 16:28:51', null);
+INSERT INTO `staff_attandant` VALUES ('51', '2', '2014-03-13 16:28:52', null);
+INSERT INTO `staff_attandant` VALUES ('52', '3', '2014-03-13 16:28:53', null);
+INSERT INTO `staff_attandant` VALUES ('53', '4', '2014-03-13 16:28:53', null);
+INSERT INTO `staff_attandant` VALUES ('54', '5', '2014-03-13 16:28:53', null);
+INSERT INTO `staff_attandant` VALUES ('55', '6', '2014-03-13 16:28:54', null);
+INSERT INTO `staff_attandant` VALUES ('56', '7', '2014-03-13 16:28:54', null);
+INSERT INTO `staff_attandant` VALUES ('57', '8', '2014-03-13 16:28:55', null);
+INSERT INTO `staff_attandant` VALUES ('58', '9', '2014-03-13 16:28:57', null);
+INSERT INTO `staff_attandant` VALUES ('59', '1', '2014-03-13 16:40:17', null);
+INSERT INTO `staff_attandant` VALUES ('60', '2', '2014-03-13 16:40:17', null);
+INSERT INTO `staff_attandant` VALUES ('61', '3', '2014-03-13 16:40:18', null);
+INSERT INTO `staff_attandant` VALUES ('62', '4', '2014-03-13 16:40:18', null);
+INSERT INTO `staff_attandant` VALUES ('63', '5', '2014-03-13 16:40:18', null);
+INSERT INTO `staff_attandant` VALUES ('64', '6', '2014-03-13 16:40:19', null);
+INSERT INTO `staff_attandant` VALUES ('65', '7', '2014-03-13 16:40:19', null);
+INSERT INTO `staff_attandant` VALUES ('66', '8', '2014-03-13 16:40:20', null);
+INSERT INTO `staff_attandant` VALUES ('67', '9', '2014-03-13 16:40:22', null);
+INSERT INTO `staff_attandant` VALUES ('68', '1', '2014-03-13 16:40:23', null);
+INSERT INTO `staff_attandant` VALUES ('69', '2', '2014-03-13 16:40:23', null);
+INSERT INTO `staff_attandant` VALUES ('70', '3', '2014-03-13 16:40:23', null);
+INSERT INTO `staff_attandant` VALUES ('71', '4', '2014-03-13 16:40:24', null);
+INSERT INTO `staff_attandant` VALUES ('72', '5', '2014-03-13 16:40:24', null);
+INSERT INTO `staff_attandant` VALUES ('73', '6', '2014-03-13 16:40:24', null);
+INSERT INTO `staff_attandant` VALUES ('74', '7', '2014-03-13 16:40:25', null);
+INSERT INTO `staff_attandant` VALUES ('75', '8', '2014-03-13 16:40:25', null);
+INSERT INTO `staff_attandant` VALUES ('76', '9', '2014-03-13 16:40:28', null);
+INSERT INTO `staff_attandant` VALUES ('77', '1', '2014-03-17 21:09:51', null);
+INSERT INTO `staff_attandant` VALUES ('78', '1', '2014-03-17 21:09:51', null);
+INSERT INTO `staff_attandant` VALUES ('79', '1', '2014-03-17 21:09:52', null);
+INSERT INTO `staff_attandant` VALUES ('80', '1', '2014-03-17 21:09:52', null);
+INSERT INTO `staff_attandant` VALUES ('81', '1', '2014-03-17 21:09:52', null);
+INSERT INTO `staff_attandant` VALUES ('82', '1', '2014-03-17 21:09:53', null);
+INSERT INTO `staff_attandant` VALUES ('83', '1', '2014-03-17 21:09:53', null);
+INSERT INTO `staff_attandant` VALUES ('84', '1', '2014-03-17 21:09:53', null);
+INSERT INTO `staff_attandant` VALUES ('85', '1', '2014-03-17 21:09:54', null);
+INSERT INTO `staff_attandant` VALUES ('86', '1', '2014-03-17 21:09:54', null);
+INSERT INTO `staff_attandant` VALUES ('87', '1', '2014-03-17 21:09:54', null);
+INSERT INTO `staff_attandant` VALUES ('88', '1', '2014-03-17 21:09:55', null);
+INSERT INTO `staff_attandant` VALUES ('89', '1', '2014-03-17 21:09:55', null);
+INSERT INTO `staff_attandant` VALUES ('90', '1', '2014-03-17 21:09:56', null);
+INSERT INTO `staff_attandant` VALUES ('91', '1', '2014-03-17 21:09:56', null);
+INSERT INTO `staff_attandant` VALUES ('92', '1', '2014-03-17 21:09:56', null);
+INSERT INTO `staff_attandant` VALUES ('93', '1', '2014-03-17 21:09:56', null);
+INSERT INTO `staff_attandant` VALUES ('94', '1', '2014-03-17 21:09:57', null);
+INSERT INTO `staff_attandant` VALUES ('95', '1', '2014-03-17 21:09:58', null);
+INSERT INTO `staff_attandant` VALUES ('96', '1', '2014-03-17 21:09:58', null);
+INSERT INTO `staff_attandant` VALUES ('97', '1', '2014-03-17 21:09:58', null);
+INSERT INTO `staff_attandant` VALUES ('98', '1', '2014-03-17 21:09:59', null);
+INSERT INTO `staff_attandant` VALUES ('99', '1', '2014-03-17 21:09:59', null);
+INSERT INTO `staff_attandant` VALUES ('100', '1', '2014-03-17 21:10:00', null);
+INSERT INTO `staff_attandant` VALUES ('101', '1', '2014-03-17 21:10:00', null);
+INSERT INTO `staff_attandant` VALUES ('102', '1', '2014-03-17 21:10:00', null);
+INSERT INTO `staff_attandant` VALUES ('103', '1', '2014-03-17 21:10:01', null);
+INSERT INTO `staff_attandant` VALUES ('104', '1', '2014-03-17 21:10:01', null);
+INSERT INTO `staff_attandant` VALUES ('105', '1', '2014-03-17 21:10:02', null);
 
 -- ----------------------------
 -- Table structure for staff_fees
@@ -648,12 +800,36 @@ CREATE TABLE `student_attendant` (
   PRIMARY KEY (`attendant_id`),
   KEY `FK_course_attendant` (`register_id`),
   CONSTRAINT `FK_course_attendant` FOREIGN KEY (`register_id`) REFERENCES `register_info` (`register_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of student_attendant
 -- ----------------------------
-INSERT INTO `student_attendant` VALUES ('1', '1', '2014-03-12 20:36:55', null);
+INSERT INTO `student_attendant` VALUES ('1', '1', '2014-03-12 20:36:55', '');
+INSERT INTO `student_attendant` VALUES ('2', '1', '2014-03-12 20:36:55', '');
+INSERT INTO `student_attendant` VALUES ('3', '1', '2014-03-12 20:36:55', '');
+INSERT INTO `student_attendant` VALUES ('4', '1', '2014-03-12 20:36:55', '');
+INSERT INTO `student_attendant` VALUES ('5', '1', '2014-03-12 20:36:55', '');
+INSERT INTO `student_attendant` VALUES ('6', '1', '2014-03-12 20:36:55', '');
+INSERT INTO `student_attendant` VALUES ('7', '1', '2014-03-12 20:36:55', '');
+INSERT INTO `student_attendant` VALUES ('8', '1', '2014-03-12 20:36:55', '');
+INSERT INTO `student_attendant` VALUES ('9', '1', '2014-03-12 20:36:55', '');
+INSERT INTO `student_attendant` VALUES ('10', '3', '2014-03-17 23:53:44', null);
+INSERT INTO `student_attendant` VALUES ('11', '1', '2014-03-12 20:36:55', '');
+INSERT INTO `student_attendant` VALUES ('12', '2', '2014-03-17 23:53:08', null);
+INSERT INTO `student_attendant` VALUES ('13', '3', '2014-03-17 23:53:08', null);
+INSERT INTO `student_attendant` VALUES ('16', '3', '2014-03-17 23:53:15', null);
+INSERT INTO `student_attendant` VALUES ('17', '2', '2014-03-17 23:53:16', null);
+INSERT INTO `student_attendant` VALUES ('18', '1', '2014-03-17 23:53:16', null);
+INSERT INTO `student_attendant` VALUES ('19', '2', '2014-03-17 23:53:17', null);
+INSERT INTO `student_attendant` VALUES ('20', '3', '2014-03-17 23:53:17', null);
+INSERT INTO `student_attendant` VALUES ('23', '3', '2014-03-17 23:53:36', null);
+INSERT INTO `student_attendant` VALUES ('24', '1', '2014-03-18 10:28:54', null);
+INSERT INTO `student_attendant` VALUES ('25', '2', '2014-03-18 10:28:57', null);
+INSERT INTO `student_attendant` VALUES ('26', '3', '2014-03-18 10:28:58', null);
+INSERT INTO `student_attendant` VALUES ('28', '3', '2014-03-18 10:29:02', null);
+INSERT INTO `student_attendant` VALUES ('29', '2', '2014-03-18 10:29:03', null);
+INSERT INTO `student_attendant` VALUES ('30', '1', '2014-03-18 10:29:04', null);
 
 -- ----------------------------
 -- Table structure for student_consultway
@@ -726,7 +902,7 @@ CREATE TABLE `student_info` (
   KEY `FK_student_consult` (`consult_id`),
   KEY `FK_student_group` (`group_id`),
   KEY `FK_student_tollstate` (`rollstate_id`),
-  CONSTRAINT `FK_student_class` FOREIGN KEY (`class_id`) REFERENCES `class_info` (`class_id`),
+  CONSTRAINT `FK_student_class` FOREIGN KEY (`class_id`) REFERENCES `class_info` (`class_id`) ON DELETE SET NULL,
   CONSTRAINT `FK_student_consult` FOREIGN KEY (`consult_id`) REFERENCES `consult_info` (`consult_id`),
   CONSTRAINT `FK_student_group` FOREIGN KEY (`group_id`) REFERENCES `group_info` (`group_id`),
   CONSTRAINT `FK_student_tollstate` FOREIGN KEY (`rollstate_id`) REFERENCES `roll_state` (`rollstate_id`)
@@ -735,9 +911,9 @@ CREATE TABLE `student_info` (
 -- ----------------------------
 -- Records of student_info
 -- ----------------------------
-INSERT INTO `student_info` VALUES ('1', 'e10adc3949ba59abbe56e057f20f883e', '1', '2', '1', '1', '1143111121', 'jack1', '1', '18', 'jack1 addr', '4589651', '10000', '川大', '软件工程', '2014-03-12 12:08:46', '1', 'jack1 remark');
-INSERT INTO `student_info` VALUES ('2', 'e10adc3949ba59abbe56e057f20f883e', '2', '2', '1', '1', '1143111122', 'jack2', '0', '18', 'jack2 addr', '4589652', '10000', '川大', '软件工程', '2014-03-12 12:08:46', '1', 'jack2 remark');
-INSERT INTO `student_info` VALUES ('3', 'e10adc3949ba59abbe56e057f20f883e', '3', '2', '1', '1', '1143111123', 'jack3', '1', '18', 'jack3 addr', '4589653', '10000', '川大', '软件工程', '2014-03-12 12:08:46', '1', 'jack3 remark');
+INSERT INTO `student_info` VALUES ('1', 'e10adc3949ba59abbe56e057f20f883e', '5', '2', '1', '1', '1143111121', '傻逼', '1', '18', 'jack1 addr', '4589651', '10000', '川大', '软件工程', '2014-03-17 23:50:38', '1', 'jack1 remark');
+INSERT INTO `student_info` VALUES ('2', 'e10adc3949ba59abbe56e057f20f883e', '5', '2', '1', '1', '1143111122', 'jack2', '0', '18', 'jack2 addr', '4589652', '10000', '川大', '软件工程', '2014-03-16 00:51:34', '1', 'jack2 remark');
+INSERT INTO `student_info` VALUES ('3', 'e10adc3949ba59abbe56e057f20f883e', '6', '2', '1', '1', '1143111123', 'jack3', '1', '18', 'jack3 addr', '4589653', '10000', '川大', '软件工程', '2014-03-16 00:51:38', '1', 'jack3 remark');
 
 -- ----------------------------
 -- Table structure for teacher_info
@@ -806,6 +982,6 @@ CREATE TABLE `teaching_manage_info` (
 -- ----------------------------
 -- Records of teaching_manage_info
 -- ----------------------------
-INSERT INTO `teaching_manage_info` VALUES ('1', '1', '1教学计划的URL', '1教案的URL', '1总结的URL', '2014-03-12 12:08:46', '1');
+INSERT INTO `teaching_manage_info` VALUES ('1', '1', '1教学计划的URL', 'upload/upload_39fc3f3a_7e3d_4a99_bf4e_3153e29b05e5_00000002.tmp', '1总结的URL', '2014-03-12 12:08:46', '1');
 INSERT INTO `teaching_manage_info` VALUES ('2', '2', '2教学计划的URL', '2教案的URL', '2总结的URL', '2014-03-12 12:08:46', '1');
 INSERT INTO `teaching_manage_info` VALUES ('3', '3', '3教学计划的URL', '3教案的URL', '3总结的URL', '2014-03-12 12:08:46', '1');

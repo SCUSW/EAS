@@ -64,7 +64,7 @@
             </key>
             <one-to-many class="com.scusw.model.ScheduleInfo" />
         </set>
-        <set name="teacherInfos" inverse="true" lazy="false">
+        <set name="teacherInfos" inverse="true">
             <key>
                 <column name="staff_id" not-null="true" unique="true" />
             </key>
@@ -76,7 +76,7 @@
             </key>
             <one-to-many class="com.scusw.model.StaffFees" />
         </set>
-        <set name="salesmanInfos" inverse="true" lazy="false">
+        <set name="salesmanInfos" inverse="true">
             <key>
                 <column name="staff_id" not-null="true" unique="true" />
             </key>

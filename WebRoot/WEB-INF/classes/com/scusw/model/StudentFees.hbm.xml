@@ -16,7 +16,7 @@
         <property name="feesNum" type="java.lang.Float">
             <column name="fees_num" precision="12" scale="0" />
         </property>
-        <property name="feesTime" type="java.sql.Timestamp" insert="false">
+        <property name="feesTime" type="java.sql.Timestamp">
             <column name="fees_time" length="19" not-null="true" />
         </property>
         <property name="feesFor" type="java.lang.String">

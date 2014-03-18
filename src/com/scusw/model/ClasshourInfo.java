@@ -16,6 +16,7 @@ public class ClasshourInfo implements java.io.Serializable {
 	private Time classhourStart;
 	private Time classhourEnd;
 	private Integer classhourAvai;
+	private String classhourName;
 	private Set courseClasshours = new HashSet(0);
 
 	// Constructors
@@ -26,10 +27,11 @@ public class ClasshourInfo implements java.io.Serializable {
 
 	/** full constructor */
 	public ClasshourInfo(Time classhourStart, Time classhourEnd,
-			Integer classhourAvai, Set courseClasshours) {
+			Integer classhourAvai, String classhourName, Set courseClasshours) {
 		this.classhourStart = classhourStart;
 		this.classhourEnd = classhourEnd;
 		this.classhourAvai = classhourAvai;
+		this.classhourName = classhourName;
 		this.courseClasshours = courseClasshours;
 	}
 
@@ -65,6 +67,14 @@ public class ClasshourInfo implements java.io.Serializable {
 
 	public void setClasshourAvai(Integer classhourAvai) {
 		this.classhourAvai = classhourAvai;
+	}
+
+	public String getClasshourName() {
+		return this.classhourName;
+	}
+
+	public void setClasshourName(String classhourName) {
+		this.classhourName = classhourName;
 	}
 
 	public Set getCourseClasshours() {

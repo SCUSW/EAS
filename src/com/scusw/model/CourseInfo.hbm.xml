@@ -28,6 +28,9 @@
         <property name="coursePrice" type="java.lang.Float">
             <column name="course_price" precision="12" scale="0" />
         </property>
+        <property name="courseTimes" type="java.lang.Integer">
+            <column name="course_times" />
+        </property>
         <property name="courseAvai" type="java.lang.Integer">
             <column name="course_avai" />
         </property>
