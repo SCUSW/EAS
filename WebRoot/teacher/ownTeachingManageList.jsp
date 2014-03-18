@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     						<form action="teacherAct!uploadLessonPlan.action" method="post" enctype="multipart/form-data" >   
     						<input type="hidden" name="teachingManage.teachingManageId" value="${t.teachingManageId}"/>
     						<input type="hidden" name="course.courseId" value="${course.courseId}"/>
-							<input type="file"  name="file"/>  
+							<input type="file"  name="doc"/>  
          					<input type="submit" value="上传教案计划">  
      						</form> 
      					</td>
@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     						<form action="teacherAct!uploadTeacherSummary.action" method="post" enctype="multipart/form-data" >   
     						<input type="hidden" name="teachingManage.teachingManageId" value="${t.teachingManageId}"/>
     						<input type="hidden" name="course.courseId" value="${course.courseId}"/>
-							<input  type="file"  name="file"/>  
+							<input  type="file"  name="doc"/>  
          					<input type="submit" value="上传教案计划">  
      						</form> 
      					</td>
@@ -63,11 +63,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     					<td><a href="${t.lessonPlan}">下载教案</a></td>
     					<td><a href="${t.teacherSummary}">下载总结</a></td>
     				</tr>
-    				</c:forEach>
+    				</c:forEach>			
     			</table>
-    			<form action="teacherAct!uploadTeachPlan.action" method="post" enctype="multipart/form-data" >   
+    			<form id="uploadForm" action="teacherAct!uploadTeachPlan.action"  method="post" enctype="multipart/form-data" >   
     			<input type="hidden" name="course.courseId" value="${course.courseId}"/>
-					<input type="file"  name="file"/><br />  
+					<input type="file"  name="doc"/><br />  
          			<input type="submit" value="上传教学计划">  
      			</form>  
     	</center>

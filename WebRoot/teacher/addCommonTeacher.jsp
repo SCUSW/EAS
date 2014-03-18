@@ -74,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">教师等级</span>
-				<input  name="teacher.levelId" type="text" class="form-control">
+				<input  name="teacherLevel.levelId" type="text" class="form-control">
 			</div>
 			
 			<div class="input-group input-group-sm">

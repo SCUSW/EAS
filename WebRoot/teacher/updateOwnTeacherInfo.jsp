@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		<input type="hidden" name="staff.positionInfo.vocationId" value="${teacher.staffInfo.positionInfo.vocationId}"/>
    		<input type="hidden" name="staff.groupInfo.groupId" value="${teacher.staffInfo.groupInfo.groupId}"/>
    		<input type="hidden" name="staff.staffEmplTime" value="${teacher.staffInfo.staffEmplTime}"/>
-   		<span style="margin-left:-200px;">密码：</span><center><input style="width:200px;margin-top:-23px;margin-left:80px;height:30px;" value="${teacher.staffInfo.staffPass}" class="form-control" type="password" name="staff.staffPass"/><br/></center>
+   		<span style="margin-left:-200px;">密码：</span><center><input style="width:200px;margin-top:-23px;margin-left:80px;height:30px;" value="" class="form-control" type="password" name="staff.staffPass"/><br/></center>
    		<span style="margin-left:-200px;">手机号码：</span><center><input style="width:200px;margin-top:-23px;margin-left:80px;height:30px;" value="${teacher.staffInfo.staffPhone}" class="form-control" type="text" name="staff.staffPhone"/><br/></center>
    		<span style="margin-left:-200px;">QQ：</span><center><input style="width:200px;margin-top:-23px;margin-left:80px;height:30px;" value="${teacher.staffInfo.staffPhone}" class="form-control" type="text" name="staff.staffQq"/><br/></center>
    			<input class="btn btn-default" type="submit" value="确定修改"/>

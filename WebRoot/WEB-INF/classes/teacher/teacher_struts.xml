@@ -4,8 +4,17 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts> 
 
-	<constant name="struts.multipart.saveDir" value="/tmp"></constant>
 
+<constant name="struts.multipart.saveDir" value="/tmp"></constant>
+
+
+
+
+
+	<!--  
+	<constant name="struts.i18n.encoding" value="GBK" />
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+	-->
 		<package name="teacher" extends="struts-default">
 			<action name="teacherAct" class="com.scusw.teacher.action.TeacherAction">
 				<result name="getOwnTeacherInfo">teacher/ownTeacherInfo.jsp</result>
@@ -46,7 +55,19 @@
 				<result name="getCommonTeachingManageList">teacher/commonTeachingManageList.jsp</result>
 				<result name="examTeachingManage">teacher/commonTeachingManageList.jsp</result>
 				
+			<!-- 	<param name="contentDisposition">attachment;filename="${fileName}"</param>	 -->
 			</action>
 
 		</package>
+		
+		<!--
+		<package name="fileupload" extends="struts-default">  
+			<action name="fileUploadAct" class="com.scusw.teacher.action.FileUploadAction">  
+			<interceptor-ref name="defaultStack">
+			<param name="fileUpload.maximumSize">10240000</param>
+			</interceptor-ref>	
+       	     <result>/teacher/upload_success.jsp</result>  
+      		  </action>  
+    	</package>
+    	-->  
 </struts>
