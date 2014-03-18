@@ -61,7 +61,7 @@ public interface TeacherService {
 
 	public GroupInfo getGroupInfoById(int groupId);
 
-	public boolean addCommonTeacher(TeacherInfo teacher, int levelId, StaffInfo staff);
+	public int addCommonTeacher(TeacherInfo teacher, int levelId, StaffInfo staff);
 	
 	public TeacherLevel getTeacherLevelById(int levelId);
 

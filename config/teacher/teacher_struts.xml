@@ -17,43 +17,80 @@
 	-->
 		<package name="teacher" extends="struts-default">
 			<action name="teacherAct" class="com.scusw.teacher.action.TeacherAction">
-				<result name="getOwnTeacherInfo">teacher/ownTeacherInfo.jsp</result>
+			
 				<result name="default">teacher/default.jsp</result>
+			
+				<result name="getOwnTeacherInfo">teacher/ownTeacherInfo.jsp</result>
+				
+				
 				<result name="updateOwnTeacherInfo1">teacher/updateOwnTeacherInfo.jsp</result>
+				
 				<result name="updateOwnTeacherInfo2">teacher/ownTeacherInfo.jsp</result>
+				<result name="updateOwnTeacherInfo2_default">teacher/default.jsp</result>
+				
 				<result name="searchStudent">teacher/studentList.jsp</result>
+				
 				<result name="getStudentInfo">teacher/studentInfo.jsp</result>
+				
 				<result name="searchOwnStudent">teacher/ownStudentList.jsp</result>
+				
 				<result name="searchTeacherOwnCourse">teacher/searchStudent.jsp</result>
+				
 				<result name="getOwnStudentInfo">teacher/ownStudentInfo.jsp</result>
+				
 				<result name="updateStudentCourseScore">teacher/ownStudentInfo.jsp</result>
+				<result name="updateStudentCourseScore_default">teacher/default.jsp</result>
+				
 				<result name="getStudentAttendant">teacher/studentAttendantList.jsp</result>
+				
 				<result name="addStudentAttendant">teacher/studentAttendantList.jsp</result>
 				<result name="addStudentAttendant_default">teacher/default.jsp</result>
+				
 				<result name="searchOwnCommonTeacher">teacher/ownCommonTeacherList.jsp</result>
+				
 				<result name="getOwnCommonTeacherInfo">teacher/ownCommonTeacherInfo.jsp</result>
+				
 				<result name="addCommonTeacher1">teacher/addCommonTeacher.jsp</result>
+				
 				<result name="addCommonTeacher2">teacher/ownCommonTeacherInfo.jsp</result>
-				<result name="addCommonTeacher2_default">teacher/default.jsp</result>
+				<result name="addCommonTeacher2_default">teacher/addCommonTeacher2_default.jsp</result>
+				
 				<result name="getCommonTeacherAttandant">teacher/commonTeacherAttandantList.jsp</result>
+				
 				<result name="addCommonTeacherAttandant">teacher/commonTeacherAttandantList.jsp</result>
+				<result name="addCommonTeacherAttandant_default">teacher/default.jsp</result>
+				
 				<result name="getOwnCourse">teacher/ownCourseList.jsp</result>
+				
 				<result name="addOwnCourse1">teacher/addOwnCourse.jsp</result>
+				
 				<result name="addOwnCourse2">teacher/ownCourseList.jsp</result>
+				<result name="addOwnCourse2_default">teacher/default.jsp</result>
+				
 				<result name="getCommonTeacherCourseList">teacher/commonTeacherCourseList.jsp</result>
+				
 				<result name="commonTeacherCourseInfo">teacher/commonTeacherCourseInfo.jsp</result>
+				
 				<result name="updateCommonTeacherCoursePrice">teacher/commonTeacherCourseInfo.jsp</result>
 				<result name="updateCommonTeacherCoursePrice_default">teacher/default.jsp</result>
+				
 				<result name="ownCourseInfo">teacher/ownCourseInfo.jsp</result>
+				
 				<result name="getOwnTeachingManageList">teacher/ownTeachingManageList.jsp</result>
+				
 				<result name="uploadTeachPlan">teacher/ownTeachingManageList.jsp</result>
 				<result name="uploadTeachPlan_default">teacher/default.jsp</result>
+				
 				<result name="uploadLessonPlan">teacher/ownTeachingManageList.jsp</result>
 				<result name="uploadLessonPlan_default">teacher/default.jsp</result>
+				
 				<result name="uploadTeacherSummary">teacher/ownTeachingManageList.jsp</result>
 				<result name="uploadTeacherSummary_default">teacher/default.jsp</result>
+				
 				<result name="getCommonTeachingManageList">teacher/commonTeachingManageList.jsp</result>
+				
 				<result name="examTeachingManage">teacher/commonTeachingManageList.jsp</result>
+				<result name="examTeachingManage_default">teacher/default.jsp</result>
 				
 			<!-- 	<param name="contentDisposition">attachment;filename="${fileName}"</param>	 -->
 			</action>

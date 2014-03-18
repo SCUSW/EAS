@@ -146,7 +146,20 @@ public class TeacherServiceImpl implements TeacherService{
 		return teacherDao.queryGroupById(groupId);
 	}
 	
-	public boolean addCommonTeacher(TeacherInfo teacher, int levelId,StaffInfo staff){
+	public int addCommonTeacher(TeacherInfo teacher, int levelId,StaffInfo staff){
+
+		if((StaffInfo)teacherDao.queryStaffByNo(staff.getStaffNo())!=null){
+			return 1;
+		}
+
+		if((StaffInfo)teacherDao.queryStaffByIdcard(staff.getStaffIdcard())!=null){
+			return 2;
+		}
+		
+		if((TeacherInfo)teacherDao.queryTeacherByNo(teacher.getTeacherNo())!=null){
+			return 3;
+		}
+		
 		String pass="123456";
 		staff.setStaffPass(MD5Util.MD5(pass));
 		staff.setPositionInfo(this.getPositionById(2));
@@ -160,19 +173,6 @@ public class TeacherServiceImpl implements TeacherService{
 		teacher.setTeacherRemark("备注信息");
 		teacher.setTeacherLevel(this.getTeacherLevelById(levelId));
 
-		if((StaffInfo)teacherDao.queryStaffByNo(staff.getStaffNo())!=null){
-			return false;
-		}
-			
-		
-		if((StaffInfo)teacherDao.queryStaffByIdcard(staff.getStaffIdcard())!=null){
-			return false;
-		}
-		
-		if((TeacherInfo)teacherDao.queryTeacherByNo(teacher.getTeacherNo())!=null){
-			return false;
-		}
-
 		try {
 			teacherDao.addStaff(staff);
 			teacher.setStaffInfo(teacherDao.queryStaffByNo(staff.getStaffNo()));
@@ -180,9 +180,9 @@ public class TeacherServiceImpl implements TeacherService{
 			teacherDao.addCommonTeacehr(teacher);
 		} catch (Exception e) {
 			System.out.println(e);
-			return false;
+			return 4;
 		}
-		return true;
+		return 0;
 	}
 
 	public TeacherLevel getTeacherLevelById(int levelId) {
