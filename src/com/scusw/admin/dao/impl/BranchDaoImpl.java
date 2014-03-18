@@ -17,48 +17,70 @@ import com.scusw.model.BranchInfo;
 
 public class BranchDaoImpl extends HibernateDaoSupport implements BranchDao {
 
-	// query all branchs
+	/**
+	 * query all branchs
+	 */
 	public List<BranchInfo> queryAllBranch() {
-		Query query = this.getSession().createQuery("from BranchInfo bi");
+		
+		Query query = this.getSession().createQuery("from BranchInfo bi where bi.branchAvai=1");
 		List<BranchInfo> list = query.list();
 		return list;
+		
 	}
 
-	// query branch by key word
+	/**
+	 * query branch by key word
+	 */
 	public List<BranchInfo> queryBranchByKeyword(String keyword) {
+		
 		StringBuilder hql = new StringBuilder();
 		hql.append("from BranchInfo bi");
 		hql.append(" where bi.branchAvai=1");
 		hql.append(" and (bi.branchName like '%" + keyword + "%'");
 		hql.append(" or bi.branchIntr like '%" + keyword + "%')");
 		
-//		Query query = this.getSession().createQuery("from BranchInfo bi where " +
-//				"bi.branchName like '%:nkeyword%' or bi.branchIntr like '%:ikeyword%'");
-//		query.setParameter("nkeyword", keyword);
-//		query.setParameter("ikeyword", keyword);
-		
 		List<BranchInfo> list = this.getHibernateTemplate().find(hql.toString());
 		return list;
 		
 	}
 
-	// delete branch by id
+	
+	/**
+	 * delete branch by id
+	 */
 	public boolean delBranchById(int branchId) {
+		
 		BranchInfo branchInfo = this.getHibernateTemplate().get(BranchInfo.class, branchId);
 		this.getHibernateTemplate().delete(branchInfo);
 		return true;
+		
 	}
 
+	
+	/**
+	 * add a record of branchIndo
+	 */
 	public boolean addBranch(BranchInfo branchInfo) {
+		
 		this.getSession().save(branchInfo);
 		return true;
 	}
 
+	
+	/**
+	 * query branch by branchId
+	 */
 	public BranchInfo queryBranchById(int branchId) {
+		
 		return this.getHibernateTemplate().get(BranchInfo.class, branchId);
 	}
 
+	
+	/**
+	 * update branchInfo
+	 */
 	public boolean updateBranch(BranchInfo branchInfo) {
+		
 		this.getSession().update(branchInfo);
 		return true;
 	}

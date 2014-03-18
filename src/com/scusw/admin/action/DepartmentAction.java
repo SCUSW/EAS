@@ -37,14 +37,7 @@ public class DepartmentAction {
 	private List<BranchInfo> branchs;
 	private List<DepartmentInfo> list;
 	
-	public static Logger logger = Logger.getLogger(DepartmentAction.class);
-	
-	
-	
 
-
-	
-	
 	public DepartmentInfo getDepartmentInfo() {
 		return departmentInfo;
 	}
@@ -81,9 +74,6 @@ public class DepartmentAction {
 		return list;
 	}
 
-	public static Logger getLogger() {
-		return logger;
-	}
 
 	public void setDepartmentInfo(DepartmentInfo departmentInfo) {
 		this.departmentInfo = departmentInfo;
@@ -125,16 +115,16 @@ public class DepartmentAction {
 		this.list = list;
 	}
 
-	public static void setLogger(Logger logger) {
-		DepartmentAction.logger = logger;
-	}
 
-	// list all departments
+	
+	/**
+	 * list all departments
+	 * @return
+	 */
 	public String listDepartment(){
 		
 		request = (Map)ActionContext.getContext().get("request");
 		list = departmentService.queryAllDepartment(nextPage, pageSize);
-		//request.put("branchs", departmentService.queryAllBranch());
 		ServletActionContext.getRequest().setAttribute("branchs",departmentService.queryAllBranch());
 		total=departmentService.queryTotalDepartment();
 		request.put("total",total);
@@ -144,8 +134,13 @@ public class DepartmentAction {
 		return "listDepartment";
 	}
 	
-	// query department by keyword
+	
+	/**
+	 * query department by keyword
+	 * @return
+	 */
 	public String searchDepartment(){
+		
 //		List<DepartmentInfo> list = departmentService.queryDepartmentByKeyword(keyword,nextPage, pageSize);
 //		request = (Map)ActionContext.getContext().get("request");
 //		request.clear();
@@ -166,8 +161,13 @@ public class DepartmentAction {
 		return "listDepartment";
 	}
 	
-	// query department by branchId
+	
+	/**
+	 * query department by branchId
+	 * @return
+	 */
 	public String searchDepartment2(){
+		
 //		List<DepartmentInfo> list = departmentService.queryDepartmentByBranchId(branchId,nextPage, pageSize);
 //		request = (Map)ActionContext.getContext().get("request");
 //		request.clear();
@@ -177,6 +177,7 @@ public class DepartmentAction {
 //		request.put("total",departmentService.queryNoDepartmentByBranchId(branchId));
 //		request.put("pageSize", pageSize);
 //		request.put("currentPage", nextPage);
+		
 		if(branchId == 0){
 			return listDepartment();
 		}
@@ -191,61 +192,82 @@ public class DepartmentAction {
 		return "listDepartment";
 	}
 	
-	// delete department
+	
+	/**
+	 * delete department
+	 * @return
+	 */
 	public String delDepartment(){
-		logger.info("delete department: " + departmentInfo.getDepartmentId() + " # " + departmentInfo.getDepartmentName());
-		if(departmentService.delDepartmentById(departmentInfo.getDepartmentId())){
+		
+		if(departmentService.delDepartment(departmentInfo)){
 			return listDepartment();
 		}
 		return "delError";
 	}
 	
-	// add department
+	
+	/**
+	 * add department
+	 * @return
+	 */
 	public String addDepartment(){
-		departmentInfo.setDepartmentAvai(1);
-		Timestamp currTime = new Timestamp(System.currentTimeMillis());
-		departmentInfo.setDepartmentFoundedTime(currTime);
+		
 		if(departmentService.addDepartment(departmentInfo)){
 			return listDepartment();
 		}
 		return "addError";
 	}
 	
-	// update department step 1
+	
+	/**
+	 * update department step 1:put branchs
+	 * @return
+	 */
 	public String updateDepartment1(){
-		departmentInfo = departmentService.queryDepartmentById(departmentInfo.getDepartmentId());
-//		List<BranchInfo> list = departmentService.queryAllBranch();
-		branchs = departmentService.queryAllBranch();
 		
+		departmentInfo = departmentService.queryDepartmentById(departmentInfo.getDepartmentId());
+		branchs = departmentService.queryAllBranch();
+		ServletActionContext.getRequest().setAttribute("branchs",departmentService.queryAllBranch());
+		return "updateDepartment";
+
+//		List<BranchInfo> list = departmentService.queryAllBranch();
 //		for(BranchInfo bi:branchs){
 //			if(bi.getBranchId().compareTo(departmentInfo.getBranchInfo().getBranchId()) == 0){
 //				branchs.remove(bi);
 //				break;
 //			}
 //		}
-		ServletActionContext.getRequest().setAttribute("branchs",departmentService.queryAllBranch());
-		
+	
 //		request = (Map)ActionContext.getContext().get("request");
 //		request.clear();
 //		request.put("branchs", list);
 //		request.put("departmentInfo", departmentInfo);
 		
-		return "updateDepartment";
 	}
 	
-	// update department step 2
+	
+	/**
+	 * update department step 2:update info
+	 * @return
+	 */
 	public String updateDepartment2(){
+		
 		departmentService.updateDepartment(departmentInfo);
 		return listDepartment();
 	}
 	
-	// get all branch info to request and go to add department page.
+	
+	/**
+	 * get all branch info to request and go to add department page.
+	 * @return
+	 */
 	public String getBranchs(){
 		
 //		List<BranchInfo> list = departmentService.queryAllBranch();
 //		request = (Map)ActionContext.getContext().get("request");
 //		request.clear();
 //		request.put("branchs", list);
+		
 		ServletActionContext.getRequest().setAttribute("branchs",departmentService.queryAllBranch());
 		return "addDepartment";
 	}

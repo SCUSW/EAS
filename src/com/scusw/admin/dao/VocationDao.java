@@ -24,12 +24,6 @@ public interface VocationDao {
 	
 	// query vocatin by Id
 	public PositionInfo queryVocationById(int vocationId);
-
-	// query all branchs
-	public List<BranchInfo> queryAllBranch();
-	
-	// query branch by Id
-	public BranchInfo queryBranchById(int branchId);
 	
 	// query vocation by branchId
 	public List<PositionInfo> queryVocationByBranchId(int branchId,int currentPage,int pageSize);
@@ -43,6 +37,7 @@ public interface VocationDao {
 	// query num of vocation by keyword
 	public int queryNoVocatinByKeyword(String keyword);
 
+	// add vocation
 	public boolean addVocation(PositionInfo vocation);
 
 }

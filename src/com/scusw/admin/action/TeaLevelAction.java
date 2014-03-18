@@ -22,10 +22,7 @@ public class TeaLevelAction {
 	private TeaLevelService teaLevelService;
 	private Map<String,Object> request;
 	
-	public static Logger logger = Logger.getLogger(TeaLevelAction.class);
 
-	
-	
 	public TeacherLevel getTeaLevel() {
 		return teaLevel;
 	}
@@ -50,15 +47,12 @@ public class TeaLevelAction {
 		this.request = request;
 	}
 
-	public static Logger getLogger() {
-		return logger;
-	}
 
-	public static void setLogger(Logger logger) {
-		TeaLevelAction.logger = logger;
-	}
-
-	// list all TeaLeve
+	
+	/**
+	 * list all Teacher Level
+	 * @return
+	 */
 	public String listTeaLevel(){
 
 		List<TeacherLevel> list = teaLevelService.queryAllTeaLevel();
@@ -68,25 +62,40 @@ public class TeaLevelAction {
 		return "listTeaLevel";
 	}
 
-	// delete TeaLevel
+	
+	/**
+	 * delete TeaLevel
+	 * @return
+	 */
 	public String delTeaLevel(){
-		if(teaLevelService.delTeaLevelById(teaLevel.getLevelId())){
+		
+		teaLevel = teaLevelService.queryTeaLevelById(teaLevel.getLevelId());
+		if(teaLevelService.delTeaLevel(teaLevel)){
 			return listTeaLevel();
 		}
 		return "delError";
 	}
 	
-	// add TeaLevel
+	
+	/**
+	 * add TeaLevel
+	 * @return
+	 */
 	public String addTeaLevel(){
-		teaLevel.setLevelAvai(1);
+		
 		if(teaLevelService.addTeaLevel(teaLevel)){
 			return listTeaLevel();
 		}
 		return "addError";
 	}
 	
-	// update TeaLevel step 1
+	
+	/**
+	 * update TeaLevel step 1:put current info
+	 * @return
+	 */
 	public String updateTeaLevel1(){
+		
 		teaLevel = teaLevelService.queryTeaLevelById(teaLevel.getLevelId());
 		request = (Map)ActionContext.getContext().get("request");
 		request.clear();
@@ -94,8 +103,13 @@ public class TeaLevelAction {
 		return "updateTeaLevel";
 	}
 	
-	// update TeaLevel step 2
+	
+	/**
+	 * update TeaLevel step 2:update info
+	 * @return
+	 */
 	public String updateTeaLevel2(){
+		
 		teaLevelService.updateTeaLevel(teaLevel);
 		return listTeaLevel();
 	}

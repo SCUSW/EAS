@@ -19,7 +19,7 @@ public interface TeaLevelService {
 	public TeacherLevel queryTeaLevelById(int levelId);
 	
 	// delete TeacherLevel by id
-	public boolean delTeaLevelById(int levelId);
+	public boolean delTeaLevel(TeacherLevel teaLevel);
 	
 	// add TeacherLevel
 	public boolean addTeaLevel(TeacherLevel teaLevel);

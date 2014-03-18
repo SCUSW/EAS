@@ -20,27 +20,41 @@ import com.scusw.model.PrivilegeInfo;
 
 public class PrivilegeManageDaoImpl extends HibernateDaoSupport implements PrivilegeManageDao {
 	
-	// query all info of privileges
+
+	/**
+	 * query all info of privileges
+	 */
 	public List<PrivilegeInfo> queryAllPrivilege() {
+		
 		Query query = this.getSession().createQuery("from PrivilegeInfo pi");
 		List<PrivilegeInfo> list = query.list();
 		return list;
+		
 	}
 
-	// add a record of privilege
-	public boolean addPrivilege(PrivilegeInfo privInfo) {
-		this.getSession().save(privInfo);
+	
+	/**
+	 * add a record of privilege
+	 */
+	public boolean addPrivilege(PrivilegeInfo privilegeInfo) {
+		
+		this.getSession().save(privilegeInfo);
 		return true;
 	}
 
-	// query all info of groups
+	/**
+	 * query all info of groups
+	 */
 	public List<GroupInfo> queryAllGroup() {
+		
 		Query query = this.getSession().createQuery("from GroupInfo gi where gi.groupAvai=1");
 		List<GroupInfo> list = query.list();
 		return list;
+		
 	}
+	
 
-	// add a record of group
+// 	add a record of group
 //	public boolean addGroup(GroupInfo groupInfo,ArrayList<GroupPrivilege> list) {
 //		this.getSession().save(groupInfo);
 //		for(GroupPrivilege gp:list){
@@ -60,7 +74,12 @@ public class PrivilegeManageDaoImpl extends HibernateDaoSupport implements Privi
 //		
 //	}
 	
+	
+	/**
+	 * add a record of group
+	 */
 	public boolean addGroup(GroupInfo groupInfo) {	
+		
 		this.getSession().save(groupInfo);
 		return true;
 		
@@ -68,41 +87,54 @@ public class PrivilegeManageDaoImpl extends HibernateDaoSupport implements Privi
 	
 	
 	
-	
+	/**
+	 * add a record of groupPrivilege
+	 */
 	public boolean addGroupPrivilege(GroupPrivilege gp) {	
-		logger.info("add groupprivilege:" + gp.getGroupInfo().getGroupId() + "&" + gp.getPrivilegeInfo().getPrivilegeName());
-//		this.getSession().beginTransaction();
+		
 		this.getSession().save(gp);
-//		this.getSession().getTransaction().commit();
 		return true;
+		
 	}
 
-	// get group_privileges by groupId
+	
+	/**
+	 * get group_privileges by groupId
+	 */
 	public List<PrivilegeInfo> queryPrivByGroupId(int groupId) {
+		
 		Query query = this.getSession().createQuery("from PrivilegeInfo as pi " +
 				"inner join fetch pi.groupPrivileges as gp where gp.groupInfo.groupId=:groupId");
 		query.setParameter("groupId", groupId);
 		List<PrivilegeInfo> list = query.list();
 		return list;
+		
 	}
 
+	
+	/**
+	 * get privilegeInfo by groupId
+	 */
 	public PrivilegeInfo getPrivilegeInfoById(int privilegeId) {
 		
 		return (PrivilegeInfo) this.getSession().get(PrivilegeInfo.class, privilegeId);
 	}
 
+	
+	/**
+	 * get groupInfo by groupId
+	 */
 	public GroupInfo getGroupById(int groupId) {
 		
 		return (GroupInfo) this.getHibernateTemplate().get(GroupInfo.class, groupId);
 	}
 
-	public boolean delGroupById(int groupId) {
-		// unimplement
-		return false;
-	}
 	
-	// get GroupPrivielge by groupId
+	/**
+	 * get GroupPrivielge by groupId
+	 */
 	public List<GroupPrivilege> queryGroupPrivlegeByGroupId(int groupId){
+		
 		Query query = this.getSession().createQuery("from GroupPrivilege gp " +
 				"where gp.groupInfo.groupId=:groupId");
 		query.setParameter("groupId", groupId);
@@ -110,14 +142,22 @@ public class PrivilegeManageDaoImpl extends HibernateDaoSupport implements Privi
 		
 	}
 
-	// delete groupPrivilege
+	/**
+	 * delete groupPrivilege
+	 */
 	public boolean delGroupPrivilege(GroupPrivilege gp) {
+		
 		this.getSession().delete(gp);
 		return true;
+		
 	}
 
-	// update groupInfo
+	
+	/**
+	 * update groupInfo
+	 */
 	public boolean updateGroup(GroupInfo groupInfo) {
+		
 		this.getSession().update(groupInfo);
 		return true;
 	}

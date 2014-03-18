@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <form id="searchDepartment" name="searchDepartment" method="post" action="<%=basePath %>departmentManage!searchDepartment.action?nextPage=1&branchId=0">
     关键字查询: 
-    <input type="text" name="keyword" id="keyword" value="${ keyword}" onfocus="javascript:if(this.value=='请输入关键字进行搜索')this.value='';"> 
+    <input type="text" name="keyword" id="keyword" value="${keyword}" onfocus="javascript:if(this.value=='请输入关键字进行搜索')this.value='';"> 
     &nbsp;&nbsp; <input type="button" value="搜索" onclick="check()">
     </form>
     

@@ -101,27 +101,42 @@ public class PrivilegeManageAction {
 	}
 
 
-	// list all info of privileges,put result to request
+	/**
+	 * list all info of privileges,put result to request and goto list page
+	 * @return listPrivilege
+	 */
 	public String listPrivilege(){
+		
 		List<PrivilegeInfo> list = privMangService.queryAllPrivilege();
 		request = (Map)ActionContext.getContext().get("request");
 		request.put("privileges", list);
 		return "listPrivilege";
+		
 	}
 	
-	// add a record of privilege
+
+	/**
+	 * add a record of privilege
+	 * @return listPrivilege()
+	 */
 	public String addPrivilege(){
-		logger.info("add privilege: " + privilegeInfo.getPrivilegeName() + " # " + privilegeInfo.getPrivilegeDesc() );
+		
 		if(privMangService.addPrivilege(privilegeInfo))
 			return listPrivilege();
 		return "addPrivError";
+		
 	}
 	
-	// list all info of groups
+
+	/**
+	 * list all info of groups
+	 * @return listGroup
+	 */
 	public String listGroup(){
+		
 		List<GroupInfo> list = privMangService.queryAllGroup();
 		
-		// alist use to get group privileges by traverse list(groups)
+// 		alist use to get group privileges by traverse list(groups)
 		ArrayList<List> alist = new ArrayList<List>();
 		for(GroupInfo gi : list){
 			alist.add(privMangService.queryPrivilegeByGroupId(gi.getGroupId()));
@@ -135,18 +150,30 @@ public class PrivilegeManageAction {
 		request.put("privileges", alist);
 		
 		return "listGroup";
+		
 	}
 	
-	// step 1 for add group : list privileges
+
+	/**
+	 * step 1 for add group : put privileges
+	 * @return addGroup
+	 */
 	public String addGroup1(){
+		
 		List<PrivilegeInfo> list = privMangService.queryAllPrivilege();
 		request = (Map)ActionContext.getContext().get("request");
 		request.put("privileges", list);
 		return "addGroup";
+		
 	}
 	
-	// add a record of group
+
+	/**
+	 * add a record of group,and then goto add its privileges
+	 * @return addGroupPrivilege()
+	 */
 	public String addGroup(){
+		
 		logger.info("add group:" + groupInfo.getGroupName() + " # " + groupInfo.getGroupRemark());
 		groupInfo.setGroupAvai(1);
 		
@@ -154,62 +181,86 @@ public class PrivilegeManageAction {
 			return addGroupPrivilege();
 		}
 		return "addGroupError";
+		
 	}
 	
+	
+	/**
+	 * add group privileges
+	 * @return listGroup()
+	 */
 	public String addGroupPrivilege(){
+		
 		if(privMangService.addGroupPrivilege(groupInfo, privileges)){
 			return listGroup();
 		}
 		return "addGroupPrivilegeError";
+		
 	}
 	
 	
+	/**
+	 * update group step 1 ,to put its privileges and current info
+	 * @return updateGroup
+	 * @param listed	privileges it already have
+	 * @param list		privilege it not have
+	 */
 	public String updateGroup1(){
+		
 		groupInfo = privMangService.getGroupById(groupInfo.getGroupId());
+		
 		List<PrivilegeInfo> listed = privMangService.queryPrivilegeByGroupId(groupInfo.getGroupId());
 		List<PrivilegeInfo> list = privMangService.queryAllPrivilege();
-		
-//		logger.info("listed:" + listed.size() + "# list:" + list.size());
-		
-		// a wrong method for cannot compare object by the method that you donnt rewrite from parents eg.toString 
-//		for(PrivilegeInfo pi:listed){ 
-//			System.out.println(list.remove(pi));
-//		}
-		
+
 		for(int i=listed.size();i>0;i--){
 			for(int j=list.size();j>0;j--){
 				if(listed.get(i-1).getPrivilegeId().compareTo((list.get(j-1)).getPrivilegeId()) == 0){
-//					logger.info("removed one privilege from list.");
 					list.remove(j-1);
 					continue;
 				}
 			}
 		}
 		
-//		logger.info("listed:" + listed.size() + "# list:" + list.size());
 		request = (Map) ActionContext.getContext().get("request");
 		request.put("groupInfo", groupInfo);
 		request.put("privileged", listed);
 		request.put("privileges", list);
 		return "updateGroup";
+		
 	}
 	
-	// update group
+
+	/**
+	 * update group step 2, update group
+	 * @return updateGroupPrivilege()
+	 */
 	public String updateGroup2(){
+		
 		privMangService.updateGroup(groupInfo);
 		return updateGroupPrivilege();
+		
 	}
 	
-	// update groupPrivilege
+
+	/**
+	 * update groupPrivilege
+	 * @return listGroup()
+	 */
 	public String updateGroupPrivilege(){
+		
 		privMangService.updateGroupPrivilege(groupInfo, privileges);
 		return listGroup();
+		
 	}
 	
 	
+	/**
+	 * delete group actually is to make it unavaiable
+	 * @return listGroup()
+	 */
 	public String delGroup(){
+		
 		groupInfo = privMangService.getGroupById(groupInfo.getGroupId());
-		groupInfo.setGroupAvai(0);
 		if(privMangService.delGroup(groupInfo)){
 			return listGroup();
 		}

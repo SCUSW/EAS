@@ -18,8 +18,12 @@ import com.scusw.model.DepartmentInfo;
 
 public class DepartmentDaoImpl extends HibernateDaoSupport implements DepartmentDao {
 
-	// query all department
+	
+	/**
+	 * query all department
+	 */
 	public List<DepartmentInfo> queryAllDepartment(int currentPage,int pageSize) {
+		
 		Query query = this.getSession().createQuery("from DepartmentInfo di where di.departmentAvai=1 order by di.branchInfo.branchId");
 		int startRow = (currentPage-1)*pageSize;
 		query.setFirstResult(startRow);
@@ -28,8 +32,12 @@ public class DepartmentDaoImpl extends HibernateDaoSupport implements Department
 		return list;
 	}
 
-	// query department by key word
+
+	/**
+	 * query department by key word
+	 */
 	public List<DepartmentInfo> queryDepartmentByKeyword(String keyword,int currentPage,int pageSize) {
+		
 		StringBuilder hql = new StringBuilder();
 		hql.append("from DepartmentInfo di");
 		hql.append(" where di.departmentAvai=1");
@@ -46,13 +54,22 @@ public class DepartmentDaoImpl extends HibernateDaoSupport implements Department
 		
 	}
 	
+	/**
+	 * query Total Department num
+	 */
 	public int queryTotalDepartment() {
+		
 		Query query = this.getSession().createQuery("from DepartmentInfo di where di.departmentAvai=1 order by di.branchInfo.branchId");
 		List<DepartmentInfo> list = query.list();
 		return list.size();
 	}
 
+	
+	/**
+	 * query Num Department By Keyword
+	 */
 	public int queryNoDepartmentByKeyword(String keyword) {
+		
 		StringBuilder hql = new StringBuilder();
 		hql.append("from DepartmentInfo di");
 		hql.append(" where di.departmentAvai=1");
@@ -64,36 +81,63 @@ public class DepartmentDaoImpl extends HibernateDaoSupport implements Department
 		return list.size();
 	}
 
-	// delete department by id
+	
+	/**
+	 * delete department by id
+	 */
 	public boolean delDepartmentById(int departmentId) {
+		
 		DepartmentInfo departmentInfo = this.getHibernateTemplate().get(DepartmentInfo.class, departmentId);
 		this.getHibernateTemplate().delete(departmentInfo);
 		return true;
 	}
 
+	
+	/**
+	 * add department
+	 */
 	public boolean addDepartment(DepartmentInfo departmentInfo) {
+		
 		this.getSession().save(departmentInfo);
 		return true;
 	}
 
+	
+	/**
+	 * query Department By Id
+	 */
 	public DepartmentInfo queryDepartmentById(int departmentId) {
 		return this.getHibernateTemplate().get(DepartmentInfo.class, departmentId);
 	}
 
+	
+	/**
+	 * update Department
+	 */
 	public boolean updateDepartment(DepartmentInfo departmentInfo) {
+		
 		this.getSession().update(departmentInfo);
 		return true;
 	}
 
-	// query all branchs
+
+	/**
+	 * query all branchs
+	 */
 	public List<BranchInfo> queryAllBranch() {
+		
 		Query query = this.getSession().createQuery("from BranchInfo bi");
 		List<BranchInfo> list = query.list();
 		return list;
 	}
 
+	
+	/**
+	 * query Department By BranchId
+	 */
 	public List<DepartmentInfo> queryDepartmentByBranchId(int branchId,
 			int currentPage, int pageSize) {
+		
 		Query query = this.getSession().createQuery("from DepartmentInfo di" +
 				" where di.departmentAvai=1 " +
 				" and di.branchInfo.branchId=:branchId");
@@ -105,7 +149,12 @@ public class DepartmentDaoImpl extends HibernateDaoSupport implements Department
 		return list;
 	}
 
+	
+	/**
+	 * query Department By BranchId
+	 */
 	public List<DepartmentInfo> queryDepartmentByBranchId(int branchId) {
+		
 		Query query = this.getSession().createQuery("from DepartmentInfo di" +
 				" where di.departmentAvai=1 " +
 				" and di.branchInfo.branchId=:branchId");
@@ -114,7 +163,12 @@ public class DepartmentDaoImpl extends HibernateDaoSupport implements Department
 		return list;
 	}
 	
+	
+	/**
+	 * query No Department By BranchId
+	 */
 	public int queryNoDepartmentByBranchId(int branchId) {
+		
 		Query query = this.getSession().createQuery("from DepartmentInfo di" +
 				" where di.departmentAvai=1 " +
 				" and di.branchInfo.branchId=:branchId");

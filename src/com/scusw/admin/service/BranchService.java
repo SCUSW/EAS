@@ -22,7 +22,7 @@ public interface BranchService {
 	public List<BranchInfo> queryBranchByKeyword(String keyword);
 	
 	// delete branch by id
-	public boolean delBranchById(int branchId);
+	public boolean delBranch(BranchInfo branchInfo);
 	
 	// add branch
 	public boolean addBranch(BranchInfo branchInfo);

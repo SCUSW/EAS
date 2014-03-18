@@ -19,8 +19,12 @@ import com.scusw.model.PositionInfo;
 
 public class VocationDaoImpl extends HibernateDaoSupport implements VocationDao {
 
-	// query all position/vocation
+	
+	/**
+	 * query all position/vocation
+	 */
 	public List<PositionInfo> queryAllVocation(int currentPage,int pageSize) {
+		
 		Query query = this.getSession().createQuery("from PositionInfo v where v.vocationAvai=1 " +
 				"order by v.departmentInfo.departmentId");
 		int startRow = (currentPage-1)*pageSize;
@@ -30,12 +34,19 @@ public class VocationDaoImpl extends HibernateDaoSupport implements VocationDao 
 		return list;
 	}
 	
-	// query vocatin by Id
+	
+	/**
+	 * query vocatin by Id
+	 */
 	public PositionInfo queryVocationById(int vocationId){
+		
 		return this.getHibernateTemplate().get(PositionInfo.class, vocationId);
 	}
 	
-	// get total number of vocations
+	
+	/**
+	 * get total number of vocations
+	 */
 	public int getTotalVocation(){
 	
 		List<PositionInfo> list = this.getHibernateTemplate().find("from PositionInfo v where v.vocationAvai=1");
@@ -43,24 +54,21 @@ public class VocationDaoImpl extends HibernateDaoSupport implements VocationDao 
 	
 	}
 
-	// update vocation
+	
+	/**
+	 * update vocation
+	 */
 	public boolean updateVocation(PositionInfo vocation) {
 
 		this.getHibernateTemplate().update(vocation);
 		return true;
 	}
+	
 
-	// query all branch
-	public List<BranchInfo> queryAllBranch() {
-		return this.getHibernateTemplate().find("from BranchInfo bi where bi.branchAvai=1");
-	}
-
-	// query branch by branchId
-	public BranchInfo queryBranchById(int branchId) {
-		return this.getHibernateTemplate().get(BranchInfo.class, branchId);
-	}
-
-	// query vocation by branchId
+	
+	/**
+	 * query vocation by branchId
+	 */
 	public List<PositionInfo> queryVocationByBranchId(int branchId,int currentPage,int pageSize) {
 
 		Query query = this.getSession().createQuery("from PositionInfo v " +
@@ -73,8 +81,13 @@ public class VocationDaoImpl extends HibernateDaoSupport implements VocationDao 
 		return list;
 	}
 
-	// query vocation by keyword
+	
+	
+	/**
+	 * query vocation by keyword
+	 */
 	public List<PositionInfo> queryVocatinByKeyword(String keyword,int currentPage,int pageSize) {
+		
 		StringBuilder hql = new StringBuilder();
 		hql.append("from PositionInfo v");
 		hql.append(" where v.vocationAvai=1");
@@ -85,11 +98,15 @@ public class VocationDaoImpl extends HibernateDaoSupport implements VocationDao 
 		query.setFirstResult(startRow);
 		query.setMaxResults(pageSize);
 		List<PositionInfo> list = query.list();
-//		List<PositionInfo> list = this.getHibernateTemplate().find(hql.toString());
 		return list;
 	}
 
+	
+	/**
+	 * query num Vocation By BranchId
+	 */
 	public int queryNoVocationByBranchId(int branchId) {
+		
 		Query query = this.getSession().createQuery("from PositionInfo v " +
 				"where v.vocationAvai=1 and v.departmentInfo.branchInfo.branchId=:branchId");
 		query.setParameter("branchId", branchId);
@@ -97,7 +114,12 @@ public class VocationDaoImpl extends HibernateDaoSupport implements VocationDao 
 		return list.size();
 	}
 
+	
+	/**
+	 * query num Vocatin By Keyword
+	 */
 	public int queryNoVocatinByKeyword(String keyword) {
+		
 		StringBuilder hql = new StringBuilder();
 		hql.append("from PositionInfo v");
 		hql.append(" where v.vocationAvai=1");
@@ -108,7 +130,12 @@ public class VocationDaoImpl extends HibernateDaoSupport implements VocationDao 
 		return list.size();
 	}
 
+	
+	/**
+	 * addVocation
+	 */
 	public boolean addVocation(PositionInfo vocation) {
+		
 		this.getSession().save(vocation);
 		return true;
 	}

@@ -29,7 +29,7 @@ public interface DepartmentService {
 	public int queryNoDepartmentByKeyword(String keyword);
 	
 	// delete department by id
-	public boolean delDepartmentById(int departmentId);
+	public boolean delDepartment(DepartmentInfo departmentInfo);
 	
 	// add department
 	public boolean addDepartment(DepartmentInfo departmentInfo);

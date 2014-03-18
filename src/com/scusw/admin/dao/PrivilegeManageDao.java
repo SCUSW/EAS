@@ -23,11 +23,8 @@ public interface PrivilegeManageDao {
 	public List<GroupInfo> queryAllGroup();
 	
 	// interface to add a record of group
-//	public boolean addGroup(GroupInfo groupInfo);
-//	public int addGroup(GroupInfo groupInfo);
 	public boolean addGroup(GroupInfo groupInfo);
 	
-
 	// add groupprivilege
 	public boolean addGroupPrivilege(GroupPrivilege gp);
 	
@@ -39,10 +36,7 @@ public interface PrivilegeManageDao {
 	
 	// get group by Id
 	public GroupInfo getGroupById(int groupId);
-	
-	// delete group by Id (actually to make it unavailable we use updateGroup)
-	public boolean delGroupById(int groupId);
-	
+
 	// delete groupPrivilege by groupId
 	public boolean delGroupPrivilege(GroupPrivilege gp);
 	

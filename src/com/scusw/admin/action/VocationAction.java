@@ -27,8 +27,7 @@ public class VocationAction {
 	private String keyword;
 	
 	private Map<String,Object> request;
-	public static Logger logger = Logger.getLogger(TeaLevelAction.class);
-	
+
 	
 	
 	public BranchInfo getBranchInfo() {
@@ -74,15 +73,15 @@ public class VocationAction {
 	public void setRequest(Map<String, Object> request) {
 		this.request = request;
 	}
-	public static Logger getLogger() {
-		return logger;
-	}
-	public static void setLogger(Logger logger) {
-		VocationAction.logger = logger;
-	}
+
 	
-	// query all vocation
+	
+	/**
+	 * query all vocation
+	 * @return
+	 */
 	public String listVocation(){
+		
 		List<PositionInfo> list = vocationService.queryAllVocation(nextPage, pageSize);
 		request = (Map)ActionContext.getContext().get("request");
 		keyword = "";
@@ -97,20 +96,30 @@ public class VocationAction {
 		return "listVocation";
 	}
 	
-	// del vocation (actually is to make it unavaiable
+	
+	/**
+	 * del vocation (actually is to make it unavaiable
+	 * @return
+	 */
 	public String delVocation(){
+		
 //		nextPage = 1;
 //		pageSize = 10;
 		vocation = vocationService.queryVocationById(vocation.getVocationId());
 		vocation.setVocationAvai(0);
-		logger.info("delVocation:" + vocation.getVocationId());
 		if(vocationService.updateVocation(vocation)){
 			return listVocation();
 		}
 		return "delVocationError";
 	}
 	
+	
+	/**
+	 * search vocation by branch
+	 * @return
+	 */
 	public String searchVocation1(){
+		
 		if(branchInfo.getBranchId() == 0){
 			return listVocation();
 		}
@@ -128,6 +137,11 @@ public class VocationAction {
 		return "listVocation";
 	}
 	
+	
+	/**
+	 * search vocation by keyword
+	 * @return
+	 */
 	public String searchVocation2(){
 		List<PositionInfo> list = vocationService.queryVocatinByKeyword(keyword,nextPage, pageSize);
 		request = (Map)ActionContext.getContext().get("request");
@@ -135,12 +149,14 @@ public class VocationAction {
 		request.put("vocations",list);
 		request.put("keyword",keyword);
 		request.put("branchs",vocationService.queryAllBranch());
-//		request.put("branch",branchInfo);
 		request.put("total",vocationService.queryNoVocatinByKeyword(keyword));
 		request.put("pageSize", pageSize);
 		request.put("currentPage", nextPage);
 		return "listVocation";
 	}
+	
+	
+	
 	
 //	public String addVocation1(){
 //		request = (Map)ActionContext.getContext().get("request");
@@ -150,7 +166,13 @@ public class VocationAction {
 //		return "addVocation";
 //	}
 	
-	// choose branch
+	
+	
+	
+	/**
+	 * add vocation step1:choose branch
+	 * @return
+	 */
 	public String addVocation1(){
 		
 		request = (Map)ActionContext.getContext().get("request");
@@ -158,7 +180,11 @@ public class VocationAction {
 		return "chooseBranch";
 	}
 	
-	// go to page for add vocation 
+	
+	/**
+	 * go to page for add vocation 
+	 * @return
+	 */
 	public String addVocation2(){
 		
 		request = (Map)ActionContext.getContext().get("request");
@@ -166,8 +192,13 @@ public class VocationAction {
 		return "addVocation";
 	}
 	
-	// go to page for add vocation 
+	
+	/**
+	 * add info
+	 * @return
+	 */
 	public String addVocation3(){
+		
 		nextPage=1;
 		if(vocationService.addVocation(vocation)){
 			return listVocation();
@@ -175,7 +206,11 @@ public class VocationAction {
 		return "addVocationError";
 	}
 	
-	// update vocation by choose its branch
+	
+	/**
+	 * update vocation by choose its branch
+	 * @return
+	 */
 	public String updateVocation1(){
 		
 		vocation = vocationService.queryVocationById(vocation.getVocationId());
@@ -184,7 +219,11 @@ public class VocationAction {
 		return "updateVocationBranch";
 	}
 	
-	// go to page for update vocation 
+	
+	/**
+	 * go to page for update vocation 
+	 * @return
+	 */
 	public String updateVocation2(){
 		
 		request = (Map)ActionContext.getContext().get("request");
@@ -192,7 +231,11 @@ public class VocationAction {
 		return "updateVocation";
 	}
 	
-	// update vocation
+	
+	/**
+	 * update info
+	 * @return
+	 */
 	public String updateVocation3(){
 		
 		if(vocationService.updateVocation(vocation)){

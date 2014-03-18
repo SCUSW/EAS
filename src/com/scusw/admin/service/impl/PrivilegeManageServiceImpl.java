@@ -23,7 +23,7 @@ public class PrivilegeManageServiceImpl implements PrivilegeManageService {
 	private PrivilegeManageDao privMangDao;
 	public static Logger logger = Logger.getLogger(PrivilegeManageAction.class);
 	
-	
+
 	
 	public static Logger getLogger() {
 		return logger;
@@ -42,35 +42,65 @@ public class PrivilegeManageServiceImpl implements PrivilegeManageService {
 	}
 
 
-	// query all info of privileges
+
+	/**
+	 * query all info of privileges
+	 * @return 
+	 */
 	public List<PrivilegeInfo> queryAllPrivilege() {
-		return privMangDao.queryAllPrivilege();
-	}
-
-
-	// add a record of privilege
-	public boolean addPrivilege(PrivilegeInfo privInfo) {
-		privMangDao.addPrivilege(privInfo);
-		return true;
-	}
-	
-	// query all info of groups
-	public List<GroupInfo> queryAllGroup(){
-		return privMangDao.queryAllGroup();
-	}
-
-	// add a record of group
-	public boolean addGroup(GroupInfo groupInfo){
-		return privMangDao.addGroup(groupInfo);
-	}
-	
-	
-	// add a record of groupprivilege
-	public boolean addGroupPrivilege(GroupInfo groupInfo,int[] privileges) {
-		int i = 0;
-//		ArrayList<GroupPrivilege> list = new ArrayList<GroupPrivilege>();
 		
+		return privMangDao.queryAllPrivilege();
+		
+	}
+
+
+
+	/**
+	 * add a record of privilege
+	 * @return 
+	 */
+	public boolean addPrivilege(PrivilegeInfo privInfo) {
+		
+		privMangDao.addPrivilege(privInfo);
+		logger.info("Add privilege --- " + "privilegeId: " + privInfo.getPrivilegeId() 
+				+ " privilegeName: " + privInfo.getPrivilegeName());
+		return true;
+		
+	}
 	
+
+	/**
+	 * query all info of groups
+	 * @return
+	 */
+	public List<GroupInfo> queryAllGroup(){
+		
+		return privMangDao.queryAllGroup();
+		
+	}
+
+
+	/**
+	 * add a record of group
+	 * @return
+	 */
+	public boolean addGroup(GroupInfo groupInfo){
+		
+		logger.info("Add GroupInfo --- " + "groupId: " + groupInfo.getGroupId() 
+				+ " groupName: " + groupInfo.getGroupName());
+		return privMangDao.addGroup(groupInfo);
+		
+	}
+	
+	
+
+	/**
+	 * add records of groupprivilege
+	 * @return
+	 */
+	public boolean addGroupPrivilege(GroupInfo groupInfo,int[] privileges) {
+		
+		int i = 0;
 		while(i<privileges.length){
 			GroupPrivilege gp = new GroupPrivilege();
 			PrivilegeInfo pi = new PrivilegeInfo();
@@ -78,64 +108,95 @@ public class PrivilegeManageServiceImpl implements PrivilegeManageService {
 			gp.setGroupInfo(groupInfo);
 			gp.setPrivilegeInfo(pi);
 			i++;
-//			logger.info("add groupprivilege:" + gp.getPrivilegeInfo().getPrivilegeName());
-//			list.add(gp);
+			logger.info("Add groupPrivilege --- " + "groupPrivilegeId: " + gp.getGroupPrivilegeId() 
+					+ " groupPrivilegeName: " + gp.getPrivilegeInfo().getPrivilegeName());
 			privMangDao.addGroupPrivilege(gp);
+			
 		}
-		
-//		logger.info("try to add groupprivilege number:" + list.size());
-//		privMangDao.addGroup(groupInfo,list);
+
 		return true;
+		
 	}
 
-	// query group privilege by groupId
+	
+	/**
+	 * query group privilege by groupId
+	 * @return
+	 */
 	public List<PrivilegeInfo> queryPrivilegeByGroupId(int groupId) {
 		
 		return privMangDao.queryPrivByGroupId(groupId);
+		
 	}
 	
-	// get group by Id
+	
+	/**
+	 * get group by Id
+	 * @return
+	 */
 	public GroupInfo getGroupById(int groupId){
+		
 		return privMangDao.getGroupById(groupId);
+		
 	}
 	
-	// actually this is make groupAvai false and del all GroupPrivileges of this group
+	
+	/**
+	 * delete group
+	 * actually this is make groupAvai false and del all GroupPrivileges of this group
+	 * @param list	all privileges in this group
+	 * @return
+	 */
 	public boolean delGroup(GroupInfo groupInfo) {
+		
 		List<GroupPrivilege> list = privMangDao.queryGroupPrivlegeByGroupId(groupInfo.getGroupId());
 		for(GroupPrivilege gp: list){
-			logger.info("delete GroupPrivilege:" + gp.getGroupPrivilegeId() + ".");
 			privMangDao.delGroupPrivilege(gp);
 		}
-//		groupInfo = privMangDao.getGroupById(groupInfo.getGroupId());
-//		groupInfo.setGroupAvai(0);
-		System.out.println("getGroupbyId : " + groupInfo.getGroupId() + " avai: " + groupInfo.getGroupAvai());
+		groupInfo.setGroupAvai(0);
 		privMangDao.updateGroup(groupInfo);
-		logger.info("set GroupInfo to unavailable:" + groupInfo.getGroupId() + "." + groupInfo.getGroupName());
+		logger.info("Delete groupInfo --- " + "groupId: " + groupInfo.getGroupId() 
+				+ " groupName: " + groupInfo.getGroupName());
 		return true;
-//		return privMangDao.delGroupById(groupId);
+
 	}
 
+	
+	/**
+	 * delete groupPrivilege
+	 */
 	public boolean delGroupPrivilege(GroupPrivilege gp) {
 
+		logger.info("Delete GroupPrivilege --- " + "groupPrivilegeId: " + gp.getGroupPrivilegeId());
 		return privMangDao.delGroupPrivilege(gp);
 	}
 
-	// delete groupPrivilege before update groupInfo
+	
+	/**
+	 * update groupInfo
+	 */
 	public boolean updateGroup(GroupInfo groupInfo) {
 		
+		logger.info("update groupInfo --- " + "groupId: " + groupInfo.getGroupId() 
+				+ " groupName: " + groupInfo.getGroupName());
 		return privMangDao.updateGroup(groupInfo);
+		
 	}
 
-	// after you update groupInfo ,this method should be exe to update groupPrivilege
+	
+	/**
+	 * after you update groupInfo ,this method should be exe to update groupPrivilege
+	 */
 	public boolean updateGroupPrivilege(GroupInfo groupInfo, int[] privileges) {
+		
 		List<GroupPrivilege> list = privMangDao.queryGroupPrivlegeByGroupId(groupInfo.getGroupId());
 		for(GroupPrivilege gp: list){
 			logger.info("delete GroupPrivilege:" + gp.getGroupPrivilegeId() + ".");
 			privMangDao.delGroupPrivilege(gp);
 		}
 		return addGroupPrivilege(groupInfo, privileges);
+		
 	}
-
 
 
 }
