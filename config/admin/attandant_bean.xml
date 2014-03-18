@@ -24,6 +24,7 @@
 		<bean id="attandantService" class="com.scusw.admin.service.impl.AttandantServiceImpl">	
 			<property name="attandantDao" ref="attandantDao"></property>
 			<property name="departmentService" ref="departmentService"></property>
+			<property name="gradeService" ref="gradeService"></property>
 		</bean>
 	
 		<bean id="attandantAction" class="com.scusw.admin.action.AttandantAction">	

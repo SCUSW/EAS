@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <h2>考勤信息</h2>
     <br/>
 	<ul>
-		<li><a href="<%=basePath%>attandant!checkStuAttendant.action" target="content" >学员考勤查询</a></li>
+		<li><a href="<%=basePath%>attandant!checkStuAttendant.action?nextPage=1&pageSize=20&gradeId=0&courseId=0&studentName=&studentNo=" target="content" >学员考勤查询</a></li>
 		<li><a href="<%=basePath%>attandant!checkStaffAttendant.action?nextPage=1&pageSize=20&departmentId=0&staffNo=&staffName=" target="content" >员工考勤查询</a></li>
 		<li><a href="" target="content" ></a></li>
 		<li><a href="" target="content" ></a></li>

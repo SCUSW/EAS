@@ -2,6 +2,7 @@ package com.scusw.admin.dao;
 
 import java.util.List;
 
+import com.scusw.model.CourseInfo;
 import com.scusw.model.StaffAttandant;
 import com.scusw.model.StudentAttendant;
 
@@ -20,5 +21,6 @@ public interface AttandantDao {
 	public List<StudentAttendant> queryStuAttendantByGrade(int currentPage,int pageSize,String studentName,String studentNo,int gradeId);
 	public List<StudentAttendant> queryStuAttendantByCourse(int currentPage,int pageSize,String studentName,String studentNo,int courseId);
 	public List<StudentAttendant> queryStuAttendant(int currentPage,int pageSize,String studentName,String studentNo,int gradeId,int courseId);
+	public List<CourseInfo> queryCourseInfo();
 	
 }

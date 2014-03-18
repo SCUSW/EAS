@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.scusw.admin.dao.AttandantDao;
+import com.scusw.model.CourseInfo;
 import com.scusw.model.StaffAttandant;
 import com.scusw.model.StudentAttendant;
 
@@ -84,7 +85,7 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements
 		List<StudentAttendant> list = (List<StudentAttendant>) this
 				.getSession()
 				.createQuery(
-						"from StudentAttandant sa where sa.registerInfo.studentInfo.studentName like :studentName and sa.registerInfo.studentInfo.studentNo like :studentNo ")
+						"from StudentAttendant sa where sa.registerInfo.studentInfo.studentName like :studentName and sa.registerInfo.studentInfo.studentNo like :studentNo ")
 				.setParameter("studentName", "%" + studentName + "%")
 				.setParameter("studentNo", "%" + studentNo + "%").list();
 
@@ -97,7 +98,7 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements
 		List<StudentAttendant> list = (List<StudentAttendant>) this
 				.getSession()
 				.createQuery(
-						"from StudentAttandant sa where sa.registerInfo.studentInfo.studentName like :studentName and sa.registerInfo.studentInfo.studentNo like :studentNo and sa.registerInfo.studentInfo.classInfo.gradeInfo.gradeId=:gradeId")
+						"from StudentAttendant sa where sa.registerInfo.studentInfo.studentName like :studentName and sa.registerInfo.studentInfo.studentNo like :studentNo and sa.registerInfo.studentInfo.classInfo.gradeInfo.gradeId=:gradeId")
 				.setParameter("studentName", "%" + studentName + "%")
 				.setParameter("studentNo", "%" + studentNo + "%")
 				.setParameter("gradeId", gradeId).list();
@@ -111,7 +112,7 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements
 		List<StudentAttendant> list = (List<StudentAttendant>) this
 				.getSession()
 				.createQuery(
-						"from StudentAttandant sa where sa.registerInfo.studentInfo.studentName like :studentName and sa.registerInfo.studentInfo.studentNo like :studentNo and sa.registerInfo.courseInfo.courseId=:courseId")
+						"from StudentAttendant sa where sa.registerInfo.studentInfo.studentName like :studentName and sa.registerInfo.studentInfo.studentNo like :studentNo and sa.registerInfo.courseInfo.courseId=:courseId")
 				.setParameter("studentName", "%" + studentName + "%")
 				.setParameter("studentNo", "%" + studentNo + "%")
 				.setParameter("courseId", courseId).list();
@@ -125,7 +126,7 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements
 		List<StudentAttendant> list = (List<StudentAttendant>) this
 				.getSession()
 				.createQuery(
-						"from StudentAttandant sa where sa.registerInfo.studentInfo.studentName like :studentName and sa.registerInfo.studentInfo.studentNo like :studentNo and sa.registerInfo.studentInfo.classInfo.gradeInfo.gradeId=:gradeId and sa.registerInfo.courseInfo.courseId=:courseId")
+						"from StudentAttendant sa where sa.registerInfo.studentInfo.studentName like :studentName and sa.registerInfo.studentInfo.studentNo like :studentNo and sa.registerInfo.studentInfo.classInfo.gradeInfo.gradeId=:gradeId and sa.registerInfo.courseInfo.courseId=:courseId")
 				.setParameter("studentName", "%" + studentName + "%")
 				.setParameter("studentNo", "%" + studentNo + "%")
 				.setParameter("gradeId", gradeId)
@@ -141,8 +142,8 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements
 				.getSession()
 				.createQuery(
 						"from StudentAttendant sa "
-								+ "sa.registerInfo.studentInfo.studentName like :studentName "
-								+ "sa.registerInfo.studentInfo.studentNo like :studentNo "
+								+ "where sa.registerInfo.studentInfo.studentName like :studentName "
+								+ "and sa.registerInfo.studentInfo.studentNo like :studentNo "
 								+ "order by sa.attendantTime desc");
 		query.setParameter("studentName", "%" + studentName + "%");
 		query.setParameter("studentNo", "%" + studentNo + "%");
@@ -160,9 +161,9 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements
 				.getSession()
 				.createQuery(
 						"from StudentAttendant sa "
-								+ "sa.registerInfo.studentInfo.studentName like :studentName "
-								+ "sa.registerInfo.studentInfo.studentNo like :studentNo "
-								+ "sa.registerInfo.studentInfo.classInfo.gradeInfo.gradeId=:gradeId "
+								+ "where sa.registerInfo.studentInfo.studentName like :studentName "
+								+ "and sa.registerInfo.studentInfo.studentNo like :studentNo "
+								+ "and sa.registerInfo.studentInfo.classInfo.gradeInfo.gradeId=:gradeId "
 								+ "order by sa.attendantTime desc");
 		query.setParameter("studentName", "%" + studentName + "%");
 		query.setParameter("studentNo", "%" + studentNo + "%");
@@ -181,9 +182,9 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements
 				.getSession()
 				.createQuery(
 						"from StudentAttendant sa "
-								+ "sa.registerInfo.studentInfo.studentName like :studentName "
-								+ "sa.registerInfo.studentInfo.studentNo like :studentNo "
-								+ "sa.registerInfo.courseInfo.courseId=:courseId "
+								+ "where sa.registerInfo.studentInfo.studentName like :studentName "
+								+ "and sa.registerInfo.studentInfo.studentNo like :studentNo "
+								+ "and sa.registerInfo.courseInfo.courseId=:courseId "
 								+ "order by sa.attendantTime desc");
 		query.setParameter("studentName", "%" + studentName + "%");
 		query.setParameter("studentNo", "%" + studentNo + "%");
@@ -203,10 +204,10 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements
 				.getSession()
 				.createQuery(
 						"from StudentAttendant sa "
-								+ "sa.registerInfo.studentInfo.studentName like :studentName "
-								+ "sa.registerInfo.studentInfo.studentNo like :studentNo "
-								+ "sa.registerInfo.studentInfo.classInfo.gradeInfo.gradeId=:gradeId "
-								+ "sa.registerInfo.courseInfo.courseId=:courseId "
+								+ "where sa.registerInfo.studentInfo.studentName like :studentName "
+								+ "and sa.registerInfo.studentInfo.studentNo like :studentNo "
+								+ "and sa.registerInfo.studentInfo.classInfo.gradeInfo.gradeId=:gradeId "
+								+ "and sa.registerInfo.courseInfo.courseId=:courseId "
 								+ "order by sa.attendantTime desc");
 		query.setParameter("studentName", "%" + studentName + "%");
 		query.setParameter("studentNo", "%" + studentNo + "%");
@@ -217,6 +218,11 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements
 		query.setMaxResults(pageSize);
 		List<StudentAttendant> list = query.list();
 		return list;
+	}
+
+	public List<CourseInfo> queryCourseInfo() {
+		// TODO Auto-generated method stub
+		return this.getSession().createQuery("from CourseInfo").list();
 	}
 
 }

@@ -17,10 +17,46 @@ public class AttandantAction {
 	private int departmentId;
 	private String staffName;
 	private String staffNo;
+	private int gradeId;
+	private int courseId;
+	private String studentName;
+	private String studentNo;
 	private Map<String,Object> request;
 	private Map<String,Object> session;
 	public static Logger logger = Logger.getLogger(AttandantAction.class);
 	
+	public int getCourseId() {
+		return courseId;
+	}
+
+	public void setCourseId(int courseId) {
+		this.courseId = courseId;
+	}
+
+	public int getGradeId() {
+		return gradeId;
+	}
+
+	public void setGradeId(int gradeId) {
+		this.gradeId = gradeId;
+	}
+
+	public String getStudentName() {
+		return studentName;
+	}
+
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+
+	public String getStudentNo() {
+		return studentNo;
+	}
+
+	public void setStudentNo(String studentNo) {
+		this.studentNo = studentNo;
+	}
+
 	public String getStaffNo() {
 		return staffNo;
 	}
@@ -106,9 +142,16 @@ public class AttandantAction {
 	}
 	public String checkStuAttendant() {
 		request = (Map<String, Object>) ActionContext.getContext().get("request");
-		List<StudentAttendant> list = attandantService.queryStuAttendant(1,20);
+		List<StudentAttendant> list = attandantService.queryStuAttendant(nextPage, pageSize,studentName,studentNo,gradeId,courseId);
 		request.put("stuinfo", list);
-		request.put("total",attandantService.getTotalStuAttendant());
+		request.put("total",attandantService.getTotalStuAttendant(studentName,studentNo,gradeId,courseId));
+		request.put("grade", attandantService.queryGradeInfo());
+		request.put("pageSize", pageSize);
+		request.put("currentPage", nextPage);
+		request.put("gradeId", gradeId);
+		request.put("studentNo", staffNo);
+		request.put("studentName", studentName);
+		request.put("course", attandantService.queryCourseInfo());
 		return "stu_success";
 	}
 }
