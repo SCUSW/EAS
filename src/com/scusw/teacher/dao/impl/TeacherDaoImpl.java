@@ -34,16 +34,27 @@ public class TeacherDaoImpl extends HibernateDaoSupport implements TeacherDao {
 	}
 	
 	
+//	public List<StudentInfo> searchStudentByNo(String studentNo){
+//		Query q=this.getSession().createQuery("from StudentInfo s where s.studentNo=:studentNo");
+//		q.setParameter("studentNo",studentNo);
+//		List<StudentInfo> students=q.list();
+//		return students;
+//	}
+	
 	public List<StudentInfo> searchStudentByNo(String studentNo){
-		Query q=this.getSession().createQuery("from StudentInfo s where s.studentNo=:studentNo");
-		q.setParameter("studentNo",studentNo);
+		Query q=this.getSession().createQuery("from StudentInfo s where s.studentNo like '"+studentNo+"%'");
 		List<StudentInfo> students=q.list();
 		return students;
 	}
 	
+//	public List<StudentInfo> searchStudentByName(String studentName){
+//		Query q=this.getSession().createQuery("from StudentInfo s where s.studentName=:studentName");
+//		q.setParameter("studentName",studentName);
+//		List<StudentInfo> students=q.list();
+//		return students;
+//	}
 	public List<StudentInfo> searchStudentByName(String studentName){
-		Query q=this.getSession().createQuery("from StudentInfo s where s.studentName=:studentName");
-		q.setParameter("studentName",studentName);
+		Query q=this.getSession().createQuery("from StudentInfo s where s.studentName like '%"+studentName+"%'");
 		List<StudentInfo> students=q.list();
 		return students;
 	}
@@ -154,18 +165,16 @@ public class TeacherDaoImpl extends HibernateDaoSupport implements TeacherDao {
 	
 	public List queryOwnCommonTeacherByStaffNo(int branchId, String staffNo){
 		Query q=this.getSession().createQuery("from TeacherInfo t where t.teacherType=0 " +
-		"and t.staffInfo.positionInfo.departmentInfo.branchInfo.branchId=:branchId and t.staffInfo.staffNo=:staffNo");
+		"and t.staffInfo.positionInfo.departmentInfo.branchInfo.branchId=:branchId and t.staffInfo.staffNo like '"+staffNo+"%'");
 		q.setParameter("branchId", branchId);
-		q.setParameter("staffNo", staffNo);
 		List commonTeachers=q.list();
 		return commonTeachers;
 	}
 	
 	public List queryOwnCommonTeacherByStaffName(int branchId, String staffName){
 		Query q=this.getSession().createQuery("from TeacherInfo t where t.teacherType=0 " +
-		"and t.staffInfo.positionInfo.departmentInfo.branchInfo.branchId=:branchId and t.staffInfo.staffName=:staffName");
+		"and t.staffInfo.positionInfo.departmentInfo.branchInfo.branchId=:branchId and t.staffInfo.staffName like '%"+staffName+"%'");
 		q.setParameter("branchId", branchId);
-		q.setParameter("staffName", staffName);
 		List commonTeachers=q.list();
 		return commonTeachers;
 	}
