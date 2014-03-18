@@ -66,6 +66,14 @@ public class LoginServiceImpl implements LoginService {
 		}
 		return true;
 	}
+
+	public AdminInfo checkAdminInfo2(AdminInfo adminInfo) {
+		// TODO Auto-generated method stub
+		if((adminInfo=loginDao.checkAdminLogin(adminInfo)) != null){
+			return adminInfo;
+		}
+		return null;
+	}
 	
 
 	

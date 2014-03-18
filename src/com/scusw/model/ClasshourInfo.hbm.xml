@@ -19,6 +19,9 @@
         <property name="classhourAvai" type="java.lang.Integer">
             <column name="classhour_avai" />
         </property>
+        <property name="classhourName" type="java.lang.String">
+            <column name="classhour_name" />
+        </property>
         <set name="courseClasshours" inverse="true">
             <key>
                 <column name="classhour_id" />

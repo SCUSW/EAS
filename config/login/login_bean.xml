@@ -26,4 +26,18 @@
 		<bean id="loginAction" class="com.scusw.login.action.LoginAction">	
 			<property name="loginService" ref="loginService"></property>
 		</bean>
+		
+		
+		<bean id="accountDao" class="com.scusw.login.dao.AccountDao">
+			 <property name="sessionFactory" ref="sessionFactory"></property>
+		</bean>
+		
+		<bean id="accountService" class="com.scusw.login.service.AccountServiceImpl">	
+			<property name="accountDao" ref="accountDao"></property>
+			<property name="loginService" ref="loginService"></property>
+		</bean>
+	
+		<bean id="accountAction" class="com.scusw.login.action.AccountAction">	
+			<property name="accountService" ref="accountService"></property>
+		</bean>
 </beans>

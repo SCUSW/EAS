@@ -13,5 +13,9 @@
 				<result name="admin_login_success">/admin/demo.jsp</result>
 				<result name="admin_login_failed">/admin/loginError.jsp</result>
 			</action>
+			
+			<action name="account" class="com.scusw.login.action.AccountAction">
+				<result name="default">/changePass.jsp</result>
+			</action>
 		</package>
 </struts>

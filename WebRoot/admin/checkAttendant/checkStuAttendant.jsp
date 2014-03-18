@@ -5,6 +5,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -62,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<input type="submit" value="提交">
 	</form>
    <c:forEach items="${request.stuinfo }" var="i">
-   ${i.attendantTime },${i.registerInfo.studentInfo.studentName },${i.registerInfo.studentInfo.studentNo },${i.registerInfo.studentInfo.classInfo.className },${i.registerInfo.studentInfo.classInfo.gradeInfo.gradeName },${i.registerInfo.courseInfo.courseName }<br>
+   <fmt:formatDate value="${i.attendantTime }" pattern="yyyy年M月d日  EEEE HH:mm:ss"/>,${i.registerInfo.studentInfo.studentName },${i.registerInfo.studentInfo.studentNo },${i.registerInfo.studentInfo.classInfo.className },${i.registerInfo.studentInfo.classInfo.gradeInfo.gradeName },${i.registerInfo.courseInfo.courseName }<br>
    </c:forEach>
   总共：${request.total }
 	每页显示：${request.pageSize }<br>

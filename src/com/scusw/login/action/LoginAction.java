@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.scusw.login.service.AccountService;
 import com.scusw.login.service.LoginService;
 import com.scusw.model.AdminInfo;
 import com.scusw.model.StaffInfo;
@@ -15,13 +16,22 @@ public class LoginAction {
 	private StudentInfo studentInfo;
 	private StaffInfo staffInfo;
 	private LoginService loginService;
+	private AccountService accountService;
 	private String loginNo;
 	private String loginPass;
 	private String role;
+	
 	private Map<String, Object> session;
 	private Map<String, Object> request;
 	
 	public static Logger logger = Logger.getLogger(LoginAction.class);
+	
+	public AccountService getAccountService() {
+		return accountService;
+	}
+	public void setAccountService(AccountService accountService) {
+		this.accountService = accountService;
+	}
 	
 	public String getLoginNo() {
 		return loginNo;
@@ -84,6 +94,7 @@ public class LoginAction {
 			studentInfo = (StudentInfo) obj;
 			session.put("role", "student");
 			session.put("studentNo", studentInfo.getStudentNo());
+			session.put("loginNo", studentInfo.getStudentNo());
 			session.put("studentID", studentInfo.getStudentId());
 			session.put("name", studentInfo.getStudentName());
 			logger.info("学生登录成功:"+studentInfo.getStudentNo());
@@ -105,6 +116,7 @@ public class LoginAction {
 			staffInfo = (StaffInfo) obj;
 			session.put("privilege", loginService.checkPrivilege(staffInfo.getGroupInfo().getGroupId()));//用户权限list
 			session.put("staffNo", staffInfo.getStaffNo());
+			session.put("loginNo", staffInfo.getStaffNo());
 			int type = loginService.checkIfTeacher(staffInfo.getStaffId());
 			if (type>=0) {
 				session.put("role", "teacher");//教师角色
@@ -140,6 +152,8 @@ public class LoginAction {
 		
 		if(loginService.checkAdminInfo(adminInfo)){
 			session.put("adminId", adminInfo.getAdminNo());
+			session.put("loginNo", adminInfo.getAdminNo());
+			session.put("role", "admin");
 			return "admin_login_success";
 		}
 		return "admin_login_error";
