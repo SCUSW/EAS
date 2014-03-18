@@ -29,8 +29,6 @@ public interface TeacherService {
 
 	public StudentInfo getStudentInfo(String studentNo);
 
-	public List searchStudentOwn(int staffId);
-
 	public List getTeacherOwnCourse(int staffId);
 
 	public List searchStudentByCourseId(int courseId);

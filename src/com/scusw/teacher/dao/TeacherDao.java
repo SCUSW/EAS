@@ -28,9 +28,7 @@ public interface TeacherDao {
 
 	public StudentInfo queryByStudentNo(String studentNo);
 
-	public List queryStudentByTeacherId(int staffId);
-
-	public List queryTeacherOenCourse(int staffId);
+	public List queryTeacherOwnCourse(int staffId);
 
 	public List queryStudentByCourseId(int courseId);
 

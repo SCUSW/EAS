@@ -72,12 +72,8 @@ public class TeacherServiceImpl implements TeacherService{
 		return teacherDao.queryByStudentNo(studentNo);
 	}
 	
-	public List searchStudentOwn(int staffId){
-		return teacherDao.queryStudentByTeacherId(staffId);
-	}
-	
 	public List getTeacherOwnCourse(int staffId){
-		return teacherDao.queryTeacherOenCourse(staffId);
+		return teacherDao.queryTeacherOwnCourse(staffId);
 	}
 	
 	public List searchStudentByCourseId(int courseId){
