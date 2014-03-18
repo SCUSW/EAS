@@ -108,4 +108,9 @@ public class VocationDaoImpl extends HibernateDaoSupport implements VocationDao 
 		return list.size();
 	}
 
+	public boolean addVocation(PositionInfo vocation) {
+		this.getSession().save(vocation);
+		return true;
+	}
+
 }

@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <h2>管理部门</h2>
     <br/>
 	<ul>
-		<li><a href="<%=basePath %>departmentManage!listDepartment.action" target="content" >查看部门信息</a></li>
+		<li><a href="<%=basePath %>departmentManage!listDepartment.action?nextPage=1&branchId=0" target="content" >查看部门信息</a></li>
 		<li><a href="<%=basePath %>departmentManage!getBranchs.action" target="content" >添加部门信息</a></li>
 	</ul>
     </div>

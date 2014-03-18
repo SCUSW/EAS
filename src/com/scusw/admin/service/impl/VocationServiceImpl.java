@@ -64,7 +64,7 @@ public class VocationServiceImpl implements VocationService {
 	}
 
 	public boolean updateVocation(PositionInfo vocation) {
-
+		
 		return vocationDao.updateVocation(vocation);
 	}
 
@@ -105,10 +105,21 @@ public class VocationServiceImpl implements VocationService {
 		List<BranchInfo> listb = branchService.queryAllBranch();
 		Map<Integer,List<DepartmentInfo>> map = new HashMap<Integer, List<DepartmentInfo>>();
 		for(BranchInfo bi:listb){
+//			System.out.println(departmentService.queryDepartmentByBranchId(bi.getBranchId()).size() + "EEEEEEE");
 			map.put(bi.getBranchId(), departmentService.queryDepartmentByBranchId(bi.getBranchId()));
 		}
 		return map;
 		
+	}
+
+	public List<DepartmentInfo> queryDepartmentBybranchId(int branchId) {
+
+		return departmentService.queryDepartmentByBranchId(branchId);
+	}
+
+	public boolean addVocation(PositionInfo vocation) {
+		vocation.setVocationAvai(1);
+		return vocationDao.addVocation(vocation);
 	}
 
 }

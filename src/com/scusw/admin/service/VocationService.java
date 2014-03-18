@@ -45,5 +45,12 @@ public interface VocationService {
 	// query num of vocation by keyword
 	public int queryNoVocatinByKeyword(String keyword);
 	
+	// return all mapped branchs and departments
 	public Map<Integer,List<DepartmentInfo>> queryAllDepartment();
+	
+	// return all departments by matched branchId
+	public List<DepartmentInfo> queryDepartmentBybranchId(int branchId);
+
+	public boolean addVocation(PositionInfo vocation);
+	
 }

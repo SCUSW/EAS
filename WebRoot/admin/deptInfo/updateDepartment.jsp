@@ -45,9 +45,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	部门名称：<input id="name" type="text" width="30" name="departmentInfo.departmentName" value="${request.departmentInfo.departmentName }"/><br/>
 	
 	分支机构：<select name="departmentInfo.branchInfo.branchId">
-				<option value="${request.departmentInfo.branchInfo.branchId}" selected="selected">${request.departmentInfo.branchInfo.branchId}:${request.departmentInfo.branchInfo.branchName}</option>
 			<c:forEach items="${request.branchs}" var="b">
-				<option value="${b.branchId}">${b.branchId}:${b.branchName}</option>
+				<option value="${b.branchId}" ${departmentInfo.branchInfo.branchId eq b.branchId?"selected":"" }>${b.branchId}:${b.branchName}</option>
 			</c:forEach>
 			</select>
 	<br/>

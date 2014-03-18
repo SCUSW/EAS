@@ -1,9 +1,8 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,com.scusw.model.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
 
@@ -40,23 +39,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <div id="listdep">
 
-	<s:debug></s:debug>
 
-    <form id="searchDepartment" name="searchDepartment" method="post" action="<%=basePath %>departmentManage!searchDepartment.action">
+    <form id="searchDepartment" name="searchDepartment" method="post" action="<%=basePath %>departmentManage!searchDepartment.action?nextPage=1&branchId=0">
     关键字查询: 
-    <input type="text" name="keyword" id="keyword" value="${request.keyword}" onfocus="javascript:if(this.value=='请输入关键字进行搜索')this.value='';"> 
+    <input type="text" name="keyword" id="keyword" value="${ keyword}" onfocus="javascript:if(this.value=='请输入关键字进行搜索')this.value='';"> 
     &nbsp;&nbsp; <input type="button" value="搜索" onclick="check()">
     </form>
     
-    
-    <form id="searchDepartment2" name="searchDepartment2" method="post" action="<%=basePath %>departmentManage!searchDepartment2.action">
+	<form id="searchDepartment2" name="searchDepartment2" method="post" action="<%=basePath %>departmentManage!searchDepartment2.action?nextPage=1">
 	分类查询:
 	<select name="branchId">
 		<option value="0">所有分支机构</option>
-		<c:forEach items="${request.branchs}" var="b">
-			<option value="${b.branchId}">${b.branchId}:${b.branchName}</option>
+		<c:forEach items="${branchs}" var="b">
+			<option value="${b.branchId}" ${b.branchId==branchId?"selected":"" }>${b.branchId}.${b.branchName}</option>
 		</c:forEach>
-	</select>
+	
+	</select> 
 	&nbsp;&nbsp; <input type="submit" value="查询" >
 	</form>
     
@@ -74,7 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	}
 	    }
     </script>
-   
+    
 	<table border="1px">
 	<thead>
 		<tr>
@@ -85,24 +83,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<th>管理部门信息</th>
 		</tr>
 	</thead>
-	<tbody>
-		<c:forEach items="${request.departments}" var="d">
+ 	<tbody>
+ 		<s:iterator value="list">
  			<tr>
- 				<td align="center">${d.departmentId}</td><td align="center">${d.departmentName}</td><td align="center">${d.departmentFoundedTime}</td><td align="center"><abbr title="${d.branchInfo.branchName}">${d.branchInfo.branchId}</abbr></td>
- 				<td align="center"><a href="<%=basePath %>departmentManage!updateDepartment1.action?departmentInfo.departmentId=${d.departmentId}">编辑</a>&nbsp;&nbsp;<a href="<%=basePath %>departmentManage!delDepartment.action?departmentInfo.departmentId=${d.departmentId}">删除</a></td>
+ 				<td align="center">${departmentId}</td><td align="center">${departmentName}</td><td align="center">${departmentFoundedTime}</td><td align="center"><abbr title="${branchInfo.branchName}">${branchInfo.branchId}</abbr></td>
+ 				<td align="center"><a href="<%=basePath%>departmentManage!updateDepartment1.action?departmentInfo.departmentId=${departmentId}">编辑</a>&nbsp;&nbsp;<a href="<%=basePath %>departmentManage!delDepartment.action?departmentInfo.departmentId=${departmentId}">删除</a></td>
  			</tr>
  			<tr>
- 				<td colspan="5">部门简介: ${d.departmentIntr}</td>
+ 				<td colspan="5">部门简介: ${departmentIntr}</td>
  			</tr>
  			<tr>
  				<td colspan="5" bgcolor="#FFCCFF">&nbsp;<td>
  			</tr>
-    	</c:forEach>
-    	
+    
+   		</s:iterator>
 	</tbody>
 	</table> 
-	
-	
 	
 	
 	总共： ${request.total } 条记录 &nbsp;&nbsp;
@@ -128,8 +124,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	
 	
+	
+	
 	</div>
-    
-
   </body>
 </html>

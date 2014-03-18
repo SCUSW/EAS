@@ -43,4 +43,6 @@ public interface VocationDao {
 	// query num of vocation by keyword
 	public int queryNoVocatinByKeyword(String keyword);
 
+	public boolean addVocation(PositionInfo vocation);
+
 }

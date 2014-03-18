@@ -38,15 +38,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
 
 	<div id="listvoc">
-	
+		
 		<!--  list vocation by branch and department -->
 		
-		<form id="searchVocation1" name="searchVocation1" method="post" action="<%=basePath %>vocationManage!searchVocation1.action">
+		<form id="searchVocation1" name="searchVocation1" method="post" action="<%=basePath %>vocationManage!searchVocation1.action?nextPage=1">
 		分类查询:
 		<select name="branchInfo.branchId">
 			<option value="0">所有分支机构</option>
 			<c:forEach items="${request.branchs}" var="b">
-				<option value="${b.branchId}">${b.branchId}:${b.branchName}</option>
+				<option value="${b.branchId}" ${b.branchId==branchInfo.branchId?"selected":"" }>${b.branchId}:${b.branchName}</option>
 			</c:forEach>
 		</select>
 <%-- 	
@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		&nbsp;&nbsp; <input type="submit" value="查询">
 		</form>
 		
-		<form id="searchVocation2" name="searchVocation2" method="post" action="<%=basePath %>vocationManage!searchVocation2.action">
+		<form id="searchVocation2" name="searchVocation2" method="post" action="<%=basePath %>vocationManage!searchVocation2.action?nextPage=1&branchInfo.branchId=0">
 		关键字查询:
 		<input type="text" name="keyword" id="keyword" value="${request.keyword}" onfocus="javascript:if(this.value=='请输入关键字进行搜索')this.value='';"> 
     	&nbsp;&nbsp; <input name="sub" type="button" value="搜索" onclick="check()">
@@ -80,13 +80,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    }
     	</script>
 		
-		<% 	String s = (String)request.getAttribute("keyword");
-			Object s1 = request.getAttribute("branch");
-			if((s.equals("") || s==null) && s1!=null){
-		%>
-			按分支机构收索... 分支机构编号：${request.branch.branchId } 分支机构名：<abbr title="${request.branch.branchIntr }"> "${request.branch.branchName }</abbr>
-		<%	}
-		%>
 		
 		<br/>
 		
@@ -105,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<c:forEach items="${request.vocations }" var="v">
 				<tr>
 					<td align="center">${v.vocationId}</td><td align="center">${v.vocationName}</td><td align="center">${v.wageBase}</td><td align="center"><abbr title="${v.departmentInfo.departmentName}">${v.departmentInfo.departmentId}</abbr></td><td align="center"><abbr title="${v.departmentInfo.branchInfo.branchName}">${v.departmentInfo.branchInfo.branchId}</abbr></td>
- 					<td align="center"><a href="<%=basePath %>vocationManage!updateVocation1.action?vocation.vocationId=${v.vocationId}">编辑</a>&nbsp;&nbsp;<a href="<%=basePath %>vocationManage!delVocation.action?vocation.vocationId=${v.vocationId}">删除</a></td>
+ 					<td align="center"><a href="<%=basePath %>vocationManage!updateVocation1.action?nextPage=1&vocation.vocationId=${v.vocationId}">编辑</a>&nbsp;&nbsp;<a href="<%=basePath %>vocationManage!delVocation.action?vocation.vocationId=${v.vocationId}">删除</a></td>
 				</tr>
 				<tr>
  					<td colspan="6">备注信息: ${v.vocationRemark}</td>

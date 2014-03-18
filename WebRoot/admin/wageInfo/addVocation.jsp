@@ -1,9 +1,11 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@page import="javax.swing.text.Document"%>
+<%@ page language="java" import="java.util.*,com.scusw.model.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
+<%@taglib uri="/struts-tags" prefix="s" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -32,21 +34,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	li {list-style:none;margin-top: 5px;}
 	a {text-decoration:none;}
 	</style>
-	
-	
-	<SCRIPT language="JavaScript" >
-		<!--下拉框级联开始-->
+<%-- 	
+	<script type="text/javascript">
 		function changeBranch(){
-			var selected = (Integer)document.addVocation.branch.value;
+			
+			var selected = parseInt(document.addVocation.branch.value);
 			document.addVocation.department.options.length=0;
-			<% 
-			Map<Integer,List> map = (Map<Integer,List>) request.getAttribute("departments");
-	 		%>  
-			for(var i in map.get(selected)){
-					document.addVocation.department.options.add(new Option(i.departmentId, i.departmentName));
+//			document.getElementById("itemp").setAttribute("itemp",selected);
+//			var li = new Array();
+			<%
+			Map<Integer,List<DepartmentInfo>> map = (Map<Integer,List<DepartmentInfo>>) request.getAttribute("departments");
+//			List<DepartmentInfo> list = map.get();
+	 		%>
+//	 		var objs=eval(map);
+//	 		alert(selected);
+
+		 	for(var i in objs[selected]){				
+		 		
+				document.addVocation.department.options.add(new Option(i.departmentId, i.departmentName));
 			}
-			document.addVocation.department.options.selctIndex=0;
+			document.addVocation.department.options.selectIndex=0;
 		}
+		</script> --%>
+		
 		
 		
 <%-- 	function loadBranch(){
@@ -58,37 +68,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		} 
 --%>
 		
-		<!--下拉框级联结束-->
-		</SCRIPT>
 	
 
   </head>
   
 <!-- 	<body bgcolor="#ffff99" onLoad="loadBranch()"> -->
   		<body bgcolor="#ffff99">
-  		
+  		<s:debug>
+  		</s:debug>
 	  	<div id="addvoc">
+<!-- 	  	<input type="hidden" value="" id="itemp" name="itemp" /> -->
 	  	
-		<form id="addVocation" name="addVocation" action="<%=basePath %>vocationManage!addVocation.action" method="post">
+		<form id="addVocation" name="addVocation" action="<%=basePath %>vocationManage!addVocation3.action" method="post">
 		
-		<B>选择职类所属机构与部门:</B> &nbsp;
+		
+<%-- 	<B>选择职类所属机构与部门:</B> &nbsp;
 		<SELECT name="branch" id="branch" onChange="changeBranch()">
 			<OPTION value="0">--请选择分支机构--</OPTION>
 			<c:forEach items="${request.branchs }" var="b">
 				<option value="${b.branchId }">${b.branchId }:${b.branchName }</option>
 			</c:forEach>
-			
 		</SELECT>
 		
 		<SELECT name="department" id="department" >
 		<OPTION value="0">--请选择部门--</OPTION>
-		</SELECT>
+		</SELECT> 
+--%>
+
+		请选择所属部门信息: 
+		<SELECT name="vocation.departmentInfo.departmentId" id="department" >
+			<c:forEach items="${request.departments }" var="d">
+				<option value="${d.departmentId }">${d.departmentId }.${d.departmentName }</option>
+			</c:forEach>
+		</SELECT> 
 		
 		<br/>
 		职位名称：<input id="name" type="text" width="30" name="vocation.vocationName" /><br/>
 		工资基数：<input id="wagebase" type="text" width="30" name="vocation.wageBase" onafterpaste="this.value=this.value.replace(/\D/g,'')" onkeyup="this.value=this.value.replace(/\D/g,'')" onkeypress="if(window.event.keyCode<48 || window.event.keyCode>57) window.event.keyCode = 0;" value="" /><br/>
 	
-		备注信息：<textarea name="vocation.remark" rows="10" cols="30"></textarea><br/>
+		备注信息：<textarea name="vocation.vocationRemark" rows="10" cols="30"></textarea><br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type="button" name="add" value="确定添加" onclick="check()" />
 		
@@ -96,12 +114,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		 <script type="text/javascript">
 		    function check(){
-		    	if(addDepartment.name.value==""){
-		    		alert("请输入分支机构名称！");
+		    	if(addVocation.name.value==""){
+		    		alert("请输入职位名称！");
 		    		addDepartment.name.focus();
 		    		return;
-		    	}else{
-		    		addDepartment.submit();
+		    	}if(addVocation.wagebase.value==""){
+					alert("请输入工资基数!");
+					addVocation.wagebase.focus();
+		    		return;
+				}else{
+		    		addVocation.submit();
 		    	}
 		    }
 	    </script>

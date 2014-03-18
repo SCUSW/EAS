@@ -142,12 +142,63 @@ public class VocationAction {
 		return "listVocation";
 	}
 	
+//	public String addVocation1(){
+//		request = (Map)ActionContext.getContext().get("request");
+//		request.clear();
+//		request.put("branchs", vocationService.queryAllBranch());
+//		request.put("departments", vocationService.queryAllDepartment());
+//		return "addVocation";
+//	}
+	
+	// choose branch
 	public String addVocation1(){
+		
 		request = (Map)ActionContext.getContext().get("request");
-		request.clear();
-		request.put("branchs", vocationService.queryAllBranch());
-		request.put("departments", vocationService.queryAllDepartment());
+		request.put("branchs",vocationService.queryAllBranch());
+		return "chooseBranch";
+	}
+	
+	// go to page for add vocation 
+	public String addVocation2(){
+		
+		request = (Map)ActionContext.getContext().get("request");
+		request.put("departments", vocationService.queryDepartmentBybranchId(branchInfo.getBranchId()));
 		return "addVocation";
+	}
+	
+	// go to page for add vocation 
+	public String addVocation3(){
+		nextPage=1;
+		if(vocationService.addVocation(vocation)){
+			return listVocation();
+		}
+		return "addVocationError";
+	}
+	
+	// update vocation by choose its branch
+	public String updateVocation1(){
+		
+		vocation = vocationService.queryVocationById(vocation.getVocationId());
+		request = (Map)ActionContext.getContext().get("request");
+		request.put("branchs",vocationService.queryAllBranch());
+		return "updateVocationBranch";
+	}
+	
+	// go to page for update vocation 
+	public String updateVocation2(){
+		
+		request = (Map)ActionContext.getContext().get("request");
+		request.put("departments", vocationService.queryDepartmentBybranchId(branchInfo.getBranchId()));
+		return "updateVocation";
+	}
+	
+	// update vocation
+	public String updateVocation3(){
+		
+		if(vocationService.updateVocation(vocation)){
+			return listVocation();
+		}
+		return "updateVocationError";
 	}
 	
 }
