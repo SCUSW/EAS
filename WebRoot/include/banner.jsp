@@ -79,7 +79,7 @@
   	</div>
   	<div id="right"><img id="right_im" src="image/banner_right.png" border="0" usemap="#Map"/>
       <map name="Map">
-        <area shape="rect" coords="966,126,1026,147" href="./demo.jsp">
+        <area shape="rect" coords="966,126,1026,147" href="./changePass.jsp" target="text">
         <area shape="rect" coords="1033,127,1093,146" href="./login!loginOut.action">
         
       </map>

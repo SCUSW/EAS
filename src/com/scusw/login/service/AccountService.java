@@ -1,7 +1,7 @@
 package com.scusw.login.service;
 
+import com.scusw.model.StudentInfo;
+
 public interface AccountService {
-	public void updateStudentPassword(int studentId,String newPassword);
-	public void updateStaffPassword(int staffId,String newPassword);
-	public void updatePassword(int id,String newPassword,String role);
+	public boolean updatePassword(String loginNo,String newPassword,String oldPassword,String role);
 }

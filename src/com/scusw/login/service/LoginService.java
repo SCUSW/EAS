@@ -14,4 +14,5 @@ public interface LoginService {
 	public int checkIfTeacher(int staffId);
 	public List<Integer> checkPrivilege(int groupId);
 	public boolean checkAdminInfo(AdminInfo adminInfo);
+	public AdminInfo checkAdminInfo2(AdminInfo adminInfo);
 }
