@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<tr>
     			<td>课程编号</td><td>专业名称</td><td>课程名称</td><td>开课时间</td><td>课程结束时间</td><td>课程价格</td><td>课程介绍</td><td>是否选择</td>
     		</tr>  
-    		<c:forEach items="${courseInfo}" var="courses">
+    		<c:forEach items="${allCourseInfo}" var="courses" varStatus="s">
     			<tr> 
     				<td>${courses.courseId}</td>
     				<td>${courses.majorInfo.majorName}</td>
@@ -39,7 +39,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				<td>${courses.courseEnd}</td>
     				<td>${courses.coursePrice}</td>
     				<td>${courses.courseDesc}</td>
-    				<td><input type="checkbox" name="selectCourseId" value="${courses.courseId}"></td>
+	 				<c:choose>
+    					<c:when test="${courses.courseId == courseInfo[s.count-1].courseId}">
+    						<td>已选</td>
+    					</c:when>
+    					<c:otherwise>
+    						<td><input type="checkbox" name="selectCourseId" value="${courses.courseId}"></td>
+    					</c:otherwise>  
+   					</c:choose>
     			</tr>
     		</c:forEach> 
     	</table>

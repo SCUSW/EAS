@@ -31,7 +31,6 @@ public class StudentAction {
 	private int[] selectCourseId;
 	public static Logger logger = Logger.getLogger(LoginAction.class);
 
-	
 	/**
 	 * @return the courseInfo
 	 */
@@ -219,6 +218,16 @@ public class StudentAction {
 		request.put("courseInfo",courseInfo);
 		return "courseInfo";
 	}
+	public void queryCourseButNoReturn(){
+		courseInfo = studentService.queryCourse(studentInfo.getStudentNo());
+		CourseInfo[] c = new CourseInfo[courseInfo.size()];;
+		for(int i = 0; i < courseInfo.size(); i ++){
+			c[i] = courseInfo.get(i);
+		}
+		request=(Map)ActionContext.getContext().get("request");
+		request.put("courseInfo",c);
+		
+	}
 	
 	/**
 	 * 方法描述：查询所有课程
@@ -227,7 +236,8 @@ public class StudentAction {
 	public String queryAllCourse(){
 		courseInfo = studentService.queryAllCourse();
 		request=(Map)ActionContext.getContext().get("request");
-		request.put("courseInfo",courseInfo);
+		request.put("allCourseInfo",courseInfo);
+		queryCourseButNoReturn();
 		return "allCourseInfo";
 	}
 	
