@@ -23,4 +23,5 @@ public interface StudentService {
 	public List<CourseInfo> queryCourse(String studentNo);
 	public List<CourseInfo> queryAllCourse();
 	public boolean addRegisterInfo(int[] selectCourseId,String studentNo);
+	public String[] queryClassroom(List<CourseInfo> courseInfo);
 }

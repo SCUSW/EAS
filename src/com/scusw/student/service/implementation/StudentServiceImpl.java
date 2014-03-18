@@ -104,6 +104,10 @@ public class StudentServiceImpl implements StudentService {
 		return studentDao.queryAllCourse();
 	}
 	
+	public String[] queryClassroom(List<CourseInfo> courseInfo){
+		return studentDao.queryClassroom(courseInfo);
+	}
+	
 	/**
 	 * 方法描述：添加学生所选课程，并判断是否冲突
 	 * @param selectCourseId ：包含学生所选所有课程的ID

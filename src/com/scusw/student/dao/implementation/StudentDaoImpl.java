@@ -1,6 +1,8 @@
 package com.scusw.student.dao.implementation;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
@@ -8,6 +10,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.scusw.student.dao.StudentDao;
 import com.scusw.login.action.LoginAction;
+import com.scusw.model.CourseClasshour;
 import com.scusw.model.CourseInfo;
 import com.scusw.model.MajorInfo;
 import com.scusw.model.NoticeInfo;
@@ -108,6 +111,25 @@ public class StudentDaoImpl extends HibernateDaoSupport implements StudentDao {
 	public List<CourseInfo> queryAllCourse(){
 		List<CourseInfo> courseInfo = getHibernateTemplate().find("from CourseInfo");
 		return courseInfo;
+	}
+	
+	public String[] queryClassroom(List<CourseInfo> courseInfo){
+		int size = courseInfo.size();
+		Set<CourseClasshour> courseClasshours = new HashSet<CourseClasshour>(0);
+		String[] classroom = new String[size];
+		int[] classroomId = new int[size];
+		int[] courseNumEveryWeek = new int[size];
+		for(int i = 0; i < size; i++) {
+			List<CourseClasshour> courseClasshour = getHibernateTemplate().find("from CourseClasshour c  where c.courseId =?",courseInfo.get(i).getCourseId());
+			courseClasshours.add(courseClasshour.get(i));
+			
+			courseNumEveryWeek[i] = courseClasshour.size();
+			classroom[i] = courseClasshour.get(0).getClassroomInfo().getClassroomAddr();
+			for(int j = 0; j < courseNumEveryWeek.length; j ++){
+				
+			}
+		}
+		return classroom;	
 	}
 
 	/**
