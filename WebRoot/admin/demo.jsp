@@ -27,7 +27,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/minDemo.js"></script>
+	
+	
 	
 	<style type="text/css"><!--
 		body{
@@ -130,256 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			left:-100px;
 		}
 	--></style>
-	<script>
-	
-	//创建主导航函数
-		function createMin(){
-				$("#min_guide_box").show(1000,function(){
-					$("#min_1").animate({left:'0px'},200,function(){
-						$("#min_2").animate({left:'0px'},200,function(){
-							$("#min_3").animate({left:'0px'},200,function(){
-								$("#min_4").animate({left:'0px'},200,function(){
-									$("#min_5").animate({left:'0px'},200,function(){
-										$("#min_6").animate({left:'0px'},200,function(){
-											$("#min_7").animate({left:'0px'},200,function(){
-												$("#min_8").animate({left:'0px',marginTop:'0px'},200,function(){
-													$("#min_9").animate({left:'0px'});
-												});
-											});
-										});
-									});
-								});	
-							});
-						});
-					});
-				});
-		}
-		
-		//动作——清除子导航
-		function clearElement1(){
-			$("#element1").animate({left:'-100px'},200);
-			$("#b1").animate({marginLeft:'-150px'},200);
-		}
-		function clearElement2(){
-			$("#element2").animate({left:'-100px'},200);
-			$("#c1").animate({marginLeft:'-150px'},200);
-		}
-		function clearElement3(){
-			$("#element3").animate({left:'-100px'},200);
-			$("#d1").animate({marginLeft:'-150px'},200);
-		}
-		//动作——清除子导航后显示子导航
-		function showChildGuide(){
-			//清除子导航
-			$("#element1").animate({left:'-100px'},200);
-			$("#b1").animate({marginLeft:'-150px'},200,function(){
-				$("#element2").animate({left:'-100px'},200);
-				$("#c1").animate({marginLeft:'-150px'},200,function(){
-					$("#element3").animate({left:'-100px'},200);
-					$("#d1").animate({marginLeft:'-150px'},200,function(){//清除子导航完成
-						$("#element1").animate({left:'35px'},200);//生成新的导航
-						$("#b1").animate({marginLeft:'0px'},200,function(){
-							$("#element2").animate({left:'35px'},200);
-							$("#c1").animate({marginLeft:'0px'},200,function(){
-								$("#element3").animate({left:'35px'},200);
-								$("#d1").animate({marginLeft:'0px'},200);
-							});
-						});
-					});
-				});	
-			});
-			
-			
-			
-		}
-		
-		//用户权限子导航
-		function setChildGuideRight(){
-			//改变元素的链接和名字
-			showChildGuide();
-			document.getElementById("td11").href="<%=basePath %>privilegeManage!listPrivilege.action";
-			document.getElementById("td11").innerHTML="权限列表";
-			document.getElementById("td12").href="<%=basePath %>privilegeManage!listGroup.action";
-			document.getElementById("td12").innerHTML="查看用户组";
-			document.getElementById("td13").href="<%=basePath %>privilegeManage!addGroup1.action";
-			document.getElementById("td13").innerHTML="增加用户组";
-			
-					
-		}
-		
-		
-		//分支机构子导航
-		function setChildGuideBranch(){
-			//改变元素的链接和名字
-			showChildGuide();
-			
-			document.getElementById("td11").href="<%=basePath %>branchManage!listBranch.action";
-			document.getElementById("td11").innerHTML="查看分支机构";
-			document.getElementById("td12").href="admin/branchInfo/addBranch.jsp";
-			document.getElementById("td12").innerHTML="添加分支机构";
-			document.getElementById("td13").href="<%=basePath %>privilegeManage!addGroup1.action";
-			document.getElementById("td13").innerHTML="";
-				
-		}
-		
-		
-		//部门信息子导航
-		function setChildGuideDepartment(){
-			//改变元素的链接和名字
-			showChildGuide();
-			
-			document.getElementById("td11").href="<%=basePath %>departmentManage!listDepartment.action";
-			document.getElementById("td11").innerHTML="查看部门信息 ";
-			document.getElementById("td12").href="<%=basePath %>departmentManage!getBranchs.action";
-			document.getElementById("td12").innerHTML="添加部门信息";
-			document.getElementById("td13").href="<%=basePath %>privilegeManage!addGroup1.action";
-			document.getElementById("td13").innerHTML="";
-				
-		}
-		//教师等级子导航
-		function setChildGuideTeacherLevel(){
-			//改变元素的链接和名字
-			showChildGuide();
-			
-			document.getElementById("td11").href="<%=basePath %>teaLevelManage!listTeaLevel.action";
-			document.getElementById("td11").innerHTML="查看教师等级 ";
-			document.getElementById("td12").href="admin/teacherLevel/addTeaLevel.jsp";
-			document.getElementById("td12").innerHTML="添加教师等级";
-			document.getElementById("td13").href="<%=basePath %>privilegeManage!addGroup1.action";
-			document.getElementById("td13").innerHTML="";
-				
-		}
-		//考勤信息子导航
-		function setChildGuideAttendant(){
-			//改变元素的链接和名字
-			showChildGuide();
-			
-			document.getElementById("td11").href="<%=basePath%>attandant!checkStuAttendant.action";
-			document.getElementById("td11").innerHTML="学员考勤查询 ";
-			document.getElementById("td12").href="admin/teacherLevel/addTeaLevel.jsp";
-			document.getElementById("td12").innerHTML="员工考勤查询";
-			document.getElementById("td13").href="<%=basePath%>attandant!checkStaffAttendant.action?nextPage=1&pageSize=20";
-			document.getElementById("td13").innerHTML="";
-				
-		}
-		//工资管理子导航
-		function setChildGuideWage(){
-			//改变元素的链接和名字
-			showChildGuide();
-			
-			document.getElementById("td11").href="<%=basePath %>vocationManage!listVocation.action";
-			document.getElementById("td11").innerHTML="查看职类信息 ";
-			document.getElementById("td12").href="<%=basePath %>vocationManage!addVocation1.action";
-			document.getElementById("td12").innerHTML="增加职类信息";
-			document.getElementById("td13").href="<%=basePath%>attandant!checkStaffAttendant.action?nextPage=1&pageSize=20";
-			document.getElementById("td13").innerHTML="";
-				
-		}
-		//年级管理子导航
-		function setChildGrade(){
-			//改变元素的链接和名字
-			showChildGuide();
-			
-			document.getElementById("td11").href="<%=basePath%>grade!queryGrade.action";
-			document.getElementById("td11").innerHTML="查询年级信息";
-			document.getElementById("td12").href="<%=basePath%>grade!addGrade.action";
-			document.getElementById("td12").innerHTML="添加年级";
-			document.getElementById("td13").href="<%=basePath%>attandant!checkStaffAttendant.action?nextPage=1&pageSize=20";
-			document.getElementById("td13").innerHTML="";
-				
-		}
-		
-		//班级管理子导航
-		function setChildClass(){
-			//改变元素的链接和名字
-			showChildGuide();
-			
-			document.getElementById("td11").href="<%=basePath%>class!queryClass.action";
-			document.getElementById("td11").innerHTML="查询班级信息";
-			document.getElementById("td12").href="<%=basePath%>class!addGrade.action";
-			document.getElementById("td12").innerHTML="添加班级";
-			document.getElementById("td13").href="<%=basePath%>attandant!checkStaffAttendant.action?nextPage=1&pageSize=20";
-			document.getElementById("td13").innerHTML="";
-				
-		}
-		
-		$(document).ready(function(){
-			//创建主导航 
-			createMin();
-			
-			$("#myContent").fadeIn(3000);
-		
-			//动作——做导航动态弹出
-			$("#element1").animate({left:'25px'},400,function(){
-				$("#element2").animate({left:'25px'},200,function(){
-					$("#element3").animate({left:'25px'},200);
-				});
-			});
-			
-			//动作——监听鼠标是否落在子导航上
-			$("#td11").mouseover(function(){
-				$("#element1").animate({left:'55px'},200);
-				$("#b1").animate({marginLeft:'30px'},200);
-		
-			});
-			$("#td11").mouseout(function(){
-				$("#element1").animate({left:'25px'},200);
-				$("#b1").animate({marginLeft:'0px'},200);
-			});
-			
-			$("#td12").mouseover(function(){
-				$("#element2").animate({left:'55px'},200);
-				$("#c1").animate({marginLeft:'30px'},200);
-		
-			});
-			$("#td12").mouseout(function(){
-				$("#element2").animate({left:'25px'},200);
-				$("#c1").animate({marginLeft:'0px'},200);
-			});
-			
-			
-			$("#td13").mouseover(function(){
-				$("#element3").animate({left:'55px'},200);
-				$("#d1").animate({marginLeft:'30px'},200);
-		
-			});
-			$("#td13").mouseout(function(){
-				$("#element3").animate({left:'25px'},200);
-				$("#d1").animate({marginLeft:'0px'},200);
-			});
-			
-			//监听主导航点击事件
-			$("#min_1").click(function(){
-				setChildGuideRight();
-			});
-			$("#min_2").click(function(){
-				setChildGuideBranch();
-			});
-			$("#min_3").click(function(){
-				setChildGuideDepartment();
-			});
-			$("#min_4").click(function(){
-				setChildGuideTeacherLevel();
-			});
-			$("#min_5").click(function(){
-				setChildGuideAttendant();
-			});
-			$("#min_6").click(function(){
-				setChildGuideWage();
-			});
-			$("#min_7").click(function(){
-				setChildGrade();
-			});
-			$("#min_8").click(function(){
-				setChildClass();
-			});
-			
-		});	
-		
-		
-	</script>
-		
-  </head>
+	</head>
   
   <body>
   <%
@@ -402,15 +155,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div id="min_guide" >
 				<div id="min_guide_box" >
 				<ul class="nav nav-pills ">
- 				 <li id="min_1" class="active"><a href="admin/setPrivilege/subMenu.jsp" target="text">用户权限</a></li>
- 				 <li id="min_2"><a href="admin/branchInfo/subMenu.jsp" target="text">分支机构</a></li>
-  				 <li id="min_3"><a href="admin/deptInfo/subMenu.jsp" target="text">部门信息</a></li>
-  				 <li id="min_4"><a href="admin/teacherLevel/subMenu.jsp" target="text">教师等级</a></li>
-  				 <li id="min_5"><a href="admin/checkAttendant/subMenu.jsp" target="text">考勤信息</a></li>
-  				 <li id="min_6"><a href="admin/wageInfo/subMenu.jsp" target="text">工资管理</a></li>
-  				 <li id="min_7"><a href="admin/gradeInfo/subMenu.jsp" target="text">年级管理</a></li>
-  				 <li id="min_8"><a href="admin/classInfo/subMenu.jsp" target="text">班级管理</a></li>
-  				 <li id="min_9"><a href="admin/scheduleInfo/subMenu.jsp" target="text">工作日程</a></li>
+ 				 <li id="min_1" class="active"><a href="privilegeManage!listPrivilege.action" target="text">用户权限</a></li>
+ 				 <li id="min_2"><a href="branchManage!listBranch.action" target="text">分支机构</a></li>
+  				 <li id="min_3"><a href="departmentManage!listDepartment.action" target="text">部门信息</a></li>
+  				 <li id="min_4"><a href="teaLevelManage!listTeaLevel.action" target="text">教师等级</a></li>
+  				 <li id="min_5"><a href="attandant!checkStuAttendant.action" target="text">考勤信息</a></li>
+  				 <li id="min_6"><a href="vocationManage!listVocation.action" target="text">工资管理</a></li>
+  				 <li id="min_7"><a href="grade!queryGrade.action" target="text">年级管理</a></li>
+  				 <li id="min_8"><a href="class!queryClass.action" target="text">班级管理</a></li>
+  				 <li id="min_9" class="disabled"><a target="text">工作日程</a></li>
   				 
 				</ul>
 				</div>
@@ -424,9 +177,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div  style="position:relative;z-index:100" class="row-fluid">
 		<div class="span4">
 			<div  id="min_cguide">
-				<div id="element1"><a id="td11" class="mytable" href="<%=basePath %>privilegeManage!listPrivilege.action" target="text">权限列表</a></div>
-				<div id="element2"><a id="td12" class="mytable" href="<%=basePath %>privilegeManage!listGroup.action" target="text">查看用户组</a></div>
-				<div id="element3"><a id="td13" class="mytable" href="<%=basePath %>privilegeManage!addGroup1.action" target="text">增加用户组</a></div>			
+				<div id="element1"><a id="td11" class="mytable" href="privilegeManage!listPrivilege.action" target="text">权限列表</a></div>
+				<div id="element2"><a id="td12" class="mytable" href="privilegeManage!listGroup.action" target="text">查看用户组</a></div>
+				<div id="element3"><a id="td13" class="mytable" href="privilegeManage!addGroup1.action" target="text">增加用户组</a></div>			
 			</div>
 		</div>	
 		
