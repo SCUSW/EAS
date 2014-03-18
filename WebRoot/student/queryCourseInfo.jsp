@@ -4,6 +4,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -17,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-
+<link rel="stylesheet" type="text/css" href="css/body.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<script type="text/javascript" src="js/jquery.js"></script>
@@ -28,6 +29,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  String[] tableClass = {"","success","active","warning","danger"};
  int classIndex = 0;
  %>
+ <body>
+ 
 	<center>
 		<h1>已选课程信息</h1>
 		<br />
@@ -49,8 +52,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${courses.courseId}</td>
 					<td>${courses.majorInfo.majorName}</td>
 					<td>${courses.courseName}</td>
-					<td>${courses.courseStart}</td>
-					<td>${courses.courseEnd}</td>
+					<td><fmt:formatDate value="${courses.courseStart}" type="date" dateStyle="long"/></td>
+					<td><fmt:formatDate value="${courses.courseEnd}" type="date" dateStyle="long"/></td>
 					<td>${courses.coursePrice}</td>
 					<td>${courses.courseDesc}</td>
 				</tr>

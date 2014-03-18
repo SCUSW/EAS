@@ -7,7 +7,7 @@
 		<package name="login" extends="struts-default">
 			<action name="login" class="com.scusw.login.action.LoginAction">
 				<result name="student_success">/student/demo.jsp</result>
-				<result name="teacher_success">/teacher/teacherOperate.jsp</result>
+				<result name="teacher_success">/staffModlePage/demo.jsp</result>
 				<result name="staff_success">/staffModlePage/demo.jsp</result>
 				<result name="error">/index.jsp</result>
 				<result name="admin_login_success">/admin/demo.jsp</result>

@@ -21,6 +21,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
+<link rel="stylesheet" type="text/css" href="css/body.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
   </head>
   
   <body>
@@ -28,7 +34,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<form action="student!addRegisterInfo.action" method="post">  
     	<table border="1">
     		<tr>
-    			<td>课程编号</td><td>专业名称</td><td>课程名称</td><td>开课时间</td><td>课程结束时间</td><td>课程价格</td><td>课程介绍</td><td>是否选择</td>
+    			<td>课程编号</td>
+    			<td>专业名称</td>
+    			<td>课程名称</td>
+    			<td>开课时间</td>
+    			<td>课程结束时间</td>
+    			<td>课程价格</td>
+    			<td>课程介绍</td>
+    			<td>是否选择</td>
     		</tr>  
     		<c:forEach items="${allCourseInfo}" var="courses" varStatus="s">
     			<tr> 
