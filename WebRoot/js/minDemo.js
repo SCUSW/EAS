@@ -144,9 +144,9 @@ function createMin(){
 			//改变元素的链接和名字
 			showChildGuide();
 			
-			document.getElementById("td11").href="attandant!checkStuAttendant.action";
+			document.getElementById("td11").href="attandant!checkStuAttendant.action?nextPage=1&pageSize=20&gradeId=0&courseId=0&studentName=&studentNo=";
 			document.getElementById("td11").innerHTML="学员考勤查询 ";
-			document.getElementById("td12").href="admin/teacherLevel/addTeaLevel.jsp";
+			document.getElementById("td12").href="attandant!checkStaffAttendant.action?nextPage=1&pageSize=20&departmentId=0&staffNo=&staffName=";
 			document.getElementById("td12").innerHTML="员工考勤查询";
 			document.getElementById("td13").href="attandant!checkStaffAttendant.action?nextPage=1&pageSize=20";
 			document.getElementById("td13").innerHTML="";
