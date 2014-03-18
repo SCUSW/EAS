@@ -29,8 +29,22 @@ public class StudentAction {
 	private List<CourseInfo> courseInfo;
 	private Map<String,Object> request;
 	private int[] selectCourseId;
+	private String[] classroom;
 	public static Logger logger = Logger.getLogger(LoginAction.class);
 
+	
+	/**
+	 * @return the classroom
+	 */
+	public String[] getClassroom() {
+		return classroom;
+	}
+	/**
+	 * @param classroom the classroom to set
+	 */
+	public void setClassroom(String[] classroom) {
+		this.classroom = classroom;
+	}
 	/**
 	 * @return the courseInfo
 	 */
@@ -226,7 +240,6 @@ public class StudentAction {
 		}
 		request=(Map)ActionContext.getContext().get("request");
 		request.put("courseInfo",c);
-		
 	}
 	
 	/**
@@ -241,6 +254,9 @@ public class StudentAction {
 		return "allCourseInfo";
 	}
 	
+	public void queryClassroom(List<CourseInfo> courseInfo){
+		studentService.queryClassroom(courseInfo);
+	}
 	/**
 	 * 方法描述：添加学生所选课程
 	 * @return ： true ——> queryCourse()
