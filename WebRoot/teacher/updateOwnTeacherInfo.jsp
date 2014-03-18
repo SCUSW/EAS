@@ -29,6 +29,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
+  
+  
   <body>
      <center> <h1>修改个人信息</h1><br/>
    	<form action="teacherAct!updateOwnTeacherInfo2.action" method="post">
