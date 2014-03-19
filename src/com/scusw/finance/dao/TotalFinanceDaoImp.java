@@ -24,7 +24,7 @@ public class TotalFinanceDaoImp extends HibernateDaoSupport implements TotalFina
 		q.setFirstResult(0);
 		q.setMaxResults(1);
 		FinancialRecords financialRecords = (FinancialRecords) q.uniqueResult();
-		//System.out.println(financialRecords.getTotalMoney());
+		System.out.println(financialRecords.getTotalMoney());
 		return financialRecords;
 		
 	}

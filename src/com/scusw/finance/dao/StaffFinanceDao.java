@@ -45,4 +45,25 @@ public interface StaffFinanceDao {
 	public List<StaffFees> getRecordsById(int staffId);
 	
 	public List<StaffFees> getAllFeesRecords();
+
+	/**
+	 * 方法描述
+	 * param args0 参数0
+	 * return
+	 */
+	public void updateRoyaltyOfTeacherById(Integer staffId);
+	
+	/**
+	 * 方法描述
+	 * param args0 参数0
+	 * return
+	 */
+	public void updateRoyaltyOfSalesmanById(Integer staffId);
+
+	/**
+	 * 方法描述
+	 * param args0 参数0
+	 * return
+	 */
+	public void deleteRoyaltyOfSalesManById(Integer staffId);
 }

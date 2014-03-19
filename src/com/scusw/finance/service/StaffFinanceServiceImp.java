@@ -117,7 +117,22 @@ public class StaffFinanceServiceImp implements StaffFinanceService {
 
 			totalFinanceService.addFinanceRecord(financialRecords , -1);
 		}
+		
+		//对职工业绩进行清零
+		this.changeRoyaltyToZero(staffFees);
 
+	}
+
+	/**
+	 * 方法描述
+	 * param args0 参数0
+	 * return
+	 */
+	private void changeRoyaltyToZero(StaffFees staffFees) {
+		// TODO Auto-generated method stub
+		staffFinanceDao.updateRoyaltyOfTeacherById(staffFees.getStaffInfo().getStaffId());
+		staffFinanceDao.updateRoyaltyOfSalesmanById(staffFees.getStaffInfo().getStaffId());
+//		staffFinanceDao.deleteRoyaltyOfSalesManById(staffFees.getStaffInfo().getStaffId());
 	}
 
 	/*
