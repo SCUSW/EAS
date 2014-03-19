@@ -63,6 +63,11 @@ public class MarketingDaoImpl extends HibernateDaoSupport implements MarketingDa
 	public void addConsultInfo(ConsultInfo consultInfo){
 		this.getHibernateTemplate().save(consultInfo);
 	}
+	
+	/**
+	 * 方法描述：添加学生了解渠道信息关系
+	 * @param studentConsultway ：学生了解渠道信息
+	 */
 	public void addSelectConsultwayInfo(List<StudentConsultway> studentConsultway){
 		for(int i = 0; i < studentConsultway.size(); i ++){
 			this.getHibernateTemplate().save(studentConsultway.get(i));
