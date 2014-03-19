@@ -17,7 +17,7 @@ import com.scusw.model.StudentInfo;
 public interface StudentDao {
 	public StudentInfo queryStudentByNo(String studentNo);
 	public void updateStudent(StudentInfo student);
-	public MajorInfo apply(StudentInfo student);
+	public void addStudent(StudentInfo student);
 	public List<NoticeInfo> noticeInfoQuery();
 	public MajorInfo majorInfoQuery(String majorName);
 	public String queryNoticeContent(int noticeId);
