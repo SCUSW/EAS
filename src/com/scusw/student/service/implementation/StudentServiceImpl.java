@@ -48,8 +48,14 @@ public class StudentServiceImpl implements StudentService {
 	 * 方法描述：学生修改自己的信息
 	 * @param ：包含学生全部信息的实体
 	 */
-	public void updateStudent(StudentInfo student) {
-		studentDao.updateStudent(student);
+	public void updateStudent(StudentInfo student, String studentNo) {
+		StudentInfo si = this.queryStudentByNo(studentNo);
+		si.setStudentAge(student.getStudentAge());
+		si.setStudentAddr(student.getStudentAddr());
+		si.setStudentSchool(student.getStudentSchool());
+		si.setStudentPhone(student.getStudentPhone());
+		si.setStudentRemark(student.getStudentRemark());
+		studentDao.updateStudent(si);
 	}
 
 	/**
