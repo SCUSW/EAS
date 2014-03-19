@@ -95,4 +95,6 @@ public interface TeacherDao {
 	public TeachingManageInfo queryTeachingManageById(Integer teachingManageId);
 
 	public void updateTeachingManage(TeachingManageInfo teachingManage);
+
+	public List queryCourseClasshourByCourseId(Integer courseId);
 }

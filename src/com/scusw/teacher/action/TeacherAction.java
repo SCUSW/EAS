@@ -248,17 +248,18 @@ public class TeacherAction extends ActionSupport{
 		
 	}
 	
+	//这方法已废弃
 	public String searchTeacherOwnCourse(){
 		try {
 			request=(Map)ActionContext.getContext().get("request");
 		
-		session = ActionContext.getContext().getSession();
-		int staffId = (Integer) session.get("staffId");
+			session = ActionContext.getContext().getSession();
+			int staffId = (Integer) session.get("staffId");
 		
-		List list=teacherService.getTeacherOwnCourse(staffId);
-		request.put("courses", list);
-		
-		return "searchTeacherOwnCourse";
+			List list=teacherService.getTeacherOwnCourse(staffId);
+			request.put("courses", list);
+			
+			return "searchTeacherOwnCourse";
 		} catch (Exception e) {
 			return "default";
 		}
@@ -476,11 +477,14 @@ public class TeacherAction extends ActionSupport{
 			session = ActionContext.getContext().getSession();
 			int staffId = (Integer) session.get("staffId");
 
+			teacher=teacherService.getOwnTeacherInfo(staffId);
+			
 			List list = teacherService.searchOwnCourseByStaffId(staffId);
 			request.put("courses", list);
 
 			return "getOwnCourse";
 		} catch (Exception e) {
+			System.out.println(e);
 			return "default";
 		}
 	}
@@ -502,13 +506,18 @@ public class TeacherAction extends ActionSupport{
 			session = ActionContext.getContext().getSession();
 			int staffId = (Integer) session.get("staffId");
 
-			course
-					.setMajorInfo(teacherService.getMajorById(major
+			course.setMajorInfo(teacherService.getMajorById(major
 							.getMajorId()));
 			course.setCoursePrice((float) 0);
 			course.setTeacherInfo(teacherService.getOwnTeacherInfo(staffId));
-			course.setCourseAvai((int) 1);
+			course.setCourseAvai((int) 0);
 
+			teacher=teacherService.getOwnTeacherInfo(staffId);
+			if(teacher.getTeacherType()==1){
+				errorMessage="主管教师不能自己开设课程";
+				return "addOwnCourse2_default";
+			}
+			
 			boolean flag = teacherService.addOwnCourse(course);
 			if (flag) {
 				// System.out.println(course.getMajorInfo().getMajorName());
@@ -548,6 +557,12 @@ public class TeacherAction extends ActionSupport{
 	public String commonTeacherCourseInfo(){
 		try {
 			course = teacherService.getCourseById(course.getCourseId());
+			
+			request = (Map) ActionContext.getContext().get("request");
+
+			List list = teacherService.getCourseClasshourByCourseId(course.getCourseId());
+			request.put("courseClasshours", list);
+			
 			return "commonTeacherCourseInfo";
 		} catch (Exception e) {
 			return "default";
@@ -567,10 +582,10 @@ public class TeacherAction extends ActionSupport{
 
 			course.setCoursePrice(coursePrice);
 			teacherService.updateCourse(course);
-			teacher = course.getTeacherInfo();
-			teacher.setTeacherSalary(course.getCoursePrice()
-					+ teacher.getTeacherSalary());
-			teacherService.updateTeacher(teacher);
+//			teacher = course.getTeacherInfo();
+//			teacher.setTeacherSalary(course.getCoursePrice()
+//					+ teacher.getTeacherSalary());
+//			teacherService.updateTeacher(teacher);
 			this.commonTeacherCourseInfo();
 			return "updateCommonTeacherCoursePrice";
 		} catch (Exception e) {
@@ -582,6 +597,13 @@ public class TeacherAction extends ActionSupport{
 	public String ownCourseInfo(){
 		try {
 			course = teacherService.getCourseById(course.getCourseId());
+			
+			request = (Map) ActionContext.getContext().get("request");
+
+			List list = teacherService.getCourseClasshourByCourseId(course.getCourseId());
+			request.put("courseClasshours", list);
+
+			
 			return "ownCourseInfo";
 		} catch (Exception e) {
 			return "default";

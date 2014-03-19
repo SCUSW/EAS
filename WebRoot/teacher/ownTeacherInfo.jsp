@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 	<tr class="success"><td>职位：${teacher.staffInfo.positionInfo.vocationName}</td></tr>
 	 	<tr class="success"><td>账号：${teacher.staffInfo.staffNo}</td></tr>
 	 	<tr class="success"><td>姓名：${teacher.staffInfo.staffName}</td></tr>
-	 	<tr class="success"><td>性别：${teacher.staffInfo.staffSex}</td></tr>
+	 	<tr class="success"><td>性别：${teacher.staffInfo.staffSex == 1 ? "男" : "女"}</td></tr>
 	 	<tr class="success"><td>专业：${teacher.teacherMajor}</td></tr>
 	 	<tr class="success"><td>毕业院校：${teacher.teacherGraduate}</td></tr>
 	 	<tr class="success"><td>教师证号：${teacher.teacherNo}</td></tr>

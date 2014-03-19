@@ -85,6 +85,8 @@ public interface TeacherService {
 
 	public TeachingManageInfo getTeachingManageById(Integer teachingManageId);
 
-	public void updateTeachingManage(TeachingManageInfo teachingManage); 
+	public void updateTeachingManage(TeachingManageInfo teachingManage);
+
+	public List getCourseClasshourByCourseId(Integer courseId); 
 
 }

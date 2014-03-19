@@ -39,20 +39,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				<c:forEach items="${ownTeachingManageInfos}" var="t">
     				<tr class="success"> 
     					<td>${t.setTime}</td>
-    					<td>${t.examState}</td>
-    					<td>${t.teachPlan}</td>
-    					<td>${t.lessonPlan}</td>
-    					<td>${t.teacherSummary}</td>
-    					<td><a href="${t.teachPlan}">下载教学计划</a></td>
-    					<td><a href="${t.lessonPlan}">下载教案</a></td>
-    					<td><a href="${t.teacherSummary}">下载总结</a></td>
+    					
+						<c:choose>
+							<c:when test="${t.examState==0}">  
+  								<td>未审核</td>
+　							</c:when>
+							<c:when test="${t.examState==1}">  
+								<td>审核通过</td>
+　　							</c:when>
+							<c:otherwise>  
+ 								<td>审核未通过</td>
+　　							</c:otherwise>
+						</c:choose>
+
+						<td><a href="${t.teachPlan}">下载教学计划</a></td>
+
+						<c:choose>
+							<c:when test="${t.lessonPlan!=null}">  
+  								<td><a href="${t.lessonPlan}">下载教案</a></td>
+　							</c:when>
+							<c:otherwise>  
+ 								<td>未提交教案</td>
+　　							</c:otherwise>
+						</c:choose>
+						
+						<c:choose>
+							<c:when test="${t.teacherSummary!=null}">  
+  								<td><a href="${t.teacherSummary}">下载总结</a></td>
+　							</c:when>
+							<c:otherwise>  
+ 								<td>未提交总结</td>
+　　							</c:otherwise>
+						</c:choose>
+    					
     					<td>
     					<form action="teacherAct!examTeachingManage.action" method="post">  		
  							<input type="hidden" name="teachingManage.teachingManageId" value="${t.teachingManageId}"/>	
  							<input type="hidden" name="course.courseId" value="${course.courseId}"/>
-   							 审核：<input type="text" name="teachingManage.examState"/><input type="submit" value="提交"/>
+   							<select id="select" name="teachingManage.examState"  class="form-control" >
+								<option value=1>通过</option>
+     							<option value=2>未通过</option>
+     						</select>
+     						<input class="btn btn-default" type="submit" value="审核"/>
    						</form>
     					</td>
+    					
     				</tr>
     				</c:forEach>
     			</table> 

@@ -44,10 +44,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     					<td>${c.courseName}</td>
     					<td>${c.coursePrice}</td>
     					<td><button class="btn btn-default" onclick="window.location.href='teacherAct!ownCourseInfo.action?course.courseId=${c.courseId}'"><span class="glyphicon glyphicon-eye-open"></span> 查看</button></td>
-    					<td><button class="btn btn-default" onclick="window.location.href='teacherAct!searchOwnStudent.action?course.courseId=${c.courseId}'"><span class="glyphicon glyphicon-user"></span> 学生</button></td>
+    					
+    					<c:choose>
+    						<c:when test="${c.courseAvai==1}">
+    							<td><button class="btn btn-default" onclick="window.location.href='teacherAct!searchOwnStudent.action?course.courseId=${c.courseId}'"><span class="glyphicon glyphicon-user"></span> 学生</button></td>
+							</c:when>
+							<c:otherwise>
+									<td>未被排课</td>
+							</c:otherwise>
+						</c:choose>	    			
+    			
     				</tr>
     				</c:forEach>
-    				<tr style="text-align:center;" class="success"><td colspan="7"><button class="btn btn-default" onclick="window.location.href='teacherAct!addOwnCourse1'"><span class="glyphicon glyphicon-plus"></span> 增设课程</button></td></tr>
+    				
+    				<c:choose>
+    					<c:when test="${teacher.teacherType == 0}">
+    						<tr style="text-align:center;" class="success"><td colspan="7">
+    							<button class="btn btn-default" onclick="window.location.href='teacherAct!addOwnCourse1'">
+    						<span class="glyphicon glyphicon-plus"></span> 增设课程</button></td></tr>
+    					</c:when>
+    				</c:choose>
+    				
     			</table>
     			
     	</center>

@@ -92,8 +92,6 @@
 				<result name="examTeachingManage">teacher/commonTeachingManageList.jsp</result>
 				<result name="examTeachingManage_default">teacher/default.jsp</result>
 				
-				
-				<result name="no_privilege">/include/noPrivilege.jsp</result>
 			<!-- 	<param name="contentDisposition">attachment;filename="${fileName}"</param>	 -->
 			</action>
 

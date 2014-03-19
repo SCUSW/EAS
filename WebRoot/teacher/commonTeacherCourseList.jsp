@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<center>
     			<table class="table table-hover" border="1">
     				<tr class="warning">
-    					<td>专业编号</td><td>专业名称</td><td>课程编号</td><td>课程名称</td><td>价格</td><td>操作</td>
+    					<td>专业编号</td><td>专业名称</td><td>课程编号</td><td>课程名称</td><td>价格</td><td>排课情况</td><td>操作</td>
     				</tr>
     				<c:forEach items="${courses}" var="c">
     				<tr class="success"> 
@@ -43,6 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     					<td>${c.courseId}</td>
     					<td>${c.courseName}</td>
     					<td>${c.coursePrice}</td>
+    					<td>${c.courseAvai == 1 ? "已排" : "未排"}</td>    				
     					<td><a href="teacherAct!commonTeacherCourseInfo?course.courseId=${c.courseId }">查看</a></td>
     				</tr>
     				</c:forEach>

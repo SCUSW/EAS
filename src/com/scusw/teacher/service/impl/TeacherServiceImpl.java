@@ -250,4 +250,8 @@ public class TeacherServiceImpl implements TeacherService{
 	public void updateTeachingManage(TeachingManageInfo teachingManage){
 		teacherDao.updateTeachingManage(teachingManage);
 	}
+	
+	public List getCourseClasshourByCourseId(Integer courseId){
+		return teacherDao.queryCourseClasshourByCourseId(courseId);
+	}
 }
