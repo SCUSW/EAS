@@ -27,22 +27,61 @@ public class StudentAction {
 	private int noticeId;
 	private List<NoticeInfo> noticeInfo;
 	private List<CourseInfo> courseInfo;
+	private List<CourseInfo> allCourseInfo;
 	private Map<String,Object> request;
 	private int[] selectCourseId;
-	private String[] classroom;
+	private String[][] classroom;
+	private String[][] classhourEveryWeek;
+	private boolean[] flags;
 	public static Logger logger = Logger.getLogger(LoginAction.class);
 
 	
 	/**
+	 * @return the flags
+	 */
+	public boolean[] getFlags() {
+		return flags;
+	}
+	/**
+	 * @param flags the flags to set
+	 */
+	public void setFlags(boolean[] flags) {
+		this.flags = flags;
+	}
+	/**
+	 * @return the allCourseInfo
+	 */
+	public List<CourseInfo> getAllCourseInfo() {
+		return allCourseInfo;
+	}
+	/**
+	 * @param allCourseInfo the allCourseInfo to set
+	 */
+	public void setAllCourseInfo(List<CourseInfo> allCourseInfo) {
+		this.allCourseInfo = allCourseInfo;
+	}
+	/**
+	 * @return the classhourEveryWeek
+	 */
+	public String[][] getClasshourEveryWeek() {
+		return classhourEveryWeek;
+	}
+	/**
+	 * @param classhourEveryWeek the classhourEveryWeek to set
+	 */
+	public void setClasshourEveryWeek(String[][] classhourEveryWeek) {
+		this.classhourEveryWeek = classhourEveryWeek;
+	}
+	/**
 	 * @return the classroom
 	 */
-	public String[] getClassroom() {
+	public String[][] getClassroom() {
 		return classroom;
 	}
 	/**
 	 * @param classroom the classroom to set
 	 */
-	public void setClassroom(String[] classroom) {
+	public void setClassroom(String[][] classroom) {
 		this.classroom = classroom;
 	}
 	/**
@@ -230,16 +269,21 @@ public class StudentAction {
 		courseInfo = studentService.queryCourse(studentInfo.getStudentNo());
 		request=(Map)ActionContext.getContext().get("request");
 		request.put("courseInfo",courseInfo);
+		queryClassroom(courseInfo);
+		queryClasshour(courseInfo);
 		return "courseInfo";
 	}
+	/**
+	 * 方法描述：查询所选课程
+	 */
 	public void queryCourseButNoReturn(){
 		courseInfo = studentService.queryCourse(studentInfo.getStudentNo());
-		CourseInfo[] c = new CourseInfo[courseInfo.size()];;
+		CourseInfo[] c = new CourseInfo[courseInfo.size()];
 		for(int i = 0; i < courseInfo.size(); i ++){
 			c[i] = courseInfo.get(i);
 		}
 		request=(Map)ActionContext.getContext().get("request");
-		request.put("courseInfo",c);
+		request.put("selectCourse",c);
 	}
 	
 	/**
@@ -247,15 +291,30 @@ public class StudentAction {
 	 * @return ："allCourseInfo" ——>  selectCourses.jsp
 	 */
 	public String queryAllCourse(){
-		courseInfo = studentService.queryAllCourse();
+		allCourseInfo = studentService.queryAllCourse();
 		request=(Map)ActionContext.getContext().get("request");
-		request.put("allCourseInfo",courseInfo);
+		request.put("allCourseInfo",allCourseInfo);
+		queryClassroom(allCourseInfo);
+		queryClasshour(allCourseInfo);
 		queryCourseButNoReturn();
+		flags = studentService.checkIsCourseSelect(courseInfo, allCourseInfo);
 		return "allCourseInfo";
 	}
 	
+	/**
+	 * 方法描述：查询上课地点
+	 * @param courseInfo ： 所有被查询课程
+	 */
 	public void queryClassroom(List<CourseInfo> courseInfo){
-		studentService.queryClassroom(courseInfo);
+		classroom = studentService.queryClassroom(courseInfo);
+	}
+	
+	/**
+	 * 方法描述：查询上课时间
+	 * @param courseInfo ：所有被查询课程
+	 */
+	public void queryClasshour(List<CourseInfo> courseInfo){
+		classhourEveryWeek = studentService.queryClasshour(courseInfo);
 	}
 	/**
 	 * 方法描述：添加学生所选课程
