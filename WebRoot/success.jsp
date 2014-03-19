@@ -5,7 +5,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -30,11 +30,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     ${session.type }<br>
     ${session.staffName }<br>
     ${session.group }<br>
-    
+    <s:debug></s:debug>
     以下代码进行权限检测：<br>
     <%
     if(com.scusw.util.CheckPrivilege.checkPrivilege(1)){
     	%>拥有权限1<%
+    } 
+    %>
+    <%
+    if(com.scusw.util.CheckPrivilege.checkPrivilege(2)){
+    	%>拥有权限2<%
+    } 
+    %>
+    <%
+    if(com.scusw.util.CheckPrivilege.checkPrivilege(3)){
+    	%>拥有权限3<%
     } 
     %>
   </body>

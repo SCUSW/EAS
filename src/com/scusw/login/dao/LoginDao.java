@@ -39,7 +39,7 @@ public class LoginDao extends HibernateDaoSupport {
 		return tiTemp;
 	}
 	public List<Integer> checkPrivilege(int groupId) {
-		Query q = this.getSession().createQuery("select gp.groupPrivilegeId from GroupPrivilege gp " +
+		Query q = this.getSession().createQuery("select gp.privilegeInfo.privilegeId from GroupPrivilege gp " +
 				"where gp.groupInfo.groupId=:groupId");
 		q.setParameter("groupId", groupId);
 		List<Integer> list = q.list();
