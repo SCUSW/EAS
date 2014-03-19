@@ -30,7 +30,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  int classIndex = 0;
  %>
  <body>
- 
+ <% 
+  if(!com.scusw.util.CheckLogin.checkLogin()){ 
+%>
+<jsp:forward page="../"/>
+<%
+}
+   %>
 	<center>
 		<h1>已选课程信息</h1>
 		<br />
