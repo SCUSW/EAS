@@ -63,7 +63,9 @@ public class TeaLevelDaoImpl extends HibernateDaoSupport implements TeaLevelDao 
 	 */
 	public boolean updateTeaLevel(TeacherLevel teaLevel) {
 		
+		System.out.println(teaLevel.getLevelAvai() + "GGGGGGGGGGGGGGGGGGGGGGGGG");
 		this.getSession().update(teaLevel);
+		System.out.println(teaLevel.getLevelAvai() + "GGGGGGGGGGGGGGGGGGGGGGGGG");
 		return true;
 	}
 

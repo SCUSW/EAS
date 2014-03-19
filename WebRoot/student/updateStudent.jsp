@@ -108,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">专业</span>
-				<input name="studentInfo.studentMajor" value="${studentInfo.studentMajor}" type="text" class="form-control" placeholder="Major"  disabled="disabled">
+				<input name="studentInfo.studentMajor" value="${studentInfo.studentMajor}" type="text" class="form-control" placeholder="Major" disabled="disabled">
 			</div>
 			<br/>
 			

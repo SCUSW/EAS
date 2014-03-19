@@ -33,6 +33,7 @@ public class StudentAction {
 	private String[][] classroom;
 	private String[][] classhourEveryWeek;
 	private boolean[] flags;
+	private Map<String, Object> session;
 	public static Logger logger = Logger.getLogger(LoginAction.class);
 
 	
@@ -217,7 +218,9 @@ public class StudentAction {
 	 * 方法描述：学生修改个人信息
 	 */
 	public String updateStudent(){
-		studentService.updateStudent(studentInfo);
+		session = ActionContext.getContext().getSession();
+		String studentNo = (String) session.get("studentNo");
+		studentService.updateStudent(studentInfo, studentNo);
 		return queryStudentByNo();	
 	}
 	

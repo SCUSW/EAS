@@ -15,7 +15,7 @@ import com.scusw.model.StudentInfo;
  */
 public interface StudentService {
 	public StudentInfo queryStudentByNo(String studentNo);
-	public void updateStudent(StudentInfo student);
+	public void updateStudent(StudentInfo student, String studentNo);
 	public MajorInfo apply(StudentInfo student);
 	public List<NoticeInfo> noticeInfoQuery();
 	public MajorInfo majorInfoQuery(String studentNo);

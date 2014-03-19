@@ -16,7 +16,7 @@
         <property name="financialNum" type="java.lang.Float">
             <column name="financial_num" precision="12" scale="0" />
         </property>
-        <property name="financialTime" type="java.sql.Timestamp">
+        <property name="financialTime" type="java.sql.Timestamp" insert="false">
             <column name="financial_time" length="19" not-null="true" />
         </property>
         <property name="totalMoney" type="java.lang.Double">
