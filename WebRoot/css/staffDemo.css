@@ -40,6 +40,10 @@
 			z-index:1000;
 			position:relative;
 		}
+		a.mytable{
+			color:#b4bbc2;
+		}
+		
 		 a.mytable:link{
 		 	color:white;
 			text-decoration:none;
