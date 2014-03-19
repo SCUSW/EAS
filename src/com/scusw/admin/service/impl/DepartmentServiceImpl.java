@@ -13,7 +13,7 @@ import com.scusw.model.BranchInfo;
 import com.scusw.model.DepartmentInfo;
 
 /**
- * manage privilege
+ * 
  * @author liu jiahao
  *
  */

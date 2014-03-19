@@ -40,8 +40,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	
 	<form name="updateDepartment" action="<%=basePath %>departmentManage!updateDepartment2.action" method="post">
 	<input type="hidden" name="departmentInfo.departmentAvai" value="${request.departmentInfo.departmentAvai}"/>
-	部门编号：<input id="bid" type="text" width="30" readonly="readonly" name="departmentInfo.branchId" value="${request.departmentInfo.departmentId }"/><br/>
-	创建时间：<input id="btime" type="text" width="30" readonly="readonly" name="departmentInfo.departmentFoundedTime" value="${request.departmentInfo.departmentFoundedTime }"/><br/>
+	部门编号：<input id="bid" type="text" width="30" disabled="disabled" readonly="readonly" name="departmentInfo.branchId" value="${request.departmentInfo.departmentId }"/><br/>
+	创建时间：<input id="btime" type="text" width="30" disabled="disabled" readonly="readonly" name="departmentInfo.departmentFoundedTime" value="${request.departmentInfo.departmentFoundedTime }"/><br/>
 	部门名称：<input id="name" type="text" width="30" name="departmentInfo.departmentName" value="${request.departmentInfo.departmentName }"/><br/>
 	
 	分支机构：<select name="departmentInfo.branchInfo.branchId">

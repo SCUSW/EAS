@@ -39,10 +39,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	
 	<form name="updateBranch" action="<%=basePath %>branchManage!updateBranch2.action" method="post">
 	<input type="hidden" name="branchInfo.branchAvai" value="${request.branchInfo.branchAvai}"/>
-	分支机构编号:<input id="bid" type="text" width="30" readonly="readonly" name="branchInfo.branchId" value="${request.branchInfo.branchId }"/><br/>
-	创&nbsp;&nbsp;建&nbsp;&nbsp;时&nbsp;&nbsp;间:<input id="btime" type="text" width="30" readonly="readonly" name="branchInfo.branchFoundedTime" value="${request.branchInfo.branchFoundedTime }"/><br/>
+	
+	分支机构编号:<input id="bid" type="text" width="30" disabled="disabled" readonly="readonly" name="branchInfo.branchId" value="${request.branchInfo.branchId }"/><br/>
+	
+	创&nbsp;&nbsp;建&nbsp;&nbsp;时&nbsp;&nbsp;间:<input id="btime" type="text" width="30" disabled="disabled" readonly="readonly" name="branchInfo.branchFoundedTime" value="${request.branchInfo.branchFoundedTime }"/><br/>
+	
 	分支机构名称:<input id="name" type="text" width="30" name="branchInfo.branchName" value="${request.branchInfo.branchName }"/><br/>
+	
 	分支机构简介:<textarea name="branchInfo.branchIntr" rows="10" cols="30" >${request.branchInfo.branchIntr }</textarea><br/>
+	
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<input type="button" name="sub" value="提交修改" onclick="check()" />

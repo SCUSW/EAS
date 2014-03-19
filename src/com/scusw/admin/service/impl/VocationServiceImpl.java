@@ -16,7 +16,7 @@ import com.scusw.model.DepartmentInfo;
 import com.scusw.model.PositionInfo;
 
 /**
- * manage privilege
+ * 
  * @author liu jiahao
  *
  */

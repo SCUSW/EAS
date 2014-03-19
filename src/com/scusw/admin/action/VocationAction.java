@@ -8,11 +8,12 @@ import org.apache.log4j.Logger;
 import com.opensymphony.xwork2.ActionContext;
 import com.scusw.admin.service.VocationService;
 import com.scusw.model.BranchInfo;
+import com.scusw.model.DepartmentInfo;
 import com.scusw.model.PositionInfo;
 
 
 /**
- * manage privilege
+ * 
  * @author liu jiahao
  *
  */
@@ -25,11 +26,26 @@ public class VocationAction {
 	private int nextPage = 1;
 	private int pageSize = 10;
 	private String keyword;
-	
+	private String sf;
+	private List<DepartmentInfo> list;
 	private Map<String,Object> request;
 
 	
 	
+	
+	
+	public String getSf() {
+		return sf;
+	}
+	public List<DepartmentInfo> getList() {
+		return list;
+	}
+	public void setSf(String sf) {
+		this.sf = sf;
+	}
+	public void setList(List<DepartmentInfo> list) {
+		this.list = list;
+	}
 	public BranchInfo getBranchInfo() {
 		return branchInfo;
 	}
@@ -242,6 +258,18 @@ public class VocationAction {
 			return listVocation();
 		}
 		return "updateVocationError";
+	}
+
+	
+	/**
+	 * get departments by branchId
+	 * 
+	 */
+	public String execute() throws Exception {
+		 
+		list = vocationService.queryDepartmentBybranchId(Integer.parseInt(sf));
+
+		return "success";
 	}
 	
 }

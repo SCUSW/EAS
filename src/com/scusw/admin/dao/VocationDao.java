@@ -6,7 +6,7 @@ import com.scusw.model.BranchInfo;
 import com.scusw.model.PositionInfo;
 
 /**
- * manage privilege
+ * 
  * @author liu jiahao
  *
  */

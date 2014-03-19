@@ -11,7 +11,7 @@ import com.scusw.admin.service.BranchService;
 import com.scusw.model.BranchInfo;
 
 /**
- * manage privilege
+ * 
  * @author liu jiahao
  *
  */

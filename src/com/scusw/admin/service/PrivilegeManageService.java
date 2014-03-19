@@ -8,7 +8,7 @@ import com.scusw.model.GroupPrivilege;
 import com.scusw.model.PrivilegeInfo;
 
 /**
- * interface of management of privilege
+ * 
  * @author liu jiahao
  *
  */

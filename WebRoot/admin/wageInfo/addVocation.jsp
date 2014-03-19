@@ -68,7 +68,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		} 
 --%>
 		
+
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$("#branch").change(function(){
+				var branch = $(this).val();
+				var department =$("#department");
+				$("#department option").remove();
+				$.post("vocationManage.action",{sf:branch},function(data){
+					for(var i=0;i<data.list.length;i++){
+						department.append("<option value="+ data.list[i].branchId+">"+data.list[i].branchName+"</option>");
+					}
+				})
+			});
+		
+		});
 	
+	</script>
+
+
+
+
 
   </head>
   
@@ -81,26 +103,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  	
 		<form id="addVocation" name="addVocation" action="<%=basePath %>vocationManage!addVocation3.action" method="post">
 		
-		
-<%-- 	<B>选择职类所属机构与部门:</B> &nbsp;
-		<SELECT name="branch" id="branch" onChange="changeBranch()">
+<%--		
+	 	<B>选择职类所属机构与部门:</B> &nbsp;
+		<SELECT name="branch" id="branch" >
 			<OPTION value="0">--请选择分支机构--</OPTION>
 			<c:forEach items="${request.branchs }" var="b">
 				<option value="${b.branchId }">${b.branchId }:${b.branchName }</option>
 			</c:forEach>
 		</SELECT>
 		
-		<SELECT name="department" id="department" >
+		<SELECT name="vocation.departmentInfo.departmentId" id="department" >
 		<OPTION value="0">--请选择部门--</OPTION>
 		</SELECT> 
+
 --%>
 
+ 
 		请选择所属部门信息: 
 		<SELECT name="vocation.departmentInfo.departmentId" id="department" >
 			<c:forEach items="${request.departments }" var="d">
 				<option value="${d.departmentId }">${d.departmentId }.${d.departmentName }</option>
 			</c:forEach>
-		</SELECT> 
+		</SELECT>  
+
 		
 		<br/>
 		职位名称：<input id="name" type="text" width="30" name="vocation.vocationName" /><br/>
