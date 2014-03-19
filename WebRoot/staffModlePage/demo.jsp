@@ -30,7 +30,100 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/staffDemo.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="css/staffDemo.css">
+	
+	
+	
+	 <script type="text/javascript">
+	 var flagJw = 1, flagCw = 1, flagYx = 1, flagJs = 1;
+	 
+    function disableGuide(guideId){
+    		$(document).ready(function(){
+	    		$(guideId).removeAttr("href");
+	    		$(guideId).unbind();
+    		});
+	}
 		
+	
+	
+	
+	
+		<%
+    if(!com.scusw.util.CheckPrivilege.checkPrivilege(2)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(3)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(4)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(5)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(6)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(7)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(8)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(9))
+    	{
+    	%>
+    	
+    	disableGuide("#td12");
+    
+    	<%
+    } 
+    %>
+    
+    <%
+    if(!com.scusw.util.CheckPrivilege.checkPrivilege(10)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(11)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(12)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(13)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(14)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(15)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(16)    	
+		&& !com.scusw.util.CheckPrivilege.checkPrivilege(17)
+		&& !com.scusw.util.CheckPrivilege.checkPrivilege(18)
+		&& !com.scusw.util.CheckPrivilege.checkPrivilege(19)
+		&& !com.scusw.util.CheckPrivilege.checkPrivilege(20)
+		&& !com.scusw.util.CheckPrivilege.checkPrivilege(21)
+		&& !com.scusw.util.CheckPrivilege.checkPrivilege(22)){
+    	%>
+    	
+    	disableGuide("#td14");
+    	
+    	
+    	<%
+    } 
+    %>
+    
+    <%
+    if(!com.scusw.util.CheckPrivilege.checkPrivilege(23)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(24)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(25)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(26)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(27)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(28)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(29)    	
+		&& !com.scusw.util.CheckPrivilege.checkPrivilege(30)
+		&& !com.scusw.util.CheckPrivilege.checkPrivilege(31)
+		&& !com.scusw.util.CheckPrivilege.checkPrivilege(32)
+		&& !com.scusw.util.CheckPrivilege.checkPrivilege(33)){
+    	%>
+    	
+    	disableGuide("#td11");
+    	
+    	
+    	<%
+    } 
+    %>
+    
+    <%
+    if(!com.scusw.util.CheckPrivilege.checkPrivilege(34)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(35)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(36)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(37)){
+    	%>
+    	
+    	disableGuide("#td13");
+    	
+    	
+    	<%
+    } 
+    %>
+   
+  </script>
   </head>
   	
   <body>
@@ -40,9 +133,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%
 }
    %>
+   
+   
+   
    <div class="container-fluid">
 	<div class="row-fluid" >
-		<div class="span12">
+		<div  class="span12">
 				<%@ include file="../include/banner.jsp" %>
 		</div>
 	</div>

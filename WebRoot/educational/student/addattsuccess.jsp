@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -23,6 +23,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-考勤确认成功<br>
+                     <center>
+                      <p></p>
+                      <p></p>
+                      <p></p>
+                      <p></p>
+                       <div style="color:blue;">
+                        ${message}
+                      </div>
+                      <p></p>
+                      <p></p>
+                      <p></p>
+                      <p></p>
+                      <a href="educational/student/querystu.jsp">返回查询界面</a>
+                      </center>
+                      
   </body>
 </html>

@@ -70,6 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				</tr>
     				
     			</table>
+    			<a href="educational/course/sortcourseindex.jsp">返排课主界面</a>
     	</center>
   </body>
 </html>

@@ -27,6 +27,6 @@ public interface EducationalService {
 	public List<PositionInfo> listPosition();
 	public String updateCourse(CourseInfo course);	
 	public void deleteCourse(CourseInfo course);
-	public void addCourseIntoTable(int index);
+	public String addCourseIntoTable();
 	public 	List<CourseClasshour> querryCourseClasshour(Integer index);
 }

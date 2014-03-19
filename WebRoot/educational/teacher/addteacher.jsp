@@ -32,9 +32,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <center> <h1>添加老师</h1><br/>
    	<form action="educational!addTeacher.action" method="post">
-   	    <input type="hidden" name="teacher.staffInfo.staffNo" value="root"/><br/>
-   	    <input type="hidden" name="teacher.staffInfo.staffPass" value="root"/><br/>
-   	  
+   	   <div style="width:300px;">
+		   	<div class="input-group input-group-sm">
+	 			<span class="input-group-addon">登录帐号</span>
+				<input name="teacher.staffInfo.staffNo" type="text" class="form-control"><font color="red">${hasNo}</font>
+			</div>
+		</div>
+		<div style="width:300px;">
+		   	<div class="input-group input-group-sm">
+	 			<span class="input-group-addon">登录密码</span>
+				<input name="teacher.staffInfo.staffPass" type="text" class="form-control">
+			</div>
+		</div>
    	  	<div style="width:300px;">
 		   	<div class="input-group input-group-sm">
 	 			<span class="input-group-addon">姓名</span>
@@ -84,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   	<div class="input-group input-group-sm">
 	 			<span class="input-group-addon">专业</span>
 				<input name="teacher.teacherMajor"
-				 type="text" class="form-control">
+				 type="text" class="form-control"><font color="red">${emptyMajor}</font>
 			</div>
 		</div>
 		

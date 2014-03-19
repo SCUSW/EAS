@@ -35,21 +35,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	<div style="width:300px;">
 	   	<div class="input-group input-group-sm">
  			<span class="input-group-addon">课程名称</span>
-			<input name="course.courseName" type="text" class="form-control">
+			<input name="course.courseName" type="text" class="form-control" value="${course.courseName}">
 		</div>
 	</div>
 	
 	<div style="width:300px;">
 	   	<div class="input-group input-group-sm">
  			<span class="input-group-addon">开课老师</span>
-			<input name="course.teacherInfo.staffInfo.staffName" type="text" class="form-control"><font color="red">${strTeacher}</font>
+			<input name="course.teacherInfo.staffInfo.staffName" type="text" class="form-control" value="${course.teacherInfo.staffInfo.staffName}"><font color="red">${strTeacher}</font>
 		</div>
 	</div>
 	
 	<div style="width:300px;">
 	   	<div class="input-group input-group-sm">
  			<span class="input-group-addon">开课专业</span>
-			<input name="course.majorInfo.majorName" type="text" class="form-control"><font color="red">${strTeacher}</font>
+			<input name="course.majorInfo.majorName" type="text" class="form-control" value="${course.majorInfo.majorName}"><font color="red">${strMajor}</font>
 		</div>
 	</div>
 	
@@ -57,42 +57,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div style="width:300px;">
 	   	<div class="input-group input-group-sm">
  			<span class="input-group-addon">课程价格</span>
-			<input name="course.coursePrice" type="text" class="form-control">
+			<input name="course.coursePrice" type="text" class="form-control" value="${course.coursePrice}">
 		</div>
 	</div>
 	
 	<div style="width:300px;">
 	   	<div class="input-group input-group-sm">
  			<span class="input-group-addon">每周节次</span>
-			<input name="course.courseTimes" type="text" class="form-control">
+			<input name="course.courseTimes" type="text" class="form-control" value="${course.courseTimes}">
 		</div>
 	</div>
 	
 	<div style="width:300px;">
 	   	<div class="input-group input-group-sm">
  			<span class="input-group-addon">课程开始日期</span>
-			<input name="course.courseStart" type="text" class="form-control">
+			<input name="course.courseStart" type="text" class="form-control" value="${course.courseStart}">
 		</div>
 	</div>
 	
 	<div style="width:300px;">
 	   	<div class="input-group input-group-sm">
  			<span class="input-group-addon">课程结束日期</span>
-			<input name="course.courseEnd" type="text" class="form-control">
+			<input name="course.courseEnd" type="text" class="form-control" value="${course.courseEnd}">
 		</div>
 	</div>
 	
 	<div style="width:300px;">
 	   	<div class="input-group input-group-sm">
  			<span class="input-group-addon">课程介绍</span>
-			<input name="course.courseDesc" type="text" class="form-control">
+			<input name="course.courseDesc" type="text" class="form-control" value="${course.courseDesc}">
 		</div>
 	</div>
 	
 	<div style="width:300px;">
 	   	<div class="input-group input-group-sm">
  			<span class="input-group-addon">课程有效性</span>
-			<select name="course.courseAvai" class="form-control">
+			<select name="course.courseAvai" class="form-control" value="${course.courseAvai}">
 				<option value="1">有效 </option>  	
                 <option value="0">无效</option>
 			</select>
@@ -101,6 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<input class="btn btn-default" type="submit" value="确定添加"/>
    </form>
+   <a href="educational/course/querycourseinfo.jsp">返回查询界面</a>
    </center>
   </body>
 </html>
