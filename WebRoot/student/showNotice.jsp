@@ -4,7 +4,13 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<% 
+  if(!com.scusw.util.CheckLogin.checkLogin()){ 
+%>
+<jsp:forward page="../"/>
+<%
+}
+   %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -40,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<tr class="active"> 
     			<td>${notice.noticeId}</td>
     			<td colspan="2">
-					<a href="student!showNoticeContent.action?noticeId=${notice.noticeId}">${notice.noticeTitle}</a>	
+					<a href="student!showNoticeContent.action?noticeId=${notice.noticeId}">${notice.noticeTitle}</a>
     			</td>
     			<td>${notice.noticeType}</td>
     			<td>${notice.staffInfo.staffId}</td>
@@ -49,5 +55,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</c:forEach>
     </table>
    </center>
-  </body>
+  </body>  
 </html>

@@ -3,7 +3,13 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<% 
+  if(!com.scusw.util.CheckLogin.checkLogin()){ 
+%>
+<jsp:forward page="../"/>
+<%
+}
+   %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -63,13 +69,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      </div>
      		<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">姓名</span>
-				<input name="studentInfo.studentName" value="${studentInfo.studentName}" type="text" class="form-control" placeholder="Username">
+				<input name="studentInfo.studentName" value="${studentInfo.studentName}" type="text" class="form-control" placeholder="Username" disabled="disabled">
 			</div>
 			<br/>
 			
 			<div class="input-group input-group-sm">
  	 			<span  class="input-group-addon">性别</span>
-				<select id="select" name="studentInfo.studentSex"  class="form-control" >
+				<select id="select" name="studentInfo.studentSex"  class="form-control"  disabled="disabled">
 				<option value=1>男</option>
      			 <option value=0>女</option>
      			 </select>
@@ -102,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">专业</span>
-				<input name="studentInfo.studentMajor" value="${studentInfo.studentMajor}" type="text" class="form-control" placeholder="Major">
+				<input name="studentInfo.studentMajor" value="${studentInfo.studentMajor}" type="text" class="form-control" placeholder="Major"  disabled="disabled">
 			</div>
 			<br/>
 			
