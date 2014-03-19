@@ -31,6 +31,7 @@
 				<result name="queryCourseByNameAndTeacher">educational/course/updatecourse.jsp</result>
 				<result name="querryCourseClasshour">educational/course/showcourseclasshour.jsp</result>
 				<result name="addCourseIntoTable">educational/course/sortcourse.jsp</result>
+				<result name="no_privilege">/include/noPrivilege.jsp</result>
 			</action>
 
 		</package>

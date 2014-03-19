@@ -9,6 +9,7 @@
 				<result name="listDepartment">/admin/deptInfo/listDepartment.jsp</result>
 				<result name="updateDepartment">/admin/deptInfo/updateDepartment.jsp</result>
 				<result name="addDepartment">/admin/deptInfo/addDepartment.jsp</result>
+				<result name="no_privilege">/include/noPrivilege.jsp</result>
 			</action>
 		</package>
 </struts>

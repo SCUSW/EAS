@@ -9,6 +9,7 @@
 				<result name="staff_success">/admin/checkAttendant/checkStaffAttendant.jsp</result>
 				<result name="stu_success">/admin/checkAttendant/checkStuAttendant.jsp</result>
 				<result name="failed">/index.jsp</result>
+				<result name="no_privilege">/include/noPrivilege.jsp</result>
 			</action>
 		</package>
 </struts>

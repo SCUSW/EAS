@@ -36,13 +36,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   font-size:20px}
   </style>
   <body>
-  <br><br><br><br>
+  <br><br>
   <center>
   <div class="container col-xs-12 col-md-offset-1 col-md-10 site-error">
-  <br><br>
-  		<p style="font-size:72px;">别玩了</p><br>
-  		<p style="font-size:72px;">你没有权限</p><br>
-  		请使用正确权限登录！
+  
+  		<p style="font-size:64px;padding-right: 200px">别玩了</p><br>
+  		<p style="font-size:64px;padding-right: 200px">你没有权限</p><br>
+  		<p style="padding-right: 200px">请使用正确权限登录！</p>
 </div>
    </center>
   </body>

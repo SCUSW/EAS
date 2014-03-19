@@ -14,6 +14,8 @@
 				<result name="allCourseInfo">/student/selectCourses.jsp</result>
 				<result name="selectCourseSuccess">/student/queryCourseInfo.jsp</result>
 				<result name="selectCourseDefault">/student/selectCourseDefault.jsp</result>
+				
+				<result name="no_privilege">/include/noPrivilege.jsp</result>
 			</action>
 		</package>
 </struts>

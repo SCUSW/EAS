@@ -12,6 +12,7 @@
 				<result name="addGroup">/admin/setPrivilege/addGroup.jsp</result>
 				<result name="addPrivError">/admin/setPrivilege/error.jsp</result>
 				<result name="addGroupError">/admin/setPrivilege/error.jsp</result>
+				<result name="no_privilege">/include/noPrivilege.jsp</result>
 			</action>
 		</package>
 </struts>
