@@ -10,7 +10,7 @@ import com.scusw.admin.service.TeaLevelService;
 import com.scusw.model.TeacherLevel;
 
 /**
- * manage privilege
+ * 
  * @author liu jiahao
  *
  */
