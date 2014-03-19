@@ -124,7 +124,7 @@ public class StudentDaoImpl extends HibernateDaoSupport implements StudentDao {
 	 * @return ：包含所有课程信息的实体的集合
 	 */
 	public List<CourseInfo> queryAllCourse(){
-		List<CourseInfo> courseInfo = getHibernateTemplate().find("from CourseInfo");
+		List<CourseInfo> courseInfo = getHibernateTemplate().find("from CourseInfo c where c.courseAvai=?",1);
 		return courseInfo;
 	}
 	
