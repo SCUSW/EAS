@@ -29,6 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+        <div align="right"><a href="educational/course/addcourse.jsp">添加课程</a></div>
     	<center>
     			<table class="table table-hover" border="1">
     				<tr class="warning">
@@ -40,12 +41,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     					<td>${c.courseName}</td><td>${c.teacherInfo.staffInfo.staffName}</td>
     					<td>${c.majorInfo.majorName}</td><td>${c.courseStart}</td><td>${c.courseEnd}</td><td>${c.courseTimes}</td>
     					<td><button class="btn btn-default" onclick="window.location.href='educational!queryCourseByNT.action?course.courseId=${c.courseId}'"><span class="glyphicon glyphicon-edit"></span> 编辑</button>&nbsp;
-    					<button class="btn btn-default" onclick="window.location.href='educational!deleteCourse.action?course.courseId=${c.courseId}'"><span class="glyphicon glyphicon-remove"></span> 删除</button></td>
     				</tr>
     				</c:forEach>
     				<tr class="active "><td colspan="7"><button class="btn btn-default" onclick="window.location.href='educational/course/addcourse.jsp'"><span class="glyphicon glyphicon-plus"></span> 添加</button></td></tr>
     			</table>
-    			
+    			<a href="educational/course/querycourseinfo.jsp">返回查询界面</a>
     	</center>
   </body>
 </html>

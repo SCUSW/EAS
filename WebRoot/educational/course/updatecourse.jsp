@@ -30,6 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <center>
     	<form action="educational!updateCourse.action" method="post"> 
     	<input type="hidden" name="course.courseId" value="${course.courseId}"/><br/>
     		<div style="width:300px;">
@@ -49,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div style="width:300px;">
 			   	<div class="input-group input-group-sm">
 		 			<span class="input-group-addon">开课专业</span>
-					<input name="course.majorInfo.majorName" value="${course.majorInfo.majorName}" type="text" class="form-control"><font color="red">${strTeacher}</font>
+					<input name="course.majorInfo.majorName" value="${course.majorInfo.majorName}" type="text" class="form-control"><font color="red">${strMajor}</font>
 				</div>
 			</div>
 			
@@ -103,5 +104,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		
    		<input class="btn btn-default" type="submit" value="提交"/>
    </form>
+   </center>
   </body>
 </html>

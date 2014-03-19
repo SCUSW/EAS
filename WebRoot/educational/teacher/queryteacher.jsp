@@ -44,12 +44,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 			<span class="input-group-addon">姓名</span>
 						<input name="teacher.staffInfo.staffName" type="text" class="form-control">
 					</div>
-				</div>
-				
+				</div> 
+
 				<div style="width:300px;">
 				   	<div class="input-group input-group-sm">
 			 			<span class="input-group-addon">教师证号</span>
-						<input name="teacher.staffInfo.staffName" type="text" class="form-control">
+						<input name="teacher.teacherNo" type="text" class="form-control">
 					</div>
 				</div>
 				

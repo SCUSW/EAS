@@ -86,8 +86,16 @@ public class EducationalAction {
 	}
 //��ʾѧ������Ϣ
 	public String list(){
+		
 		List list=educationalService.queryStu(stu);
 		request=(Map)ActionContext.getContext().get("request");
+		if(list.size()==0)
+		{  
+			request.put("message","不存在与该信息匹配的学生");
+			return "emptyMessage";
+			
+		}
+			request=(Map)ActionContext.getContext().get("request");
 		request.put("stus",list);
 		return "queryStu";
 	}
@@ -108,26 +116,37 @@ public String showAllInfo(){
 
 //确认学生考情
 public String checkAttendant(){
-	if(educationalService.checkAttdant(stu).size()==0){
+	 List<StudentAttendant> att= educationalService.checkAttdant(stu);
+	if(att.size()==0){
 		return "emptyAttendant";
 	}
-		
-  StudentAttendant	att= educationalService.checkAttdant(stu).get(0);
     request=(Map)ActionContext.getContext().get("request");
-	request.put("attendant",att);
+	request.put("attendants",att);
 	return "checkAttendant";
 }
 public String updateAttendant(){
+	
 	if(educationalService.updateAttendant(attendant))
+	{
+		request=(Map)ActionContext.getContext().get("request");
+		if (attendant.getAttendantRemark().equals("情况属实确认录入"))
+	              request.put("message","该学生缺勤记录已录入");
+		else
+			     request.put("message","该学生因故缺勤，原因已经核实，缺勤记录撤销");    
                return "addAttendant";
+		}
 	else
 		return "failAddAttendant";
 }
 //老师信息list
 public String listTeacher(){
 	List list=educationalService.queryTeacher(teacher);
-	request=(Map)ActionContext.getContext().get("request");
-	request.put("teachers",list);
+    request=(Map)ActionContext.getContext().get("request");
+	if(list.size()==0){
+		request.put("message","不存在拥有该信息的老师");
+        return "emptyTeacherInfo";
+	}
+    request.put("teachers",list);
 	return "listTeacher";
 }
 public String queryTeacher(){
@@ -171,7 +190,14 @@ public String queryGroupAndLevel(){
 			     String hasIdcard="该身份证号已经存在";
 				 request.put("hasIdcard",hasIdcard);
 				}
-		  
+		  if(flag.equals("major")){
+			     String emptyMajor="该专业不存在";
+				 request.put("emptyMajor",emptyMajor);
+				}
+		  if(flag.equals("staffNo")){
+			     String hasNo="该帐号已经存在";
+				 request.put("hasNo",hasNo);
+				}
 			return queryGroupAndLevel();
      }
   
@@ -187,6 +213,11 @@ public String queryGroupAndLevel(){
 	 List<CourseInfo> cous= educationalService.queryCourse(teacher);
 	 
 	    request=(Map)ActionContext.getContext().get("request");
+	    if(cous.size()==0)
+	    {  
+	    	request.put("message","该老师还未分配课程");
+	    	return listTeacher();
+	    }
 		request.put("courses",cous);
 	    return "queryCourse";
   }
@@ -211,10 +242,17 @@ public String queryGroupAndLevel(){
 	   request.put("courses",courses);
 		return "queryCourseInfo";
 	}
-	  if(flag.equals("emptyTeacher"))
-		  request.put("strTeacher","emptyTeacher");
+	  if(flag.equals("emptyTeacher")){
+		  course.setTeacherInfo(null);
+		  request.put("course",course);
+		  request.put("strTeacher","该老师不存在");
+	  }
 	  else if(flag.equals("emptyMajor"))
-		  request.put("strMajor","emptyMajor"); 
+	  { 
+		  course.setMajorInfo(null);
+		  request.put("course",course);
+		  request.put("strMajor","该专业不存在");
+	  }
 	  return "empty";
 	
 }
@@ -222,19 +260,26 @@ public String queryGroupAndLevel(){
   public String queryCourseInfo(){
 	  List<CourseInfo> cous= educationalService.queryCourseInfo(course);
 	    request=(Map)ActionContext.getContext().get("request");
+	    if(cous.size()==0){
+	    	request.put("message","不存在具有该信息的课程");
+	    	return "emptyCourse1";
+	    }
 		request.put("courses",cous);
 	  return "queryCourseInfo";
   }
   
   public String queryCourseByNT(){
-	  
-	    CourseInfo cous= educationalService.queryCourseInfo(course).get(0);
-	    request=(Map)ActionContext.getContext().get("request");
-		request.put("course",cous);
+	   List<CourseInfo> cous= educationalService.queryCourseInfo(course);
+	   request=(Map)ActionContext.getContext().get("request");
+	  if(cous.size()==0)
+		request.put("course",course);
+	  else
+		  request.put("course", cous.get(0));
 	  return "queryCourseByNameAndTeacher";
   }
   public String updateCourse(){
 		String flag= educationalService.updateCourse(course);
+		System.out.println(flag);
 		request=(Map)ActionContext.getContext().get("request");
 		if(flag=="updateCourse"){
 		   ArrayList<CourseInfo> courses=new ArrayList<CourseInfo>();
@@ -243,9 +288,10 @@ public String queryGroupAndLevel(){
 			return "queryCourseInfo";
 		}
 		  if(flag.equals("emptyTeacher"))
-			  request.put("strTeacher","emptyTeacher");
+		 
+			  request.put("strTeacher","该老师不存在");
 		  else if(flag.equals("emptyMajor"))
-			  request.put("strMajor","emptyMajor"); 
+			  request.put("strMajor","该专业不存在");
 		  return queryCourseByNT();
 		
   }
@@ -257,9 +303,10 @@ public String queryGroupAndLevel(){
   }
   
   public String addCourseIntoTable(){
-	  educationalService.addCourseIntoTable(index);
 	  request=(Map)ActionContext.getContext().get("request");
-	  request=(Map)ActionContext.getContext().get("request");
+	 if( educationalService.addCourseIntoTable().equals("emptyCourse"))
+		 request.put("message","课程表信息为空请先添加");	 
+	 else
 	  request.put("message","排课成功");
 	  return "addCourseIntoTable";
   }

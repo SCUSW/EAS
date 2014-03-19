@@ -24,7 +24,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    <center>老师工资注入成功<p>
-                   该期总工资为：${tm.teacherSalary}
+                   该期总工资为：${tm.teacherSalary}<p>
+                
+                   <a href="educational/teacher/queryteacher.jsp">返回查询界面</a>
                    </center>
   </body>
 </html>

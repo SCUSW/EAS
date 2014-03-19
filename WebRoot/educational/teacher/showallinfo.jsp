@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <center>
   	<table class="table table-hover">
   		<tr class="success"><td> 姓名：${teacher.staffInfo.staffName}</td></tr>
-   		<tr class="success"><td>性别：${teacher.staffInfo.staffSex}</td></tr>
+   		<tr class="success"><td>性别：${teacher.staffInfo.staffSex==1 ? "男" : "女"}</td></tr>
    		<tr class="success"><td>手机：${teacher.staffInfo.staffPhone}</td></tr>
    		<tr class="success"><td>Q Q ：${ teacher.staffInfo.staffQq}</td></tr>
    		<tr class="success"><td>省份证号：${teacher.staffInfo.staffIdcard}</td></tr>
@@ -51,6 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		<tr class="success"><td>教师类别:${teacher.teacherType}</td></tr>
    		<tr class="success"><td>备   注:${teacher.teacherRemark}</td></tr>
    	</table>
+   	<a href="educational/teacher/queryteacher.jsp">返回查询界面</a>
    </center>
   </body>
 </html>

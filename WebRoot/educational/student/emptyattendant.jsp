@@ -23,6 +23,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    学生考勤表不存在！！！ <br>
+    <center>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+  <div style="color:red;">  
+     学生考勤表不存在！！！ 
+  </div>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+   <a href="educational/student/querystu.jsp">返回查询界面</a>
+    </center>
   </body>
 </html>

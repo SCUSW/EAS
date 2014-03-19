@@ -121,9 +121,9 @@ public class EducationalServiceImpl implements EducationalService{
 	}
 
 
-	public void addCourseIntoTable(int index ) {
+	public String addCourseIntoTable() {
 		// TODO Auto-generated method stub
-		educationalDao.addCourseIntoTable(index);
+	return	educationalDao.addCourseIntoTable();
 		
 	}
 
@@ -132,7 +132,5 @@ public class EducationalServiceImpl implements EducationalService{
 	return	educationalDao.querryCourseClasshour(index);
 		
 	}
-
-
 
 }

@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <center>
    
   <button class="btn btn-default" onclick="window.location.href='educational!addCourseIntoTable.action?'">智&nbsp;&nbsp;能&nbsp;&nbsp;排&nbsp;&nbsp;课&nbsp;</button>  <div style="color:red"> ${message}</div>
-  <button class="btn btn-default" onclick="window.location.href='queryCourseTable.jsp'">查看教学日历</button>
+  <button class="btn btn-default" onclick="window.location.href='educational/course/queryCourseTable.jsp'">查看教学日历</button>
   </center>
   </body>
 </html>

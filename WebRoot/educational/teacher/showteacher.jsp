@@ -45,6 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     					<td><button class="btn btn-default" onclick="window.location.href='educational!addSalary.action?teacher.teacherNo=${t.teacherNo}'"><span class="glyphicon glyphicon-ok-sign"></span> 工资清单确认</button></td>
     				</tr>
     				</c:forEach>
+    				<tr class="active "><td colspan="7"><button class="btn btn-default" onclick="window.location.href='educational!queryGroupAndLevel.action?'"><span class="glyphicon glyphicon-plus"></span> 添加</button></td></tr>
     			</table>
     			<a href="educational/teacher/queryteacher.jsp">返回查询界面</a>
     	</center>

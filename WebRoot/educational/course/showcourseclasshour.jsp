@@ -43,6 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				</tr>
     				</c:forEach>
     			</table>
+    			<a href="educational/course/queryCourseTable.jsp">返回查询界面</a>
     	</center>
   </body>
 </html>
