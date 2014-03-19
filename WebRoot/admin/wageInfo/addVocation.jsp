@@ -103,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  	
 		<form id="addVocation" name="addVocation" action="<%=basePath %>vocationManage!addVocation3.action" method="post">
 		
-		
+<%--		
 	 	<B>选择职类所属机构与部门:</B> &nbsp;
 		<SELECT name="branch" id="branch" >
 			<OPTION value="0">--请选择分支机构--</OPTION>
@@ -116,16 +116,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<OPTION value="0">--请选择部门--</OPTION>
 		</SELECT> 
 
+--%>
 
-
-<%-- 
+ 
 		请选择所属部门信息: 
 		<SELECT name="vocation.departmentInfo.departmentId" id="department" >
 			<c:forEach items="${request.departments }" var="d">
 				<option value="${d.departmentId }">${d.departmentId }.${d.departmentName }</option>
 			</c:forEach>
 		</SELECT>  
---%>
+
 		
 		<br/>
 		职位名称：<input id="name" type="text" width="30" name="vocation.vocationName" /><br/>
