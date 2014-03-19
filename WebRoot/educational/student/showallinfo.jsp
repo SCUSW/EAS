@@ -16,39 +16,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-	<style type="text/css">
-		td{
-			color: fuchsia;
-			text-align: center;
-			width: 140px;
-		}
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
-	</style>
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
   </head>
   
   <body>
     	<center>
-    			
-    				学生姓名:${stu.studentName}</br>
-    				学生学号:${stu.studentNo}</br>
-    				学生性别:<%
+    		<table class="table table-hover">	
+    				<tr class="success"><td>学生姓名:${stu.studentName}</td></tr>
+    				<tr class="success"><td>学生学号:${stu.studentNo}</td></tr>
+    				<tr class="success"><td>学生性别:<%
     				StudentInfo stu = (StudentInfo)request.getAttribute("stu");
     				if(stu.getStudentSex()==1)
-    				              out.println("<td>男</td>");
+    				              out.println("男");
     				           else
-    				               out.println("<td>女</td>");          
-    				  %></br>
-    				 咨询编号:${stu.consultInfo.consultType}</br>
-    				余额:${stu.studentBalance}</br>
-    				专业:${stu.studentMajor}</br>
-    			        学校:${stu.studentSchool}</br>
-    				手机号码:${stu.studentPhone}</br>
-    				住址:${stu.studentAddr}</br>
-    				入学时间:${stu.attendTime}</br>
-    				备注:${stu.studentRemark}</br>
+    				               out.println("女");          
+    				  %></td></tr>
+    				<tr class="success"><td> 咨询编号:${stu.consultInfo.consultType}</td></tr>
+    				<tr class="success"><td>余额:${stu.studentBalance}</td></tr>
+    				<tr class="success"><td>专业:${stu.studentMajor}</td></tr>
+    			      <tr class="success"><td>  学校:${stu.studentSchool}</td></tr>
+    				<tr class="success"><td>手机号码:${stu.studentPhone}</td></tr>
+    				<tr class="success"><td>住址:${stu.studentAddr}</td></tr>
+    				<tr class="success"><td>入学时间:${stu.attendTime}</td></tr>
+    				<tr class="success"><td>备注:${stu.studentRemark}</td></tr>
+    		</table>
     	</center>
   </body>
 </html>

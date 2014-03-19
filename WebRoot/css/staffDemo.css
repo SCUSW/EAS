@@ -1,0 +1,68 @@
+@CHARSET "UTF-8";
+#guide{
+			position:relative;	
+			margin-top:-80px;
+			position:relative;
+			z-index:100;
+			left:-7px;
+			padding-bottom: 0px;
+			top:250px;
+			font-size:18px;
+			font-family: "微软雅黑";
+		}
+		#guide div{
+			position:relative;
+			height:55px;
+			left:-100px;
+		}
+		#guiderow{
+			height:110px;
+		}
+		.mytable tr{
+			width:100px;
+			padding-left: 20px;
+			padding-right:22px;
+			font-size:12px;
+			font-family:"";
+		}
+		#myContent{
+			display:none;
+			margin-top:-560px;
+			margin-left:340px;
+			width:910px;
+			height:505px;
+			border-left-color: red;
+			border-right-color:yellow ;
+			border-top-color:;
+			border-bottom-color:#77d0bd;
+			border-style: solid;
+		
+			z-index:1000;
+			position:relative;
+		}
+		 a.mytable:link{
+		 	color:white;
+			text-decoration:none;
+		}
+		a.mytable:visited{
+			color:white;
+			text-decoration:none;
+		}
+		a.mytable:hover{
+			color:black;
+			text-decoration:none;
+		}
+		#jw_1,#jw_2,#jw_3,#jw_4{
+			display:none;
+		}
+		#cw_1,#cw_2,#cw_3{
+			display:none;
+			
+		}
+		#yx_1,#yx_2,#yx_3{
+			display:none;
+			
+		}
+		#js_1,#js_2,#js_3,#js_4{
+			display:none;
+		}

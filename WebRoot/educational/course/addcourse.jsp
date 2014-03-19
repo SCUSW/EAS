@@ -16,29 +16,90 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 
   </head>
   
   <body>
-   <center> <h1>添加课程信息界面</h1><br/>
+   <center> <h1>添加课程信息</h1><br/>
    	<form action="educational!addCourse.action" method="post">    
-   		课程名称：<input type="text" name="course.courseName"/><br/>
-   		开课老师：<input type="text" name="course.teacherInfo.staffInfo.staffName"/><font color="red">${strTeacher}</font><br/>
-   		开课专业:<input type="text" name="course.majorInfo.majorName"><font color="red">${strMajor}</font><br/>
-   		课程价格：<input type="text" name="course.coursePrice"/><br/>
-   		课程开始日期：<input type="text" name="course.courseStart"/><br/>
-   		课程结束日期：<input type="text" name="course.courseEnd"/><br/>
-   		课程介绍:<input type="text" name="course.courseDesc"/><br/>
-   		课程有效性:<select name="course.courseAvai">
-   		
-                    <option value="1">有效   	
-                    <option value="0">无效	
-   		</select><br/>
-   		
-   		<input type="submit" value="确定添加"/>
+   	<div style="width:300px;">
+	   	<div class="input-group input-group-sm">
+ 			<span class="input-group-addon">课程名称</span>
+			<input name="course.courseName" type="text" class="form-control">
+		</div>
+	</div>
+	
+	<div style="width:300px;">
+	   	<div class="input-group input-group-sm">
+ 			<span class="input-group-addon">开课老师</span>
+			<input name="course.teacherInfo.staffInfo.staffName" type="text" class="form-control"><font color="red">${strTeacher}</font>
+		</div>
+	</div>
+	
+	<div style="width:300px;">
+	   	<div class="input-group input-group-sm">
+ 			<span class="input-group-addon">开课专业</span>
+			<input name="course.majorInfo.majorName" type="text" class="form-control"><font color="red">${strTeacher}</font>
+		</div>
+	</div>
+	
+	
+	<div style="width:300px;">
+	   	<div class="input-group input-group-sm">
+ 			<span class="input-group-addon">课程价格</span>
+			<input name="course.coursePrice" type="text" class="form-control">
+		</div>
+	</div>
+	
+	<div style="width:300px;">
+	   	<div class="input-group input-group-sm">
+ 			<span class="input-group-addon">每周节次</span>
+			<input name="course.courseTimes" type="text" class="form-control">
+		</div>
+	</div>
+	
+	<div style="width:300px;">
+	   	<div class="input-group input-group-sm">
+ 			<span class="input-group-addon">课程开始日期</span>
+			<input name="course.courseStart" type="text" class="form-control">
+		</div>
+	</div>
+	
+	<div style="width:300px;">
+	   	<div class="input-group input-group-sm">
+ 			<span class="input-group-addon">课程结束日期</span>
+			<input name="course.courseEnd" type="text" class="form-control">
+		</div>
+	</div>
+	
+	<div style="width:300px;">
+	   	<div class="input-group input-group-sm">
+ 			<span class="input-group-addon">课程介绍</span>
+			<input name="course.courseDesc" type="text" class="form-control">
+		</div>
+	</div>
+	
+	<div style="width:300px;">
+	   	<div class="input-group input-group-sm">
+ 			<span class="input-group-addon">课程有效性</span>
+			<select name="course.courseAvai" class="form-control">
+				<option value="1">有效 </option>  	
+                <option value="0">无效</option>
+			</select>
+		</div>
+	</div>
+	
+	<input class="btn btn-default" type="submit" value="确定添加"/>
    </form>
    </center>
   </body>

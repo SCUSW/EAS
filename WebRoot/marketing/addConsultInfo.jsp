@@ -25,65 +25,95 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/form_validate.js"></script>	
 	
+	<script type="text/javascript">
+		 function check(){
+		 	if(checkAge()&&checkName()){
+		 		
+		 	}
+		 }
+		 
+		 function checkAge(){
+		 	if(addConsultInfo.age.value<0){
+		 		alert("请输入正确的年龄");
+		 		addConsultInfo.age.focus();
+		 		return fales;
+		 	}
+		 	return true;
+		 }
+		  
+		 function checkName(){
+		 	if(addConsultInfo.name.value==""){
+	    		alert("请输入姓名！");
+	    		addConsultInfo.name.focus();
+	    		return fales;
+	    	}else{
+	    		return true;
+	    	}
+		 }
+	</script>
 
   </head>
   
   <body>
-    <center> <h1>添加咨询信息</h1><br/>
+    <center> <h1>添加咨询信息</h1>
     	<div style="width:300px;">
-    		<form  action="marketing!addConsultInfo.action" method="post">
+    		<form  name="addConsultInfo" action="marketing!addConsultInfo.action" method="post">
     			<fieldset>
     				<input type="hidden" name="consultInfo.salesmanInfo.staffId" value="${session.staffId}"/>
 	   				<input type="hidden" name="consultInfo.salesmanInfo.staffInfo.staffNo" value="${session.staffNo}"/><br/>
     				
     				<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">学生姓名</span>
-						<input name="consultInfo.studentName" type="text" class="form-control">
+						<input id="name" name="consultInfo.studentName" type="text" class="form-control">
 					</div>
-					<br/>
+				
 				
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">学生性别</span>
-						<input name="consultInfo.studentSex" type="text" class="form-control">
+						<select name="consultInfo.studentSex" type="text" class="form-control">
+							<option value="1">男</option>
+							<option value="0">女</option>
+						</select>
 					</div>
-					<br/>
+					
 					
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">学生年龄</span>
-						<input name="consultInfo.studentAge" type="text" class="form-control">
+						<input id="age" name="consultInfo.studentAge" type="text" class="form-control">
 					</div>
-					<br/>
+					
 					
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">学生学校</span>
 						<input name="consultInfo.studentSchool" type="text" class="form-control">
 					</div>
-					<br/>
+					
 					
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">学生住址</span>
 						<input name="consultInfo.studentAddr" type="text" class="form-control">
 					</div>
-					<br/>
+					
 					
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">学生电话</span>
 						<input name="consultInfo.studentPhone" type="text" class="form-control">
 					</div>
-					<br/>
+					
 					
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">学生专业</span>
 						<input name="consultInfo.studentMajor" type="text" class="form-control">
 					</div>
-					<br/>
+					
 					
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">咨询时间</span>
 						<input name="consultInfo.consultTime" type="text" class="form-control">
 					</div>
-					<br/>
+					
 					
 					咨询方式：<input type="radio" checked="checked" name="consultInfo.consultType" value="现场咨询"/>现场咨询
 						 <input type="radio" name="consultInfo.consultType" value="电话咨询"/>电话咨询
@@ -98,9 +128,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 	 				<span class="input-group-addon">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</span>
 						<input name="consultInfo.studentRemark" type="text" class="form-control">
 					</div>
-					<br/>
 					
-					<input class="btn btn-default" type="submit" value="确定添加"/>
+					
+					<button class="btn btn-default" onclick="check()" >确认添加</button>
     			</fieldset>
     		</form>
 		</div>

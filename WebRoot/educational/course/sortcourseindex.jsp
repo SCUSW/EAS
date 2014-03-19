@@ -9,22 +9,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'sortcourseindex.jsp' starting page</title>
+    <title>My JSP 'sortcourse.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 
   </head>
   
   <body>
-    <a href="educational/course/sortcourse.jsp">智能排课</a><br>
-    <a href="educational/course/queryCourseTable.jsp">查看教学日历</a><br>
-    
+  <center>
+   
+  <button class="btn btn-default" onclick="window.location.href='educational!addCourseIntoTable.action?'">智&nbsp;&nbsp;能&nbsp;&nbsp;排&nbsp;&nbsp;课&nbsp;</button>  <div style="color:red"> ${message}</div>
+  <button class="btn btn-default" onclick="window.location.href='queryCourseTable.jsp'">查看教学日历</button>
+  </center>
   </body>
 </html>

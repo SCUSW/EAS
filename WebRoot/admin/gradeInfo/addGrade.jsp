@@ -19,27 +19,48 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
   </head>
   
   <body>
-    This is my JSP page. <br>
+  	<center>
+	 <br>
     <form action="<%=basePath%>grade!addGradeInfo.action" method="post">
-    	年级名<input type="text"" name="gradeName"><br>
-    	所属分支机构<select name="branchId">
-    	<c:forEach items="${request.branch }" var="i">
-    		<option value=${i.branchId } }>
-    		${i.branchName }
-    		</option>
-    	</c:forEach>
-    		<option value=0}>
-    		不属于任何分支机构
-    		</option>
-    	</select>
-    	<input type="submit" value="提交修改">
+    	
+    	<div style="width:300px;">
+		<div class="input-group input-group-sm">
+ 	 			<span class="input-group-addon">年级名</span>
+				<input id="bid" type="text" width="30" name="gradeName" class="form-control" >
+			</div>
+		</div>
+    	
+    	<div style="width:300px;">
+		<div class="input-group input-group-sm">
+ 	 			<span class="input-group-addon">所属分支机构</span>
+				<select class="form-control" name="branchId">
+		    	<c:forEach items="${request.branch }" var="i">
+		    		<option value=${i.branchId } }>
+		    		${i.branchName }
+		    		</option>
+		    	</c:forEach>
+		    		<option value=0}>
+		    		不属于任何分支机构
+		    		</option>
+    			</select>
+			</div>
+		</div>
+		
+    	<input class="btn btn-default" type="submit" value="提交修改">
     </form>
+    </center>
   </body>
 </html>

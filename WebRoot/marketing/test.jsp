@@ -3,13 +3,13 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'userlist.jsp' starting page</title>
+    <title>My JSP 'test.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -17,30 +17,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	
 	<link rel="stylesheet" type="text/css" href="css/body.css">
-	
 	
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/form_validate.js"></script>	
+	
+	<script type="text/javascript">
+		 
+	</script>
+
   </head>
   
   <body>
-    	<center>
-    			<table class="table table-hover" border="1">
-    				<tr class="warning">
-    					<td>学生姓名</td><td>学生学号</td><td colspan="2">操作</td>
-    				</tr>
-    				<c:forEach items="${stus}" var="stu">
-    				<tr class="success"> 
-    					<td>${stu.studentName}</td><td>${stu.studentNo}</td><td><button class="btn btn-default" onclick="window.location.href='educational!showAllInfo.action?stu.studentNo=${stu.studentNo}'"><span class="glyphicon glyphicon-eye-open"></span> 详细信息</button>&nbsp;
-    					<button class="btn btn-default" onclick="window.location.href='educational!checkAttendant.action?stu.studentNo=${stu.studentNo}'"><span class="glyphicon glyphicon-ok-sign"></span> 考勤确认</button></td>
-    				</tr>
-    				</c:forEach>
-    			</table>
-    	</center>
+   <table border="0px" style="font-size:12px">
+  <tr> 
+      <td colpan="3"><input type="submit" name="button" id="button" value="提交" /></td>
+    </tr>
+    <tr> 
+      <td align="right">身份证(正则表达式库):</td>
+      <td><input name="sfz" type="text" id="sfz" /></td>
+      <td><div id="sfzTip" style="width:300px"></div></td>  <!--必须注意这里提示验证信息中的div的id值，跟要验证控件中的id值多了一个Tip，下面的都是这样。必须多的是Tip，也必须要多。-->
+    </tr>
+    </table>
   </body>
 </html>
