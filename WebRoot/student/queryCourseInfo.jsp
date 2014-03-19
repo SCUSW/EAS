@@ -42,29 +42,48 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<br />
 		<table class="table table-hover">
 			<thead>
-				<tr>
+				<tr class="warning">
 					<th>课程编号</th>
 					<th>专业名称</th>
 					<th>课程名称</th>
 					<th>开课时间</th>
-					<th>课程结束时间</th>
+					<th>结课时间</th>
+					<th>上课教师</th>
+					<th>上课时间</th>
+					<th>上课地点</th>
 					<th>课程价格</th>
 					<th>课程介绍</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${courseInfo}" var="courses">
-				<tr class="<%=tableClass[(classIndex++)%5] %>">
-					<td>${courses.courseId}</td>
-					<td>${courses.majorInfo.majorName}</td>
-					<td>${courses.courseName}</td>
-					<td><fmt:formatDate value="${courses.courseStart}" type="date" dateStyle="long"/></td>
-					<td><fmt:formatDate value="${courses.courseEnd}" type="date" dateStyle="long"/></td>
-					<td>${courses.coursePrice}</td>
-					<td>${courses.courseDesc}</td>
-				</tr>
-				</c:forEach>
-				
+			<c:forEach items="${courseInfo}" var="courses"  varStatus="s">
+    		<tr class="<%=tableClass[(classIndex++)%5] %>">
+    			<c:forEach items="${classhourEveryWeek[s.index]}" var="times" varStatus="t">
+    			<c:choose>
+    				<c:when test="${(s.first==true && t.index ==0) || courses.courseTimes == 1 || (s.first==false && t.index ==0)}">
+    					<tr>
+    						<td rowspan="${courses.courseTimes}">${courses.courseId}</td>
+    						<td rowspan="${courses.courseTimes}">${courses.majorInfo.majorName}</td>
+    						<td rowspan="${courses.courseTimes}">${courses.courseName}</td>
+    						<td rowspan="${courses.courseTimes}"><fmt:formatDate value="${courses.courseStart}" type="date" dateStyle="long"/></td>
+    						<td rowspan="${courses.courseTimes}"><fmt:formatDate value="${courses.courseEnd}" type="date" dateStyle="long"/></td>
+    						<td rowspan="${courses.courseTimes}">${courses.teacherInfo.staffInfo.staffName}</td>
+							<td>${classhourEveryWeek[s.index][t.index]}</td>
+							<td>${classroom[s.index][t.index]}</td>
+    						<td rowspan="${courses.courseTimes}">${courses.coursePrice}</td>
+    						<td rowspan="${courses.courseTimes}">${courses.courseDesc}</td>
+    					</tr>
+    				</c:when>
+    				<c:otherwise>
+    					<tr>
+    						<td>${classhourEveryWeek[s.index][t.index]}</td>
+							<td>${classroom[s.index][t.index]}</td>
+						</tr>
+    				</c:otherwise>  
+   				</c:choose>
+    			</c:forEach>
+    		</tr>
+    		</c:forEach>		
 			</tbody>
 		</table>
 		

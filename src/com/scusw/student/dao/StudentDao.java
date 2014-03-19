@@ -23,7 +23,9 @@ public interface StudentDao {
 	public String queryNoticeContent(int noticeId);
 	public List<Object[]> queryCourse(String studentNo);
 	public List<CourseInfo> queryAllCourse();
-	public boolean checkIsCourseSelect(int studentId,int[] courseInfo);
 	public void addRegisterInfo(List<RegisterInfo> registerInfos);
-	public String[] queryClassroom(List<CourseInfo> courseInfo);
+	public String[][] queryClassroom(List<CourseInfo> courseInfo);
+	public String[][] queryClasshour(List<CourseInfo> courseInfo);
+	public List<CourseInfo> queryClass(int[] selectCourseId);
+	public int[][] queryCourseClasshourId(List<CourseInfo> course);
 }

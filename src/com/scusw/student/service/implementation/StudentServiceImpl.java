@@ -104,8 +104,22 @@ public class StudentServiceImpl implements StudentService {
 		return studentDao.queryAllCourse();
 	}
 	
-	public String[] queryClassroom(List<CourseInfo> courseInfo){
+	/**
+	 * 方法描述：查询上课地点
+	 * @param courseInfo ：所有被查询课程
+	 * @return ：所有课程的所有上课地点
+	 */
+	public String[][] queryClassroom(List<CourseInfo> courseInfo){
 		return studentDao.queryClassroom(courseInfo);
+	}
+	
+	/**
+	 * 方法描述：查询上课时间
+	 * @param courseInfo ：所有被查询课程
+	 * @return ：所有课程的所有上课时间
+	 */
+	public String[][] queryClasshour(List<CourseInfo> courseInfo){
+		return studentDao.queryClasshour(courseInfo);
 	}
 	
 	/**
@@ -119,9 +133,8 @@ public class StudentServiceImpl implements StudentService {
 		if(selectCourseId == null || selectCourseId.length == 0 )
 			return false;
 		StudentInfo studentInfo= queryStudentByNo(studentNo);//fuckshen
-		if(!studentDao.checkIsCourseSelect(studentInfo.getStudentId(),selectCourseId))
+		if(checkIsConflict(selectCourseId,studentNo))
 			return false;
-		
 		List<RegisterInfo> registerInfos = new ArrayList<RegisterInfo>();
 		for(int i = 0; i < selectCourseId.length; i ++){
 			RegisterInfo registerInfo = new RegisterInfo();
@@ -142,5 +155,50 @@ public class StudentServiceImpl implements StudentService {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	/**
+	 * 方法描述：判断课程是否已经被选择
+	 * @param selectCourse ：已选课程
+	 * @param allCourse ：所有课程
+	 * @return ：所有课程是否已被选择
+	 */
+	public boolean[] checkIsCourseSelect(List<CourseInfo> selectCourse, List<CourseInfo> allCourse){
+		boolean[] flags = new boolean[allCourse.size()];
+		for(int i = 0; i < allCourse.size(); i++){
+			flags[i] = false;
+			for(int j = 0; j < selectCourse.size(); j++){
+				if(allCourse.get(i).getCourseId() == selectCourse.get(j).getCourseId())
+					flags[i] = true;
+			}
+		}
+		return flags;
+	}
+	
+	/**
+	 * 方法描述：判断选课时选择勾选课程的上课时间是否冲突
+	 * @param chooseCourseId ：所选择课程的ID
+	 * @param studentNo ：学生学号
+	 * @return ：冲突——>true
+	 * 			 不冲突——>false
+	 */
+	public boolean checkIsConflict(int[] chooseCourseId,String studentNo){
+		List<CourseInfo> selectCourse = queryCourse(studentNo);
+		List<CourseInfo> chooseCourse = studentDao.queryClass(chooseCourseId);
+		int[][] selectCourseClasshourId = studentDao.queryCourseClasshourId(selectCourse);
+		int[][] chooseCourseClasshourId = studentDao.queryCourseClasshourId(chooseCourse);
+		for(int i = 0; i < selectCourseClasshourId.length; i++){
+			for(int j = 0; j < selectCourseClasshourId[i].length; j++){
+				for(int m = 0; m < chooseCourseClasshourId.length; m++){
+					for(int n = 0; n < chooseCourseClasshourId[m].length; n++){
+						if(selectCourseClasshourId[i][j] == chooseCourseClasshourId[m][n] &&
+								(selectCourse.get(i).getCourseEnd().after(chooseCourse.get(m).getCourseStart()) ||
+								selectCourse.get(i).getCourseStart().before(chooseCourse.get(m).getCourseEnd())) )
+							return true;
+					}
+				}
+			}
+		}
+		return false;
 	}
 }

@@ -1,15 +1,15 @@
 package com.scusw.student.dao.implementation;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.scusw.student.dao.StudentDao;
 import com.scusw.login.action.LoginAction;
+import com.scusw.model.ClasshourInfo;
+import com.scusw.model.ClassroomInfo;
 import com.scusw.model.CourseClasshour;
 import com.scusw.model.CourseInfo;
 import com.scusw.model.MajorInfo;
@@ -105,6 +105,21 @@ public class StudentDaoImpl extends HibernateDaoSupport implements StudentDao {
 	}
 	
 	/**
+	 * 方法描述：通过课程编号查询课程
+	 * @param courseId ：所有被查询课程编号
+	 * @return ：查询到的课程集合
+	 */
+	public List<CourseInfo> queryClass(int[] courseId){
+		List<CourseInfo> course = new ArrayList<CourseInfo>();
+		Query q1 = this.getSession().createQuery("from CourseInfo c where c.courseId=:courseId");
+		for(int i = 0; i < courseId.length; i++){
+			q1.setParameter("courseId", courseId[i]);
+			course.add(((CourseInfo) q1.uniqueResult()));
+		}
+		return course;
+	}
+	
+	/**
 	 * 方法描述：查询所有课程
 	 * @return ：包含所有课程信息的实体的集合
 	 */
@@ -113,41 +128,63 @@ public class StudentDaoImpl extends HibernateDaoSupport implements StudentDao {
 		return courseInfo;
 	}
 	
-	public String[] queryClassroom(List<CourseInfo> courseInfo){
+	/**
+	 * 方法描述：查询上课地点
+	 * @param courseInfo ：所有被查询课程
+	 * @return ：所有课程的所有上课地点
+	 */
+	public String[][] queryClassroom(List<CourseInfo> courseInfo){
 		int size = courseInfo.size();
-		Set<CourseClasshour> courseClasshours = new HashSet<CourseClasshour>(0);
-		String[] classroom = new String[size];
-		int[] classroomId = new int[size];
-		int[] courseNumEveryWeek = new int[size];
+		String[][] classroom = new String[size][];
+		Query q = this.getSession().createQuery("from ClassroomInfo c where c.classroomId=:classroomId");
 		for(int i = 0; i < size; i++) {
-			List<CourseClasshour> courseClasshour = getHibernateTemplate().find("from CourseClasshour c  where c.courseId =?",courseInfo.get(i).getCourseId());
-			courseClasshours.add(courseClasshour.get(i));
-			
-			courseNumEveryWeek[i] = courseClasshour.size();
-			classroom[i] = courseClasshour.get(0).getClassroomInfo().getClassroomAddr();
-			for(int j = 0; j < courseNumEveryWeek.length; j ++){
-				
+			List<CourseClasshour> courseClasshour = getHibernateTemplate().find("from CourseClasshour c  where c.courseInfo.courseId =?",courseInfo.get(i).getCourseId());
+			classroom[i] = new String[courseClasshour.size()];
+			for(int j = 0; j < courseClasshour.size(); j ++){
+				q.setParameter("classroomId", courseClasshour.get(j).getClassroomInfo().getClassroomId());
+				ClassroomInfo c = (ClassroomInfo) q.uniqueResult();
+				classroom[i][j] = c.getClassroomAddr();
 			}
 		}
-		return classroom;	
-	}
-
+		return classroom;
+	} 
+	
 	/**
-	 * 方法描述：检查该学生是否已经选过所选课程
-	 * @param studentId ：学生ID
-	 * @param selectCourseId ：包含学生所选所有课程的ID
-	 * @return  是——>false
-	 * 			否——>true
+	 * 方法描述：查询上课时间
+	 * @param courseInfo ：所有被查询课程
+	 * @return ：所有课程的所有上课时间
 	 */
-	public boolean checkIsCourseSelect(int studentId,int[] selectCourseId){
-		List<RegisterInfo> registerInfos = getHibernateTemplate().find("from RegisterInfo r where r.studentInfo.studentId=?",studentId);
-		for(int i = 0; i < registerInfos.size(); i++)
-			for(int j = 0; j < selectCourseId.length; j++)
-				if (registerInfos.get(i).getCourseInfo().getCourseId() ==  selectCourseId[j])
-					return false;
-		return true;
+	public String[][] queryClasshour(List<CourseInfo> courseInfo){
+		int size = courseInfo.size();
+		String[][] classhourEveryWeek = new String[size][];
+		Query q = this.getSession().createQuery("from ClasshourInfo c where c.classhourId=:classhourId");
+		for(int i = 0; i < size; i ++){
+			List<CourseClasshour> courseClasshour = getHibernateTemplate().find("from CourseClasshour c  where c.courseInfo.courseId =?",courseInfo.get(i).getCourseId());
+			classhourEveryWeek[i] = new String[courseClasshour.size()];
+			for(int j = 0; j < courseClasshour.size(); j ++){
+				q.setParameter("classhourId", courseClasshour.get(j).getClasshourInfo().getClasshourId());
+				classhourEveryWeek[i][j] = ((ClasshourInfo) q.uniqueResult()).getClasshourName();
+			}
+		}
+		return classhourEveryWeek;
 	}
 	
+	/**
+	 * 方法描述：查询课程课时信息编号
+	 * @param course ：所有被查询课程
+	 * @return ：被查询课程的所有课程课时编号
+	 */
+	public int[][] queryCourseClasshourId(List<CourseInfo> course){
+		int[][] courseClasshourId = new int[course.size()][];
+		for(int i = 0; i < course.size(); i ++){
+			List<CourseClasshour> courseClasshour = getHibernateTemplate().find("from CourseClasshour c  where c.courseInfo.courseId =?",course.get(i).getCourseId());
+			courseClasshourId[i] = new int[courseClasshour.size()];
+			for(int j = 0; j < courseClasshour.size(); j ++){
+				courseClasshourId[i][j] = courseClasshour.get(j).getClasshourInfo().getClasshourId();
+			}
+		}
+		return courseClasshourId;
+	}
 	/**
 	 * 方法描述：添加所选课程
 	 * @param registerInfos 选课信息
