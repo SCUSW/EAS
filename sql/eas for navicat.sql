@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2014-03-19 16:29:20
+Date: 2014-03-19 16:57:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -86,13 +86,31 @@ CREATE TABLE `classhour_info` (
   `classhour_avai` int(11) DEFAULT NULL,
   `classhour_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`classhour_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of classhour_info
 -- ----------------------------
-INSERT INTO `classhour_info` VALUES ('1', '12:08:46', '12:08:46', '1', '周一第一节');
-INSERT INTO `classhour_info` VALUES ('2', '12:18:25', '14:18:28', '1', '232222');
+INSERT INTO `classhour_info` VALUES ('1', '08:00:00', '09:30:00', '1', '周一第一节');
+INSERT INTO `classhour_info` VALUES ('2', '10:00:00', '11:30:00', '1', '周一第二节');
+INSERT INTO `classhour_info` VALUES ('3', '14:00:00', '15:30:00', '1', '周一第三节');
+INSERT INTO `classhour_info` VALUES ('4', '16:00:00', '17:30:00', '1', '周一第四节');
+INSERT INTO `classhour_info` VALUES ('5', '08:00:00', '09:30:00', '1', '周二第一节');
+INSERT INTO `classhour_info` VALUES ('6', '10:00:00', '11:30:00', '1', '周二第二节');
+INSERT INTO `classhour_info` VALUES ('7', '14:00:00', '15:30:00', '1', '周二第三节');
+INSERT INTO `classhour_info` VALUES ('8', '16:00:00', '17:30:00', '1', '周二第四节');
+INSERT INTO `classhour_info` VALUES ('9', '08:00:00', '09:30:00', '1', '周三第一节');
+INSERT INTO `classhour_info` VALUES ('10', '10:00:00', '11:30:00', '1', '周三第二节');
+INSERT INTO `classhour_info` VALUES ('11', '14:00:00', '15:30:00', '1', '周三第三节');
+INSERT INTO `classhour_info` VALUES ('12', '16:00:00', '17:30:00', '1', '周三第四节');
+INSERT INTO `classhour_info` VALUES ('13', '08:00:00', '09:30:00', '1', '周四第一节');
+INSERT INTO `classhour_info` VALUES ('14', '10:00:00', '11:30:00', '1', '周四第二节');
+INSERT INTO `classhour_info` VALUES ('15', '14:00:00', '15:30:00', '1', '周四第三节');
+INSERT INTO `classhour_info` VALUES ('16', '16:00:00', '17:30:00', '1', '周四第四节');
+INSERT INTO `classhour_info` VALUES ('17', '08:00:00', '09:30:00', '1', '周五第一节');
+INSERT INTO `classhour_info` VALUES ('18', '10:00:00', '11:30:00', '1', '周五第二节');
+INSERT INTO `classhour_info` VALUES ('19', '14:00:00', '15:30:00', '1', '周五第三节');
+INSERT INTO `classhour_info` VALUES ('20', '16:00:00', '17:30:00', '1', '周五第四节');
 
 -- ----------------------------
 -- Table structure for classroom_info
