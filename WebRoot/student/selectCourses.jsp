@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<td>课程名称</td>
     			<td>开课时间</td>
     			<td>结课时间</td>
-    			<td>上课教师</td>
+    			<td>任课教师</td>
     			<td>上课时间</td>
 				<td>上课地点</td>
     			<td>课程价格</td>
