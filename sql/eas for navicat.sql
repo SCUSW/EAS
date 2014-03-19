@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2014-03-18 17:26:46
+Date: 2014-03-19 13:38:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -35,7 +35,7 @@ CREATE TABLE `admin_info` (
 -- ----------------------------
 -- Records of admin_info
 -- ----------------------------
-INSERT INTO `admin_info` VALUES ('1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Tom', '12345678900', 'cceasy@hotmail.com', '987654345678909876', '2014-03-12 12:08:46', '1');
+INSERT INTO `admin_info` VALUES ('1', 'admin', 'E10ADC3949BA59ABBE56E057F20F883E', 'Tom', '12345678900', 'cceasy@hotmail.com', '987654345678909876', '2014-03-12 12:08:46', '1');
 
 -- ----------------------------
 -- Table structure for branch_info
@@ -86,12 +86,13 @@ CREATE TABLE `classhour_info` (
   `classhour_avai` int(11) DEFAULT NULL,
   `classhour_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`classhour_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of classhour_info
 -- ----------------------------
 INSERT INTO `classhour_info` VALUES ('1', '12:08:46', '12:08:46', '1', '周一第一节');
+INSERT INTO `classhour_info` VALUES ('2', '12:18:25', '14:18:28', '1', '232222');
 
 -- ----------------------------
 -- Table structure for classroom_info
@@ -131,11 +132,7 @@ CREATE TABLE `class_info` (
 -- ----------------------------
 -- Records of class_info
 -- ----------------------------
-INSERT INTO `class_info` VALUES ('5', '4', '2班', '1');
-INSERT INTO `class_info` VALUES ('6', '4', '3班', '1');
-INSERT INTO `class_info` VALUES ('7', '4', '1班', '1');
-INSERT INTO `class_info` VALUES ('8', '5', '2班', '1');
-INSERT INTO `class_info` VALUES ('9', '3', '3班', '1');
+INSERT INTO `class_info` VALUES ('9', null, '3班', '1');
 INSERT INTO `class_info` VALUES ('10', '4', '1班', '1');
 INSERT INTO `class_info` VALUES ('11', '4', '2班', '1');
 INSERT INTO `class_info` VALUES ('12', '4', '3班', '1');
@@ -145,7 +142,7 @@ INSERT INTO `class_info` VALUES ('15', '5', '3班', '1');
 INSERT INTO `class_info` VALUES ('16', '6', '1班', '1');
 INSERT INTO `class_info` VALUES ('17', '6', '2班', '1');
 INSERT INTO `class_info` VALUES ('18', '6', '3班', '1');
-INSERT INTO `class_info` VALUES ('19', '3', '我靠', null);
+INSERT INTO `class_info` VALUES ('19', null, '我靠', null);
 INSERT INTO `class_info` VALUES ('20', null, '你妹啊', null);
 
 -- ----------------------------
@@ -210,7 +207,7 @@ CREATE TABLE `course_classhour` (
   CONSTRAINT `FK_course_classroom` FOREIGN KEY (`classroom_id`) REFERENCES `classroom_info` (`classroom_id`),
   CONSTRAINT `FK_course_etc` FOREIGN KEY (`course_id`) REFERENCES `course_info` (`course_id`),
   CONSTRAINT `FK_course_time` FOREIGN KEY (`classhour_id`) REFERENCES `classhour_info` (`classhour_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of course_classhour
@@ -218,6 +215,7 @@ CREATE TABLE `course_classhour` (
 INSERT INTO `course_classhour` VALUES ('1', '1', '1', '1');
 INSERT INTO `course_classhour` VALUES ('2', '2', '1', '2');
 INSERT INTO `course_classhour` VALUES ('3', '3', '1', '3');
+INSERT INTO `course_classhour` VALUES ('7', '1', '2', '2');
 
 -- ----------------------------
 -- Table structure for course_info
@@ -245,7 +243,7 @@ CREATE TABLE `course_info` (
 -- ----------------------------
 -- Records of course_info
 -- ----------------------------
-INSERT INTO `course_info` VALUES ('1', '1', '2', '线性代数', '2014-03-12', '2014-03-12', '20', null, '1', '线性代数简介');
+INSERT INTO `course_info` VALUES ('1', '1', '2', '线性代数', '2014-03-12', '2014-03-12', '20', '2', '1', '线性代数简介');
 INSERT INTO `course_info` VALUES ('2', '2', '3', '广义相对论', '2014-03-12', '2014-03-12', '20', null, '1', '广义相对论简介');
 INSERT INTO `course_info` VALUES ('3', '3', '4', '大学英语', '2014-03-12', '2014-03-12', '20', null, '1', '大学英语简介');
 INSERT INTO `course_info` VALUES ('4', '1', '2', '狭义相对论', '2014-03-18', '2014-03-12', '1', null, '1', null);
@@ -331,7 +329,6 @@ CREATE TABLE `grade_info` (
 -- ----------------------------
 -- Records of grade_info
 -- ----------------------------
-INSERT INTO `grade_info` VALUES ('3', '1', '3年级', '1', '3年级only');
 INSERT INTO `grade_info` VALUES ('4', '2', '1年级', '1', '1年级only');
 INSERT INTO `grade_info` VALUES ('5', '2', '2年级', '1', '2年级only');
 INSERT INTO `grade_info` VALUES ('6', '2', '3年级', '1', '3年级only');
@@ -481,7 +478,7 @@ CREATE TABLE `privilege_info` (
   `privilege_name` varchar(64) DEFAULT NULL,
   `privilege_desc` text,
   PRIMARY KEY (`privilege_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of privilege_info
@@ -510,6 +507,20 @@ INSERT INTO `privilege_info` VALUES ('21', '查看任课教师课程', '教师')
 INSERT INTO `privilege_info` VALUES ('22', '设置任课教师课程价格', '教师');
 INSERT INTO `privilege_info` VALUES ('23', '查看任课教师教案', '教师');
 INSERT INTO `privilege_info` VALUES ('24', '查看任课教师总结', '教师');
+INSERT INTO `privilege_info` VALUES ('25', '学生基本信息查看', '教务');
+INSERT INTO `privilege_info` VALUES ('26', '确认学生考勤', '教务');
+INSERT INTO `privilege_info` VALUES ('27', '教师基本信息查看', '教务');
+INSERT INTO `privilege_info` VALUES ('28', '教师课程信息查看', '教务');
+INSERT INTO `privilege_info` VALUES ('29', '教师工资清单查看确认', '教务');
+INSERT INTO `privilege_info` VALUES ('30', '添加教师', '教务');
+INSERT INTO `privilege_info` VALUES ('31', '修改课程信息', '教务');
+INSERT INTO `privilege_info` VALUES ('32', '添加课程信息', '教务');
+INSERT INTO `privilege_info` VALUES ('33', '删除课程信息', '教务');
+INSERT INTO `privilege_info` VALUES ('34', '智能排课', '教务');
+INSERT INTO `privilege_info` VALUES ('35', '查看教学日历', '教务');
+INSERT INTO `privilege_info` VALUES ('36', '添加咨询信息', '财务');
+INSERT INTO `privilege_info` VALUES ('37', '查询营销人员信息', '财务');
+INSERT INTO `privilege_info` VALUES ('38', '查看营销人员绩效', '财务');
 
 -- ----------------------------
 -- Table structure for register_info
@@ -779,7 +790,7 @@ CREATE TABLE `staff_info` (
 -- Records of staff_info
 -- ----------------------------
 INSERT INTO `staff_info` VALUES ('1', 's1001', 'e10adc3949ba59abbe56e057f20f883e', '1', '1', '1', '张三1', '18255623489', '147895654', '354895214478596548', '2014-03-12 12:08:46', '1', '没有其他信息');
-INSERT INTO `staff_info` VALUES ('2', 's1002', 'e10adc3949ba59abbe56e057f20f883e', '1', '2', '2', '张三2', '18255658989', '147895654', '353895214478596548', '2014-03-12 12:14:34', '1', '没有其他信息');
+INSERT INTO `staff_info` VALUES ('2', 's1002', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '2', '2', '张三2', '18255658989', '147895654', '353895214478596548', '2014-03-12 12:14:34', '1', '没有其他信息');
 INSERT INTO `staff_info` VALUES ('3', 's1003', 'e10adc3949ba59abbe56e057f20f883e', '1', '3', '3', '张三3', '18345658989', '147895654', '356895214478596548', '2014-03-12 12:14:36', '1', '没有其他信息');
 INSERT INTO `staff_info` VALUES ('4', 's1004', 'e10adc3949ba59abbe56e057f20f883e', '1', '4', '1', '张三4', '18255888989', '147895654', '354885214478596548', '2014-03-12 12:14:38', '1', '没有其他信息');
 INSERT INTO `staff_info` VALUES ('5', 's1005', 'e10adc3949ba59abbe56e057f20f883e', '1', '5', '2', '张三5', '18255577989', '147895654', '350005214478596548', '2014-03-12 12:14:41', '1', '没有其他信息');
@@ -911,9 +922,9 @@ CREATE TABLE `student_info` (
 -- ----------------------------
 -- Records of student_info
 -- ----------------------------
-INSERT INTO `student_info` VALUES ('1', 'e10adc3949ba59abbe56e057f20f883e', '5', '2', '1', '1', '1143111121', '傻逼', '1', '18', 'jack1 addr', '4589651', '10000', '川大', '软件工程', '2014-03-17 23:50:38', '1', 'jack1 remark');
-INSERT INTO `student_info` VALUES ('2', 'e10adc3949ba59abbe56e057f20f883e', '5', '2', '1', '1', '1143111122', 'jack2', '0', '18', 'jack2 addr', '4589652', '10000', '川大', '软件工程', '2014-03-16 00:51:34', '1', 'jack2 remark');
-INSERT INTO `student_info` VALUES ('3', 'e10adc3949ba59abbe56e057f20f883e', '6', '2', '1', '1', '1143111123', 'jack3', '1', '18', 'jack3 addr', '4589653', '10000', '川大', '软件工程', '2014-03-16 00:51:38', '1', 'jack3 remark');
+INSERT INTO `student_info` VALUES ('1', 'E10ADC3949BA59ABBE56E057F20F883E', null, '2', '1', '1', '1143111121', '傻逼', '1', '18', 'jack1 addr', '4589651', '10000', '川大', '软件工程', '2014-03-17 23:50:38', '1', 'jack1 remark');
+INSERT INTO `student_info` VALUES ('2', 'e10adc3949ba59abbe56e057f20f883e', null, '2', '1', '1', '1143111122', 'jack2', '0', '18', 'jack2 addr', '4589652', '10000', '川大', '软件工程', '2014-03-16 00:51:34', '1', 'jack2 remark');
+INSERT INTO `student_info` VALUES ('3', 'e10adc3949ba59abbe56e057f20f883e', null, '2', '1', '1', '1143111123', 'jack3', '1', '18', 'jack3 addr', '4589653', '10000', '川大', '软件工程', '2014-03-16 00:51:38', '1', 'jack3 remark');
 
 -- ----------------------------
 -- Table structure for teacher_info
