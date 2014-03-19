@@ -18,24 +18,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
-	<style type="text/css">
-	div#listlev {
-	text-align:left;
-	background-color:#ffff99;
-	}
-	h2 {margin-bottom:0; font-size:14px;}
-	ul {margin:0;}
-	li {list-style:none;margin-top: 5px;}
-	a {text-decoration:none;}
-	</style>
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 
   </head>
   
-  <body bgcolor="#ffff99">
+  <body>
     
     <div id="listlev">
 <%-- 
@@ -57,10 +53,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	}
 	    }
     </script> -->
+	<br/>
    
-	<table border="1px">
+	<table class="table table-hover" border="1px">
 	<thead>
-		<tr>
+		<tr class="warning">
 			<th>级别编号</th>
 			<th>级别名称</th>
 			<th>基本课时</th>
@@ -70,15 +67,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</thead>
 	<tbody>
 		<c:forEach items="${request.teaLevels}" var="l">
- 			<tr> 
+ 			<tr class="success"> 
  				<td align="center">${l.levelId}</td><td align="center">${l.levelName}</td><td align="center">${l.baseClassHour}</td><td align="center">${l.classCost}</td>
- 				<td align="center"><a href="<%=basePath %>teaLevelManage!updateTeaLevel1.action?teaLevel.levelId=${l.levelId}">编辑</a>&nbsp;&nbsp;<a href="<%=basePath %>teaLevelManage!delTeaLevel.action?teaLevel.levelId=${l.levelId}">删除</a></td>
+ 				<td align="center"><button class="btn btn-default" onclick="window.location.href='teaLevelManage!updateTeaLevel1.action?teaLevel.levelId=${l.levelId}'">编辑</button><button class="btn btn-default" onclick="window.location.href='<%=basePath %>teaLevelManage!delTeaLevel.action?teaLevel.levelId=${l.levelId}'">删除</button></td>
  			</tr>
- 			<tr>
+ 			<tr class="active">
  				<td colspan="5">备注信息: ${l.levelRemark}</td>
  			</tr>
  			<tr>
- 				<td colspan="5" bgcolor="#FFCCFF">&nbsp;<td>
+ 				<td colspan="5" bgcolor="#FFCCFF">&nbsp;</td>
  			</tr>
     	</c:forEach>
     	

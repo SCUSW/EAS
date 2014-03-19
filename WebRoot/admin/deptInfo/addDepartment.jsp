@@ -18,39 +18,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
-	<style type="text/css">
-	div#adddep {
-	text-align:left;
-	background-color:#ffff99;
-	}
-	h2 {margin-bottom:0; font-size:14px;}
-	ul {margin:0;}
-	li {list-style:none;margin-top: 5px;}
-	a {text-decoration:none;}
-	</style>
-
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	
+	
   </head>
   
   <body>
-  
-  	<div id="adddep">
+  	<center>
+  	<br/>
   	
 	<form name="addDepartment" action="<%=basePath %>departmentManage!addDepartment.action" method="post">
 	
-	部门名称：<input id="name" type="text" width="30" name="departmentInfo.departmentName"/><br/>
-	分支机构：<select name="departmentInfo.branchInfo.branchId">
-			<c:forEach items="${request.branchs}" var="b">
-				<option value="${b.branchId}">${b.branchId}:${b.branchName}</option>
-			</c:forEach>
-			</select>
-	<br/>
-	部门简介：<textarea name="departmentInfo.departmentIntr" rows="10" cols="30"></textarea><br/>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="button" name="sub" value="确定添加" onclick="check()" />
+	
+	
+	<div style="width:300px;">
+		<div class="input-group input-group-sm">
+ 	 			<span class="input-group-addon">部门名称</span>
+				<input id="name" name="departmentInfo.departmentName" type="text" class="form-control" >
+			</div>
+		</div>
+	
+	<div style="width:300px;">
+		<div class="input-group input-group-sm">
+ 	 			<span class="input-group-addon">分支机构</span>
+				<select class="form-control" name="departmentInfo.branchInfo.branchId">
+					<c:forEach items="${request.branchs}" var="b">
+						<option value="${b.branchId}">${b.branchId}:${b.branchName}</option>
+					</c:forEach>
+				</select>
+			</div>
+	</div>
+	
+	<div style="width:300px;">
+		<div class="input-group input-group-sm">
+ 	 			<span class="input-group-addon">部门简介</span>
+				<textarea class="form-control" name="departmentInfo.departmentIntr" rows="10" cols="30"></textarea>
+			</div>
+		</div>
+	
+	<input name="sub" class="btn btn-default" type="button" value="确认" onclick="check()">
+	
 	
 	</form>	
 	
@@ -67,7 +83,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </script>
 	
 	
-	</div>
-	
+	</center>
 	</body>
 </html>

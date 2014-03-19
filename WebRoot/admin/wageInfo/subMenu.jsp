@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <h2>工资与职类管理</h2>
     <br/>
 	<ul>
-		<li><a href="<%=basePath %>vocationManage!listVocation.action?nextPage=1&branchInfo.branchId=0" target="content" >查看职类信息</a></li>
+		<li><a href="<%=basePath %>vocationManage!listVocation.action" target="content" >查看职类信息</a></li>
 		<li><a href="<%=basePath %>vocationManage!addVocation1.action" target="content" >增加职类信息</a></li>
 	</ul>
     </div>

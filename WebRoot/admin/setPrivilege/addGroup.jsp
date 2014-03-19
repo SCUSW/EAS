@@ -18,43 +18,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
-	<style type="text/css">
-	div#addgro {
-	text-align:left;
-	background-color:#ffff99;
-	}
-	h2 {margin-bottom:0; font-size:14px;}
-	ul {margin:0;}
-	li {list-style:none;margin-top: 5px;}
-	a {text-decoration:none;}
-	</style>
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	
+	
 
   </head>
   
-  <body bgcolor="#ffff99">
+  <body >
   
-  	<div id="addgro">
+	<center>
   	
 	<form name="addGroup" id="addGroup" action="<%=basePath %>privilegeManage!addGroup.action" method="post">
+	<div style="width:300px;">
+		<div class="input-group input-group-sm">
+ 	 			<span class="input-group-addon">权限组名称</span>
+				<input type="text" id="name" name="groupInfo.groupName" class="form-control" >
+			</div>
+		</div>
 	
-	权限组名称：<input type="text" width="30" id="name" name="groupInfo.groupName"/><br/>
 	
-	所拥有权限：<br/>
-	<c:forEach items="${privileges }" var="p">
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<input type="checkbox" name="privileges" value="${p.privilegeId }" ><abbr tilte="${privilegeDesc }">${p.privilegeName } (权限编号为： ${p.privilegeId })</abbr>
-		<br/>
-	</c:forEach>
 	
-	权限组说明：<textarea name="groupInfo.groupRemark" rows="10" cols="30"></textarea><br/>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="button" value="确定添加" onclick="check()" />
+	<div style="width:300px;">
+		<div style="text-align:left;" class="input-group input-group-sm">
+ 	 			<span class="input-group-addon">所拥有权限</span>
+				<c:forEach items="${privileges }" var="p">	
+				<input type="checkbox" name="privileges" value="${p.privilegeId }" >
+				<abbr tilte="${privilegeDesc }">${p.privilegeName } (权限编号为： ${p.privilegeId })</abbr>
+				<br/>
+				</c:forEach>
+			</div>
+		</div>
 	
+	<div style="width:300px;">
+		<div class="input-group input-group-sm">
+ 	 			<span class="input-group-addon">权限组说明</span>
+				<textarea class="form-control" name="groupInfo.groupRemark" rows="10" cols="30"></textarea>
+			</div>
+		</div>
+	
+	
+	<input class="btn btn-default" type="button" value="确定添加" onclick="check()" />
 	</form>	
 	
 	<script language="javascript">
@@ -69,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    }
     </script>
 	
-	</div>
 	
+	</center>
 	</body>
 </html>

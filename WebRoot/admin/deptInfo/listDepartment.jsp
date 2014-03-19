@@ -1,8 +1,9 @@
-<%@ page language="java" import="java.util.*,com.scusw.model.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
 
@@ -18,48 +19,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
-	<style type="text/css">
-	div#listdep {
-	text-align:left;
-	background-color:#ffff99;
-	}
-	h2 {margin-bottom:0; font-size:14px;}
-	ul {margin:0;}
-	li {list-style:none;margin-top: 5px;}
-	a {text-decoration:none;}
-	</style>
-
-  </head>
-  
-  <body bgcolor="#ffff99">
-    
-    <div id="listdep">
-
-
-    <form id="searchDepartment" name="searchDepartment" method="post" action="<%=basePath %>departmentManage!searchDepartment.action?nextPage=1&branchId=0">
-    关键字查询: 
-    <input type="text" name="keyword" id="keyword" value="${keyword}" onfocus="javascript:if(this.value=='请输入关键字进行搜索')this.value='';"> 
-    &nbsp;&nbsp; <input type="button" value="搜索" onclick="check()">
-    </form>
-    
-	<form id="searchDepartment2" name="searchDepartment2" method="post" action="<%=basePath %>departmentManage!searchDepartment2.action?nextPage=1">
-	分类查询:
-	<select name="branchId">
-		<option value="0">所有分支机构</option>
-		<c:forEach items="${branchs}" var="b">
-			<option value="${b.branchId}" ${b.branchId==branchId?"selected":"" }>${b.branchId}.${b.branchName}</option>
-		</c:forEach>
+	<link rel="stylesheet" type="text/css" href="css/body.css">
 	
-	</select> 
-	&nbsp;&nbsp; <input type="submit" value="查询" >
-	</form>
-    
-    
-    <!-- check search is null? -->
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	
+	
+	   <!-- check search is null? -->
     <script language="javascript">
 	    function check(){
 	    	
@@ -72,10 +44,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	}
 	    }
     </script>
+  </head>
+  
+  <body ><center>
     
-	<table border="1px">
-	<thead>
-		<tr>
+  
+    <form id="searchDepartment" name="searchDepartment" method="post" action="<%=basePath %>departmentManage!searchDepartment.action?nextPage=1&branchId=0">
+   
+	   <input class="btn btn-default"  name="sub" style="position:relative;top:4px;margin-left:400px;font-size:12px;" type="button" value="搜索" onclick="check()" />  
+	   <span style="position:relative;margin-top:120px;top:5px;left:-330px;"> 关键字查询: </span>
+	   <input style="width:200px;margin-top:-27px;margin-left:80px;height:31px;" class="form-control" name="keyword" id="keyword" value="${keyword}" onfocus="javascript:if(this.value=='请输入关键字进行搜索')this.value='';"/>
+   
+    </form>
+    
+    
+    <form id="searchDepartment2" name="searchDepartment2" method="post" action="<%=basePath %>departmentManage!searchDepartment2.action?nextPage=1">
+	<input class="btn btn-default" style="position:relative;top:4px;margin-left:400px;font-size:12px;" type="button" value="查询" />  
+	   <span style="position:relative;margin-top:120px;top:5px;left:-330px;"> 分&nbsp;&nbsp;类&nbsp;查&nbsp;询: </span>
+	   <select style="width:200px;margin-top:-27px;margin-left:80px;height:31px;" class="form-control" >
+	  	<option value="0">所有分支机构</option>
+	  	<c:forEach items="${branchs}" var="b">
+			<option value="${b.branchId}">${b.branchId}:${b.branchName}</option>
+		</c:forEach>
+	   </select>
+		
+	
+	</form>
+    
+    
+ 
+   
+	<table class="table table-hover" border="1px">
+	<thead >
+		<tr class="warning">
 			<th>部门编号</th>
 			<th>部门名称</th>
 			<th>创建时间</th>
@@ -83,22 +84,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<th>管理部门信息</th>
 		</tr>
 	</thead>
- 	<tbody>
- 		<s:iterator value="list">
- 			<tr>
+	<tbody>
+		<s:iterator value="list">
+ 			<tr class="success">
  				<td align="center">${departmentId}</td><td align="center">${departmentName}</td><td align="center">${departmentFoundedTime}</td><td align="center"><abbr title="${branchInfo.branchName}">${branchInfo.branchId}</abbr></td>
- 				<td align="center"><a href="<%=basePath%>departmentManage!updateDepartment1.action?departmentInfo.departmentId=${departmentId}">编辑</a>&nbsp;&nbsp;<a href="<%=basePath %>departmentManage!delDepartment.action?departmentInfo.departmentId=${departmentId}">删除</a></td>
+ 				<td align="center">
+ 				<button class="btn btn-default" onclick="window.location.href='<%=basePath %>departmentManage!updateDepartment1.action?departmentInfo.departmentId=${departmentId}'"><span class="glyphicon glyphicon-edit"></span> 编辑</button>
+ 				<button class="btn btn-default" onclick="window.location.href='<%=basePath %>departmentManage!delDepartment.action?departmentInfo.departmentId=${departmentId}'"><span class="glyphicon glyphicon-remove"></span> 删除</button></td>
+ 			</tr>
+ 			<tr class="success">
+ 				<td colspan="5">部门简介: ${d.departmentIntr}</td>
  			</tr>
  			<tr>
- 				<td colspan="5">部门简介: ${departmentIntr}</td>
+ 				<td colspan="5" bgcolor="#FFCCFF">&nbsp;</td>
  			</tr>
- 			<tr>
- 				<td colspan="5" bgcolor="#FFCCFF">&nbsp;<td>
- 			</tr>
-    
-   		</s:iterator>
+    	</s:iterator>
+    	
 	</tbody>
 	</table> 
+	
+	
 	
 	
 	总共： ${request.total } 条记录 &nbsp;&nbsp;
@@ -108,24 +113,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		if((Integer)request.getAttribute("currentPage")!=1){	
 	%>
 
-			<a href="<%=basePath%>departmentManage!listDepartment.action?nextPage=1&pageSize=${request.pageSize }">首页</a>&nbsp;&nbsp;
-			<a href="<%=basePath%>departmentManage!listDepartment.action?nextPage=<%=((Integer)request.getAttribute("currentPage")-1) %>&pageSize=${request.pageSize }">上一页</a>&nbsp;&nbsp;
+			<button class="btn btn-default" onclick="window.location.href='<%=basePath%>departmentManage!listDepartment.action?nextPage=1&pageSize=${request.pageSize }'">首页</button>
+			<button class="btn btn-default" onclick="window.location.href='<%=basePath%>departmentManage!listDepartment.action?nextPage=<%=((Integer)request.getAttribute("currentPage")-1) %>&pageSize=${request.pageSize }'">上一页</button>
 		<%} %>
 		当前第${request.currentPage }页&nbsp;&nbsp;
 		<%
 		if((Integer)request.getAttribute("currentPage")<(Integer)request.getAttribute("total")/(Integer)request.getAttribute("pageSize")+1){	
 		%>
-			<a href="<%=basePath%>departmentManage!listDepartment.action?nextPage=<%=((Integer)request.getAttribute("currentPage")+1) %>&pageSize=${request.pageSize }">下一页</a>&nbsp;&nbsp;
-			<a href="<%=basePath%>departmentManage!listDepartment.action?nextPage=<%=((Integer)request.getAttribute("total")/(Integer)request.getAttribute("pageSize")+1) %>&pageSize=${request.pageSize }">末页</a>&nbsp;&nbsp;
+			<button class="btn btn-default" onclick="window.location.href='<%=basePath%>departmentManage!listDepartment.action?nextPage=<%=((Integer)request.getAttribute("currentPage")+1) %>&pageSize=${request.pageSize }'">下一页</button>
+			<button class="btn btn-default" onclick="window.location.href='<%=basePath%>departmentManage!listDepartment.action?nextPage=<%=((Integer)request.getAttribute("total")/(Integer)request.getAttribute("pageSize")+1) %>&pageSize=${request.pageSize }'">末页</button>
 		<%} 
 	}%>
 	
 	
 	
 	
-	
-	
-	
-	</div>
+
+    
+	</center>
   </body>
 </html>

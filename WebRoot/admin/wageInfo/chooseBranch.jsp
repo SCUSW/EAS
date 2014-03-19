@@ -18,24 +18,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
-	<style type="text/css">
-	div#chobra {
-	text-align:left;
-	background-color:#ffff99;
-	}
-	h2 {margin-bottom:0; font-size:14px;}
-	ul {margin:0;}
-	li {list-style:none;margin-top: 5px;}
-	a {text-decoration:none;}
-	</style>
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 
   </head>
   
-  <body bgcolor="#ffff99">
+  <body >
+  <center>
 		
 		<div id="chobra">
 		<h2>请选择分支机构:</h2>
@@ -47,8 +44,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</c:forEach>
 			
 		</SELECT>
-		<input type="submit" id="chooseBraSub" value="确定"/>
+		<input class="btn btn-default" type="submit" id="chooseBraSub" value="确定"/>
 		</form>
 	</div>
+	</center>
   </body>
 </html>

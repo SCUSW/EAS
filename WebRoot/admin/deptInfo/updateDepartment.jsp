@@ -17,44 +17,72 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
-	<style type="text/css">
-	div#updatedep {
-	text-align:left;
-	background-color:#ffff99;
-	}
-	h2 {margin-bottom:0; font-size:14px;}
-	ul {margin:0;}
-	li {list-style:none;margin-top: 5px;}
-	a {text-decoration:none;}
-	</style>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 
   </head>
   
   <body>
-  
-  	<div id="updatedep">
+  <center>
+  	<br/><br/>
+  	
   	
 	<form name="updateDepartment" action="<%=basePath %>departmentManage!updateDepartment2.action" method="post">
 	<input type="hidden" name="departmentInfo.departmentAvai" value="${request.departmentInfo.departmentAvai}"/>
-	部门编号：<input id="bid" type="text" width="30" disabled="disabled" readonly="readonly" name="departmentInfo.branchId" value="${request.departmentInfo.departmentId }"/><br/>
-	创建时间：<input id="btime" type="text" width="30" disabled="disabled" readonly="readonly" name="departmentInfo.departmentFoundedTime" value="${request.departmentInfo.departmentFoundedTime }"/><br/>
-	部门名称：<input id="name" type="text" width="30" name="departmentInfo.departmentName" value="${request.departmentInfo.departmentName }"/><br/>
 	
-	分支机构：<select name="departmentInfo.branchInfo.branchId">
-			<c:forEach items="${request.branchs}" var="b">
-				<option value="${b.branchId}" ${departmentInfo.branchInfo.branchId eq b.branchId?"selected":"" }>${b.branchId}:${b.branchName}</option>
-			</c:forEach>
+	<div style="width:300px;">
+		<div class="input-group input-group-sm">
+ 	 			<span class="input-group-addon">部门编号</span>
+				<input id="bid" type="text" width="30" readonly="readonly" name="departmentInfo.branchId" value="${request.departmentInfo.departmentId }" class="form-control" >
+			</div>
+	
+		</div>
+		
+	<div style="width:300px;">
+		<div class="input-group input-group-sm">
+ 	 			<span class="input-group-addon">创建时间</span>
+				<input id="btime" type="text" width="30" readonly="readonly" name="departmentInfo.departmentFoundedTime" value="${request.departmentInfo.departmentFoundedTime }" class="form-control" >
+			</div>
+	
+		</div>	
+	
+	<div style="width:300px;">
+		<div class="input-group input-group-sm">
+ 	 			<span class="input-group-addon">部门名称</span>
+				<input id="name" type="text" width="30" name="departmentInfo.departmentName" value="${request.departmentInfo.departmentName }" class="form-control" >
+			</div>
+		
+		</div>
+		
+	<div style="width:300px;">
+		<div class="input-group input-group-sm">
+ 	 			<span class="input-group-addon">分支机构</span>
+				<select class="form-control" name="departmentInfo.branchInfo.branchId">
+				<option value="${request.departmentInfo.branchInfo.branchId}" selected="selected">${request.departmentInfo.branchInfo.branchId}:${request.departmentInfo.branchInfo.branchName}</option>
+				<c:forEach items="${request.branchs}" var="b">
+					<option value="${b.branchId}">${b.branchId}:${b.branchName}</option>
+				</c:forEach>
 			</select>
-	<br/>
+			</div>
+		</div>		
 	
-	部门简介：<textarea name="departmentInfo.departmentIntr" rows="10" cols="30" >${request.departmentInfo.departmentIntr }</textarea><br/>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="button" name="sub" value="提交修改" onclick="check()" />
+	<div style="width:300px;">
+		<div class="input-group input-group-sm">
+ 	 			<span class="input-group-addon">部门简介</span>
+				<textarea class="form-control" name="departmentInfo.departmentIntr" rows="10" cols="30" >${request.departmentInfo.departmentIntr }</textarea>
+			</div>
+		</div>		
 	
+	
+	<input class="btn btn-default" type="button" name="sub" value="提交修改" onclick="check()" />
 	</form>	
 	
 	 <script type="text/javascript">
@@ -70,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </script>
 	
 	
-	</div>
-	
+
+	</center>
 	</body>
 </html>

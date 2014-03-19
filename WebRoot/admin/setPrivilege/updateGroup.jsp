@@ -18,48 +18,63 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
-	<style type="text/css">
-	div#updategro {
-	text-align:left;
-	background-color:#ffff99;
-	}
-	h2 {margin-bottom:0; font-size:14px;}
-	ul {margin:0;}
-	li {list-style:none;margin-top: 5px;}
-	a {text-decoration:none;}
-	</style>
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	
+	
 
   </head>
   
-  <body bgcolor="#ffff99">
-  
-  	<div id="updategro">
+  <body >
+  <center>
+  	<br/>
+  	
   	
 	<form name="updateGroup" id="updateGroup" action="<%=basePath %>privilegeManage!updateGroup2.action" method="post">
-	权限组编号：<input type="text" width="30" id="gid" readonly="readonly" name="groupInfo.groupId" value="${request.groupInfo.groupId }" /><br/>
-	权限组名称：<input type="text" width="30" id="name" name="groupInfo.groupName" value="${request.groupInfo.groupName } "/><br/>
+	<div style="width:300px;">
+		<div class="input-group input-group-sm">
+ 	 			<span class="input-group-addon">权限组编号</span>
+				<input type="text" id="gid" readonly="readonly" name="groupInfo.groupId" value="${request.groupInfo.groupId }"  class="form-control" >
+			</div>
+		</div>
+		
+	<div style="width:300px;">
+		<div class="input-group input-group-sm">
+ 	 			<span class="input-group-addon">权限组名称</span>
+				<input type="text" id="name" name="groupInfo.groupName" value="${request.groupInfo.groupName } "  class="form-control" >
+			</div>
+		</div>
 	
-	所拥有权限：<br/>
-	<c:forEach items="${privileged }" var="p">
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<input type="checkbox" name="privileges" value="${p.privilegeId }" checked="checked" ><abbr tilte="${p.privilegeDesc }">${p.privilegeName } (权限编号为： ${p.privilegeId })</abbr>
-		<br/>
-	</c:forEach>
+	<div style="width:300px;">
+		<div align="left" class="input-group input-group-sm">
+ 	 			<span class="input-group-addon">所拥有权限</span>
+ 	 			<c:forEach items="${privileged }" var="p">
+				<input type="checkbox" name="privileges" value="${p.privilegeId }" checked="checked" ><abbr tilte="${p.privilegeDesc }">${p.privilegeName } (权限编号为： ${p.privilegeId })</abbr><br/>
+				</c:forEach>
+				<c:forEach items="${privileges }" var="p">
+				<input type="checkbox" name="privileges" value="${p.privilegeId }" ><abbr tilte="${p.privilegeDesc }">${p.privilegeName } (权限编号为： ${p.privilegeId })</abbr>
+				<br/>
+				</c:forEach>
+			</div>
+		</div>
+		
+	<div style="width:300px;">
+		<div class="input-group input-group-sm">
+ 	 			<span class="input-group-addon">权限组说明</span>
+				<textarea name="groupInfo.groupRemark" rows="10" cols="30" >${request.groupInfo.groupRemark }</textarea>
+			</div>
+		</div>	
 	
-	<c:forEach items="${privileges }" var="p">
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<input type="checkbox" name="privileges" value="${p.privilegeId }" ><abbr tilte="${p.privilegeDesc }">${p.privilegeName } (权限编号为： ${p.privilegeId })</abbr>
-		<br/>
-	</c:forEach>
+	<input class="btn btn-default" type="button" value="提交修改" onclick="check()" />
 	
-	权限组说明：<textarea name="groupInfo.groupRemark" rows="10" cols="30" >${request.groupInfo.groupRemark }</textarea><br/>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="button" value="提交修改" onclick="check()" />
 	
 	</form>	
 	
@@ -75,7 +90,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    }
     </script>
 	
-	</div>
-	
+	</center>
 	</body>
 </html>

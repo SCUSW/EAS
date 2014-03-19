@@ -18,36 +18,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
-	<style type="text/css">
-	div#listpri {
-	text-align:left;
-	background-color:#ffff99;
-	}
-	h2 {margin-bottom:0; font-size:14px;}
-	ul {margin:0;}
-	li {list-style:none;margin-top: 5px;}
-	a {text-decoration:none;}
-	</style>
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	
+	
 
   </head>
   
-  <body bgcolor="#ffff99">
+  <body >
     
-    <div id="listpri">
+    
     
     <!-- list as defined list  -->
     
-    <dl>
+    <table class="table table-hover">
     	<c:forEach items="${request.privileges}" var="p">
-	   	<dt>权限编号: ${p.privilegeId} &nbsp;&nbsp;&nbsp; 权限名称: ${p.privilegeName}</dt>
-	   	<dd>权限描述: ${p.privilegeDesc}</dd>
-		<br/>
+	   	<tr class="warning"><td>权限编号: ${p.privilegeId} &nbsp;&nbsp;&nbsp; 权限名称: ${p.privilegeName}&nbsp;&nbsp;&nbsp;权限描述: ${p.privilegeDesc}</td></tr>
+	
 	   	</c:forEach>
-	</dl>
+	</table>
     
     
    
