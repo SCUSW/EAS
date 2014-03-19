@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>权限不足</title>
+    <title>找不到页面</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -33,16 +33,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   height:350px;
   background:transparent url(image/error.png) no-repeat right center;
   color:#666;
-  font-size:20px}
+  font-size:20px};
   </style>
   <body>
   <br><br><br><br>
   <center>
   <div class="container col-xs-12 col-md-offset-1 col-md-10 site-error">
   <br><br>
-  		<p style="font-size:72px;">别玩了</p><br>
-  		<p style="font-size:72px;">你没有权限</p><br>
-  		请使用正确权限登录！
+  		<p style="font-size:128px;">玩脱了</p><br>
+  		没有找到这个页面！
 </div>
    </center>
   </body>
