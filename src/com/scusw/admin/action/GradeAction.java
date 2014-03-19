@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.scusw.admin.service.GradeService;
 import com.scusw.model.BranchInfo;
 import com.scusw.model.GradeInfo;
+import com.scusw.util.CheckPrivilege;
 
 public class GradeAction {
 	Logger logger = Logger.getLogger(GradeAction.class);
@@ -60,6 +61,9 @@ public class GradeAction {
 	}
 	
 	public String queryGrade() {
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		List<GradeInfo> list = gradeService.queryGrade();
 		request = (Map<String, Object>) ActionContext.getContext().get("request");
 		request.put("grade", list);
@@ -67,16 +71,25 @@ public class GradeAction {
 		return "success";
 	}
 	public String deleteGrade() {
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		gradeService.deleteGrade(gradeId, false);
 		return this.queryGrade();
 	}
 	public String addGrade() {
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		List<BranchInfo> list = gradeService.queryBranch();
 		request = (Map<String, Object>) ActionContext.getContext().get("request");
 		request.put("branch", list);
 		return "add_grade";
 	}
 	public String addGradeInfo() {
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		gradeService.addGrade(gradeName, branchId);
 		return this.queryGrade();
 	}

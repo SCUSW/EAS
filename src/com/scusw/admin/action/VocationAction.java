@@ -10,6 +10,7 @@ import com.scusw.admin.service.VocationService;
 import com.scusw.model.BranchInfo;
 import com.scusw.model.DepartmentInfo;
 import com.scusw.model.PositionInfo;
+import com.scusw.util.CheckPrivilege;
 
 
 /**
@@ -97,7 +98,9 @@ public class VocationAction {
 	 * @return
 	 */
 	public String listVocation(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		List<PositionInfo> list = vocationService.queryAllVocation(nextPage, pageSize);
 		request = (Map)ActionContext.getContext().get("request");
 		keyword = "";
@@ -118,7 +121,9 @@ public class VocationAction {
 	 * @return
 	 */
 	public String delVocation(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 //		nextPage = 1;
 //		pageSize = 10;
 		vocation = vocationService.queryVocationById(vocation.getVocationId());
@@ -135,7 +140,9 @@ public class VocationAction {
 	 * @return
 	 */
 	public String searchVocation1(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		if(branchInfo.getBranchId() == 0){
 			return listVocation();
 		}
@@ -159,6 +166,9 @@ public class VocationAction {
 	 * @return
 	 */
 	public String searchVocation2(){
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		List<PositionInfo> list = vocationService.queryVocatinByKeyword(keyword,nextPage, pageSize);
 		request = (Map)ActionContext.getContext().get("request");
 		request.clear();
@@ -190,7 +200,9 @@ public class VocationAction {
 	 * @return
 	 */
 	public String addVocation1(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		request = (Map)ActionContext.getContext().get("request");
 		request.put("branchs",vocationService.queryAllBranch());
 		return "chooseBranch";
@@ -202,7 +214,9 @@ public class VocationAction {
 	 * @return
 	 */
 	public String addVocation2(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		request = (Map)ActionContext.getContext().get("request");
 		request.put("departments", vocationService.queryDepartmentBybranchId(branchInfo.getBranchId()));
 		return "addVocation";
@@ -214,7 +228,9 @@ public class VocationAction {
 	 * @return
 	 */
 	public String addVocation3(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		nextPage=1;
 		if(vocationService.addVocation(vocation)){
 			return listVocation();
@@ -228,7 +244,9 @@ public class VocationAction {
 	 * @return
 	 */
 	public String updateVocation1(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		vocation = vocationService.queryVocationById(vocation.getVocationId());
 		request = (Map)ActionContext.getContext().get("request");
 		request.put("branchs",vocationService.queryAllBranch());
@@ -241,7 +259,9 @@ public class VocationAction {
 	 * @return
 	 */
 	public String updateVocation2(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		request = (Map)ActionContext.getContext().get("request");
 		request.put("departments", vocationService.queryDepartmentBybranchId(branchInfo.getBranchId()));
 		return "updateVocation";
@@ -253,7 +273,9 @@ public class VocationAction {
 	 * @return
 	 */
 	public String updateVocation3(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		if(vocationService.updateVocation(vocation)){
 			return listVocation();
 		}
@@ -266,7 +288,9 @@ public class VocationAction {
 	 * 
 	 */
 	public String execute() throws Exception {
-		 
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		list = vocationService.queryDepartmentBybranchId(Integer.parseInt(sf));
 
 		return "success";

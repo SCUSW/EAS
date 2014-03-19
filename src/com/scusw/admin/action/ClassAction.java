@@ -10,6 +10,7 @@ import com.scusw.admin.service.ClassService;
 import com.scusw.admin.service.GradeService;
 import com.scusw.model.ClassInfo;
 import com.scusw.model.GradeInfo;
+import com.scusw.util.CheckPrivilege;
 
 public class ClassAction {
 	private ClassService classService;
@@ -60,22 +61,34 @@ public class ClassAction {
 		this.classService = classService;
 	}
 	public String checkClassForGrade() {
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		request = (Map<String, Object>) ActionContext.getContext().get("request");
 		List<ClassInfo> list = classService.checkClassForGrade(gradeId);
 		request.put("class", list);
 		return "success";
 	}
 	public String queryClass() {
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		request = (Map<String, Object>) ActionContext.getContext().get("request");
 		List<ClassInfo> list = classService.queryClass();
 		request.put("class", list);
 		return "success";
 	}
 	public String deleteClass() {
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		classService.deleteClass(classId);
 		return this.queryClass();
 	}
 	public String updateClass() {
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		List<GradeInfo> list = classService.queryGrade(classId);
 		request = (Map<String, Object>) ActionContext.getContext().get("request");
 		request.put("grade", list);
@@ -84,6 +97,9 @@ public class ClassAction {
 		return "update_success";
 	}
 	public String updateClassInfo() {
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		logger.info(classId+" " + className + " " + gradeId);
 		classService.updateClassInfo(classId, className, gradeId);
 		request = (Map<String, Object>) ActionContext.getContext().get("request");
@@ -91,13 +107,18 @@ public class ClassAction {
 		return "update_success";
 	}
 	public String addClass() {
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		List<GradeInfo> list = classService.queryGrade(classId);
 		request = (Map<String, Object>) ActionContext.getContext().get("request");
 		request.put("grade", list);
 		return "add_class";
 	}
 	public String addClassInfo() {
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		classService.addClass(className, gradeId);
 		return this.queryClass();
 	}

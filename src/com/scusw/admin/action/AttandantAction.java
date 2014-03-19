@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import com.opensymphony.xwork2.ActionContext;
 import com.scusw.admin.service.AttandantService;
 import com.scusw.model.StudentAttendant;
+import com.scusw.util.CheckPrivilege;
 
 public class AttandantAction {
 	private AttandantService attandantService;
@@ -113,6 +114,9 @@ public class AttandantAction {
 		this.attandantService = attandantService;
 	}
 	public String checkStaffAttendant() {
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		request = (Map<String, Object>) ActionContext.getContext().get("request");
 		//request.clear();
 		if (staffName != null) {
@@ -141,6 +145,9 @@ public class AttandantAction {
 		return "staff_success";
 	}
 	public String checkStuAttendant() {
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		request = (Map<String, Object>) ActionContext.getContext().get("request");
 		List<StudentAttendant> list = attandantService.queryStuAttendant(nextPage, pageSize,studentName,studentNo,gradeId,courseId);
 		request.put("stuinfo", list);

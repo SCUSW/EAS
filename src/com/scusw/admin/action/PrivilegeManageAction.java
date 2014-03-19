@@ -11,6 +11,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.scusw.admin.service.PrivilegeManageService;
 import com.scusw.model.GroupInfo;
 import com.scusw.model.PrivilegeInfo;
+import com.scusw.util.CheckPrivilege;
 
 /**
  * manage privilege
@@ -106,7 +107,9 @@ public class PrivilegeManageAction {
 	 * @return listPrivilege
 	 */
 	public String listPrivilege(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		List<PrivilegeInfo> list = privMangService.queryAllPrivilege();
 		request = (Map)ActionContext.getContext().get("request");
 		request.put("privileges", list);
@@ -120,7 +123,9 @@ public class PrivilegeManageAction {
 	 * @return listPrivilege()
 	 */
 	public String addPrivilege(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		if(privMangService.addPrivilege(privilegeInfo))
 			return listPrivilege();
 		return "addPrivError";
@@ -133,7 +138,9 @@ public class PrivilegeManageAction {
 	 * @return listGroup
 	 */
 	public String listGroup(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		List<GroupInfo> list = privMangService.queryAllGroup();
 		
 // 		alist use to get group privileges by traverse list(groups)
@@ -159,7 +166,9 @@ public class PrivilegeManageAction {
 	 * @return addGroup
 	 */
 	public String addGroup1(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		List<PrivilegeInfo> list = privMangService.queryAllPrivilege();
 		request = (Map)ActionContext.getContext().get("request");
 		request.put("privileges", list);
@@ -173,7 +182,9 @@ public class PrivilegeManageAction {
 	 * @return addGroupPrivilege()
 	 */
 	public String addGroup(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		logger.info("add group:" + groupInfo.getGroupName() + " # " + groupInfo.getGroupRemark());
 		groupInfo.setGroupAvai(1);
 		
@@ -190,7 +201,9 @@ public class PrivilegeManageAction {
 	 * @return listGroup()
 	 */
 	public String addGroupPrivilege(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		if(privMangService.addGroupPrivilege(groupInfo, privileges)){
 			return listGroup();
 		}
@@ -206,7 +219,9 @@ public class PrivilegeManageAction {
 	 * @param list		privilege it not have
 	 */
 	public String updateGroup1(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		groupInfo = privMangService.getGroupById(groupInfo.getGroupId());
 		
 		List<PrivilegeInfo> listed = privMangService.queryPrivilegeByGroupId(groupInfo.getGroupId());
@@ -235,7 +250,9 @@ public class PrivilegeManageAction {
 	 * @return updateGroupPrivilege()
 	 */
 	public String updateGroup2(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		privMangService.updateGroup(groupInfo);
 		return updateGroupPrivilege();
 		
@@ -247,7 +264,9 @@ public class PrivilegeManageAction {
 	 * @return listGroup()
 	 */
 	public String updateGroupPrivilege(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		privMangService.updateGroupPrivilege(groupInfo, privileges);
 		return listGroup();
 		
@@ -259,7 +278,9 @@ public class PrivilegeManageAction {
 	 * @return listGroup()
 	 */
 	public String delGroup(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		groupInfo = privMangService.getGroupById(groupInfo.getGroupId());
 		if(privMangService.delGroup(groupInfo)){
 			return listGroup();

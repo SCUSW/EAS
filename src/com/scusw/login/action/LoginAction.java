@@ -1,6 +1,8 @@
 
 package com.scusw.login.action;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -151,6 +153,9 @@ public class LoginAction {
 		logger.info("管理员登录: " + adminInfo.getAdminNo() + " 加密密码: " + adminInfo.getAdminPass());
 		
 		if(loginService.checkAdminInfo(adminInfo)){
+			List<Integer> list = new LinkedList<Integer>();
+			list.add(1);
+			session.put("privilege", list);//用户权限list
 			session.put("adminId", adminInfo.getAdminNo());
 			session.put("loginNo", adminInfo.getAdminNo());
 			session.put("role", "admin");
