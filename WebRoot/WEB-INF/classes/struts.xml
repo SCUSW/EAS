@@ -25,5 +25,6 @@
 		<include file="admin/attandant_struts.xml"/>
 		<include file="admin/grade_struts.xml"/>
 		<include file="admin/class_struts.xml"/>
+		<include file="educational/educational_struts.xml"/>
 		
 </struts>

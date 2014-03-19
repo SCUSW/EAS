@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts> 
+		<package name="educational" extends="struts-default">
+			<action name="educational" class="educationalAction">
+				<result name="success">user/userlist.jsp</result>
+				<result name="default">user/default.jsp</result>
+				<result name="add_default">user/add_default.jsp</result>
+				<result name="queryStu">educational/student/showstu.jsp</result>
+				<result name="listAll">educational/student/showallinfo.jsp</result>
+				<result name="checkAttendant">educational/student/showattendant.jsp</result>
+				<result name="addAttendant">educational/student/addattsuccess.jsp</result>
+				<result name="emptyAttendant">educational/student/emptyattendant.jsp</result>
+				
+				
+				
+				<result name="listTeacher">educational/teacher/showteacher.jsp</result>
+				<result name="showAllInfo">educational/teacher/showallinfo.jsp</result>
+				<result name="queryCourse">educational/teacher/showcourse.jsp</result>
+				<result name="addSalary">educational/teacher/addsalarysuccess.jsp</result>
+				<result name="queryGroupAndLevel">educational/teacher/addteacher.jsp</result>
+				<result name="addTeacher">educational/teacher/queryteacher.jsp</result>
+				
+				<result name="addCourse">educational/course/addcoursesuccess.jsp</result>
+				<result name="emptyTeacher">educational/course/addcourseteacherEmpt.jsp</result>
+				<result name="emptyMajor">educational/course/addcoursemajorEmpt.jsp</result>
+				<result name="queryCourseInfo">educational/course/showcourseinfo.jsp</result>
+				<result name="empty">educational/course/addcourse.jsp</result>
+				<result name="queryCourseByNameAndTeacher">educational/course/updatecourse.jsp</result>
+				<result name="querryCourseClasshour">educational/course/showcourseclasshour.jsp</result>
+				<result name="addCourseIntoTable">educational/course/sortcourse.jsp</result>
+			</action>
+
+		</package>
+</struts>

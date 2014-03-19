@@ -31,7 +31,7 @@
 		<import resource="classpath:admin/attandant_bean.xml"/>
      	<import resource="classpath:admin/grade_bean.xml"/>	
      	<import resource="classpath:admin/class_bean.xml"/>	 
-		
+		<import resource="classpath:educational/educational_bean.xml"/>
 		
 		
 		<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
@@ -52,6 +52,7 @@
 		    <tx:attributes>
 		      <tx:method name="check*" read-only="true"/>
 		      <tx:method name="query*" read-only="true"/>
+			  <tx:method name="get*" read-only="true"/>
 		      <tx:method name="update*" propagation="REQUIRED"/>
 		      <tx:method name="add*" propagation="REQUIRED"/>
 		      <tx:method name="delete*" propagation="REQUIRED"/>

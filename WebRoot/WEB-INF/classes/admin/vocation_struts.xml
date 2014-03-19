@@ -9,6 +9,8 @@
 				<result name="listVocation">/admin/wageInfo/listVocation.jsp</result>
 				<result name="updateVocation">/admin/wageInfo/updateVocation.jsp</result>
 				<result name="addVocation">/admin/wageInfo/addVocation.jsp</result>
+				<result name="chooseBranch">/admin/wageInfo/chooseBranch.jsp</result>
+				<result name="updateVocationBranch">/admin/wageInfo/updateVocationBranch.jsp</result>
 			</action>
 		</package>
 </struts>
