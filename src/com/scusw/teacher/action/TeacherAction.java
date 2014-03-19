@@ -66,7 +66,7 @@ public class TeacherAction extends ActionSupport{
 
 	private File doc;
 	
-	private String errorMessage = "网络繁忙 >_<"; 
+	private String errorMessage = "网络繁忙   >_<"; 
 /*	private String fileName;   
     private String contentType;
     private ServletContext context; 

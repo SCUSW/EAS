@@ -42,7 +42,7 @@ public class TeacherDaoImpl extends HibernateDaoSupport implements TeacherDao {
 //	}
 	
 	public List<StudentInfo> searchStudentByNo(String studentNo){
-		Query q=this.getSession().createQuery("from StudentInfo s where s.studentNo like '"+studentNo+"%' order by s.studentNo");
+		Query q=this.getSession().createQuery("from StudentInfo s where s.studentNo like '%"+studentNo+"%' order by s.studentNo");
 		List<StudentInfo> students=q.list();
 		return students;
 	}
@@ -154,7 +154,7 @@ public class TeacherDaoImpl extends HibernateDaoSupport implements TeacherDao {
 	public List queryOwnCommonTeacherByStaffNo(int branchId, String staffNo){
 		Query q=this.getSession().createQuery("from TeacherInfo t where t.teacherType=0 " +
 		"and t.staffInfo.positionInfo.departmentInfo.branchInfo.branchId=:branchId " +
-		"and t.staffInfo.staffNo like '"+staffNo+"%' order by t.staffInfo.staffNo");
+		"and t.staffInfo.staffNo like '%"+staffNo+"%' order by t.staffInfo.staffNo");
 		q.setParameter("branchId", branchId);
 		List commonTeachers=q.list();
 		return commonTeachers;
