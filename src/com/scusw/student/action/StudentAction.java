@@ -38,7 +38,6 @@ public class StudentAction {
 	private Map<String, Object> session;
 	public static Logger logger = Logger.getLogger(LoginAction.class);
 
-	
 	/**
 	 * @return the flags
 	 */

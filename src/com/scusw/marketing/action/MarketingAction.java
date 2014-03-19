@@ -166,6 +166,14 @@ public class MarketingAction {
 			return "addDefault";
 		}
 	}
+	
+	/**
+	 * 方法描述：添加学生了解渠道信息
+	 * @param selectConsultwayId ：被添加的所有的渠道信息编号
+	 * @param consultInfo ：该学生的咨询信息
+	 * @return ：添加成功——>true
+	 * 			 添加失败——>false
+	 */
 	public boolean addSelectConsultwayInfo(int[] selectConsultwayId, ConsultInfo consultInfo){
 		return marketingService.addSelectConsultwayInfo(selectConsultwayId, consultInfo);
 	}
@@ -214,7 +222,6 @@ public class MarketingAction {
 	 * 方法描述：通过员工账号查询员工绩效
 	 * @return "queryDefault" ——> queryDefault.jsp
 	 * 			"performance" ——> performance.jsp
-	 * @throws InterruptedException 
 	 */
 	public String querySalesmanPerformanceByNo(){
 		if (!checkSalesmanInfo(queryNo))
@@ -227,7 +234,7 @@ public class MarketingAction {
 	
 	/**
 	 * 方法描述：查询所有营销人员的绩效
-	 * @return
+	 * @return "allPerformance" ——> allPerformance.jsp
 	 */
 	public String queryAllSalesmanPerformance(){
 		List<SalesmanInfo> salesman = queryAllSalesmanInfo();

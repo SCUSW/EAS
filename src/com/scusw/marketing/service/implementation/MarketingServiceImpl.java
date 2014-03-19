@@ -55,6 +55,14 @@ public class MarketingServiceImpl implements MarketingService {
 		}		
 		return true;
 	}
+	
+	/**
+	 * 方法描述：添加学生了解渠道信息关系
+	 * @param selectConsultwayId ：被添加的了解渠道编号
+	 * @param consultInfo ：该学生的咨询信息
+	 * @return ：添加成功——>true
+	 * 			 添加失败——>false
+	 */
 	public boolean addSelectConsultwayInfo(int[] selectConsultwayId, ConsultInfo consultInfo){
 		List<StudentConsultway> studentConsultway = new ArrayList<StudentConsultway>();
 		for(int i = 0; i < selectConsultwayId.length; i ++){
@@ -72,6 +80,7 @@ public class MarketingServiceImpl implements MarketingService {
 		}		
 		return true;
 	}
+	
 	/**
 	 * 方法描述：通过员工账号查询员工信息
 	 * @param queryNo ：被查询账号
