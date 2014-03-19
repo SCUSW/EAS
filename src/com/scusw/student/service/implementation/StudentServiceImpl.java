@@ -59,12 +59,18 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	/**
-	 * 方法描述：学生报名
+	 * 方法描述：添加学生
 	 * @param student：包含学生全部信息的实体
-	 * @return ：学生报名专业所有信息的实体
+	 * @return ：添加成功——>true
+	 * 			 添加失败——>false
 	 */
-	public MajorInfo apply(StudentInfo student) {
-		return studentDao.apply(student);
+	public boolean addStudent(StudentInfo student) {
+		try {
+			studentDao.addStudent(student);
+		} catch (Exception e) {
+			return false;
+		}		
+		return true;
 	}
 
 	/**

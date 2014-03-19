@@ -11,8 +11,6 @@ import com.scusw.model.MajorInfo;
 import com.scusw.model.NoticeInfo;
 import com.scusw.model.StudentInfo;
 import com.scusw.student.service.StudentService;
-import com.scusw.util.CheckLogin;
-import com.scusw.util.CheckPrivilege;
 
 /**
  * 类描述：学生动作层实现类
@@ -201,9 +199,6 @@ public class StudentAction {
 	 * @return ："success" ——> showInfo.jsp
 	 */
 	public String queryStudentByNo(){
-		if (!CheckLogin.checkLogin()) {
-			return "no_privilege";
-		}
 		studentInfo = studentService.queryStudentByNo(studentInfo.getStudentNo());
 		return "success";
 	}
@@ -214,9 +209,6 @@ public class StudentAction {
 	 * @return ："update" ——> updateStudent.jsp
 	 */
 	public String queryStudentBeforeUpdate(){
-		if (!CheckLogin.checkLogin()) {
-			return "no_privilege";
-		}
 		studentInfo = studentService.queryStudentByNo(studentInfo.getStudentNo());
 		return "update";
 	}
@@ -225,9 +217,6 @@ public class StudentAction {
 	 * 方法描述：学生修改个人信息
 	 */
 	public String updateStudent(){
-		if (!CheckLogin.checkLogin()) {
-			return "no_privilege";
-		}
 		session = ActionContext.getContext().getSession();
 		String studentNo = (String) session.get("studentNo");
 		studentService.updateStudent(studentInfo, studentNo);
@@ -235,16 +224,19 @@ public class StudentAction {
 	}
 	
 	/**
-	 * 方法描述：学生报名入学
+	 * 方法描述：添加学生
 	 * @param student：包含学生所有信息的实体
-	 * @return ："majorInfo" ——>showMajorInfo.jsp
+	 * @return ："addSuccess" ——>addSuccess.jsp
+	 * 			 "addDefault" ——>addDefault.jsp
 	 */
-	public String apply(){
-		if (!CheckLogin.checkLogin()) {
-			return "no_privilege";
-		}
-		majorInfo = studentService.apply(studentInfo);
-		return "majorInfo";
+	public String addStudent(){
+		if(studentInfo.getStudentPass() == null) System.out.println("password null");
+		else System.out.println(studentInfo.getStudentPass());
+		
+		if(studentService.addStudent(studentInfo))
+			return "addSuccess";
+		else
+			return "addDefault";
 	}
 	
 	/**
@@ -252,9 +244,6 @@ public class StudentAction {
 	 * @return : "notice" ——> showNotice.jsp
 	 */
 	public String noticeInfoQuery(){
-		if (!CheckLogin.checkLogin()) {
-			return "no_privilege";
-		}
 		noticeInfo = studentService.noticeInfoQuery();
 		request=(Map)ActionContext.getContext().get("request");
 		request.put("noticeInfo",noticeInfo);
@@ -266,9 +255,6 @@ public class StudentAction {
 	 * @return ："noticeContent" ——> showNoticeContent.jsp
 	 */
 	public String showNoticeContent(){
-		if (!CheckLogin.checkLogin()) {
-			return "no_privilege";
-		}
 		noticeContent = studentService.queryNoticeContent(noticeId);
 		return "noticeContent";
 	}
@@ -279,9 +265,6 @@ public class StudentAction {
 	 * @return ："majorInfo" ——>showMajorInfo.jsp
 	 */
 	public String majorInfoQuery(){
-		if (!CheckLogin.checkLogin()) {
-			return "no_privilege";
-		}
 		majorInfo = studentService.majorInfoQuery(studentInfo.getStudentNo());
 		return "majorInfo";
 	}
@@ -291,9 +274,6 @@ public class StudentAction {
 	 * @return ："courseInfo" ——> queryCourseInfo.jsp
 	 */
 	public String queryCourse(){
-		if (!CheckLogin.checkLogin()) {
-			return "no_privilege";
-		}
 		courseInfo = studentService.queryCourse(studentInfo.getStudentNo());
 		request=(Map)ActionContext.getContext().get("request");
 		request.put("courseInfo",courseInfo);
@@ -319,9 +299,6 @@ public class StudentAction {
 	 * @return ："allCourseInfo" ——>  selectCourses.jsp
 	 */
 	public String queryAllCourse(){
-		if (!CheckLogin.checkLogin()) {
-			return "no_privilege";
-		}
 		allCourseInfo = studentService.queryAllCourse();
 		request=(Map)ActionContext.getContext().get("request");
 		request.put("allCourseInfo",allCourseInfo);
@@ -353,9 +330,6 @@ public class StudentAction {
 	 * 			 false ——> selectCourseDefault.jsp
 	 */
 	public String addRegisterInfo(){
-		if (!CheckLogin.checkLogin()) {
-			return "no_privilege";
-		}
 		boolean flag = studentService.addRegisterInfo(selectCourseId,studentInfo.getStudentNo());
 		if(flag)
 			return queryCourse();

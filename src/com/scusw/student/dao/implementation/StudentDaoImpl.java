@@ -49,17 +49,11 @@ public class StudentDaoImpl extends HibernateDaoSupport implements StudentDao {
 	}
 
 	/**
-	 * 方法描述：学生报名
+	 * 方法描述：添加学生
 	 * @param student ：包含学生全部信息的实体
-	 * @return major：学生报名专业所有信息的实体
 	 */
-	public MajorInfo apply(StudentInfo student) {
+	public void addStudent(StudentInfo student) {
 		this.getHibernateTemplate().save(student);
-		Query q = this.getSession().createQuery(
-				"from MajorInfo m where m.majorName=:majorName");
-		q.setParameter("majorName", student.getStudentMajor());
-		MajorInfo major = (MajorInfo) q.uniqueResult();
-		return major;
 	}
 
 	/**
