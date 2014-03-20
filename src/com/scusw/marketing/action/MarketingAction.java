@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 
  */
 package com.scusw.marketing.action;
@@ -274,9 +274,6 @@ public class MarketingAction {
 	 * 			 "addDefault" ——>addDefault.jsp
 	 */
 	public String addStudent(){
-		if(studentInfo.getStudentPass() == null) System.out.println("password null");
-		else System.out.println(studentInfo.getStudentPass());
-		
 		if(marketingService.addStudent(studentInfo))
 			return "addSuccess";
 		else
