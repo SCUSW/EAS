@@ -212,7 +212,11 @@ public class StudentServiceImpl implements StudentService {
 								(selectCourse.get(i).getCourseEnd().after(chooseCourse.get(m).getCourseStart())
 										&& selectCourse.get(i).getCourseEnd().before(chooseCourse.get(m).getCourseEnd()))  || 
 								(selectCourse.get(i).getCourseStart().after(chooseCourse.get(m).getCourseStart())
-										&& selectCourse.get(i).getCourseEnd().before(chooseCourse.get(m).getCourseEnd()))
+										&& selectCourse.get(i).getCourseEnd().before(chooseCourse.get(m).getCourseEnd()))	||
+								(selectCourse.get(i).getCourseStart().equals(chooseCourse.get(m).getCourseStart()))		||
+								(selectCourse.get(i).getCourseStart().equals(chooseCourse.get(m).getCourseEnd()))	||
+								(selectCourse.get(i).getCourseEnd().equals(chooseCourse.get(m).getCourseStart()))	||
+								(selectCourse.get(i).getCourseEnd().equals(chooseCourse.get(m).getCourseEnd()))	
 							)
 							return true;
 					}
