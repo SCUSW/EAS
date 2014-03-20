@@ -243,7 +243,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<input id="phone" name="studentInfo.studentPhone" type="text" class="form-control">
 					</div>
 					
-					<input type="hidden" name="studentInfo.groupInfo.groupId" value="1"/>
+					<input type="hidden" name="studentInfo.groupInfo.groupId" value="4"/>
 					
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">学籍状态</span>
