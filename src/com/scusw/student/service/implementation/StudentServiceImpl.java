@@ -205,8 +205,15 @@ public class StudentServiceImpl implements StudentService {
 				for(int m = 0; m < chooseCourseClasshourId.length; m++){
 					for(int n = 0; n < chooseCourseClasshourId[m].length; n++){
 						if(selectCourseClasshourId[i][j] == chooseCourseClasshourId[m][n] &&
-								(selectCourse.get(i).getCourseEnd().after(chooseCourse.get(m).getCourseStart()) ||
-								selectCourse.get(i).getCourseStart().before(chooseCourse.get(m).getCourseEnd())) )
+								(chooseCourse.get(m).getCourseStart().after(selectCourse.get(i).getCourseStart()) 
+										&& chooseCourse.get(m).getCourseEnd().before(selectCourse.get(i).getCourseEnd()))  ||  
+								(selectCourse.get(i).getCourseStart().after(chooseCourse.get(m).getCourseStart()) 
+										&& selectCourse.get(i).getCourseStart().before(chooseCourse.get(m).getCourseEnd()))  ||
+								(selectCourse.get(i).getCourseEnd().after(chooseCourse.get(m).getCourseStart())
+										&& selectCourse.get(i).getCourseEnd().before(chooseCourse.get(m).getCourseEnd()))  || 
+								(selectCourse.get(i).getCourseStart().after(chooseCourse.get(m).getCourseStart())
+										&& selectCourse.get(i).getCourseEnd().before(chooseCourse.get(m).getCourseEnd()))
+							)
 							return true;
 					}
 				}
