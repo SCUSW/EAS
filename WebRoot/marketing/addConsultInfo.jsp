@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 	if(addConsultInfo.age.value<0){
 		 		alert("请输入正确的年龄");
 		 		addConsultInfo.age.focus();
-		 		return fales;
+		 		return false;
 		 	}
 		 	return true;
 		 }
@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 	if(addConsultInfo.name.value==""){
 	    		alert("请输入姓名！");
 	    		addConsultInfo.name.focus();
-	    		return fales;
+	    		return false;
 	    	}else{
 	    		return true;
 	    	}

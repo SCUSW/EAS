@@ -30,6 +30,7 @@
 		<import resource="classpath:admin/attandant_bean.xml"/>
      	<import resource="classpath:admin/grade_bean.xml"/>	
      	<import resource="classpath:admin/class_bean.xml"/>	 
+     	<import resource="classpath:admin/staff_bean.xml"/>	
 		<import resource="classpath:educational/educational_bean.xml"/>
 		
 		

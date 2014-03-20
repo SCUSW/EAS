@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<c:forEach items="${classhourEveryWeek[s.index]}" var="times" varStatus="t">
     			<c:choose>
     				<c:when test="${t.index ==0}">
-    					<tr class="<%=tableClass[(classIndex++)%5] %>">
+    					<tr class="<%=tableClass[(classIndex)%5] %>">
     						<td rowspan="${courses.courseTimes}">${courses.courseId}</td>
     						<td rowspan="${courses.courseTimes}">${courses.majorInfo.majorName}</td>
     						<td rowspan="${courses.courseTimes}">${courses.courseName}</td>
@@ -77,13 +77,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     					</tr>
     				</c:when>
     				<c:otherwise>
-    					<tr>
+    					<tr class="<%=tableClass[(classIndex)%5] %>">
     						<td>${classhourEveryWeek[s.index][t.index]}</td>
 							<td>${classroom[s.index][t.index]}</td>
 						</tr>
     				</c:otherwise>  
    				</c:choose>
     			</c:forEach>
+    			<%classIndex +=1; %>
     		</tr>
     		</c:forEach>		
 			</tbody>
