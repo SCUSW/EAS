@@ -100,14 +100,32 @@ public class StudentDaoImpl extends HibernateDaoSupport implements StudentDao {
 	 * @param courseId ：所有被查询课程编号
 	 * @return ：查询到的课程集合
 	 */
-	public List<CourseInfo> queryClass(int[] courseId) {
+	public List<CourseInfo> queryCourse(int[] courseId) {
 		List<CourseInfo> course = new ArrayList<CourseInfo>();
-		Query q1 = this.getSession().createQuery("from CourseInfo c where c.courseId=:courseId");
+		Query q = this.getSession().createQuery("from CourseInfo c where c.courseId=:courseId");
 		for (int i = 0; i < courseId.length; i++) {
-			q1.setParameter("courseId", courseId[i]);
-			course.add(((CourseInfo) q1.uniqueResult()));
+			q.setParameter("courseId", courseId[i]);
+			course.add(((CourseInfo) q.uniqueResult()));
 		}
 		return course;
+	}
+	
+	/**
+	 * 方法描述：查询学生所选课程的成绩
+	 * @param courseId ：学生所选课程编号
+	 * @param studentNo ：学生学号
+	 * @return ：学生所有课程成绩
+	 */
+	public float[] queryScore(int[] courseId, String studentNo){
+		float[] studentScore = new float[courseId.length];
+		Query q = this.getSession().createQuery("from RegisterInfo r where r.courseInfo.courseId=:courseId and r.studentInfo.studentNo=:studentNo");
+		q.setParameter("studentNo", studentNo);
+		for(int i = 0; i < courseId.length; i ++){
+			q.setParameter("courseId", courseId[i]);
+			studentScore[i] = ((RegisterInfo) q.uniqueResult()).getStudentCourseScore();
+		}
+		return studentScore;
+		
 	}
 
 	/**

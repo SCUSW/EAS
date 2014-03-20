@@ -102,6 +102,22 @@ public class StudentServiceImpl implements StudentService {
 	}
 	
 	/**
+	 * 方法描述：查询学生所选课程成绩
+	 * @param courseInfo ：所选课程
+	 * @param studentNo ：学生学号
+	 * @return ：所选课程成绩
+	 */
+	public float[] queryScore(List<CourseInfo> courseInfo, String studentNo){
+		int size = courseInfo.size();
+		int[] courseId = new int[size];
+		for(int i = 0; i < size; i ++){
+			courseId[i] = courseInfo.get(i).getCourseId();
+		}
+		float[] studentScore = studentDao.queryScore(courseId, studentNo);
+		return studentScore;
+	}
+	
+	/**
 	 * 方法描述：查询上课地点
 	 * @param courseInfo ：所有被查询课程
 	 * @return ：所有课程的所有上课地点
@@ -181,7 +197,7 @@ public class StudentServiceImpl implements StudentService {
 	 */
 	public boolean checkIsConflict(int[] chooseCourseId,String studentNo){
 		List<CourseInfo> selectCourse = queryCourse(studentNo);
-		List<CourseInfo> chooseCourse = studentDao.queryClass(chooseCourseId);
+		List<CourseInfo> chooseCourse = studentDao.queryCourse(chooseCourseId);
 		int[][] selectCourseClasshourId = studentDao.queryCourseClasshourId(selectCourse);
 		int[][] chooseCourseClasshourId = studentDao.queryCourseClasshourId(chooseCourse);
 		for(int i = 0; i < selectCourseClasshourId.length; i++){

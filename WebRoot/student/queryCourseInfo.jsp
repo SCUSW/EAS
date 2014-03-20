@@ -48,11 +48,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<th>课程名称</th>
 					<th>开课时间</th>
 					<th>结课时间</th>
-					<th>上课教师</th>
+					<th>任课教师</th>
 					<th>上课时间</th>
 					<th>上课地点</th>
 					<th>课程价格</th>
 					<th>课程介绍</th>
+					<th>成绩</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -72,6 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<td>${classroom[s.index][t.index]}</td>
     						<td rowspan="${courses.courseTimes}">${courses.coursePrice}</td>
     						<td rowspan="${courses.courseTimes}">${courses.courseDesc}</td>
+    						<td rowspan="${courses.courseTimes}">${studentScore[s.index]}</td>
     					</tr>
     				</c:when>
     				<c:otherwise>

@@ -30,12 +30,25 @@ public class StudentAction {
 	private List<CourseInfo> allCourseInfo;
 	private Map<String,Object> request;
 	private int[] selectCourseId;
+	private float[] studentScore;
 	private String[][] classroom;
 	private String[][] classhourEveryWeek;
 	private boolean[] flags;
 	private Map<String, Object> session;
 	public static Logger logger = Logger.getLogger(LoginAction.class);
 
+	/**
+	 * @return the studentScore
+	 */
+	public float[] getStudentScore() {
+		return studentScore;
+	}
+	/**
+	 * @param studentScore the studentScore to set
+	 */
+	public void setStudentScore(float[] studentScore) {
+		this.studentScore = studentScore;
+	}
 	/**
 	 * @return the flags
 	 */
@@ -261,10 +274,12 @@ public class StudentAction {
 		courseInfo = studentService.queryCourse(studentInfo.getStudentNo());
 		request=(Map)ActionContext.getContext().get("request");
 		request.put("courseInfo",courseInfo);
+		queryScore(courseInfo,studentInfo.getStudentNo());
 		queryClassroom(courseInfo);
 		queryClasshour(courseInfo);
 		return "courseInfo";
 	}
+	
 	/**
 	 * 方法描述：查询所选课程
 	 */
@@ -291,6 +306,15 @@ public class StudentAction {
 		queryCourseButNoReturn();
 		flags = studentService.checkIsCourseSelect(courseInfo, allCourseInfo);
 		return "allCourseInfo";
+	}
+	
+	/**
+	 * 方法描述：查询学生所选课程成绩
+	 * @param courseInfo ：所选课程
+	 * @param studentNo ：学生学号
+	 */
+	public void queryScore(List<CourseInfo> courseInfo, String studentNo){
+		studentScore = studentService.queryScore(courseInfo, studentNo);
 	}
 	
 	/**

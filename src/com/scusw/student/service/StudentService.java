@@ -24,5 +24,6 @@ public interface StudentService {
 	public boolean addRegisterInfo(int[] selectCourseId,String studentNo);
 	public String[][] queryClassroom(List<CourseInfo> courseInfo);
 	public String[][] queryClasshour(List<CourseInfo> courseInfo);
+	public float[] queryScore(List<CourseInfo> courseInfo, String studentNo);
 	public boolean[] checkIsCourseSelect(List<CourseInfo> courseInfo, List<CourseInfo> allCourseInfo);
 }
