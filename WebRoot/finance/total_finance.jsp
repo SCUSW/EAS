@@ -61,7 +61,7 @@ function check(){
 		alert("标题和金额不能为空");
 		return false; 
 	}
-	if(isMoney()){
+	if(isMoney() || isNumber(totalSubmit.money.value)){
 		
 		var regu = "^[ ]+$"; 
 		var re = new RegExp(regu); 
@@ -82,6 +82,18 @@ return false;
 			return false; 
 		} 
 	} 
+	
+	function isNumber( s ){   
+var regu = "^[0-9]+$"; 
+var re = new RegExp(regu); 
+if (s.search(re) != -1) { 
+return true; 
+} else { 
+return false; 
+} 
+} 
+
+详细出处参考：http://www.jb51.net/article/4976.htm
 
 	</script>
 

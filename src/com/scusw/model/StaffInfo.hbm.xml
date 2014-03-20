@@ -10,10 +10,10 @@
             <column name="staff_id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="groupInfo" class="com.scusw.model.GroupInfo" fetch="select">
+        <many-to-one name="groupInfo" class="com.scusw.model.GroupInfo" fetch="select" lazy="false" >
             <column name="group_id" not-null="true" />
         </many-to-one>
-        <many-to-one name="positionInfo" class="com.scusw.model.PositionInfo" fetch="select">
+        <many-to-one name="positionInfo" class="com.scusw.model.PositionInfo" fetch="select" lazy="false">
             <column name="vocation_id" not-null="true" />
         </many-to-one>
         <property name="staffNo" type="java.lang.String">
