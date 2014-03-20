@@ -102,7 +102,6 @@ public class StaffFinanceAction {
 	public String payStaff() {
 		if (CheckPrivilege.checkPrivilege(8)
 				&& CheckPrivilege.checkPrivilege(9)
-				&& CheckPrivilege.checkPrivilege(1)
 				&& CheckPrivilege.checkPrivilege(3)) {
 
 			staffFinanceService.addStaffSalaryFees(staffFees);

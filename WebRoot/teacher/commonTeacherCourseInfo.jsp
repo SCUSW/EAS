@@ -56,6 +56,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				return true;
 			}
 		}
+		
+		<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(22))
+		{
+		%>
+			$(document).ready(function(){
+				$("#js_22").removeAttr("onclick");
+				$("#js_22").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+		<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(21))
+		{
+		%>
+			$(document).ready(function(){
+				$("#js_21").removeAttr("onclick");
+				$("#js_21").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
 	</script>
   
   <body> 
@@ -82,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 	
 	 	<c:choose>
  			<c:when test="${course.courseAvai==1}">
-	 			<tr class="success" style="text-align:center;"><td><button class="btn btn-default" onclick="window.location.href='teacherAct!getCommonTeachingManageList.action?course.courseId=${course.courseId }'"><span class="glyphicon glyphicon-edit"></span> 教学管理</button></td></tr>
+	 			<tr class="success" style="text-align:center;"><td><button id="js_22" class="btn btn-default" onclick="window.location.href='teacherAct!getCommonTeachingManageList.action?course.courseId=${course.courseId }'"><span class="glyphicon glyphicon-edit"></span> 教学管理</button></td></tr>
 	 		</c:when>
  		</c:choose>
 	 	
@@ -99,7 +120,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span class="input-group-addon">设置价格：</span>
 					<input id="coursePrice" name="course.coursePrice" type="text" class="form-control">
 				</div>
-				<input class="btn btn-default" type="submit" value="提交" onclick="return check1()" />
+				<input id="js_21" class="btn btn-default" type="submit" value="提交" onclick="return check1()" />
 			</form>
 		</c:when>
 	</c:choose>

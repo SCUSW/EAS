@@ -25,6 +25,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	
+	<script type="text/javascript">
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(10))
+		{
+		%>
+			$(document).ready(function(){
+				$("#js_10").removeAttr("onclick");
+				$("#js_10").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	</script>
   </head>
   
   <body>
@@ -40,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     					<td>${s.classInfo.className}</td>
     					<td>${s.studentNo}</td>
     					<td>${s.studentName}</td>
-    					<td><button class="btn btn-default" onclick="window.location.href='teacherAct!getOwnStudentInfo.action?student.studentNo=${s.studentNo}&course.courseId=${course.courseId}'" ><span class="glyphicon glyphicon-eye-open"></span> 查看</button></td>
+    					<td><button id="js_10" class="btn btn-default" onclick="window.location.href='teacherAct!getOwnStudentInfo.action?student.studentNo=${s.studentNo}&course.courseId=${course.courseId}'" ><span class="glyphicon glyphicon-eye-open"></span> 查看</button></td>
     				</tr>
     				</c:forEach>
     			</table>

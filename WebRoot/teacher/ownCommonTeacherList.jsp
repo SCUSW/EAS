@@ -27,6 +27,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	
+	<script type="text/javascript">
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(19))
+		{
+		%>
+			$(document).ready(function(){
+				$("#js_19").removeAttr("onclick");
+				$("#js_19").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(17))
+		{
+		%>
+			$(document).ready(function(){
+				$("#js_ckjs").removeAttr("onclick");
+				$("#js_ckjs").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	</script>
+	
+	
   </head>
   
   <body>
@@ -39,10 +64,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				<tr class="success"> 
     					<td>${t.staffInfo.staffNo}</td>
     					<td>${t.staffInfo.staffName}</td>
-    					<td><a href="teacherAct!getOwnCommonTeacherInfo.action?staff.staffId=${t.staffInfo.staffId}"><span class="glyphicon glyphicon-eye-open	"></span> 查看</a></td>
+    					<td><button id="js_ckjs" class="btn btn-default" onclick="window.location.href='teacherAct!getOwnCommonTeacherInfo.action?staff.staffId=${t.staffInfo.staffId}'"><span class="glyphicon glyphicon-eye-open	"></span> 查看</button></td>
     				</tr>
     				</c:forEach>
-    				<tr class="success"><td style="text-align:center;" colspan="3"><button class="btn btn-default" onclick="window.location.href='teacherAct!addCommonTeacher1'"><span class="glyphicon glyphicon-plus"></span> 增加任课教师 </button></td></tr>
+    				<tr class="success"><td style="text-align:center;" colspan="3"><button id="js_19" class="btn btn-default" onclick="window.location.href='teacherAct!addCommonTeacher1'"><span class="glyphicon glyphicon-plus"></span> 增加任课教师 </button></td></tr>
     			</table>
     		<button class="btn btn-default" onclick=" window.history.back()">返回</button>
     	</center>

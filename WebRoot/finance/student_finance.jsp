@@ -28,7 +28,31 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+	</style>
+	<script type="text/javascript">
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(4))
+		{
+		%>
+			$(document).ready(function(){
+				$("#cw_xxxx").removeAttr("onclick");
+				$("#cw_xxxx").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
 	
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(5))
+		{
+		%>
+			$(document).ready(function(){
+				$("#cw_xgye").removeAttr("onclick");
+				$("#cw_xgye").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	
+	</script>
 
 	</head>
 
@@ -71,10 +95,10 @@
 							${s.studentBalance }
 						</td>
 						<td>
-							<input class="btn btn-default" type="button" onclick="addMoney(${s.studentId})" value="充值" />
-							<input class="btn btn-default" type="button" onclick="minusMoney(${s.studentId})" value="扣费" />
+							<input id="cw_xgye" class="btn btn-default" type="button" onclick="addMoney(${s.studentId})" value="充值" />
+							<input id="cw_xgye" class="btn btn-default" type="button" onclick="minusMoney(${s.studentId})" value="扣费" />
 							<!--<input type="button" value="转正" />-->
-							<input class="btn btn-default" type="button"
+							<input id="cw_xxxx" class="btn btn-default" type="button"
 								onclick="window.location.href='<%=basePath%>studentFinanceAction!detailInfo.action?studentInfo.studentId=${s.studentId }'"
 								value="详细信息" />
 						</td>

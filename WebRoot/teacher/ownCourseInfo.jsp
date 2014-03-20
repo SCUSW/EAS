@@ -26,7 +26,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
-
+	<script type="text/javascript">
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(16))
+		{
+		%>
+			$(document).ready(function(){
+				$("#js_16").removeAttr("onclick");
+				$("#js_16").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	</script>
   </head>
   
   <body> 
@@ -53,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	
  	<c:choose>
  		<c:when test="${course.courseAvai==1}">
- 			<tr class="success" style="text-align:center;"><td><button class="btn btn-default" onclick="window.location.href='teacherAct!getOwnTeachingManageList.action?course.courseId=${course.courseId }'"><span class="glyphicon glyphicon-edit"></span> 教学管理</button></td></tr>
+ 			<tr class="success" style="text-align:center;"><td><button id="js_16" class="btn btn-default" onclick="window.location.href='teacherAct!getOwnTeachingManageList.action?course.courseId=${course.courseId }'"><span class="glyphicon glyphicon-edit"></span> 教学管理</button></td></tr>
  		</c:when>
  	</c:choose>
   </table> 	 

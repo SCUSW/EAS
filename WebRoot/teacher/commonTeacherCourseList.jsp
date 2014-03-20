@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     					<td>${c.courseName}</td>
     					<td>${c.coursePrice}</td>
     					<td>${c.courseAvai == 1 ? "已排" : "未排"}</td>    				
-    					<td><a href="teacherAct!commonTeacherCourseInfo?course.courseId=${c.courseId }">查看</a></td>
+    					<td><button id="js_20" class="btn btn-default" onclick="window.location.href='teacherAct!commonTeacherCourseInfo?course.courseId=${c.courseId }'"><span class="glyphicon glyphicon-plus"></span> 查看</button></td>
     				</tr>
     				</c:forEach>
     			</table>

@@ -56,6 +56,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				return true;
 			}
 		}
+		
+		<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(12))
+		{
+		%>
+			$(document).ready(function(){
+				$("#js_12").removeAttr("onclick");
+				$("#js_12").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(13))
+		{
+		%>
+			$(document).ready(function(){
+				$("#js_13").removeAttr("onclick");
+				$("#js_13").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
 	</script>
   
   <body> 
@@ -81,10 +103,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	 <input type="hidden" name="student.studentNo" value="${student.studentNo}"/>
  	 <input type="hidden" name="course.courseId" value="${course.courseId}"/>	
    	 评分：<input type="text" id="studentCourseScore" name="register.studentCourseScore"/>
-    <input class="btn btn-default" type="submit" value="提交" onclick="return check1()"/>
+    <input id="js_12" class="btn btn-default" type="submit" value="提交" onclick="return check1()"/>
     		</form>
     	</td></tr>	
-    <tr class="success"><td><button class="btn btn-default" onclick="window.location.href='teacherAct!getStudentAttendant.action?register.registerId=${register.registerId}'"><span class="glyphicon glyphicon-list-alt"></span> 考勤情况</button></td></tr> 
+    <tr class="success"><td><button id="js_13" class="btn btn-default" onclick="window.location.href='teacherAct!getStudentAttendant.action?register.registerId=${register.registerId}'"><span class="glyphicon glyphicon-list-alt"></span> 考勤情况</button></td></tr> 
   </table>
   <center><button class="btn btn-default" onclick=" window.history.back()">返回</button></center>
   </body>

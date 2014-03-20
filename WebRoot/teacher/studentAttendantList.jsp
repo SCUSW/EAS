@@ -27,6 +27,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	
+	<script type="text/javascript">
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(14))
+		{
+		%>
+			$(document).ready(function(){
+				$("#js_14").removeAttr("onclick");
+				$("#js_14").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	</script>
+	
   </head>
   
   <body>
@@ -44,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				</tr>
     				</c:forEach>
     				<tr class="success"><td>
-    				<button class="btn btn-default" onclick="window.location.href='teacherAct!addStudentAttendant.action?register.registerId=${register.registerId}'" >
+    				<button id="" class="btn btn-default" onclick="window.location.href='teacherAct!addStudentAttendant.action?register.registerId=${register.registerId}'" >
     				<span class="glyphicon glyphicon-plus"></span> 增加
     				</button></td></tr>
     			</table>

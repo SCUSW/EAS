@@ -26,6 +26,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript">
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(19))
+		{
+		%>
+			$(document).ready(function(){
+				$("#js_zjkq").removeAttr("onclick");
+				$("#js_zjkq").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	</script>
+	
 	
   </head>
   
@@ -42,8 +55,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     					<td>${t.attendantTime}</td>
     				</tr>
     				</c:forEach>
+ 					<tr class="active"><td><button id="js_zjkq" class="btn btn-default"  onclick="window.location.href='teacherAct!addCommonTeacherAttandant.action?staff.staffId=${staff.staffId}'"><span class="glyphicon glyphicon-plus"></span> 增加</button><br></td></tr>   			
     			</table>
-    			<a href="teacherAct!addCommonTeacherAttandant.action?staff.staffId=${staff.staffId}">增加</a><br>
+    			
     			<button class="btn btn-default" onclick=" window.history.back()">返回</button>
     	</center>
   </body>
