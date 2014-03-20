@@ -183,6 +183,10 @@ public class MarketingAction {
 	 * 		   false ："addDefault" ——> addConsultInfo.jsp
 	 */
 	public String addConsultInfo(){
+		if(!marketingService.checkSalesmanInfo(consultInfo.getSalesmanInfo().getStaffInfo().getStaffNo())){
+			message = "您不是营销人员！";
+			return "addDefault";
+		}
 		boolean flag1 = marketingService.addConsultInfo(consultInfo);
 		boolean flag2 = marketingService.addSelectConsultwayInfo(selectConsultwayId, consultInfo);
 		if(flag1 && flag2){
