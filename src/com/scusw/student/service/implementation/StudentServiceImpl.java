@@ -218,7 +218,30 @@ public class StudentServiceImpl implements StudentService {
 								(selectCourse.get(i).getCourseEnd().equals(chooseCourse.get(m).getCourseStart()))	||
 								(selectCourse.get(i).getCourseEnd().equals(chooseCourse.get(m).getCourseEnd()))	
 							)
-							return true;
+							return true; 
+					}
+				}
+			}
+		}
+		for(int m = 0; m < chooseCourseClasshourId.length; m++){
+			for(int n = 0; n < chooseCourseClasshourId[m].length; n++){
+				for(int k = 0; k < chooseCourseClasshourId.length; k++){
+					for(int h = 0; h < chooseCourseClasshourId[k].length; h++){
+						if(chooseCourseClasshourId[m][n] == chooseCourseClasshourId[k][m] &&
+								(chooseCourse.get(k).getCourseStart().after(chooseCourse.get(m).getCourseStart()) 
+										&& chooseCourse.get(k).getCourseEnd().before(chooseCourse.get(m).getCourseEnd()))  ||  
+								(chooseCourse.get(m).getCourseStart().after(chooseCourse.get(k).getCourseStart()) 
+										&& chooseCourse.get(m).getCourseStart().before(chooseCourse.get(k).getCourseEnd()))  ||
+								(chooseCourse.get(m).getCourseEnd().after(chooseCourse.get(k).getCourseStart())
+										&& chooseCourse.get(m).getCourseEnd().before(chooseCourse.get(k).getCourseEnd()))  || 
+								(chooseCourse.get(m).getCourseStart().after(chooseCourse.get(k).getCourseStart())
+										&& chooseCourse.get(m).getCourseEnd().before(chooseCourse.get(k).getCourseEnd()))	||
+								(chooseCourse.get(m).getCourseStart().equals(chooseCourse.get(k).getCourseStart()))		||
+								(chooseCourse.get(m).getCourseStart().equals(chooseCourse.get(k).getCourseEnd()))	||
+								(chooseCourse.get(m).getCourseEnd().equals(chooseCourse.get(k).getCourseStart()))	||
+								(chooseCourse.get(m).getCourseEnd().equals(chooseCourse.get(k).getCourseEnd()))	
+							)
+							return true; 
 					}
 				}
 			}
