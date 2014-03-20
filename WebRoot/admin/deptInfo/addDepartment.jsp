@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 <script type="text/javascript">
 	    function check(){
 	    	if(addDepartment.name.value==""){
-	    		alert("请输入分支机构名称！");
+	    		alert("请输入部门名称！");
 	    		addDepartment.name.focus();
 	    		return;
 	    	}else{

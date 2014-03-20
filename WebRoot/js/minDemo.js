@@ -271,5 +271,8 @@ function createMin(){
 				setChildClass();
 				colorBlockChange(7);
 			});
-			
+			$("#min_9").click(function(){
+				setChildClass();
+				colorBlockChange(8);
+			});
 		});	
