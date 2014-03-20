@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<li><a href="admin/wageInfo/subMenu.jsp" target="left" >工资管理</a></li>
   		<li><a href="admin/gradeInfo/subMenu.jsp" target="left" >年级管理</a></li>
   		<li><a href="admin/classInfo/subMenu.jsp" target="left" >班级管理</a></li>
-  		<li><a href="admin/scheduleInfo/subMenu.jsp" target="left" >工作日程</a></li>
+  		<li><a href="admin/setStaff/subMenu.jsp" target="left" >员工信息</a></li>
   	</ul>
   
 

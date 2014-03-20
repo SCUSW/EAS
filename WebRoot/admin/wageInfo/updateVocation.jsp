@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<div style="width:300px;">
 		<div class="input-group input-group-sm">
- 	 			<span class="input-group-addon">请选择所属部门信息</span>
+ 	 			<span class="input-group-addon">请选择所属职类信息</span>
 				<SELECT class="form-control" name="vocation.departmentInfo.departmentId" id="department" >
 				<c:forEach items="${request.departments }" var="d">
 				<option value="${d.departmentId }" ${d.departmentId eq vocation.departmentInfo.departmentId?"selected":"" } >${d.departmentId }.${d.departmentName }</option>

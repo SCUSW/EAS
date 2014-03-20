@@ -19,7 +19,7 @@ import com.scusw.model.BranchInfo;
 public class BranchServiceImpl implements BranchService {
 
 	private BranchDao branchDao;
-	public static Logger logger = Logger.getLogger(BranchServiceImpl.class);
+	public static Logger logger = Logger.getLogger(BranchAction.class);
 	
 	
 	

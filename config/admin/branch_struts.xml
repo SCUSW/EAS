@@ -8,7 +8,6 @@
 			<action name="branchManage" class="branchAction">
 				<result name="listBranch">/admin/branchInfo/listBranch.jsp</result>
 				<result name="updateBranch">/admin/branchInfo/updateBranch.jsp</result>
-				<result name="no_privilege">/include/noPrivilege.jsp</result>
 			</action>
 		</package>
 </struts>

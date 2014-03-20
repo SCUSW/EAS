@@ -8,6 +8,8 @@
 		<!-- 动态方法调用 -->
 		<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
 		
+
+		<include file="testssh/testssh_struts.xml"/>
 		<include file="login/login_struts.xml"/>
 		<include file="student/student_struts.xml"/>
 		<include file="marketing/marketing_struts.xml"/>
@@ -23,6 +25,7 @@
 		<include file="admin/attandant_struts.xml"/>
 		<include file="admin/grade_struts.xml"/>
 		<include file="admin/class_struts.xml"/>
+		<include file="admin/staff_struts.xml"/>
 		<include file="educational/educational_struts.xml"/>
 		
 </struts>

@@ -140,4 +140,14 @@ public class VocationDaoImpl extends HibernateDaoSupport implements VocationDao 
 		return true;
 	}
 
+
+	/**
+	 * query Vocation By DepartmentId
+	 */
+	public List<PositionInfo> queryVocationByDepartmentId(int departmentId) {
+
+		return this.getHibernateTemplate().find("from PositionInfo v where v.vocationAvai=1 " +
+				"and v.departmentInfo.departmentId=" + departmentId);
+	}
+
 }

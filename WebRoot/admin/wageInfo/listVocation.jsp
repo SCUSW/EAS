@@ -36,10 +36,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-	<center>
 	<div id="listvoc">
 		
-		<form id="searchVocation1" name="searchVocation1" method="post" action="<%=basePath %>vocationManage!searchVocation1.action">
+		<form id="searchVocation1" name="searchVocation1" method="post" action="<%=basePath %>vocationManage!searchVocation1.action?nextPage=1">
 		
 		
 		<input class="btn btn-default"  style="position:relative;top:4px;margin-left:400px;font-size:12px;" type="button" value="搜索" onclick="check()" />  
@@ -47,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   <select style="width:200px;margin-top:-27px;margin-left:80px;height:31px;" class="form-control" name="branchInfo.branchId" id="keyword" value="${request.keyword}" onfocus="javascript:if(this.value=='请输入关键字进行搜索')this.value='';"/>
 			<option value="0">所有分支机构</option>
 			<c:forEach items="${request.branchs}" var="b">
-				<option value="${b.branchId}">${b.branchId}:${b.branchName}</option>
+				<option value="${b.branchId}" ${b.branchId eq branchInfo.branchId?"selected":"" }>${b.branchId}:${b.branchName}</option>
 			</c:forEach>
 		</select>
 		</form>
@@ -72,15 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	}
 	    }
     	</script>
-		
-		<% 	String s = (String)request.getAttribute("keyword");
-			Object s1 = request.getAttribute("branch");
-			if((s.equals("") || s==null) && s1!=null){
-		%>
-			按分支机构收索... 分支机构编号：${request.branch.branchId } 分支机构名：<abbr title="${request.branch.branchIntr }"> "${request.branch.branchName }</abbr>
-		<%	}
-		%>
-		
+
 		<br/>
 		
 		<table class="table table-hover" border="1px">

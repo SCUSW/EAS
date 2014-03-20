@@ -10,7 +10,6 @@
 				<result name="failed">/index.jsp</result>
 				<result name="update_success">/admin/gradeInfo/updateGrade.jsp</result>
 				<result name="add_grade">/admin/gradeInfo/addGrade.jsp</result>
-				<result name="no_privilege">/include/noPrivilege.jsp</result>
 			</action>
 		</package>
 </struts>

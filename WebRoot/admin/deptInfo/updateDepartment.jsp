@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div style="width:300px;">
 		<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">部门编号</span>
-				<input id="bid" type="text" width="30" readonly="readonly" name="departmentInfo.branchId" value="${request.departmentInfo.departmentId }" class="form-control" >
+				<input id="bid" type="text" width="30" disabled="disabled" readonly="readonly" name="departmentInfo.branchId" value="${request.departmentInfo.departmentId }" class="form-control" >
 			</div>
 	
 		</div>
@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div style="width:300px;">
 		<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">创建时间</span>
-				<input id="btime" type="text" width="30" readonly="readonly" name="departmentInfo.departmentFoundedTime" value="${request.departmentInfo.departmentFoundedTime }" class="form-control" >
+				<input id="btime" type="text" width="30" disabled="disabled" readonly="readonly" name="departmentInfo.departmentFoundedTime" value="${request.departmentInfo.departmentFoundedTime }" class="form-control" >
 			</div>
 	
 		</div>	

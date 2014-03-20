@@ -26,7 +26,7 @@ public class VocationServiceImpl implements VocationService {
 	private VocationDao vocationDao;
 	private BranchService branchService;
 	private DepartmentService departmentService;
-	public static Logger logger = Logger.getLogger(VocationServiceImpl.class);
+	public static Logger logger = Logger.getLogger(TeaLevelAction.class);
 	
 	
 	

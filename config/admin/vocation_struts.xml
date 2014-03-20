@@ -11,7 +11,6 @@
 				<result name="addVocation">/admin/wageInfo/addVocation.jsp</result>
 				<result name="chooseBranch">/admin/wageInfo/chooseBranch.jsp</result>
 				<result name="updateVocationBranch">/admin/wageInfo/updateVocationBranch.jsp</result>
-				<result name="no_privilege">/include/noPrivilege.jsp</result>
 			</action>
 		</package>
 </struts>

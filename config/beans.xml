@@ -16,6 +16,7 @@
      		 >
 		<import resource="classpath:finance/finance_bean.xml"/>
 		
+		<import resource="classpath:testssh/testssh_bean.xml"/>
 		<import resource="classpath:login/login_bean.xml"/>
 		<import resource="classpath:student/student_bean.xml"/>
 		<import resource="classpath:marketing/marketing_bean.xml"/>
@@ -30,6 +31,7 @@
 		<import resource="classpath:admin/attandant_bean.xml"/>
      	<import resource="classpath:admin/grade_bean.xml"/>	
      	<import resource="classpath:admin/class_bean.xml"/>	 
+     	<import resource="classpath:admin/staff_bean.xml"/>	
 		<import resource="classpath:educational/educational_bean.xml"/>
 		
 		

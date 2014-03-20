@@ -18,7 +18,7 @@ import com.scusw.model.TeacherLevel;
 public class TeaLevelServiceImpl implements TeaLevelService {
 
 	private TeaLevelDao teaLevelDao;
-	public static Logger logger = Logger.getLogger(TeaLevelServiceImpl.class);
+	public static Logger logger = Logger.getLogger(TeaLevelAction.class);
 	
 	
 	public static Logger getLogger() {

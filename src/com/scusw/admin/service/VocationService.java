@@ -50,7 +50,11 @@ public interface VocationService {
 	
 	// return all departments by matched branchId
 	public List<DepartmentInfo> queryDepartmentBybranchId(int branchId);
+	
+	// query vocation by departmetnId
+	public List<PositionInfo> queryVocationByDepartmentId(int departmentId);
 
+	// add vocation
 	public boolean addVocation(PositionInfo vocation);
 	
 }

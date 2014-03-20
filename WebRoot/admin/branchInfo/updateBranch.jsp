@@ -46,13 +46,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div style="width:300px;">
 		<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">分支机构编号</span>
-				<input readonly="readonly" name="branchInfo.branchId" value="${request.branchInfo.branchId }" type="text" class="form-control" >
+				<input readonly="readonly" disabled="disabled" name="branchInfo.branchId" value="${request.branchInfo.branchId }" type="text" class="form-control" >
 		</div>
 	</div>
 	<div style="width:300px;">
 		<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">创&nbsp;&nbsp;建&nbsp;&nbsp;&nbsp;时&nbsp;&nbsp;&nbsp;间</span>
-				<input readonly="readonly" name="branchInfo.branchFoundedTime" value="${request.branchInfo.branchFoundedTime }" type="text" class="form-control" >
+				<input disabled="disabled" readonly="readonly" name="branchInfo.branchFoundedTime" value="${request.branchInfo.branchFoundedTime }" type="text" class="form-control" >
 		</div>
 	</div>
 	<div style="width:300px;">

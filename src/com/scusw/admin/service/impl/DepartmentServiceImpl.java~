@@ -22,7 +22,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	private DepartmentDao departmentDao;
 	private BranchService branchService;
-	public static Logger logger = Logger.getLogger(DepartmentServiceImpl.class);
+	public static Logger logger = Logger.getLogger(DepartmentAction.class);
 	
 	
 	

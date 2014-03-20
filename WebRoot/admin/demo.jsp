@@ -163,7 +163,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   				 <li id="min_6"><a href="vocationManage!listVocation.action" target="text">工资管理</a></li>
   				 <li id="min_7"><a href="grade!queryGrade.action" target="text">年级管理</a></li>
   				 <li id="min_8"><a href="class!queryClass.action" target="text">班级管理</a></li>
-  				 <li id="min_9" class="disabled"><a target="text">工作日程</a></li>
+  				 <li id="min_9"><a href="setStaff!listStaff.action" target="text" >员工信息</a></li>
   				 
 				</ul>
 				</div>

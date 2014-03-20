@@ -39,5 +39,8 @@ public interface VocationDao {
 
 	// add vocation
 	public boolean addVocation(PositionInfo vocation);
+	
+	// query vocation by departmetnId
+	public List<PositionInfo> queryVocationByDepartmentId(int departmentId);
 
 }
