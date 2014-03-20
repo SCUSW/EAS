@@ -12,56 +12,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'listStaff.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 
   </head>
   
   <body>
-
-		
-		
-		<!-- this link is not supposed to be here -->
-		<a href="<%=basePath%>setStaff!addStaff1.action?nextPage=1" >添加员工</a>
-		<br/>
-		
-		
-		
-		
+		<center>	
+		<br/>	
 		<!--  list staff by branch -->
 		
 		<form id="searchStaff1" name="searchStaff1" method="post" action="<%=basePath %>setStaff!searchStaff1.action?nextPage=1">
-		分类查询:
-		<select name="branchInfo.branchId">
-			<option value="0">所有分支机构</option>
-			<c:forEach items="${request.branchs}" var="b">
-				<option value="${b.branchId}" ${b.branchId eq branchInfo.branchId?"selected":"" }>${b.branchId}:${b.branchName}</option>
-			</c:forEach>
-		</select>
-<%-- 	
-		&nbsp;&nbsp;选择部门
-		<select>
-			<option value="">所有部门</option>
-			<c:forEach items="${request.departments}" var="d">
-				<option value="${d.departmentId}">${d.departmentId}:${d.departmentName}</option>
-			</c:forEach>
-		</select>
---%>
-		&nbsp;&nbsp; <input type="submit" value="查询">
+		<input class="btn btn-default" style="position:relative;top:4px;margin-left:400px;font-size:12px;" type="button" value="查询" />  
+		   <span style="position:relative;margin-top:120px;top:5px;left:-330px;"> 分&nbsp;&nbsp;类&nbsp;查&nbsp;询: </span>
+			   <select style="width:200px;margin-top:-27px;margin-left:80px;height:31px;" class="form-control" >
+				  	<option value="0">所有分支机构</option>
+				  	<c:forEach items="${branchs}" var="b">
+						<option value="${b.branchId}">${b.branchId}:${b.branchName}</option>
+					</c:forEach>
+			   </select>
 		</form>
 		
 		<form id="searchStaff2" name="searchStaff2" method="post" action="<%=basePath %>setStaff!searchStaff2.action?nextPage=1&branchInfo.branchId=0">
-		关键字查询:
-		<input type="text" name="keyword" id="keyword" value="${request.keyword}" onfocus="javascript:if(this.value=='请输入关键字进行搜索')this.value='';"> 
-    	&nbsp;&nbsp; <input name="sub" type="button" value="搜索" onclick="check()">
+		 <input class="btn btn-default"  name="sub" style="position:relative;top:4px;margin-left:400px;font-size:12px;" type="button" value="搜索" onclick="check()" />  
+	   <span style="position:relative;margin-top:120px;top:5px;left:-330px;"> 关键字查询: </span>
+	   <input style="width:200px;margin-top:-27px;margin-left:80px;height:31px;" class="form-control" name="keyword" id="keyword" value="${keyword}" onfocus="javascript:if(this.value=='请输入关键字进行搜索')this.value='';"/>
 		</form>
 		
 		<!-- check search is null? -->
@@ -77,14 +65,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    }
     	</script>
 		
-		
-		
-		
-		
-		<table border="1px">
-		
+		<table class="table table-hover" border="1px">
 		<thead>
-			<tr>
+			<tr class="warning">
 				<th>员工编号</th>
 				<th>员工账号</th>
 				<th>姓名</th>
@@ -101,48 +84,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<tbody>
 			<c:forEach items="${request.staffs }" var="s">
-				<tr>
+				<tr class="success">
 					<td align="center">${s.staffId}</td>
-					
 					<td align="center">${s.staffNo}</td>
-					
 					<td align="center">${s.staffName}</td>
-					
 					<td align="center">${s.staffSex}</td>
-					
 					<td align="center">${s.staffPhone}</td>
-					
 					<td align="center">${s.staffQq}</td>
-					
 					<td align="center">${s.staffIdcard}</td>
-					
 					<td align="center"><abbr title="职类编号为： ${s.positionInfo.vocationId}">${s.positionInfo.vocationName}</abbr></td>
-					
-					<td align="center"><abbr title="${s.groupInfo.groupRemark}">${s.groupInfo.groupName}</abbr></td>
-					
-					<td align="center">${s.staffEmplTime}</td>
-					
- 					
+					<td align="center"><abbr title="${s.groupInfo.groupRemark}">${s.groupInfo.groupName}</abbr></td>					
+					<td align="center">${s.staffEmplTime}</td>		
  					<td align="center">
- 					<a href="<%=basePath %>setStaff!updateStaff1.action?staff.staffId=${s.staffId}"> 编辑 </a>
- 					<a href="<%=basePath %>setStaff!deleteStaff.action?staff.staffId=${s.staffId}"> 删除 </a>
- 					</td>
- 					
- 					
+ 					<button class="btn btn-default" onclick="window.location.href='<%=basePath %>setStaff!updateStaff1.action?staff.staffId=${s.staffId}'"><SPAN class="glyphicon glyphicon-edit"></SPAN> 编辑 </button>
+ 					<button class="btn btn-default" onclick="window.location.href='<%=basePath %>setStaff!deleteStaff.action?staff.staffId=${s.staffId}'"><SPAN class="glyphicon glyphicon-remove"></SPAN> 删除 </button>
+ 					</td>	
 				</tr>
-				
-				<tr>
+				<tr class="success">
  					<td colspan="11">备注信息: ${s.staffOthers}</td>
 	 			</tr>
-	 			
-	 			
 			</c:forEach>
-		
 		</tbody>
 		</table>
-		
-		
-		
 		总共： ${request.total } 条记录 &nbsp;&nbsp; 
 		每页显示： ${request.pageSize } 条记录<br>
 		<%
@@ -161,6 +124,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<a href="<%=basePath%>setStaff!listStaff.action?nextPage=<%=((Integer)request.getAttribute("total")/(Integer)request.getAttribute("pageSize")+1) %>&pageSize=${request.pageSize }">末页</a>&nbsp;&nbsp;
 			<%} 
 		}%>
-
+</center>
   </body>
 </html>
