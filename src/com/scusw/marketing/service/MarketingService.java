@@ -5,6 +5,7 @@ package com.scusw.marketing.service;
 
 import java.util.List;
 
+import com.scusw.model.ClassInfo;
 import com.scusw.model.ConsultInfo;
 import com.scusw.model.SalesmanInfo;
 import com.scusw.model.StudentConsultway;
@@ -29,4 +30,5 @@ public interface MarketingService {
 	public void setSalesmanRoyaltyRate(float royaltyRate);
 	public void updateSalesmanSalary(int[][] allPerformance);
 	public boolean checkIsStudentExit(String studentNo);
+	public boolean checkIsClassExit(int classId);
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.scusw.marketing.dao.MarketingDao;
 import com.scusw.marketing.service.MarketingService;
+import com.scusw.model.ClassInfo;
 import com.scusw.model.ConsultInfo;
 import com.scusw.model.ConsultwayInfo;
 import com.scusw.model.SalesmanInfo;
@@ -168,10 +169,28 @@ public class MarketingServiceImpl implements MarketingService {
 	 */
 	public boolean checkIsStudentExit(String studentNo){
 		StudentInfo student = marketingDao.checkIsStudentExit(studentNo);
-		if( student != null)
+		if( student != null){
+			System.out.println("学号已存在");
 			return true;
-		else
+		}
+		else 
 			return false;
+	}
+	
+	/**
+	 * 方法描述：检查班级是否存在
+	 * @param classId ：班级编号
+	 * @return ：存在——>true
+	 * 			 不存在——>false
+	 */
+	public boolean checkIsClassExit(int classId){
+		ClassInfo classInfo = marketingDao.checkIsClassExit(classId);
+		if(classInfo == null){
+			System.out.println("班级不存在");
+			return false;
+		}
+		else
+			return true;
 	}
 }
  

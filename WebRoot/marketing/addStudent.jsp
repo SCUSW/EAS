@@ -38,12 +38,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 }
 		 
 		 function checkAge(){
+		 	var regu = /^[-]{0,1}[0-9]{1,}$/; 
 		 	if(addStudent.age.value<=0 || addStudent.age.value=="" || addStudent.age.value==null){
 		 		alert("请输入正确的年龄");
 		 		addStudent.age.focus();
 		 		return false;
 		 	}
-		 	return true;
+		 	else if(!regu.test(addStudent.age.value)){
+		 		alert("请输入正确的年龄");
+		 		return false;
+		 	}
+		 	else
+		 		return true;
 		 }
 		 
 		 function checkNo(){
@@ -130,13 +136,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 }
 		 
 		 function checkClass(){
+		 	var regu = /^[-]{0,1}[0-9]{1,}$/; 
 		 	if(addStudent.cla.value=="" || addStudent.cla.value==null){
 	    		alert("请输入班级！");
 	    		addStudent.cla.focus();
 	    		return false;
-	    	}else{
-	    		return true;
-	    	}
+	    	}else if(!regu.test(addStudent.cla.value)){
+	    		alert("请输入正确的班级");
+		 		return false;
+		 	}
+		 	else
+		 		return true;
 		 }
 		 
 		 function checkBalance(){
@@ -160,11 +170,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 }
 		 
 		 function checkConsultId(){
+		 	var regu = /^[-]{0,1}[0-9]{1,}$/; 
 		 	if(addStudent.consultId.value=="" || addStudent.consultId.value==null){
 	    		alert("请输入咨询编号！");
 	    		addStudent.consultId.focus();
 	    		return false;
-	    	}else{
+	    	}else if(!regu.test(addStudent.consultId.value)){
+	    		alert("请输入正确的编号！");
+		 		return false;
+		 	}
+	    	else{
 	    		return true;
 	    	}
 		 }

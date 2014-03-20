@@ -9,6 +9,7 @@ import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.scusw.marketing.dao.MarketingDao;
+import com.scusw.model.ClassInfo;
 import com.scusw.model.ConsultInfo;
 import com.scusw.model.SalesmanInfo;
 import com.scusw.model.StudentConsultway;
@@ -179,5 +180,18 @@ public class MarketingDaoImpl extends HibernateDaoSupport implements MarketingDa
 		q.setParameter("studentNo", studentNo);
 		StudentInfo studentInfo = (StudentInfo) q.uniqueResult();
 		return studentInfo;
+	}
+	
+	/**
+	 * 方法描述：检查班级是否存在
+	 * @param classId ：班级编号
+	 * @return ：班级实体
+	 */
+	public ClassInfo checkIsClassExit(int classId){
+		Query q = this.getSession().createQuery(
+				"from ClassInfo c where c.classId=:classId");
+		q.setParameter("classId", classId);
+		ClassInfo classInfo = (ClassInfo) q.uniqueResult();
+		return classInfo;
 	}
 }

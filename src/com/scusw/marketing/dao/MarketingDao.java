@@ -5,6 +5,7 @@ package com.scusw.marketing.dao;
 
 import java.util.List;
 
+import com.scusw.model.ClassInfo;
 import com.scusw.model.ConsultInfo;
 import com.scusw.model.SalesmanInfo;
 import com.scusw.model.StudentConsultway;
@@ -29,4 +30,5 @@ public interface MarketingDao {
 	public void updateSalesmanSalary(int performance, int salesmanId);
 	public void addStudent(StudentInfo student) throws Exception;
 	public StudentInfo checkIsStudentExit(String studentNo);
+	public ClassInfo checkIsClassExit(int classId);
 }

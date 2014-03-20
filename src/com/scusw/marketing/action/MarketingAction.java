@@ -274,6 +274,8 @@ public class MarketingAction {
 	public String addStudent(){
 		if(marketingService.checkIsStudentExit(studentInfo.getStudentNo()))
 			return "addDefault";
+		if(!marketingService.checkIsClassExit(studentInfo.getClassInfo().getClassId()))
+			return "addDefault";
 		if(marketingService.addStudent(studentInfo))
 			return "addStudentInfoSuccess";
 		else
