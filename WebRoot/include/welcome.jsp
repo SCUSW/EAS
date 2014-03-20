@@ -1,9 +1,12 @@
-
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-   
+   <base href="<%=basePath%>">
     
     <title>My JSP 'index.jsp' starting page</title>
     
@@ -13,7 +16,7 @@
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	
-	
+	<link rel="stylesheet" type="text/css" href="css/body.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<script type="text/javascript" src="js/jquery.js"></script>
@@ -40,12 +43,12 @@
 		text-align:center;
 	}
 	#welcome_w{
-		margin-top:-100px;
-		display:none;
+		margin-top:100px;
+		
 	}
 	</style>
 	<script>
-		
+	/*
 	function d(){
 		$(document).ready(function() {
 			var h=document.body.clientWidth; 
@@ -66,7 +69,7 @@
 	window.onresize=f;
 		
 		
-
+*/
 </script>
 		
 
@@ -76,8 +79,8 @@
   	<div class="container-fulied">
 	  	<div id="content_w">
 		  	<div id="guide_w">
-		  		<img id="circle_w" src="image/circle.png">
-		  		<div id="welcome_w">welcome<br/>xxxx</div>
+		  		
+		  		<div id="welcome_w"><h1>welcome<br/>${session.name }</h1></div>
 		  	</div>
 	  	</div>
 	  </div>

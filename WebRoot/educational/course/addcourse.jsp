@@ -101,7 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<input class="btn btn-default" type="submit" value="确定添加"/>
    </form>
-   <a href="educational/course/querycourseinfo.jsp">返回查询界面</a>
+   <button class="btn btn-default" onclick=" windon.location.href='educational/course/querycourseinfo.jsp'"><span class="glyphicon glyphicon-repeat"></span> 返回查询界面</button>
    </center>
   </body>
 </html>

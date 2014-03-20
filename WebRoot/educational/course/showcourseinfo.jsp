@@ -26,10 +26,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+  
+  	<script type="text/javascript">
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(29))
+		{
+		%>
+			$(document).ready(function(){
+				$("#jw_29").removeAttr("onclick");
+				$("#jw_29").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(30))
+		{
+		%>
+			$(document).ready(function(){
+				$("#jw_30").removeAttr("onclick");
+				$("#jw_30").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	</script>
+  
   </head>
   
   <body>
-        <div align="right"><a href="educational/course/addcourse.jsp">添加课程</a></div>
     	<center>
     			<table class="table table-hover" border="1">
     				<tr class="warning">
@@ -40,12 +63,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				<tr class="success"> 
     					<td>${c.courseName}</td><td>${c.teacherInfo.staffInfo.staffName}</td>
     					<td>${c.majorInfo.majorName}</td><td>${c.courseStart}</td><td>${c.courseEnd}</td><td>${c.courseTimes}</td>
-    					<td><button class="btn btn-default" onclick="window.location.href='educational!queryCourseByNT.action?course.courseId=${c.courseId}'"><span class="glyphicon glyphicon-edit"></span> 编辑</button>&nbsp;
+    					<td><button id="jw_29" class="btn btn-default" onclick="window.location.href='educational!queryCourseByNT.action?course.courseId=${c.courseId}'"><span class="glyphicon glyphicon-edit"></span> 编辑</button>&nbsp;
     				</tr>
     				</c:forEach>
-    				<tr class="active "><td colspan="7"><button class="btn btn-default" onclick="window.location.href='educational/course/addcourse.jsp'"><span class="glyphicon glyphicon-plus"></span> 添加</button></td></tr>
+    				<tr class="active "><td colspan="7"><button id="jw_30" class="btn btn-default" onclick="window.location.href='educational/course/addcourse.jsp'"><span class="glyphicon glyphicon-plus"></span> 添加</button></td></tr>
     			</table>
-    			<a href="educational/course/querycourseinfo.jsp">返回查询界面</a>
+    			<button class="btn btn-default" onclick="window.location.href='educational/course/querycourseinfo.jsp'"><span class="glyphicon glyphicon-repeat"></span> 返回查询界面</button>
     	</center>
   </body>
 </html>

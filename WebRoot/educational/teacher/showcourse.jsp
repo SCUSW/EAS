@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>找不到页面</title>
+    <title>..</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -40,11 +40,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				<c:forEach items="${courses}" var="c">
     				<tr class="success"> 
     					<td>${c.courseInfo.courseName}</td><td>${c.courseInfo.coursePrice}</td><td>${c.classroomInfo.classroomAddr}</td><td>${c.courseInfo.majorInfo.majorName}</td>
-                        <td>${c.classhourInfo.classhourName}&nbsp ${c.classhourInfo.classhourStart}--${c.classhourInfo.classhourEnd}</td>   				
+                        <td>${c.classhourInfo.classhourName}&nbsp; ${c.classhourInfo.classhourStart}--${c.classhourInfo.classhourEnd}</td>   				
     				</tr>
     				</c:forEach>			
     			</table>
-    			<a href="educational/teacher/queryteacher.jsp">返回查询界面</a>
+    			<button class="btn btn-default" onclick="window.location.href='educational/teacher/queryteacher.jsp'"><span class="glyphicon glyphicon-repeat"></span>返回查询界面</button>
 </center>
   </body>
 </html>

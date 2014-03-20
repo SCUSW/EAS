@@ -26,12 +26,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+  
+  	<script type="text/javascript">
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(25))
+		{
+		%>
+			$(document).ready(function(){
+				$("#jw_25").removeAttr("onclick");
+				$("#jw_25").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(26))
+		{
+		%>
+			$(document).ready(function(){
+				$("#jw_26").removeAttr("onclick");
+				$("#jw_26").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(27))
+		{
+		%>
+			$(document).ready(function(){
+				$("#jw_27").removeAttr("onclick");
+				$("#jw_27").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	</script>
+  
   </head>
   
   <body>
     	<center>
     	<span style="color: red">${message}</span>
-    	<div align="right"><a href="educational!queryGroupAndLevel.action?">添加老师</a></div>
     			<table class="table table-hover" border="1">
     			
     				<tr class="warning">
@@ -40,14 +74,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				<c:forEach items="${teachers}" var="t">
     				<tr class="success"> 
     					<td>${t.staffInfo.staffName}</td><td>${t.teacherNo}</td>
-    					<td><button class="btn btn-default" onclick="window.location.href='educational!showAllTeacherInfo.action?teacher.teacherNo=${t.teacherNo}'"><span class="glyphicon glyphicon-eye-open"></span> 教师基本信息</button></td>
-    					<td><button class="btn btn-default" onclick="window.location.href='educational!queryCourse.action?teacher.teacherNo=${t.teacherNo}'"><span class="glyphicon glyphicon-eye-open"></span> 课程查看</button></td>
-    					<td><button class="btn btn-default" onclick="window.location.href='educational!addSalary.action?teacher.teacherNo=${t.teacherNo}'"><span class="glyphicon glyphicon-ok-sign"></span> 工资清单确认</button></td>
+    					<td><button id="jw_25" class="btn btn-default" onclick="window.location.href='educational!showAllTeacherInfo.action?teacher.teacherNo=${t.teacherNo}'"><span class="glyphicon glyphicon-eye-open"></span> 教师基本信息</button></td>
+    					<td><button id="jw_26" class="btn btn-default" onclick="window.location.href='educational!queryCourse.action?teacher.teacherNo=${t.teacherNo}'"><span class="glyphicon glyphicon-eye-open"></span> 课程查看</button></td>
+    					<td><button id="jw_27" class="btn btn-default" onclick="window.location.href='educational!addSalary.action?teacher.teacherNo=${t.teacherNo}'"><span class="glyphicon glyphicon-ok-sign"></span> 工资清单确认</button></td>
     				</tr>
     				</c:forEach>
     				<tr class="active "><td colspan="7"><button class="btn btn-default" onclick="window.location.href='educational!queryGroupAndLevel.action?'"><span class="glyphicon glyphicon-plus"></span> 添加</button></td></tr>
     			</table>
-    			<a href="educational/teacher/queryteacher.jsp">返回查询界面</a>
+    			<button class="btn btn-default" onclick="window.location.href='educational/teacher/queryteacher.jsp'"><span class="glyphicon glyphicon-repeat"></span>返回查询界面</button>
     	</center>
   </body>
 </html>

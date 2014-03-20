@@ -26,6 +26,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+	
+	<script type="text/javascript">
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(23)&&!com.scusw.util.CheckPrivilege.checkPrivilege(24))
+		{
+		%>
+			$(document).ready(function(){
+				$(".btn btn-default").removeAttr("onclick");
+				$(".btn btn-default").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	
+	</script>
   </head>
   
   <body>
@@ -36,12 +50,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				</tr>
     				<c:forEach items="${stus}" var="stu">
     				<tr class="success"> 
-    					<td>${stu.studentName}</td><td>${stu.studentNo}</td><td><button class="btn btn-default" onclick="window.location.href='educational!showAllInfo.action?stu.studentNo=${stu.studentNo}'"><span class="glyphicon glyphicon-eye-open"></span> 详细信息</button>&nbsp;
-    					<button class="btn btn-default" onclick="window.location.href='educational!checkAttendant.action?stu.studentNo=${stu.studentNo}'"><span class="glyphicon glyphicon-ok-sign"></span> 考勤确认</button></td>
+    					<td>${stu.studentName}</td><td>${stu.studentNo}</td><td><button id="jw_23" class="btn btn-default" onclick="window.location.href='educational!showAllInfo.action?stu.studentNo=${stu.studentNo}'"><span class="glyphicon glyphicon-eye-open"></span> 详细信息</button>&nbsp;
+    					<button id="jw_24" class="btn btn-default" onclick="window.location.href='educational!checkAttendant.action?stu.studentNo=${stu.studentNo}'"><span class="glyphicon glyphicon-ok-sign"></span> 考勤确认</button></td>
     				</tr>
     				</c:forEach>
     			</table>
-    			<a href="educational/student/querystu.jsp">返回查询界面</a>
+    			<button class="btn btn-default btn-sm" onclick="window.location.href='educational/student/querystu.jsp'"><span class="glyphicon glyphicon-repeat"></span> 返回查询界面</button>
     	</center>
   </body>
 </html>

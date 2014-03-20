@@ -87,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   	}
 	   	//生成营销
 	   	if(flagYx){
-	   		var flagYx_c1 = 0,flagYx_c2 = 0,flagYx_c3 = 0;
+	   		var flagYx_c1 = 0,flagYx_c2 = 0,flagYx_c3 = 0,flagYx_c4 =0;
 	   		
 	   		<%for(int i=34;i<35;i++){
 	   			
@@ -112,6 +112,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   			 	flagYx_c3 = 1;
 	   			 <%}
 	   		} %>
+	   		<%if(com.scusw.util.CheckPrivilege.checkPrivilege(38)){
+	   		%>flagYx_c4 = 1;<%
+	   		}
+	   		%>
 	   		if(!flagYx_c1){
 	   			disableGuide("#yx_tjzx");
 	   		}
@@ -120,6 +124,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   		}
 	   		if(!flagYx_c3){
 	   			disableGuide("#yx_yxryxx");
+	   		}
+	   		if(!flagYx_c4){
+	   			disableGuide("#yx_tjxs");
 	   		}
 	   	}
 	   	//生成教务
@@ -154,7 +161,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   			
 	   			 if(com.scusw.util.CheckPrivilege.checkPrivilege(i)){
 	   			  %>
-	   			 	flagJw_c3 = 1;
+	   			 
+	   			 	flagJw_c4 = 1;
 	   			 <%}
 	   		} %>
 	   		if(!flagJw_c1){
@@ -287,7 +295,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     if(!com.scusw.util.CheckPrivilege.checkPrivilege(34)
     	&& !com.scusw.util.CheckPrivilege.checkPrivilege(35)
     	&& !com.scusw.util.CheckPrivilege.checkPrivilege(36)
-    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(37)){
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(37)
+    	&& !com.scusw.util.CheckPrivilege.checkPrivilege(38)){
     	%>
     	flagYx=0;
     	disableGuide("#td13");
@@ -342,6 +351,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div id="yx_1" style="position:relative;margin-top:-20px;"><a id="yx_tjzx" href="marketing/addConsultInfo.jsp" target="text">添加咨询</a></div>
 					<div id="yx_2" style="position:relative;margin-top:-20px;"><a id="yx_yxryjx" href="marketing/queryPerformance.jsp" target="text">营销人员绩效</a></div>
 					<div id="yx_3" style="position:relative;margin-top:-20px;"><a id="yx_yxryxx" href="marketing/querySalesman.jsp" target="text">营销人员信息</a></div>
+					<div id="yx_4" style="position:relative;margin-top:-20px;"><a id="yx_tjxs" href="marketing/addStudent.jsp	" target="text">添加学生</a></div>
 				</div>
 				<div id="js"  style="height:0px;">
 					<div id="js_blank" style="position:relative;margin-top:0px;">&nbsp;</div>

@@ -26,7 +26,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
-
+	
+	
+	
   </head>
   
   <body>
@@ -61,14 +63,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                      </div>
     					</td>
     					<td>
-    					    <input class="btn btn-default" type="submit" value="提交考勤信息"/>
+    					    <input  class="btn btn-default" type="submit" value="提交考勤信息"/>
     					</td>
     				</tr>
     			</form>
     			</c:forEach> 
     					 
     		</table>
-    		<a href="educational/student/querystu.jsp">返回查询界面</a>
+    		<button class="btn btn-default" onclick="window.location.href='educational/student/querystu.jsp'"><span class="glyphicon glyphicon-repeat"></span> 返回查询界面</button>
    </center>
   </body>
 </html>

@@ -46,7 +46,11 @@ var flag1=0,flag2=0,flag3=0,flag4=0;//分别标记教务管理，财务管理，
 						$("#yx_2").animate({left:'0px'},200,function(){
 							$("#yx_2").fadeOut(100,function(){
 								$("#yx_3").animate({left:'0px'},200,function(){
-									$("#yx_3").fadeOut(100);
+									$("#yx_3").fadeOut(100,function(){
+										$("#yx_4").animate({left:'0px'},200,function(){
+											$("#yx_4").fadeOut(100);
+										});
+									});
 								});
 							});
 						});
@@ -126,10 +130,12 @@ var flag1=0,flag2=0,flag3=0,flag4=0;//分别标记教务管理，财务管理，
 				clearJw();
 				clearCw();
 				clearJs();
-				$("#yx_1,#yx_2,#yx_3").show(600,function(){
+				$("#yx_1,#yx_2,#yx_3,#yx_4").show(600,function(){
 					$("#yx_1").animate({left:'-500px'},200,function(){
 						$("#yx_2").animate({left:'-350px'},200,function(){
-							$("#yx_3").animate({left:'-200px'},200);
+							$("#yx_3").animate({left:'-200px'},200,function(){
+								$("#yx_4").animate({left:'-50px'},200);
+							});
 						});
 					});
 				});

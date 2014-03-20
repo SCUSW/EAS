@@ -38,6 +38,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<%
 		}
 	%>
+	
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(11))
+		{
+		%>
+			$(document).ready(function(){
+				$("#js_11").removeAttr("onclick");
+				$("#js_11").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(15))
+		{
+		%>
+			$(document).ready(function(){
+				$("#js_15").removeAttr("onclick");
+				$("#js_15").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
 	</script>
   </head>
   

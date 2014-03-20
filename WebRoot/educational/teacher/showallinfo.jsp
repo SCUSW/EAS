@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		<tr class="success"><td>教师类别:${teacher.teacherType}</td></tr>
    		<tr class="success"><td>备   注:${teacher.teacherRemark}</td></tr>
    	</table>
-   	<a href="educational/teacher/queryteacher.jsp">返回查询界面</a>
+   	<button class="btn btn-default" onclick="window.location.href='educational/teacher/queryteacher.jsp'"><span class="glyphicon glyphicon-repeat"></span>返回查询界面</button>
    </center>
   </body>
 </html>

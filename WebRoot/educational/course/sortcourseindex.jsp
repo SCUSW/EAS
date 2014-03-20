@@ -27,13 +27,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 
+	<script type="text/javascript">
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(32))
+		{
+		%>
+			$(document).ready(function(){
+				$("#jw_32").removeAttr("onclick");
+				$("#jw_32").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(33))
+		{
+		%>
+			$(document).ready(function(){
+				$("#jw_33").removeAttr("onclick");
+				$("#jw_33").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	</script>
+	
+	
   </head>
   
   <body>
   <center>
    
-  <button class="btn btn-default" onclick="window.location.href='educational!addCourseIntoTable.action?'">智&nbsp;&nbsp;能&nbsp;&nbsp;排&nbsp;&nbsp;课&nbsp;</button>  <div style="color:red"> ${message}</div>
-  <button class="btn btn-default" onclick="window.location.href='educational/course/queryCourseTable.jsp'">查看教学日历</button>
+  <button id="jw_32" class="btn btn-default" onclick="window.location.href='educational!addCourseIntoTable.action'"><span class="glyphicon glyphicon-random"></span> 智&nbsp;&nbsp;能&nbsp;&nbsp;排&nbsp;&nbsp;课&nbsp;</button>  <div style="color:red"> ${message}</div>
+  <button id="jw_33" class="btn btn-default" onclick="window.location.href='educational/course/queryCourseTable.jsp'"><span class="glyphicon glyphicon-eye-open"></span> 查看教学日历</button>
   </center>
   </body>
 </html>

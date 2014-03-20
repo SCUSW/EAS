@@ -16,17 +16,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 
   </head>
   
   <body>
    <center>老师工资注入成功<p>
-                   该期总工资为：${tm.teacherSalary}<p>
+                   该期总工资为：${tm.teacherSalary}</p>
                 
-                   <a href="educational/teacher/queryteacher.jsp">返回查询界面</a>
+                   <button class="btn btn-default" onclick="window.location.href='educational/teacher/queryteacher.jsp'"><span class="glyphicon glyphicon-repeat"></span> 返回查询界面</button>
                    </center>
   </body>
 </html>
