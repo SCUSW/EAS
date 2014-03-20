@@ -18,7 +18,7 @@ public interface EducationalService {
 	public List<TeacherInfo> queryTeacher(TeacherInfo teacher);
 	public String addTeacher(TeacherInfo tea);
 	public TeacherInfo showAllTeacherInfo(TeacherInfo tea);
-	public List<CourseInfo>  queryCourse(TeacherInfo tea);
+	public List<CourseClasshour>  queryCourse(TeacherInfo tea);
 	public TeacherInfo addSalary(TeacherInfo teacher);
 	public String addCourse(CourseInfo course);
 	public List<CourseInfo> queryCourseInfo(CourseInfo course);

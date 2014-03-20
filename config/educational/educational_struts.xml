@@ -13,6 +13,7 @@
 				<result name="checkAttendant">educational/student/showattendant.jsp</result>
 				<result name="addAttendant">educational/student/addattsuccess.jsp</result>
 				<result name="emptyAttendant">educational/student/emptyattendant.jsp</result>
+				<result name="emptyMessage">educational/student/querystu.jsp</result>
 				
 				
 				
@@ -22,16 +23,17 @@
 				<result name="addSalary">educational/teacher/addsalarysuccess.jsp</result>
 				<result name="queryGroupAndLevel">educational/teacher/addteacher.jsp</result>
 				<result name="addTeacher">educational/teacher/queryteacher.jsp</result>
+				<result name="emptyTeacherInfo">educational/teacher/queryteacher.jsp</result>
 				
 				<result name="addCourse">educational/course/addcoursesuccess.jsp</result>
+				<result name="emptyCourse1">educational/course/querycourseinfo.jsp</result>
 				<result name="emptyTeacher">educational/course/addcourseteacherEmpt.jsp</result>
 				<result name="emptyMajor">educational/course/addcoursemajorEmpt.jsp</result>
 				<result name="queryCourseInfo">educational/course/showcourseinfo.jsp</result>
 				<result name="empty">educational/course/addcourse.jsp</result>
 				<result name="queryCourseByNameAndTeacher">educational/course/updatecourse.jsp</result>
 				<result name="querryCourseClasshour">educational/course/showcourseclasshour.jsp</result>
-				<result name="addCourseIntoTable">educational/course/sortcourse.jsp</result>
-				<result name="no_privilege">/include/noPrivilege.jsp</result>
+				<result name="addCourseIntoTable">educational/course/sortcourseindex.jsp</result>
 			</action>
 
 		</package>

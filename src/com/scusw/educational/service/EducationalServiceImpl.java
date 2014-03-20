@@ -62,7 +62,7 @@ public class EducationalServiceImpl implements EducationalService{
 	}
 
 
-	public List<CourseInfo> queryCourse(TeacherInfo tea) {
+	public List<CourseClasshour> queryCourse(TeacherInfo tea) {
 		
 		return educationalDao.queryCourse(tea);
 	}

@@ -210,7 +210,7 @@ public String queryGroupAndLevel(){
   }
   //显示教师课程信息
   public String queryCourse(){
-	 List<CourseInfo> cous= educationalService.queryCourse(teacher);
+	 List<CourseClasshour> cous= educationalService.queryCourse(teacher);
 	 
 	    request=(Map)ActionContext.getContext().get("request");
 	    if(cous.size()==0)

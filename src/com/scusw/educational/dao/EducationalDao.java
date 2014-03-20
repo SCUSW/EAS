@@ -156,16 +156,40 @@ public class EducationalDao extends HibernateDaoSupport {
 	}
 
 	// 查询老师课程信息
-	public List<CourseInfo> queryCourse(TeacherInfo tea) {
+	public List<CourseClasshour> queryCourse(TeacherInfo tea) {
 
 		TeacherInfo t = queryTeacherByNo(tea.getTeacherNo()).get(0);
-		Query c = this.getSession().createQuery(
-				"from CourseInfo c where c.teacherInfo.staffId=:id");
+		Query c = this.getSession().createQuery("from CourseInfo c where c.teacherInfo.staffId=:id");
 		c.setParameter("id", t.getStaffId());
 		List<CourseInfo> cs = c.list();
-		return cs;
+		List<CourseClasshour> clh1=new ArrayList<CourseClasshour>();
+		for(int i=0;i<cs.size();i++){
+			
+			Query  clh2= this.getSession().createQuery("from  CourseClasshour c where c.courseInfo.courseId=:id");
+			clh2.setParameter("id", cs.get(i).getCourseId());
+			List<CourseClasshour> clh=clh2.list();
+			for(int j=0;j<clh.size();j++){
+			ClasshourInfo hour=querryClasshourinfo(clh.get(j));
+			clh.get(j).setClasshourInfo(hour);
+			ClassroomInfo room=querryClassroomInfo(clh.get(j));
+			clh.get(j).setClassroomInfo(room);
+			clh1.add(clh.get(j));
+			}
+		}
+		return clh1;
 	}
-
+	public ClassroomInfo querryClassroomInfo(CourseClasshour classhour){
+		Query c = this.getSession().createQuery("from ClassroomInfo c where c.classroomId=:id");
+		c.setParameter("id", classhour.getClassroomInfo().getClassroomId());
+		ClassroomInfo clh= (ClassroomInfo)c.uniqueResult();
+		return clh;
+	}
+	public ClasshourInfo querryClasshourinfo(CourseClasshour classhour){
+		Query c = this.getSession().createQuery("from ClasshourInfo c where c.classhourId=:id");
+		c.setParameter("id", classhour.getClasshourInfo().getClasshourId());
+		ClasshourInfo clh= (ClasshourInfo)c.uniqueResult();
+		return clh;
+	}
 	public TeacherInfo addSalary(TeacherInfo teacher) {
 		// 插寻到老师
 		TeacherInfo t = queryTeacherByNo(teacher.getTeacherNo()).get(0);

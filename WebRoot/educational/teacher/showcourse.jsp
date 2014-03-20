@@ -33,13 +33,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<center>
     			<table class="table table-hover" border="1">
     				<tr class="warning">
-    					<td>课程名称</td><td>开课时间</td><td>结课时间</td><td>课程价格</td>
-    					<td>开课专业</td>
+    					<td>课程名称</td><td>课程价格</td>
+    					<td>开课教室</td><td>开课专业</td><td>开课时间</td>
     				</tr>
     				<c:forEach items="${courses}" var="c">
     				<tr class="success"> 
-    					<td>${c.courseName}</td><td>${c.courseStart}</td><td>${c.courseEnd}</td>
-    					<td>${c.coursePrice}</td><td>${c.majorInfo.majorName}</td>
+    					<td>${c.courseInfo.courseName}</td><td>${c.courseInfo.coursePrice}</td><td>${c.classroomInfo.classroomAddr}</td><td>${c.courseInfo.majorInfo.majorName}</td>
+                        <td>${c.classhourInfo.classhourName}&nbsp ${c.classhourInfo.classhourStart}--${c.classhourInfo.classhourEnd}</td>   				
     				</tr>
     				</c:forEach>			
     			</table>
