@@ -142,7 +142,7 @@ public class TeacherServiceImpl implements TeacherService{
 		return teacherDao.queryGroupById(groupId);
 	}
 	
-	public int addCommonTeacher(TeacherInfo teacher, int levelId,StaffInfo staff){
+	public int addCommonTeacher(TeacherInfo teacher, int levelId,StaffInfo staff, int staffId){
 
 		if((StaffInfo)teacherDao.queryStaffByNo(staff.getStaffNo())!=null){
 			return 1;
@@ -158,7 +158,10 @@ public class TeacherServiceImpl implements TeacherService{
 		
 		String pass="123456";
 		staff.setStaffPass(MD5Util.MD5(pass));
-		staff.setPositionInfo(this.getPositionById(2));
+		
+		StaffInfo chargeTeacherStaff = teacherDao.queryStaffById(staffId);
+		staff.setPositionInfo(chargeTeacherStaff.getPositionInfo());
+		
 		staff.setGroupInfo(this.getGroupInfoById(2));
 		staff.setStaffEmplTime(new Timestamp(System.currentTimeMillis()));
 		staff.setStaffAvai((int)1);

@@ -97,4 +97,6 @@ public interface TeacherDao {
 	public void updateTeachingManage(TeachingManageInfo teachingManage);
 
 	public List queryCourseClasshourByCourseId(Integer courseId);
+
+	public StaffInfo queryStaffById(int staffId);
 }

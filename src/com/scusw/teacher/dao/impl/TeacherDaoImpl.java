@@ -296,4 +296,11 @@ public class TeacherDaoImpl extends HibernateDaoSupport implements TeacherDao {
 		List courseClasshours=q.list();
 		return courseClasshours;
 	}
+	
+	public StaffInfo queryStaffById(int staffId){
+		Query q=this.getSession().createQuery("from StaffInfo s where s.staffId=:staffId");
+		q.setParameter("staffId", staffId);
+		StaffInfo staff=(StaffInfo) q.uniqueResult();
+		return staff;
+	}
 }

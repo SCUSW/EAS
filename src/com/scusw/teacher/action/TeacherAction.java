@@ -416,7 +416,10 @@ public class TeacherAction extends ActionSupport{
 	
 	public String addCommonTeacher2(){
 		try {
-			int flag = teacherService.addCommonTeacher(teacher,teacherLevel.getLevelId(), staff);
+			session = ActionContext.getContext().getSession();
+			int staffId = (Integer) session.get("staffId");
+			
+			int flag = teacherService.addCommonTeacher(teacher,teacherLevel.getLevelId(), staff, staffId);
 			
 			if (flag == 0) {
 				return "addCommonTeacher2";
@@ -433,6 +436,7 @@ public class TeacherAction extends ActionSupport{
 			return "addCommonTeacher2_default";
 			
 		} catch (Exception e) {
+			System.out.println(e);
 			return "default";
 		}
 	}
