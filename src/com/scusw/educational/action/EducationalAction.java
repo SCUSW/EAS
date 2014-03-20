@@ -305,7 +305,9 @@ public String queryGroupAndLevel(){
   public String addCourseIntoTable(){
 	  request=(Map)ActionContext.getContext().get("request");
 	 if( educationalService.addCourseIntoTable().equals("emptyCourse"))
-		 request.put("message","课程表信息为空请先添加");	 
+		 request.put("message","课程表信息为空请先添加");	
+	 else if(educationalService.addCourseIntoTable().equals("emptyHour"))
+		 request.put("message","课时划分表为空");
 	 else
 	  request.put("message","排课成功");
 	  return "addCourseIntoTable";

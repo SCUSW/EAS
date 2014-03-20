@@ -190,6 +190,11 @@ public class EducationalDao extends HibernateDaoSupport {
 		ClasshourInfo clh= (ClasshourInfo)c.uniqueResult();
 		return clh;
 	}
+	public List<ClasshourInfo> querryClasshourinfo(){
+		Query c = this.getSession().createQuery("from ClasshourInfo c");
+		List<ClasshourInfo> clh= c.list();
+		return clh;
+	}
 	public TeacherInfo addSalary(TeacherInfo teacher) {
 		// 插寻到老师
 		TeacherInfo t = queryTeacherByNo(teacher.getTeacherNo()).get(0);
@@ -340,6 +345,9 @@ public class EducationalDao extends HibernateDaoSupport {
 		List<CourseInfo> cs = queryAllCourse();
 		if(cs.size()==0)
 			return "emptyCourse";
+		int size=querryClasshourinfo().size();
+		if(size==0)
+			return "emptyHour";
 
 		for (int i = 0; i < cs.size(); i++) {
 			CourseInfo course = cs.get(i);
@@ -355,7 +363,7 @@ public class EducationalDao extends HibernateDaoSupport {
 					boolean flag = true;
 					int index=0;// 记录随机生成的时间片index=0;
 					while (flag) {
-						int j = Math.abs(random.nextInt()) % 20 + 1;
+						int j = Math.abs(random.nextInt()) % size + 1;
 						index = j;	 
 						if (isMixTime(course, j))
 							flag = false;	
