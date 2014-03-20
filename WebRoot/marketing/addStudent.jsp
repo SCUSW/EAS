@@ -178,6 +178,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	}else if(!regu.test(addStudent.consultId.value)){
 	    		alert("请输入正确的编号！");
 		 		return false;
+		 	}else if(addStudent.consultId.value==0){
+		 		alert("咨询编号必须大于0！");
+		 		return false;
 		 	}
 	    	else{
 	    		return true;
@@ -189,6 +192,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <center> <h1>添加学生</h1>
+    	<div style="color: red">${message}</div>
     	<div style="width:300px;">
     		<form  name="addStudent" action="marketing!addStudent.action" method="post">
     			<fieldset>
