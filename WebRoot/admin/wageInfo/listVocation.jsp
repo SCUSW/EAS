@@ -40,10 +40,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<center>
 	<div id="listvoc">
 		
-		<form id="searchVocation1" name="searchVocation1" method="post" action="<%=basePath %>vocationManage!searchVocation1.action?nextPage=1">
+		<form id="searchVocation1" name="searchVocation1" method="post" action="<%=basePath %>vocationManage!searchVocation1.action?nextPage=1&keyword="" >
 		
 		
-		<input class="btn btn-default"  style="position:relative;top:4px;margin-left:400px;font-size:12px;" type="button" value="搜索" onclick="check()" />  
+		<input class="btn btn-default"  style="position:relative;top:4px;margin-left:400px;font-size:12px;" type="submit" value="搜索" />  
 	   <span style="position:relative;margin-top:120px;top:5px;left:-330px;"> 分类查询: </span>
 	   <select style="width:200px;margin-top:-27px;margin-left:80px;height:31px;" class="form-control" name="branchInfo.branchId" id="keyword" value="${request.keyword}" onfocus="javascript:if(this.value=='请输入关键字进行搜索')this.value='';"/>
 			<option value="0">所有分支机构</option>
@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</select>
 		</form>
 		
-		<form id="searchVocation2" name="searchVocation2" method="post" action="<%=basePath %>vocationManage!searchVocation2.action">
+		<form id="searchVocation2" name="searchVocation2" method="post" action="<%=basePath %>vocationManage!searchVocation2.action?branchInfo.branchId=0&nextPage=1 ">
 		
 		<input class="btn btn-default"  name="sub" style="position:relative;top:4px;margin-left:400px;font-size:12px;" type="button" value="搜索" onclick="check()" />  
 	   <span style="position:relative;margin-top:120px;top:5px;left:-330px;"> 关键字查询: </span>

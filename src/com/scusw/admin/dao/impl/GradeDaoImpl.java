@@ -7,7 +7,6 @@ import org.hibernate.Query;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import com.scusw.admin.dao.GradeDao;
-import com.scusw.model.ClassInfo;
 import com.scusw.model.GradeInfo;
 
 public class GradeDaoImpl extends HibernateTemplate implements GradeDao {

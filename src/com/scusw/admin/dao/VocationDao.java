@@ -2,7 +2,6 @@ package com.scusw.admin.dao;
 
 import java.util.List;
 
-import com.scusw.model.BranchInfo;
 import com.scusw.model.PositionInfo;
 
 /**

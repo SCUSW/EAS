@@ -1,6 +1,5 @@
 package com.scusw.admin.dao.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -126,7 +125,7 @@ public class PrivilegeManageDaoImpl extends HibernateDaoSupport implements Privi
 	 */
 	public GroupInfo getGroupById(int groupId) {
 		
-		return (GroupInfo) this.getHibernateTemplate().get(GroupInfo.class, groupId);
+		return this.getHibernateTemplate().get(GroupInfo.class, groupId);
 	}
 
 	

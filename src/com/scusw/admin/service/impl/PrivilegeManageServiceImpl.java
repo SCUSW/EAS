@@ -1,11 +1,9 @@
 package com.scusw.admin.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.scusw.admin.action.PrivilegeManageAction;
 import com.scusw.admin.dao.PrivilegeManageDao;
 import com.scusw.admin.service.PrivilegeManageService;
 import com.scusw.model.GroupInfo;

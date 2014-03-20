@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<SELECT name="departmentInfo.departmentId" id="department">
 		
 			<c:forEach items="${request.departments }" var="d">
-				<option value="${d.departmentId }" ${d.departmentId eq request.department.departmentId }>${d.departmentId }.${d.departmentName }</option>
+				<option value="${d.departmentId }" ${d.departmentId eq request.department.departmentId?"selected":"" }>${d.departmentId }.${d.departmentName }</option>
 			</c:forEach>
 			
 		</SELECT>

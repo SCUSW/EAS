@@ -1,17 +1,9 @@
 package com.scusw.admin.action;
 
-import java.sql.Timestamp;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
-import org.springframework.http.HttpRequest;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.scusw.admin.service.DepartmentService;
 import com.scusw.model.BranchInfo;
@@ -127,6 +119,7 @@ public class DepartmentAction {
 		list = departmentService.queryAllDepartment(nextPage, pageSize);
 		ServletActionContext.getRequest().setAttribute("branchs",departmentService.queryAllBranch());
 		total=departmentService.queryTotalDepartment();
+		request.put("branchId",branchId);
 		request.put("total",total);
 		request.put("pageSize", pageSize);
 		request.put("currentPage", nextPage);
@@ -155,6 +148,7 @@ public class DepartmentAction {
 		list = departmentService.queryDepartmentByKeyword(keyword,nextPage, pageSize);
 		ServletActionContext.getRequest().setAttribute("branchs",departmentService.queryAllBranch());
 		total = departmentService.queryNoDepartmentByKeyword(keyword);
+		request.put("branchId",branchId);
 		request.put("total",total);
 		request.put("pageSize", pageSize);
 		request.put("currentPage", nextPage);
@@ -185,6 +179,7 @@ public class DepartmentAction {
 		ServletActionContext.getRequest().setAttribute("branchs",departmentService.queryAllBranch());
 		list = departmentService.queryDepartmentByBranchId(branchId,nextPage, pageSize);
 		total = departmentService.queryNoDepartmentByBranchId(branchId);
+		request.put("branchId",branchId);
 		request.put("total",total);
 		request.put("pageSize", pageSize);
 		request.put("currentPage", nextPage);

@@ -1,5 +1,4 @@
 package com.scusw.admin.dao;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.scusw.model.GroupInfo;

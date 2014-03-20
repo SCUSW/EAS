@@ -66,9 +66,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">分支机构</span>
 				<select class="form-control" name="departmentInfo.branchInfo.branchId">
-				<option value="${request.departmentInfo.branchInfo.branchId}" selected="selected">${request.departmentInfo.branchInfo.branchId}:${request.departmentInfo.branchInfo.branchName}</option>
 				<c:forEach items="${request.branchs}" var="b">
-					<option value="${b.branchId}">${b.branchId}:${b.branchName}</option>
+					<option value="${b.branchId}" ${departmentInfo.branchInfo.branchId eq b.branchId?"selected":"" } >${b.branchId}:${b.branchName}</option>
 				</c:forEach>
 			</select>
 			</div>

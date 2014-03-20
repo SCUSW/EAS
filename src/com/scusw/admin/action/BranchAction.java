@@ -1,10 +1,7 @@
 package com.scusw.admin.action;
 
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
-
-import org.apache.log4j.Logger;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.scusw.admin.service.BranchService;

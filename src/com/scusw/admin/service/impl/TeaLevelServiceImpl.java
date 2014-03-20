@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.scusw.admin.action.TeaLevelAction;
 import com.scusw.admin.dao.TeaLevelDao;
 import com.scusw.admin.service.TeaLevelService;
 import com.scusw.model.TeacherLevel;

@@ -1,6 +1,5 @@
 package com.scusw.admin.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.scusw.model.GroupInfo;

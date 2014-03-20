@@ -106,7 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div style="width:300px;">
 		<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">备注信息</span>
-				<textarea class="form-control"  name="vocation.remark" rows="10" cols="30"></textarea>  
+				<textarea class="form-control"  name="vocation.vocationRemark" rows="10" cols="30"></textarea>  
 			</div>
 		</div>
 		

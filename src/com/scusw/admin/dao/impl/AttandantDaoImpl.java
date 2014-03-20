@@ -55,7 +55,7 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements
 
 	public int getTotleStaffAttendant(String staffName, String staffNo) {
 		// TODO Auto-generated method stub
-		List<StaffAttandant> list = (List<StaffAttandant>) this
+		List<StaffAttandant> list = this
 				.getSession()
 				.createQuery(
 						"from StaffAttandant sa where sa.staffInfo.staffName like :staffName and sa.staffInfo.staffNo like :staffNo")
@@ -69,7 +69,7 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements
 	public int getTotleStaffAttendant(String staffName, int departmentId,
 			String staffNo) {
 		// TODO Auto-generated method stub
-		List<StaffAttandant> list = (List<StaffAttandant>) this
+		List<StaffAttandant> list = this
 				.getSession()
 				.createQuery(
 						"from StaffAttandant sa where sa.staffInfo.staffName like :staffName and sa.staffInfo.staffNo like :staffNo and sa.staffInfo.positionInfo.departmentInfo.departmentId=:departmentId")
@@ -82,7 +82,7 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements
 
 	public int getTotleStuAttendant(String studentName, String studentNo) {
 		// TODO Auto-generated method stub
-		List<StudentAttendant> list = (List<StudentAttendant>) this
+		List<StudentAttendant> list = this
 				.getSession()
 				.createQuery(
 						"from StudentAttendant sa where sa.registerInfo.studentInfo.studentName like :studentName and sa.registerInfo.studentInfo.studentNo like :studentNo ")
@@ -95,7 +95,7 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements
 	public int getTotleStuAttendantByGrade(String studentName,
 			String studentNo, int gradeId) {
 		// TODO Auto-generated method stub
-		List<StudentAttendant> list = (List<StudentAttendant>) this
+		List<StudentAttendant> list = this
 				.getSession()
 				.createQuery(
 						"from StudentAttendant sa where sa.registerInfo.studentInfo.studentName like :studentName and sa.registerInfo.studentInfo.studentNo like :studentNo and sa.registerInfo.studentInfo.classInfo.gradeInfo.gradeId=:gradeId")
@@ -109,7 +109,7 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements
 	public int getTotleStuAttendantByCourse(String studentName,
 			String studentNo, int courseId) {
 		// TODO Auto-generated method stub
-		List<StudentAttendant> list = (List<StudentAttendant>) this
+		List<StudentAttendant> list = this
 				.getSession()
 				.createQuery(
 						"from StudentAttendant sa where sa.registerInfo.studentInfo.studentName like :studentName and sa.registerInfo.studentInfo.studentNo like :studentNo and sa.registerInfo.courseInfo.courseId=:courseId")
@@ -123,7 +123,7 @@ public class AttandantDaoImpl extends HibernateDaoSupport implements
 	public int getTotleStuAttendant(String studentName, String studentNo,
 			int gradeId, int courseId) {
 		// TODO Auto-generated method stub
-		List<StudentAttendant> list = (List<StudentAttendant>) this
+		List<StudentAttendant> list = this
 				.getSession()
 				.createQuery(
 						"from StudentAttendant sa where sa.registerInfo.studentInfo.studentName like :studentName and sa.registerInfo.studentInfo.studentNo like :studentNo and sa.registerInfo.studentInfo.classInfo.gradeInfo.gradeId=:gradeId and sa.registerInfo.courseInfo.courseId=:courseId")

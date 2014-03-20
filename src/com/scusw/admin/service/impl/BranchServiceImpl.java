@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.scusw.admin.action.BranchAction;
 import com.scusw.admin.dao.BranchDao;
 import com.scusw.admin.service.BranchService;
 import com.scusw.model.BranchInfo;

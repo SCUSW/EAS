@@ -3,8 +3,6 @@ package com.scusw.admin.action;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.scusw.admin.service.TeaLevelService;
 import com.scusw.model.TeacherLevel;

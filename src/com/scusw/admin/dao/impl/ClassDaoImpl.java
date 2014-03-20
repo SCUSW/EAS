@@ -3,7 +3,6 @@ package com.scusw.admin.dao.impl;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.hibernate.FlushMode;
 import org.hibernate.Query;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 

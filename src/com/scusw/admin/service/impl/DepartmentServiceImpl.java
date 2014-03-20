@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.scusw.admin.action.DepartmentAction;
 import com.scusw.admin.dao.DepartmentDao;
 import com.scusw.admin.service.BranchService;
 import com.scusw.admin.service.DepartmentService;

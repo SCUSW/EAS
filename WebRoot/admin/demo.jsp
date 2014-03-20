@@ -154,11 +154,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div id="min_guide_box" >
 				<ul class="nav nav-pills ">
  				 <li id="min_1" class="active"><a href="privilegeManage!listPrivilege.action" target="text">用户权限</a></li>
- 				 <li id="min_2"><a href="branchManage!listBranch.action" target="text">分支机构</a></li>
-  				 <li id="min_3"><a href="departmentManage!listDepartment.action" target="text">部门信息</a></li>
+ 				 <li id="min_2"><a href="branchManage!listBranch.action?keyword="" target="text">分支机构</a></li>
+  				 <li id="min_3"><a href="departmentManage!listDepartment.action?branchId=0&nextPage=1&keyword="" target="text">部门信息</a></li>
   				 <li id="min_4"><a href="teaLevelManage!listTeaLevel.action" target="text">教师等级</a></li>
   				 <li id="min_5"><a href="<%=basePath%>attandant!checkStuAttendant.action?nextPage=1&pageSize=20&gradeId=0&courseId=0&studentName=&studentNo=" target="text">考勤信息</a></li>
-  				 <li id="min_6"><a href="vocationManage!listVocation.action" target="text">工资管理</a></li>
+  				 <li id="min_6"><a href="vocationManage!listVocation.action?branchInfo.branchId=0&nextPage=1&keyword="" target="text">工资管理</a></li>
   				 <li id="min_7"><a href="grade!queryGrade.action" target="text">年级管理</a></li>
   				 <li id="min_8"><a href="class!queryClass.action" target="text">班级管理</a></li>
   				  <li id="min_9"><a href="setStaff!listStaff.action" target="text">员工信息</a></li>

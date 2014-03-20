@@ -6,8 +6,6 @@ import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.scusw.admin.dao.VocationDao;
-import com.scusw.model.BranchInfo;
-import com.scusw.model.DepartmentInfo;
 import com.scusw.model.PositionInfo;
 
 

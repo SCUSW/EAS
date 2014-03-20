@@ -39,9 +39,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<body >
   		 <center>
   		 <br/>
-	  	<div id="addsta">
+	  	<div id="updatesta">
 	  	
-		<form id="addStaff" name="addStaff" action="setStaff!addStaff4.action" method="post">
+		<form id="updateStaff" name="updateStaff" action="setStaff!updateStaff4.action" method="post">
 		
 	
 		
@@ -159,24 +159,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<script type="text/javascript">
 		    function check(){
-		    	if(!isMobileNO(addStaff.staffPhone.value)){
+		    	if(!isMobileNO(updateStaff.staffPhone.value)){
 		    		alert("手机号码格式不对");
-		    		addStaff.staffPhone.focus();
+		    		updateStaff.staffPhone.focus();
 		    		return;
-		    	}if(addStaff.staffPass.value==""){
+		    	}if(updateStaff.staffPass.value==""){
 		    		alert("请输入员工密码！");
-		    		addStaff.staffPass.focus();
+		    		updateStaff.staffPass.focus();
 		    		return;
-		    	}if((addStaff.staffQq.value.length>11 || addStaff.staffQq.value.length<5) && addStaff.staffQq.value!=""){
+		    	}if((updateStaff.staffQq.value.length>11 || updateStaff.staffQq.value.length<5) && updateStaff.staffQq.value!=""){
 		    		alert("请正确输入QQ！");
-		    		addStaff.staffQq.focus();
+		    		updateStaff.staffQq.focus();
 		    		return;
-		    	}if(addStaff.staffName.value==""){
+		    	}if(updateStaff.staffName.value==""){
 		    		alert("请输入员工姓名！");
-		    		addStaff.staffName.focus();
+		    		updateStaff.staffName.focus();
 		    		return;
 		    	}else{
-		    		addStaff.submit();
+		    		updateStaff.submit();
 		    	}
 		    }
 		    
@@ -208,7 +208,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    
 		    function isMobileNO(s)//手机验证
 	           {
-	             var a = /^((\(\d{3}\))|(\d{3}\-))?13\d{9}|15\d{9}$/ ;
+//	             var a = /^((\(\d{3}\))|(\d{3}\-))?13\d{9}|15\d{9}$/ ;
+	             var a = /^1[358]\d{9}$/;
 	           if( !s.match(a) )
 	           {
 	        	   return false;

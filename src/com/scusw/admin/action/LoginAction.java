@@ -4,7 +4,6 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.scusw.admin.service.LoginService;
 import com.scusw.model.AdminInfo;
