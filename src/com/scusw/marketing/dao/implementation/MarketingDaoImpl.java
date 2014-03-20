@@ -12,6 +12,7 @@ import com.scusw.marketing.dao.MarketingDao;
 import com.scusw.model.ConsultInfo;
 import com.scusw.model.SalesmanInfo;
 import com.scusw.model.StudentConsultway;
+import com.scusw.model.StudentInfo;
 
 /**
  * 类描述：营销人员可使用的方法的实现
@@ -73,6 +74,15 @@ public class MarketingDaoImpl extends HibernateDaoSupport implements MarketingDa
 			this.getHibernateTemplate().save(studentConsultway.get(i));
 		}
 	}
+	
+	/**
+	 * 方法描述：添加学生
+	 * @param student ：包含学生全部信息的实体
+	 */
+	public void addStudent(StudentInfo student) {
+		this.getHibernateTemplate().save(student);
+	}
+	
 	/**
 	 * 方法描述：通过员工账号查询员工信息
 	 * @param queryNo ：被查询账号

@@ -10,6 +10,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.scusw.marketing.service.MarketingService;
 import com.scusw.model.ConsultInfo;
 import com.scusw.model.SalesmanInfo;
+import com.scusw.model.StudentInfo;
 
 /**
  * 类描述：营销人员动作层实现类
@@ -26,9 +27,22 @@ public class MarketingAction {
 	private int[] selectConsultwayId;
 	private SalesmanInfo salesmanInfo;
 	private float royaltyRate;
+	private StudentInfo studentInfo;
 	private Map<String,Object> request;
 	
 	
+	/**
+	 * @return the studentInfo
+	 */
+	public StudentInfo getStudentInfo() {
+		return studentInfo;
+	}
+	/**
+	 * @param studentInfo the studentInfo to set
+	 */
+	public void setStudentInfo(StudentInfo studentInfo) {
+		this.studentInfo = studentInfo;
+	}
 	/**
 	 * @return the selectConsultwayId
 	 */
@@ -251,6 +265,22 @@ public class MarketingAction {
 	public String setSalesmanRoyaltyRate(){
 		marketingService.setSalesmanRoyaltyRate(royaltyRate);
 		return "queryPerformance";
+	}
+	
+	/**
+	 * 方法描述：添加学生
+	 * @param student：包含学生所有信息的实体
+	 * @return ："addSuccess" ——>addSuccess.jsp
+	 * 			 "addDefault" ——>addDefault.jsp
+	 */
+	public String addStudent(){
+		if(studentInfo.getStudentPass() == null) System.out.println("password null");
+		else System.out.println(studentInfo.getStudentPass());
+		
+		if(marketingService.addStudent(studentInfo))
+			return "addSuccess";
+		else
+			return "addDefault";
 	}
 	
 	public void writeWorkLog(){

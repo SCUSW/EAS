@@ -8,6 +8,7 @@ import java.util.List;
 import com.scusw.model.ConsultInfo;
 import com.scusw.model.SalesmanInfo;
 import com.scusw.model.StudentConsultway;
+import com.scusw.model.StudentInfo;
 
 /**
  * 类描述：营销人员服务层接口类
@@ -16,7 +17,7 @@ import com.scusw.model.StudentConsultway;
  * version 1.0
  */
 public interface MarketingService {
-	
+	public boolean addStudent(StudentInfo student);
 	public boolean addConsultInfo(ConsultInfo consultInfo);
 	public boolean addSelectConsultwayInfo(int[] selectConsultwayId, ConsultInfo consultInfo);
 	public boolean checkSalesmanInfo(String staffNo);

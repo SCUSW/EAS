@@ -9,6 +9,7 @@ import com.scusw.model.ConsultInfo;
 import com.scusw.model.ConsultwayInfo;
 import com.scusw.model.SalesmanInfo;
 import com.scusw.model.StudentConsultway;
+import com.scusw.model.StudentInfo;
 
 /**
  * 类描述：营销人员服务层接口实现类
@@ -50,6 +51,21 @@ public class MarketingServiceImpl implements MarketingService {
 	public boolean addConsultInfo(ConsultInfo consultInfo){	
 		try {
 			marketingDao.addConsultInfo(consultInfo);
+		} catch (Exception e) {
+			return false;
+		}		
+		return true;
+	}
+	
+	/**
+	 * 方法描述：添加学生
+	 * @param student：包含学生全部信息的实体
+	 * @return ：添加成功——>true
+	 * 			 添加失败——>false
+	 */
+	public boolean addStudent(StudentInfo student) {
+		try {
+			marketingDao.addStudent(student);
 		} catch (Exception e) {
 			return false;
 		}		

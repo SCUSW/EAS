@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <center> <h1>添加学生</h1>
     	<div style="width:300px;">
-    		<form  name="addStudent" action="student!addStudent.action" method="post">
+    		<form  name="addStudent" action="marketing!addStudent.action" method="post">
     			<fieldset>
     				
     				<div class="input-group input-group-sm">

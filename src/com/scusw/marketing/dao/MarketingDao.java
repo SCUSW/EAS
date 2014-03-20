@@ -8,6 +8,7 @@ import java.util.List;
 import com.scusw.model.ConsultInfo;
 import com.scusw.model.SalesmanInfo;
 import com.scusw.model.StudentConsultway;
+import com.scusw.model.StudentInfo;
 
 /**
  * 类描述：营销人员可使用的方法的接口
@@ -26,4 +27,5 @@ public interface MarketingDao {
 	public int[][] queryAllSalesmanPerformance(List<SalesmanInfo> salesman);
 	public void setSalesmanRoyaltyRate(float royaltyRate);
 	public void updateSalesmanSalary(int performance, int salesmanId);
+	public void addStudent(StudentInfo student);
 }

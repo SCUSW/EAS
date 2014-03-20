@@ -49,14 +49,6 @@ public class StudentDaoImpl extends HibernateDaoSupport implements StudentDao {
 	}
 
 	/**
-	 * 方法描述：添加学生
-	 * @param student ：包含学生全部信息的实体
-	 */
-	public void addStudent(StudentInfo student) {
-		this.getHibernateTemplate().save(student);
-	}
-
-	/**
 	 * 方法描述：学生查询公告信息
 	 * @return notice：包含公告信息的实体的集合
 	 */

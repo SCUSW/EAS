@@ -224,22 +224,6 @@ public class StudentAction {
 	}
 	
 	/**
-	 * 方法描述：添加学生
-	 * @param student：包含学生所有信息的实体
-	 * @return ："addSuccess" ——>addSuccess.jsp
-	 * 			 "addDefault" ——>addDefault.jsp
-	 */
-	public String addStudent(){
-		if(studentInfo.getStudentPass() == null) System.out.println("password null");
-		else System.out.println(studentInfo.getStudentPass());
-		
-		if(studentService.addStudent(studentInfo))
-			return "addSuccess";
-		else
-			return "addDefault";
-	}
-	
-	/**
 	 * 方法描述：查询所有公告信息
 	 * @return : "notice" ——> showNotice.jsp
 	 */
