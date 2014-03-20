@@ -22,6 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
@@ -250,7 +251,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">入学时间</span>
-						<input id="time" name="studentInfo.attendTime" type="text" class="form-control">
+	 	 				<input type="text" id="time" name="studentInfo.attendTime" class="form-control" value="2012-05-15 21:05:00" data-date-format="yyyy-mm-dd hh:ii:ss">
 					</div>
 					
 					<input type="hidden" name="studentInfo.studentState" value="1"/>
@@ -264,6 +265,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<button class="btn btn-default" onclick="return check()" >确认添加</button>
     			</fieldset>
     		</form>
+    		
+    		<script type="text/javascript" src="js/jquery.js" charset="UTF-8"></script>
+			<script type="text/javascript" src="js/bootstrap.min.js"></script>
+    		<script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+			<script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    		<script type="text/javascript">
+    		$('#time').datetimepicker({
+    		autoclose:true,
+    		todayBtn:true,
+    		todayHighlight:true,
+    		language:'zh-CN',
+    		
+    		});
+    		</script>
+    		
 		</div>
    </center>
   </body>

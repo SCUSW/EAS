@@ -82,6 +82,8 @@ public class MarketingServiceImpl implements MarketingService {
 	 * 			 添加失败——>false
 	 */
 	public boolean addSelectConsultwayInfo(int[] selectConsultwayId, ConsultInfo consultInfo){
+		if(selectConsultwayId == null || selectConsultwayId.length == 0)
+			return false;
 		List<StudentConsultway> studentConsultway = new ArrayList<StudentConsultway>();
 		for(int i = 0; i < selectConsultwayId.length; i ++){
 			StudentConsultway consultway = new StudentConsultway();

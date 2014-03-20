@@ -186,7 +186,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">咨询时间</span>
-						<!-- <input id="time" name="consultInfo.consultTime" type="text" class="form-control"> -->
 						<input type="text" id="time" name="consultInfo.consultTime" class="form-control" value="2012-05-15 21:05:00" data-date-format="yyyy-mm-dd hh:ii:ss">
 					</div>
 					
