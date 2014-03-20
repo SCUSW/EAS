@@ -62,20 +62,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				alert('开课时间不能为空');
 				return false;
 			}
-			if(!isDate(courseStart,null)){
-				alert('开课时间格式不对,请用yyyymmdd格式');
+			if(!isDate(courseStart,"yyyy-MM-dd")){
+				alert('开课时间格式不对,请用yyyy-MM-dd格式');
 				return false;
 			}
 			if(isNull(courseEnd)){
 				alert('结课时间不能为空');
 				return false;
 			}
-			if(!isDate(courseEnd,null)){
-				alert('结课时间格式不对,请用yyyymmdd格式');
-				return false;
-			}
-			if(!checkTwoDate(courseStart,courseEnd)){
-				alert('结课时间不能先于开课时间');
+			if(!isDate(courseEnd,"yyyy-MM-dd")){
+				alert('结课时间格式不对,请用yyyy-MM-dd格式');
 				return false;
 			}
 			if(isNull(courseTimes)){
