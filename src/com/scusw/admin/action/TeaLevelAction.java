@@ -6,6 +6,7 @@ import java.util.Map;
 import com.opensymphony.xwork2.ActionContext;
 import com.scusw.admin.service.TeaLevelService;
 import com.scusw.model.TeacherLevel;
+import com.scusw.util.CheckPrivilege;
 
 
 /**
@@ -52,7 +53,9 @@ public class TeaLevelAction {
 	 * @return
 	 */
 	public String listTeaLevel(){
-
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		List<TeacherLevel> list = teaLevelService.queryAllTeaLevel();
 		request = (Map)ActionContext.getContext().get("request");
 		request.clear();
@@ -66,7 +69,9 @@ public class TeaLevelAction {
 	 * @return
 	 */
 	public String delTeaLevel(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		teaLevel = teaLevelService.queryTeaLevelById(teaLevel.getLevelId());
 		if(teaLevelService.delTeaLevel(teaLevel)){
 			return listTeaLevel();
@@ -80,7 +85,9 @@ public class TeaLevelAction {
 	 * @return
 	 */
 	public String addTeaLevel(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		if(teaLevelService.addTeaLevel(teaLevel)){
 			return listTeaLevel();
 		}
@@ -93,7 +100,9 @@ public class TeaLevelAction {
 	 * @return
 	 */
 	public String updateTeaLevel1(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		teaLevel = teaLevelService.queryTeaLevelById(teaLevel.getLevelId());
 		request = (Map)ActionContext.getContext().get("request");
 		request.clear();
@@ -107,7 +116,9 @@ public class TeaLevelAction {
 	 * @return
 	 */
 	public String updateTeaLevel2(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		teaLevelService.updateTeaLevel(teaLevel);
 		return listTeaLevel();
 	}

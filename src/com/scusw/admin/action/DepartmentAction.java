@@ -8,6 +8,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.scusw.admin.service.DepartmentService;
 import com.scusw.model.BranchInfo;
 import com.scusw.model.DepartmentInfo;
+import com.scusw.util.CheckPrivilege;
 
 
 /**
@@ -114,7 +115,9 @@ public class DepartmentAction {
 	 * @return
 	 */
 	public String listDepartment(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		request = (Map)ActionContext.getContext().get("request");
 		list = departmentService.queryAllDepartment(nextPage, pageSize);
 		ServletActionContext.getRequest().setAttribute("branchs",departmentService.queryAllBranch());
@@ -143,7 +146,9 @@ public class DepartmentAction {
 //		request.put("total",departmentService.queryNoDepartmentByKeyword(keyword));
 //		request.put("pageSize", pageSize);
 //		request.put("currentPage", nextPage);
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		request = (Map)ActionContext.getContext().get("request");
 		list = departmentService.queryDepartmentByKeyword(keyword,nextPage, pageSize);
 		ServletActionContext.getRequest().setAttribute("branchs",departmentService.queryAllBranch());
@@ -171,7 +176,9 @@ public class DepartmentAction {
 //		request.put("total",departmentService.queryNoDepartmentByBranchId(branchId));
 //		request.put("pageSize", pageSize);
 //		request.put("currentPage", nextPage);
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		if(branchId == 0){
 			return listDepartment();
 		}
@@ -193,7 +200,9 @@ public class DepartmentAction {
 	 * @return
 	 */
 	public String delDepartment(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		if(departmentService.delDepartment(departmentInfo)){
 			return listDepartment();
 		}
@@ -219,7 +228,9 @@ public class DepartmentAction {
 	 * @return
 	 */
 	public String updateDepartment1(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		departmentInfo = departmentService.queryDepartmentById(departmentInfo.getDepartmentId());
 		branchs = departmentService.queryAllBranch();
 		ServletActionContext.getRequest().setAttribute("branchs",departmentService.queryAllBranch());
@@ -246,7 +257,9 @@ public class DepartmentAction {
 	 * @return
 	 */
 	public String updateDepartment2(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		departmentService.updateDepartment(departmentInfo);
 		return listDepartment();
 	}
@@ -262,7 +275,9 @@ public class DepartmentAction {
 //		request = (Map)ActionContext.getContext().get("request");
 //		request.clear();
 //		request.put("branchs", list);
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		ServletActionContext.getRequest().setAttribute("branchs",departmentService.queryAllBranch());
 		return "addDepartment";
 	}

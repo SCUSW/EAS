@@ -19,7 +19,7 @@
         <many-to-one name="classInfo" class="com.scusw.model.ClassInfo" fetch="select">
             <column name="class_id" />
         </many-to-one>
-        <many-to-one name="consultInfo" class="com.scusw.model.ConsultInfo" fetch="select">
+        <many-to-one name="consultInfo" class="com.scusw.model.ConsultInfo" fetch="select" insert="false">
             <column name="consult_id" />
         </many-to-one>
         <property name="studentPass" type="java.lang.String">

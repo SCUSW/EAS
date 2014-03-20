@@ -16,20 +16,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">	
+	<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/form_validate.js"></script>	
 
   </head>
   
   <body>
-    This is my JSP page. <br>
+    <center> <h1> 修改密码 </h1>
     <form action="<%=basePath%>/account!changePass.action" method="post">
-    	<input type="text" value="${session.loginNo }" name="loginNo"><br>
-    	<input type="text" name="oldPassword"><br>
-    	<input type="password" name="newPassword"><br>
-    	<input type="submit" value="修改">
+    	<div style="width:500px;">
+    	<div class="input-group input-group-sm">
+	 	 				<span class="input-group-addon">帐&nbsp;&nbsp;&nbsp;&nbsp;号</span>
+						<input disabled="disabled" value="${session.loginNo }" name="loginNo" class="form-control">
+		</div>
+    	
+    	<div class="input-group input-group-sm">
+	 	 				<span class="input-group-addon">旧密码</span>
+						<input name="oldPassword" class="form-control">
+		</div>
+    	
+    	<div class="input-group input-group-sm">
+	 	 				<span class="input-group-addon">新密码</span>
+						<input name="newPassword" class="form-control">
+		</div>
+    	</div>
+    	<br/>
+    	<input class="btn btn-default btn-lg" type="submit" value="修改">
     </form>
     ${request.state }
+    
+    </center>
   </body>
 </html>

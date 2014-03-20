@@ -54,39 +54,28 @@ body {
 	
 	</script>
 		<script type="text/javascript">
-		/* 
-用途：检查输入字符串是否为空或者全部都是空格 
-输入：str 
-返回： 
-如果全是空返回true,否则返回false 
-*/ 
-function check( ){ 
-if ( financialRecords.financialFrom.value == "" || financialRecords.financialNum.value) {
-	alert("标题和金额不能为空")
-	return false; 
-}
-if(isMoney()){
 
-var regu = "^[ ]+$"; 
-var re = new RegExp(regu); 
-return true; 
-}
+function check(){ 
+/* 	alert("asdasd"); */
+	if ( totalSubmit.theme.value == "" || totalSubmit.money.value == "") {
+		alert("标题和金额不能为空");
+		return false; 
+	}
+	if(isMoney()){
+		
+		var regu = "^[ ]+$"; 
+		var re = new RegExp(regu); 
+		return true; 
+	}
 else{
 return false;
 } 
-	/* 
-用途：检查输入字符串是否符合金额格式 
-格式定义为带小数的正数，小数点后最多三位 
-输入： 
-s：字符串 
-返回： 
-如果通过验证返回true,否则返回false 
+}
 
-*/ 
-	function isMoney(  ){   
+	function isMoney(){   
 		var regu = "^[0-9]+[\.][0-9]{0,3}$"; 
 		var re = new RegExp(regu); 
-		if (re.test(financialRecords.financialNum.value)) { 
+		if (re.test(totalSubmit.money.value)) { 
 			return true; 
 		} else { 
 		alert("请输入正确的金额格式");
@@ -124,7 +113,7 @@ s：字符串
 							</center>
 						</td>
 						<td class="success">
-							<form action="<%=basePath%>totalFinanceAction!addFinance.action"
+							<form name="totalSubmit" action="<%=basePath%>totalFinanceAction!addFinance.action"
 								method="post">
 								<center>
 									新增一笔收支信息
@@ -134,12 +123,14 @@ s：字符串
 								<center>
 									<SPAN style="margin-left: -150px;">收支标题：</SPAN>
 									<input
+										id="theme"
 										style="width: 200px; margin-top: -23px; margin-left: 130px; height: 25px;"
 										class="form-control" type="text"
 										name="financialRecords.financialFrom" />
 									<br />
 									<SPAN style="margin-left: -150px;">涉及金额：</SPAN>
 									<input
+										id="money"
 										style="width: 200px; margin-top: -23px; margin-left: 130px; height: 25px;"
 										class="form-control" type="text"
 										name="financialRecords.financialNum" />
@@ -160,9 +151,10 @@ s：字符串
 										cols="48"></textarea>
 									<br />
 									<br />
-									<input id="cw_zjzdjl" type="submit"
-										class="btn btn-default btn-lg" onclick="check();" value="提交" />
-										<button class="btn btn-default" onclick="return check()" >提交</button>
+								<!-- 	<input id="cw_zjzdjl" type="submit"
+										class="btn btn-default btn-lg" onclick="check();" value="提交" /> -->
+										<button  class="btn btn-default btn-lg" onclick="return check()">提交1</button>
+										 
 								</center>
 							</form>
 						</td>

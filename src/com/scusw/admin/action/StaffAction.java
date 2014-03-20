@@ -8,6 +8,7 @@ import com.scusw.admin.service.StaffService;
 import com.scusw.model.BranchInfo;
 import com.scusw.model.DepartmentInfo;
 import com.scusw.model.StaffInfo;
+import com.scusw.util.CheckPrivilege;
 
 /**
  * 
@@ -128,7 +129,9 @@ public class StaffAction {
 	 * @return
 	 */
 	public String listStaff(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		List<StaffInfo> list = staffService.queryAllStaff(nextPage, pageSize);
 		request = (Map)ActionContext.getContext().get("request");
 		keyword = "";
@@ -148,7 +151,9 @@ public class StaffAction {
 	 * @return
 	 */
 	public String deleteStaff(){
-
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		staff = staffService.queryStaffById(staff.getStaffId());
 		if(staffService.deleteStaff(staff)){
 			return listStaff();
@@ -162,7 +167,9 @@ public class StaffAction {
 	 * @return
 	 */
 	public String searchStaff1(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		if(branchInfo.getBranchId() == 0){
 			return listStaff();
 		}
@@ -186,6 +193,9 @@ public class StaffAction {
 	 * @return
 	 */
 	public String searchStaff2(){
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		List<StaffInfo> list = staffService.queryStaffByKeyword(keyword,nextPage, pageSize);
 		request = (Map)ActionContext.getContext().get("request");
 		request.clear();
@@ -206,7 +216,9 @@ public class StaffAction {
 	 * @return
 	 */
 	public String addStaff1(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		request = (Map)ActionContext.getContext().get("request");
 		request.put("branchs",staffService.queryAllBranch());
 		return "chooseBranch";
@@ -218,7 +230,9 @@ public class StaffAction {
 	 * @return
 	 */
 	public String addStaff2(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		request = (Map)ActionContext.getContext().get("request");
 		request.put("departments", staffService.queryDepartmentBybranchId(branchInfo.getBranchId()));
 		return "chooseDept";
@@ -229,7 +243,9 @@ public class StaffAction {
 	 * @return
 	 */
 	public String addStaff3(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		request = (Map)ActionContext.getContext().get("request");
 		request.put("vocations", staffService.queryVocationByDepartmentId(departmentInfo.getDepartmentId()));
 		request.put("groups", staffService.queryAllGroup());
@@ -242,7 +258,9 @@ public class StaffAction {
 	 * @return
 	 */
 	public String addStaff4(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		nextPage=1;
 		if(staffService.addStaff(staff)){
 			return listStaff();
@@ -256,7 +274,9 @@ public class StaffAction {
 	 * @return
 	 */
 	public String updateStaff1(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		staff = staffService.queryStaffById(staff.getStaffId());
 		request = (Map)ActionContext.getContext().get("request");
 		request.put("branchs",staffService.queryAllBranch());
@@ -272,7 +292,9 @@ public class StaffAction {
 	 * @return
 	 */
 	public String updateStaff2(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		request = (Map)ActionContext.getContext().get("request");
 		request.put("departments", staffService.queryDepartmentBybranchId(branchInfo.getBranchId()));
 //		departmentInfo = staff.getPositionInfo().getDepartmentInfo();
@@ -287,7 +309,9 @@ public class StaffAction {
 	 * @return
 	 */
 	public String updateStaff3(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		request = (Map)ActionContext.getContext().get("request");
 //		request.put("vocation", staff.getPositionInfo());
 		request.put("vocations", staffService.queryVocationByDepartmentId(departmentInfo.getDepartmentId()));
@@ -302,7 +326,9 @@ public class StaffAction {
 	 * @return
 	 */
 	public String updateStaff4(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		if(staffService.updateStaff(staff)){
 			return listStaff();
 		}
@@ -315,7 +341,9 @@ public class StaffAction {
 	 * 
 	 */
 	public String execute() throws Exception {
-		 
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		List<DepartmentInfo> list = staffService.queryDepartmentBybranchId(Integer.parseInt(sf));
 
 		return "success";

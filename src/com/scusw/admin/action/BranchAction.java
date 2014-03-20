@@ -6,6 +6,7 @@ import java.util.Map;
 import com.opensymphony.xwork2.ActionContext;
 import com.scusw.admin.service.BranchService;
 import com.scusw.model.BranchInfo;
+import com.scusw.util.CheckPrivilege;
 
 /**
  * manage privilege
@@ -60,7 +61,9 @@ public class BranchAction {
 	 * @return
 	 */
 	public String listBranch(){
-
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		List<BranchInfo> list = branchService.queryAllBranch();
 		request = (Map)ActionContext.getContext().get("request");
 		request.clear();
@@ -76,7 +79,9 @@ public class BranchAction {
 	 * @return
 	 */
 	public String searchBranch(){
-
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		List<BranchInfo> list = branchService.queryBranchByKeyword(keyword);
 		request = (Map)ActionContext.getContext().get("request");
 		request.clear();
@@ -92,7 +97,9 @@ public class BranchAction {
 	 * @return
 	 */
 	public String delBranch(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		branchInfo = branchService.queryBranchById(branchInfo.getBranchId());
 		if(branchService.delBranch(branchInfo)){
 			return listBranch();
@@ -106,7 +113,9 @@ public class BranchAction {
 	 * @return
 	 */
 	public String addBranch(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		if(branchService.addBranch(branchInfo)){
 			return listBranch();
 		}
@@ -119,7 +128,9 @@ public class BranchAction {
 	 * @return
 	 */
 	public String updateBranch1(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		branchInfo = branchService.queryBranchById(branchInfo.getBranchId());
 		request = (Map)ActionContext.getContext().get("request");
 		request.clear();
@@ -134,7 +145,9 @@ public class BranchAction {
 	 * @return
 	 */
 	public String updateBranch2(){
-		
+		if (!CheckPrivilege.checkPrivilege(1)) {
+			return "no_privilege";
+		}
 		branchService.updateBranch(branchInfo);
 		return listBranch();
 		

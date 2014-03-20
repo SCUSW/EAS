@@ -48,6 +48,7 @@ public class AccountAction {
 		session = ActionContext.getContext().getSession();
 		request = (Map<String, Object>) ActionContext.getContext().get("request");
 		request.clear();
+		loginNo = (String) session.get("loginNo");
 		String role = (String) session.get("role");
 		logger.info("帐号"+loginNo + " 旧密码 :"+ oldPassword + " 新密码 :"+newPassword + " role :"+role);
 		if (!accountService.updatePassword(loginNo, newPassword, oldPassword, role)) {
