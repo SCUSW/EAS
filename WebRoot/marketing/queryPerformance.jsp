@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	    <button id="yx_35" class="btn btn-default" onclick="window.location.href='<%=basePath%>marketing/setSalesmanRoyaltyRate.jsp'"><span class="glyphicon glyphicon-asterisk"></span> 设置营销人员提成比例</button></div>
    		<br/>
    		<form action="marketing!querySalesmanPerformanceByNo.action" method="post">
-   			<span style="margin-left:-200px;">员工编号：</span><center><input style="width:200px;margin-top:-23px;margin-left:80px;height:30px;" class="form-control" type="text" name="queryNo"/><br/></center>
+   			<span style="margin-left:-200px;">员工账号：</span><center><input style="width:200px;margin-top:-23px;margin-left:80px;height:30px;" class="form-control" type="text" name="queryNo"/><br/></center>
    		
    		<input id="yx_36" style="margin-top:0px;margin-left:0px;font-size:10px;" type="submit" class="btn btn-default" value="搜索"/>
    		</form>

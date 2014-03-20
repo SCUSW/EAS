@@ -133,6 +133,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <center> <h1>添加咨询信息</h1>
+    	<div style="color: red">${message}</div>
     	<div style="width:300px;">
     		<form id="add" name="addConsultInfo" action="marketing!addConsultInfo.action" method="post">
     			<fieldset>

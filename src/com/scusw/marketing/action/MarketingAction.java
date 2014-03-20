@@ -28,9 +28,22 @@ public class MarketingAction {
 	private SalesmanInfo salesmanInfo;
 	private float royaltyRate;
 	private StudentInfo studentInfo;
+	private String message;
 	private Map<String,Object> request;
 	
 	
+	/**
+	 * @return the message
+	 */
+	public String getMessage() {
+		return message;
+	}
+	/**
+	 * @param message the message to set
+	 */
+	public void setMessage(String message) {
+		this.message = message;
+	}
 	/**
 	 * @return the studentInfo
 	 */
@@ -173,6 +186,7 @@ public class MarketingAction {
 		boolean flag1 = marketingService.addConsultInfo(consultInfo);
 		boolean flag2 = marketingService.addSelectConsultwayInfo(selectConsultwayId, consultInfo);
 		if(flag1 && flag2){
+			message = "添加成功";
 			return "addConsultInfoSuccess";
 		}else{
 			return "addDefault";
@@ -222,8 +236,10 @@ public class MarketingAction {
 			salesman = queryAllSalesmanInfo();
 		} else {
 			salesman = marketingService.querySalesmanInfoByName(queryName);
-			if(salesman.size() == 0)
+			if(salesman.size() == 0) {
+				message = "该姓名的营销人员不存在！";
 				return "queryDefault";
+			}
 			request=(Map)ActionContext.getContext().get("request");
 			request.put("salesmanInfo",salesman);
 		}
@@ -236,8 +252,10 @@ public class MarketingAction {
 	 * 			"performance" ——> performance.jsp
 	 */
 	public String querySalesmanPerformanceByNo(){
-		if (!checkSalesmanInfo(queryNo))
+		if (!checkSalesmanInfo(queryNo)) {
+			message = "该账号的营销人员不存在！";
 			return "queryDefault";
+		}
 		allSalesmanPerformance = marketingService.querySalesmanPerformanceByNo(queryNo);
 		marketingService.updateSalesmanSalary(allSalesmanPerformance);
 		querySalesmanInfoByNo();
@@ -272,12 +290,18 @@ public class MarketingAction {
 	 * 			 "addDefault" ——>addDefault.jsp
 	 */
 	public String addStudent(){
-		if(marketingService.checkIsStudentExit(studentInfo.getStudentNo()))
+		if(marketingService.checkIsStudentExit(studentInfo.getStudentNo())){
+			message = "该学号已存在！";
 			return "addDefault";
-		if(!marketingService.checkIsClassExit(studentInfo.getClassInfo().getClassId()))
+		}
+		if(!marketingService.checkIsClassExit(studentInfo.getClassInfo().getClassId())) {
+			message = "该班级不存在！";
 			return "addDefault";
-		if(marketingService.addStudent(studentInfo))
+		}
+		if(marketingService.addStudent(studentInfo)) {
+			message = "添加成功";
 			return "addStudentInfoSuccess";
+		}
 		else
 			return "addDefault";
 	}

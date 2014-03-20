@@ -23,6 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <center>查询失败</center><br>
+    <center>
+    	查询失败
+    	<div style="color: red">${message}</div>
+    </center>
   </body>
 </html>
