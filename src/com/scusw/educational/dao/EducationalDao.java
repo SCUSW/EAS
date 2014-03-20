@@ -324,8 +324,15 @@ public class EducationalDao extends HibernateDaoSupport {
 	  private void deleteAllCourseClasshour() {
 		    Query list=this.getSession().createQuery("from CourseClasshour");
 	        List<CourseClasshour> lists=list.list(); 
-	        for(int i=0;i<lists.size();i++)
-	          this.getHibernateTemplate().delete(lists.get(i)); 
+	        for(int i=0;i<lists.size();i++){
+	        	/*int id=lists.get(i).getCourseInfo().getCourseId();
+	        	Query course=this.getSession().createQuery("from CourseInfo c where c.courseId=:id");
+	        	course.setParameter("id", id);
+	        	CourseInfo co=(CourseInfo)course.uniqueResult();
+	        	co.setCourseAvai(0);
+	        	this.getHibernateTemplate().update(co);*/
+	          this.getHibernateTemplate().delete(lists.get(i));
+	          } 
 	       }
 	  //删除表ClassroomInfo
 	  private void deleteAllClassroomInfo() {
@@ -340,17 +347,21 @@ public class EducationalDao extends HibernateDaoSupport {
 	       this.getHibernateTemplate().delete(lists.get(i)); 
 	     } 
 	 
-	public String addCourseIntoTable() {
+	public String addCourseIntoTable() throws Exception{
 		deleteAllCourseClasshour();
 		List<CourseInfo> cs = queryAllCourse();
+		List<ClassroomInfo> roomList = queryClassRoom();
 		if(cs.size()==0)
 			return "emptyCourse";
 		int size=querryClasshourinfo().size();
 		if(size==0)
 			return "emptyHour";
+		if(roomList.size()==0)
+			return "emptyRoom";
 
 		for (int i = 0; i < cs.size(); i++) {
 			CourseInfo course = cs.get(i);
+			cs.get(i).setCourseAvai(1);
 			int ct = course.getCourseTimes();
 			while (ct>0) {
 				ct=ct-1;

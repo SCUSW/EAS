@@ -5,7 +5,8 @@
 <struts> 
 		<package name="marketing" extends="struts-default" >
 			<action name="marketing" class="com.scusw.marketing.action.MarketingAction">
-				<result name="addSuccess">/marketing/addSuccess.jsp</result>
+				<result name="addConsultInfoSuccess">/marketing/addConsultInfo.jsp</result>
+				<result name="addStudentInfoSuccess">/marketing/addStudent.jsp</result>
 				<result name="addDefault">/marketing/addDefault.jsp</result>
 				<result name="querySuccess">/marketing/querySuccess.jsp</result>
 				<result name="queryDefault">/marketing/queryDefault.jsp</result>

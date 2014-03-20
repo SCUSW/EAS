@@ -123,7 +123,12 @@ public class EducationalServiceImpl implements EducationalService{
 
 	public String addCourseIntoTable() {
 		// TODO Auto-generated method stub
-	return	educationalDao.addCourseIntoTable();
+		try {
+			return	educationalDao.addCourseIntoTable();
+		} catch (Exception e) {
+			return "courseTimes";
+		}
+	
 		
 	}
 
