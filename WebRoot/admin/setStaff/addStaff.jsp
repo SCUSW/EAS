@@ -143,13 +143,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		 <script type="text/javascript">
 		    function check(){
-		    	if(addStaff.staffNo.value==""){
-		    		alert("请输入员工账号！");
+		    	if(!isNumberOrLetter(addStaff.staffNo.value)){
+		    		alert("请正确输入员工账号（6到16个字符,包括字母和数字）！");
 		    		addStaff.staffNo.focus();
+		    		return;
+		    	}if(!idNumber(addStaff.staffIdcard.value)){
+		    		alert("请正确填写18位或15位身份证号码");
+		    		addStaff.staffIdcard.focus();
+		    		return;
+		    	}if(!isMobileNO(addStaff.staffPhone.value)){
+		    		alert("手机号码格式不对");
+		    		addStaff.staffPhone.focus();
 		    		return;
 		    	}if(addStaff.staffPass.value==""){
 		    		alert("请输入员工密码！");
 		    		addStaff.staffPass.focus();
+		    		return;
+		    	}if((addStaff.staffQq.value.length>11 || addStaff.staffQq.value.length<5) && addStaff.staffQq.value!=""){
+		    		alert("请正确输入QQ！");
+		    		addStaff.staffQq.focus();
 		    		return;
 		    	}if(addStaff.staffName.value==""){
 		    		alert("请输入员工姓名！");
@@ -159,6 +171,78 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    		addStaff.submit();
 		    	}
 		    }
+		    
+		    function idNumber(s)//身份证验证
+	           {
+	             regu1=/^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/;//15wei
+	             regu2=/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{4}$/;//18wei
+	             re1=new RegExp(regu1);
+	             re2=new RegExp(regu2);
+	            
+	             if(!(re1.test(s)||re2.test(s)))
+	             {
+	            	 return false;
+//	                   document.getElementById ("idCardInf").innerHTML="格式不对！";
+//	                   document.getElementById ("idCardInf").style.color="red";
+	               
+	             }
+	             else
+	             {
+	            	 return true;
+//	                  document.getElementById ("idCardInf").innerHTML="通过！";
+//	                  document.getElementById ("idCardInf").style.color="green";
+//	                  document.getElementById ("idCardCheck").innerHTML="";
+	             }
+	            
+//	             alert("请正确填写18位或15位身份证号码");
+	           }
+		    
+		    function isMobileNO(s)//手机验证
+	           {
+	             var a = /^((\(\d{3}\))|(\d{3}\-))?13\d{9}|15\d{9}$/ ;
+	           if( !s.match(a) )
+	           {
+	        	   return false;
+//	               document.getElementById ("mobileNOInf").innerHTML="格式不对！";
+//	               document.getElementById ("mobileNOInf").style.color="red";
+//	                   alert("手机号码格式不对");
+	           }
+	           else
+	           {
+	        	   return true;
+//	                  document.getElementById ("mobileNOInf").innerHTML="通过！";
+//	                  document.getElementById ("mobileNOInf").style.color="green";
+//	                  document.getElementById ("mobileNOCheck").innerHTML="";
+	           }
+//13和15开头的号码 
+	         }
+		    
+		    
+		    
+		    
+//			用户名验证：匹配规则为6到16个字符（包括字母和数字）。代码如下：
+
+		    function isNumberOrLetter(s)//判断是否是数字或字母,用于验证用户名，失去焦点验证。
+		    {
+		               var regu = "^[0-9a-zA-Z]{6,16}$";
+		               var re = new RegExp(regu);
+		               if (!re.test(s))
+		               {
+		            	   return false;
+//		               document.getElementById ("userInf").innerHTML="用户名格式不对！";
+//		               document.getElementById ("userInf").style.color="red";
+		              
+		               }
+		               else
+		               {
+		            	   return true;
+//		               document.getElementById ("userInf").innerHTML="用户名通过！";
+//		               document.getElementById ("userInf").style.color="green";
+//		                document.getElementById ("userIDCheck").innerHTML="";
+//		    
+		               }
+             }
+             
 	    </script>
 		
 		
