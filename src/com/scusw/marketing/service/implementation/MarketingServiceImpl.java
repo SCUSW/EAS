@@ -52,6 +52,7 @@ public class MarketingServiceImpl implements MarketingService {
 		try {
 			marketingDao.addConsultInfo(consultInfo);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}		
 		return true;
@@ -67,6 +68,7 @@ public class MarketingServiceImpl implements MarketingService {
 		try {
 			marketingDao.addStudent(student);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}		
 		return true;
@@ -154,6 +156,20 @@ public class MarketingServiceImpl implements MarketingService {
 	public void updateSalesmanSalary(int[][] allPerformance){
 		for(int i = 0; i < allPerformance[0].length; i++)
 			marketingDao.updateSalesmanSalary(allPerformance[0][i],allPerformance[1][i]);
+	}
+	
+	/**
+	 * 方法描述：检查学生学号是否已经存在
+	 * @param studentNo ：学生学号
+	 * @return ：存在——>true
+	 * 			 不存在——>false
+	 */
+	public boolean checkIsStudentExit(String studentNo){
+		StudentInfo student = marketingDao.checkIsStudentExit(studentNo);
+		if( student != null)
+			return true;
+		else
+			return false;
 	}
 }
  

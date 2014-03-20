@@ -17,8 +17,8 @@ import com.scusw.model.StudentInfo;
  * version 1.0
  */
 public interface MarketingDao {
-	public void addConsultInfo(ConsultInfo consultInfo);
-	public void addSelectConsultwayInfo(List<StudentConsultway> studentConsultway);
+	public void addConsultInfo(ConsultInfo consultInfo) throws Exception;
+	public void addSelectConsultwayInfo(List<StudentConsultway> studentConsultway) throws Exception;
 	public boolean checkSalesmanInfo(String staffNo);
 	public SalesmanInfo querySalesmanInfoByNo(String queryNo);
 	public List<SalesmanInfo> querySalesmanInfoByName(String queryName);
@@ -27,5 +27,6 @@ public interface MarketingDao {
 	public int[][] queryAllSalesmanPerformance(List<SalesmanInfo> salesman);
 	public void setSalesmanRoyaltyRate(float royaltyRate);
 	public void updateSalesmanSalary(int performance, int salesmanId);
-	public void addStudent(StudentInfo student);
+	public void addStudent(StudentInfo student) throws Exception;
+	public StudentInfo checkIsStudentExit(String studentNo);
 }

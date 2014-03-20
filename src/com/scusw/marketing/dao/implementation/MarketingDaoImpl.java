@@ -13,6 +13,7 @@ import com.scusw.model.ConsultInfo;
 import com.scusw.model.SalesmanInfo;
 import com.scusw.model.StudentConsultway;
 import com.scusw.model.StudentInfo;
+import com.scusw.student.dao.StudentDao;
 
 /**
  * 类描述：营销人员可使用的方法的实现
@@ -25,8 +26,7 @@ public class MarketingDaoImpl extends HibernateDaoSupport implements MarketingDa
 	 * 提成比例
 	 */
 	private static float royaltyRate = 100;
-	
-	
+		
 	
 	/**
 	 * @return the royaltyRate
@@ -61,7 +61,7 @@ public class MarketingDaoImpl extends HibernateDaoSupport implements MarketingDa
 	 * 方法描述：添加咨询信息
 	 * @param consultInfo ：包含全部咨询信息的实体
 	 */
-	public void addConsultInfo(ConsultInfo consultInfo){
+	public void addConsultInfo(ConsultInfo consultInfo) throws Exception{
 		this.getHibernateTemplate().save(consultInfo);
 	}
 	
@@ -69,7 +69,7 @@ public class MarketingDaoImpl extends HibernateDaoSupport implements MarketingDa
 	 * 方法描述：添加学生了解渠道信息关系
 	 * @param studentConsultway ：学生了解渠道信息
 	 */
-	public void addSelectConsultwayInfo(List<StudentConsultway> studentConsultway){
+	public void addSelectConsultwayInfo(List<StudentConsultway> studentConsultway)throws Exception{
 		for(int i = 0; i < studentConsultway.size(); i ++){
 			this.getHibernateTemplate().save(studentConsultway.get(i));
 		}
@@ -79,7 +79,7 @@ public class MarketingDaoImpl extends HibernateDaoSupport implements MarketingDa
 	 * 方法描述：添加学生
 	 * @param student ：包含学生全部信息的实体
 	 */
-	public void addStudent(StudentInfo student) {
+	public void addStudent(StudentInfo student) throws Exception{
 		this.getHibernateTemplate().save(student);
 	}
 	
@@ -157,5 +157,27 @@ public class MarketingDaoImpl extends HibernateDaoSupport implements MarketingDa
 	 */
 	public void setSalesmanRoyaltyRate(float royaltyRate){
 		setRoyaltyRate(royaltyRate);
-	}	
+	}
+	
+	/**
+	 * 方法描述：检查学生学号是否已经存在
+	 * @param studentNo ：学生学号
+	 * @return ：学生实体
+	 */
+	public StudentInfo checkIsStudentExit(String studentNo){
+		return queryStudentByNo(studentNo);
+	}
+	
+	/**
+	 * 方法描述：通过学号查询学生的信息
+	 * @param studentNo ：学生学号
+	 * @return studentInfo：包含学生全部信息的实体
+	 */
+	public StudentInfo queryStudentByNo(String studentNo) {
+		Query q = this.getSession().createQuery(
+				"from StudentInfo s where s.studentNo=:studentNo");
+		q.setParameter("studentNo", studentNo);
+		StudentInfo studentInfo = (StudentInfo) q.uniqueResult();
+		return studentInfo;
+	}
 }

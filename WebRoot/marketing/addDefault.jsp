@@ -23,6 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    添加失败<br>
+    <center>添加失败</center><br>
   </body>
 </html>

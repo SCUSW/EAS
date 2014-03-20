@@ -28,4 +28,5 @@ public interface MarketingService {
 	public int[][] queryAllSalesmanPerformance(List<SalesmanInfo> salesman);
 	public void setSalesmanRoyaltyRate(float royaltyRate);
 	public void updateSalesmanSalary(int[][] allPerformance);
+	public boolean checkIsStudentExit(String studentNo);
 }

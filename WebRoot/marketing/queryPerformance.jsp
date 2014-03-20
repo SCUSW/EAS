@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    	<center> <h1></h1><br/>
    	    <div align="center">
-   	    <button id="yx_36" class="btn btn-default" onclick="window.location.href='<%=basePath%>marketing!queryAllSalesmanPerformance.action"><span class="glyphicon glyphicon-eye-open"></span> 查询所有营销人员效绩</button>
+   	    <button id="yx_36" class="btn btn-default" onclick="window.location.href='<%=basePath%>marketing!queryAllSalesmanPerformance.action'"><span class="glyphicon glyphicon-eye-open"></span> 查询所有营销人员效绩</button>
    	    <button id="yx_35" class="btn btn-default" onclick="window.location.href='<%=basePath%>marketing/setSalesmanRoyaltyRate.jsp'"><span class="glyphicon glyphicon-asterisk"></span> 设置营销人员提成比例</button></div>
    		<br/>
    		<form action="marketing!querySalesmanPerformanceByNo.action" method="post">

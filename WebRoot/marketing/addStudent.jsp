@@ -29,29 +29,144 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<script type="text/javascript">
 		 function check(){
-		 	if(checkAge()&&checkName()){
-				$("#password").attr("value",addStudent.no.value);	
+		 	if(checkName()&&checkAge()&&checkMobile()&&checkSchool()&&checkAddress()&&checkMajor()&&checkNo()&&checkClass()&&checkBalance()&&checkTime()&&checkConsultId()){
+		 		return true;
 		 	}
+		 	else 
+		 		return false;
 		 }
 		 
 		 function checkAge(){
-		 	if(addConsultInfo.age.value<=0){
+		 	if(addStudent.age.value<=0 || addStudent.age.value=="" || addStudent.age.value==null){
 		 		alert("请输入正确的年龄");
-		 		addConsultInfo.age.focus();
+		 		addStudent.age.focus();
+		 		return false;
+		 	}
+		 	return true;
+		 }
+		 
+		 function checkNo(){
+		 	if(addStudent.no.value=="" || addStudent.no.value==null){
+		 		alert("请输入学号");
+		 		addStudent.no.focus();
 		 		return false;
 		 	}
 		 	return true;
 		 }
 		  
 		 function checkName(){
-		 	if(addConsultInfo.name.value==""){
+		 	if(addStudent.name.value=="" || addStudent.name.value==null){
 	    		alert("请输入姓名！");
-	    		addConsultInfo.name.focus();
+	    		addStudent.name.focus();
 	    		return false;
 	    	}else{
 	    		return true;
 	    	}
-		 }	
+		 }
+		 
+		 function checkPhone() {
+		 	var strPhone = addStudent.phone.value;
+			var phoneRegWithArea = /^[0][1-9]{2,3}-[0-9]{5,10}$/; 
+			var phoneRegNoArea = /^[1-9]{1}[0-9]{5,8}$/; 
+			var prompt = "您输入的电话号码不正确!";
+			if( strPhone.length > 9 ) { 
+				if( phoneRegWithArea.test(strPhone) ){ 
+					return true; 
+				}else{ 
+					alert( prompt ); 
+					return false; 
+				} 
+			}else{ 
+				if( phoneRegNoArea.test( strPhone ) ){ 
+					return true; 
+				}else{ 
+					alert( prompt ); 
+					return false; 
+				} 
+			} 
+		}
+		
+		function checkMobile(){
+			var strPhone = addStudent.phone.value;
+			var regu =/^[1][0-9]{10}$/;
+			var prompt = "您输入的电话号码不正确!";
+			if(regu.test(strPhone))
+				return true;
+			else{
+				alert( prompt );
+				return false;
+			}
+		}
+		
+		function checkSchool(){
+		 	if(addStudent.school.value=="" || addStudent.school.value==null){
+	    		alert("请输入学校！");
+	    		addStudent.school.focus();
+	    		return false;
+	    	}else{
+	    		return true;
+	    	}
+		 }
+		 
+		 function checkMajor(){
+		 	if(addStudent.major.value=="" || addStudent.major.value==null){
+	    		alert("请输入专业！");
+	    		addStudent.major.focus();
+	    		return false;
+	    	}else{
+	    		return true;
+	    	}
+		 }
+		 
+		 function checkAddress(){
+		 	if(addStudent.address.value=="" || addStudent.address.value==null){
+	    		alert("请输入住址！");
+	    		addStudent.address.focus();
+	    		return false;
+	    	}else{
+	    		return true;
+	    	}
+		 }
+		 
+		 function checkClass(){
+		 	if(addStudent.cla.value=="" || addStudent.cla.value==null){
+	    		alert("请输入班级！");
+	    		addStudent.cla.focus();
+	    		return false;
+	    	}else{
+	    		return true;
+	    	}
+		 }
+		 
+		 function checkBalance(){
+		 	if(addStudent.balance.value=="" || addStudent.balance.value==null){
+	    		alert("请输入余额！");
+	    		addStudent.balance.focus();
+	    		return false;
+	    	}else{
+	    		return true;
+	    	}
+		 }
+		 
+		 function checkTime(){
+		 	if(addStudent.time.value=="" || addStudent.time.value==null){
+	    		alert("请输入入学时间！");
+	    		addStudent.time.focus();
+	    		return false;
+	    	}else{
+	    		return true;
+	    	}
+		 }
+		 
+		 function checkConsultId(){
+		 	if(addStudent.consultId.value=="" || addStudent.consultId.value==null){
+	    		alert("请输入咨询编号！");
+	    		addStudent.consultId.focus();
+	    		return false;
+	    	}else{
+	    		return true;
+	    	}
+		 }
 	</script>
 
   </head>
@@ -72,7 +187,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<input id="no" name="studentInfo.studentNo" type="text" class="form-control">
 					</div>
 					
-					<input id="password" type="hidden" name="studentInfo.studentPass" value=""/>
+					<input id="password" type="hidden" name="studentInfo.studentPass" value="E10ADC3949BA59ABBE56E057F20F883E"/>
 					
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">学生性别</span>
@@ -89,7 +204,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">班级编号</span>
-						<input id="class" name="studentInfo.classInfo.classId" type="text" class="form-control">
+						<input id="cla" name="studentInfo.classInfo.classId" type="text" class="form-control">
 					</div>
 					
 					<div class="input-group input-group-sm">
@@ -135,7 +250,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">入学时间</span>
-						<input id="attendTime" name="studentInfo.attendTime" type="text" class="form-control">
+						<input id="time" name="studentInfo.attendTime" type="text" class="form-control">
 					</div>
 					
 					<input type="hidden" name="studentInfo.studentState" value="1"/>
@@ -146,7 +261,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					
 					
-					<button class="btn btn-default" onclick="check()" >确认添加</button>
+					<button class="btn btn-default" onclick="return check()" >确认添加</button>
     			</fieldset>
     		</form>
 		</div>

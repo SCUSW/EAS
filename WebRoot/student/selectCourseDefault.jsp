@@ -23,6 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    选课失败！您所选择的课程和已选课程有冲突或您没有选择课程！<br>
+    <center>选课失败！您所选择的课程和已选课程有冲突或您没有选择课程！</center><br>
   </body>
 </html>

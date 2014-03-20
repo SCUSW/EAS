@@ -29,13 +29,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<script type="text/javascript">
 		 function check(){
-		 	if(checkAge()&&checkName()){
-		 		
-		 	}
+		 	if(checkName()&&checkAge()&&checkMobile()&&checkSchool()&&checkAddress()&&checkMajor()&&checkTime())
+		 		return true;
+		 	else 
+		 		return false;
 		 }
 		 
 		 function checkAge(){
-		 	if(addConsultInfo.age.value<0){
+		 	if(addConsultInfo.age.value<=0 || addConsultInfo.age.value=="" || addConsultInfo.age.value==null){
 		 		alert("请输入正确的年龄");
 		 		addConsultInfo.age.focus();
 		 		return false;
@@ -44,9 +45,83 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 }
 		  
 		 function checkName(){
-		 	if(addConsultInfo.name.value==""){
+		 	if(addConsultInfo.name.value=="" || addConsultInfo.name.value==null){
 	    		alert("请输入姓名！");
 	    		addConsultInfo.name.focus();
+	    		return false;
+	    	}else{
+	    		return true;
+	    	}
+		 }
+		 
+		 function checkPhone() {
+		 	var strPhone = addConsultInfo.phone.value;
+			var phoneRegWithArea = /^[0][1-9]{2,3}-[0-9]{5,10}$/; 
+			var phoneRegNoArea = /^[1-9]{1}[0-9]{5,8}$/; 
+			var prompt = "您输入的电话号码不正确!";
+			if( strPhone.length > 9 ) { 
+				if( phoneRegWithArea.test(strPhone) ){ 
+					return true; 
+				}else{ 
+					alert( prompt ); 
+					return false; 
+				} 
+			}else{ 
+				if( phoneRegNoArea.test( strPhone ) ){ 
+					return true; 
+				}else{ 
+					alert( prompt ); 
+					return false; 
+				} 
+			} 
+		}
+		
+		function checkMobile(){
+			var strPhone = addConsultInfo.phone.value;
+			var regu =/^[1][0-9]{10}$/;
+			var prompt = "您输入的电话号码不正确!";
+			if(regu.test(strPhone))
+				return true;
+			else{
+				alert( prompt );
+				return false;
+			}
+		}
+		
+		function checkSchool(){
+		 	if(addConsultInfo.school.value=="" || addConsultInfo.school.value==null){
+	    		alert("请输入学校！");
+	    		addConsultInfo.school.focus();
+	    		return false;
+	    	}else{
+	    		return true;
+	    	}
+		 }
+		 
+		 function checkMajor(){
+		 	if(addConsultInfo.major.value=="" || addConsultInfo.major.value==null){
+	    		alert("请输入专业！");
+	    		addConsultInfo.major.focus();
+	    		return false;
+	    	}else{
+	    		return true;
+	    	}
+		 }
+		 
+		 function checkAddress(){
+		 	if(addConsultInfo.address.value=="" || addConsultInfo.address.value==null){
+	    		alert("请输入住址！");
+	    		addConsultInfo.address.focus();
+	    		return false;
+	    	}else{
+	    		return true;
+	    	}
+		 }
+		 
+		 function checkTime(){
+		 	if(addConsultInfo.time.value=="" || addConsultInfo.time.value==null){
+	    		alert("请输入咨询时间！");
+	    		addConsultInfo.time.focus();
 	    		return false;
 	    	}else{
 	    		return true;
@@ -59,7 +134,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <center> <h1>添加咨询信息</h1>
     	<div style="width:300px;">
-    		<form  name="addConsultInfo" action="marketing!addConsultInfo.action" method="post">
+    		<form id="add" name="addConsultInfo" action="marketing!addConsultInfo.action" method="post">
     			<fieldset>
     				<input type="hidden" name="consultInfo.salesmanInfo.staffId" value="${session.staffId}"/>
 	   				<input type="hidden" name="consultInfo.salesmanInfo.staffInfo.staffNo" value="${session.staffNo}"/><br/>
@@ -87,38 +162,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">学生学校</span>
-						<input name="consultInfo.studentSchool" type="text" class="form-control">
+						<input id="school" name="consultInfo.studentSchool" type="text" class="form-control">
 					</div>
 					
 					
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">学生住址</span>
-						<input name="consultInfo.studentAddr" type="text" class="form-control">
+						<input id="address" name="consultInfo.studentAddr" type="text" class="form-control">
 					</div>
 					
 					
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">学生电话</span>
-						<input name="consultInfo.studentPhone" type="text" class="form-control">
+						<input id="phone" name="consultInfo.studentPhone" type="text" class="form-control">
 					</div>
 					
 					
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">学生专业</span>
-						<input name="consultInfo.studentMajor" type="text" class="form-control">
+						<input id="major" name="consultInfo.studentMajor" type="text" class="form-control">
 					</div>
 					
 					
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">咨询时间</span>
-						<input name="consultInfo.consultTime" type="text" class="form-control">
+						<input id="time" name="consultInfo.consultTime" type="text" class="form-control">
 					</div>
 					
 					
 					咨询方式：<input type="radio" checked="checked" name="consultInfo.consultType" value="现场咨询"/>现场咨询
 						 <input type="radio" name="consultInfo.consultType" value="电话咨询"/>电话咨询
 						 <input type="radio" name="consultInfo.consultType" value="网站咨询"/>网站咨询<br/>
-					了解渠道：广告宣传<input type="checkbox" name="selectConsultwayId" value="1">&nbsp;
+					了解渠道：广告宣传<input type="checkbox" name="selectConsultwayId" value="1" checked="checked">&nbsp;
 							   活动宣传<input type="checkbox" name="selectConsultwayId" value="2">&nbsp;
 							   网络渠道<input type="checkbox" name="selectConsultwayId" value="3">&nbsp;<br/>
 							   朋友介绍<input type="checkbox" name="selectConsultwayId" value="4">&nbsp;
@@ -126,11 +201,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							   教师介绍<input type="checkbox" name="selectConsultwayId" value="6"><br/>
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</span>
-						<input name="consultInfo.studentRemark" type="text" class="form-control">
+						<input id="remark" name="consultInfo.studentRemark" type="text" class="form-control">
 					</div>
 					
 					
-					<button class="btn btn-default" onclick="check()" >确认添加</button>
+					<button class="btn btn-default" onclick="return check()" >确认添加</button>
     			</fieldset>
     		</form>
 		</div>

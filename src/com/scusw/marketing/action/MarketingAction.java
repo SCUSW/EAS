@@ -166,16 +166,14 @@ public class MarketingAction {
 	
 	/**
 	 * 方法描述：添加咨询信息的方法
-	 * @return true  ："addSuccess" ——> addSuccess.jsp
-	 * 		   false ："addDefault" ——> addDefault.jsp
+	 * @return true  ："addConsultInfoSuccess" ——> addSuccess.jsp
+	 * 		   false ："addDefault" ——> addConsultInfo.jsp
 	 */
 	public String addConsultInfo(){
-		if(checkSalesmanInfo(consultInfo.getSalesmanInfo().getStaffInfo().getStaffNo()) == false)
-			return "addDefault";
 		boolean flag1 = marketingService.addConsultInfo(consultInfo);
 		boolean flag2 = marketingService.addSelectConsultwayInfo(selectConsultwayId, consultInfo);
 		if(flag1 && flag2){
-			return "addSuccess";
+			return "addConsultInfoSuccess";
 		}else{
 			return "addDefault";
 		}
@@ -270,12 +268,14 @@ public class MarketingAction {
 	/**
 	 * 方法描述：添加学生
 	 * @param student：包含学生所有信息的实体
-	 * @return ："addSuccess" ——>addSuccess.jsp
+	 * @return ："addStudentInfoSuccess" ——>addStudentInfo.jsp
 	 * 			 "addDefault" ——>addDefault.jsp
 	 */
 	public String addStudent(){
+		if(marketingService.checkIsStudentExit(studentInfo.getStudentNo()))
+			return "addDefault";
 		if(marketingService.addStudent(studentInfo))
-			return "addSuccess";
+			return "addStudentInfoSuccess";
 		else
 			return "addDefault";
 	}

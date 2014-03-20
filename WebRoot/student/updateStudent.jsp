@@ -46,12 +46,83 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				document.getElementById("select")[1].selected=true;
 			}
 		})
+		function check(){
+		 	if(checkAge()&&checkMobile()&&checkSchool()&&checkAddress()){
+		 		return true;
+		 	}
+		 	else 
+		 		return false;
+		 }
+		 
+		 function checkAge(){
+		 	if(updateStudent.age.value<=0 || updateStudent.age.value=="" || updateStudent.age.value==null){
+		 		alert("请输入正确的年龄");
+		 		updateStudent.age.focus();
+		 		return false;
+		 	}
+		 	return true;
+		 }
+		 
+		 function checkPhone() {
+		 	var strPhone = updateStudent.phone.value;
+			var phoneRegWithArea = /^[0][1-9]{2,3}-[0-9]{5,10}$/; 
+			var phoneRegNoArea = /^[1-9]{1}[0-9]{5,8}$/; 
+			var prompt = "您输入的电话号码不正确!";
+			if( strPhone.length > 9 ) { 
+				if( phoneRegWithArea.test(strPhone) ){ 
+					return true; 
+				}else{ 
+					alert( prompt ); 
+					return false; 
+				} 
+			}else{ 
+				if( phoneRegNoArea.test( strPhone ) ){ 
+					return true; 
+				}else{ 
+					alert( prompt ); 
+					return false; 
+				} 
+			} 
+		}
+		
+		function checkMobile(){
+			var strPhone = updateStudent.phone.value;
+			var regu =/^[1][0-9]{10}$/;
+			var prompt = "您输入的电话号码不正确!";
+			if(regu.test(strPhone))
+				return true;
+			else{
+				alert( prompt );
+				return false;
+			}
+		}
+		
+		function checkSchool(){
+		 	if(updateStudent.school.value=="" || updateStudent.school.value==null){
+	    		alert("请输入学校！");
+	    		updateStudent.school.focus();
+	    		return false;
+	    	}else{
+	    		return true;
+	    	}
+		 }
+
+		 function checkAddress(){
+		 	if(updateStudent.address.value=="" || updateStudent.address.value==null){
+	    		alert("请输入住址！");
+	    		updateStudent.address.focus();
+	    		return false;
+	    	}else{
+	    		return true;
+	    	}
+		 }
 	</script>
+	
 	</head>
 	<body><center>
 	
 	<div style="width:300px;">		
-  <form action="student!updateStudent.action" method="post" class="form-horizontal">
+  <form name="updateStudent" action="student!updateStudent.action" method="post" class="form-horizontal">
     <fieldset >
     	<input type="hidden" name="studentInfo.studentId" value="${studentInfo.studentId}"/>
 		<input type="hidden" name="studentInfo.studentNo" value="${studentInfo.studentNo}"/>
@@ -84,31 +155,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">年龄</span>
-				<input  name="studentInfo.studentAge" value="${studentInfo.studentAge}" type="text" class="form-control" placeholder="Age">
+				<input id="age" name="studentInfo.studentAge" value="${studentInfo.studentAge}" type="text" class="form-control" placeholder="Age">
 			</div>
 			<br/>
 			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">学校</span>
-				<input name="studentInfo.studentSchool" value="${studentInfo.studentSchool}" type="text" class="form-control" placeholder="School">
+				<input id="school" name="studentInfo.studentSchool" value="${studentInfo.studentSchool}" type="text" class="form-control" placeholder="School">
 			</div>
 			<br/>
 			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">住址</span>
-				<input  name="studentInfo.studentAddr" value="${studentInfo.studentAddr}" type="text" class="form-control" placeholder="Address">
+				<input  id="address" name="studentInfo.studentAddr" value="${studentInfo.studentAddr}" type="text" class="form-control" placeholder="Address">
 			</div>
 			<br/>
 			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">电话</span>
-				<input name="studentInfo.studentPhone" value="${studentInfo.studentPhone}" type="text" class="form-control" placeholder="PhoneNumber">
+				<input id="phone" name="studentInfo.studentPhone" value="${studentInfo.studentPhone}" type="text" class="form-control" placeholder="PhoneNumber">
 			</div>
 			<br/>
 			
 			<div class="input-group input-group-sm">
  	 			<span class="input-group-addon">专业</span>
-				<input name="studentInfo.studentMajor" value="${studentInfo.studentMajor}" type="text" class="form-control" placeholder="Major" disabled="disabled">
+				<input id="major" name="studentInfo.studentMajor" value="${studentInfo.studentMajor}" type="text" class="form-control" placeholder="Major" disabled="disabled">
 			</div>
 			<br/>
 			
@@ -117,7 +188,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input name="studentInfo.studentRemark" value="${studentInfo.studentRemark}" type="text" class="form-control" placeholder="Remark">
 			</div>
 			<br/>
-			<input class="btn btn-default" type="submit" value="确定修改"/>
+			<button class="btn btn-default" onclick="return check()" >确定修改</button>
     </fieldset>
   </form>
   
