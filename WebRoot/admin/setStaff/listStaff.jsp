@@ -36,9 +36,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!--  list staff by branch -->
 		
 		<form id="searchStaff1" name="searchStaff1" method="post" action="<%=basePath %>setStaff!searchStaff1.action?nextPage=1">
-		<input class="btn btn-default" style="position:relative;top:4px;margin-left:400px;font-size:12px;" type="button" value="查询" />  
+		<input class="btn btn-default" style="position:relative;top:4px;margin-left:400px;font-size:12px;" type="submit" value="查询" />  
 		   <span style="position:relative;margin-top:120px;top:5px;left:-330px;"> 分&nbsp;&nbsp;类&nbsp;查&nbsp;询: </span>
-			   <select style="width:200px;margin-top:-27px;margin-left:80px;height:31px;" class="form-control" >
+			   <select name="branchInfo.branchId" style="width:200px;margin-top:-27px;margin-left:80px;height:31px;" class="form-control" >
 				  	<option value="0">所有分支机构</option>
 				  	<c:forEach items="${branchs}" var="b">
 						<option value="${b.branchId}">${b.branchId}:${b.branchName}</option>
