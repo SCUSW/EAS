@@ -27,7 +27,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 
+
+
+	<script type="text/javascript">
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(19))
+		{
+		%>
+			$(document).ready(function(){
+				$("#js_19").removeAttr("onclick");
+				$("#js_19").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	</script>
   </head>
+  
+  
   
   <body > 
   	<table style="text-align:center;" class="table table-hover">
@@ -46,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	<tr class="success"><td>聘用时间：${teacher.staffInfo.staffEmplTime}</td></tr>
  	</table>
  	<center>
- 		<button onclick="window.location.href='teacherAct!getCommonTeacherAttandant.action?staff.staffId=${teacher.staffId}'" class="btn btn-default">教师考勤</button><br/>
+ 		<button id="js_19" onclick="window.location.href='teacherAct!getCommonTeacherAttandant.action?staff.staffId=${teacher.staffId}'" class="btn btn-default">教师考勤</button><br/>
  		<button onclick="window.location.href='teacherAct!getCommonTeacherCourseList.action?staff.staffId=${teacher.staffId}'" class="btn btn-default">开设课程</button><br>
 		<button class="btn btn-default" onclick=" window.history.back()">返回</button>
 	</center>

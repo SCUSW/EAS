@@ -27,6 +27,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	
+	<script type="text/javascript">
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(16))
+		{
+		%>
+			$(document).ready(function(){
+				$("#js_16").removeAttr("onclick");
+				$("#js_16").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	</script>
   </head>
   
   <body>
@@ -51,11 +63,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 　　							</c:otherwise>
 						</c:choose>
 						
-						<td><button class="btn btn-default" onclick="window.location.href='${t.teachPlan}'">下载教学计划</button></td>
+						<td><button id="js_16" class="btn btn-default" onclick="window.location.href='${t.teachPlan}'">下载教学计划</button></td>
 						
 						<c:choose>
 							<c:when test="${t.lessonPlan!=null}">  
-  								<td><button class="btn btn-default" onclick="window.location.href='${t.lessonPlan}'">下载教案</button></td>
+  								<td><button id="js_16" class="btn btn-default" onclick="window.location.href='${t.lessonPlan}'">下载教案</button></td>
 　							</c:when>
 							<c:otherwise>  
  								<td>
@@ -63,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     							<input type="hidden" name="teachingManage.teachingManageId" value="${t.teachingManageId}"/>
     							<input type="hidden" name="course.courseId" value="${course.courseId}"/>
 								<input type="file"  id="lessonPlan" name="doc"/>  
-         						<input class="btn btn-button" type="submit" value="上传教案" >  
+         						<input id="js_16" class="btn btn-button" type="submit" value="上传教案" >  
      							</form> 
      					</td>
 　　							</c:otherwise>
@@ -80,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     								<input type="hidden" name="teachingManage.teachingManageId" value="${t.teachingManageId}"/>
     								<input type="hidden" name="course.courseId" value="${course.courseId}"/>
 									<input class="btn btn-default" type="file" id="teacherSummary" name="doc"/>  
-         							<input class="btn btn-default" type="submit" value="上传总结" ">  
+         							<input id="js_16" class="btn btn-default" type="submit" value="上传总结" ">  
      								</form> 
      							</td>
 　　							</c:otherwise>
@@ -95,7 +107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				<tr class="active"><td  colspan="5"><form id="uploadForm" action="teacherAct!uploadTeachPlan.action"  method="post" enctype="multipart/form-data" >   
     			<input type="hidden" name="course.courseId" value="${course.courseId}"/>
 					<input class="btn btn-default" type="file" id="teachPlan" name="doc"/><br />  
-         			<input class="btn btn-default" type="submit" value="上传教学计划 " >  
+         			<input id="js_16" class="btn btn-default" type="submit" value="上传教学计划 " >  
      			</form>  </td></tr>		
     			</table>
     			

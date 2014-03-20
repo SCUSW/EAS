@@ -26,7 +26,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
-
+	
+	<script type="text/javascript">
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(15))
+		{
+		%>
+			$(document).ready(function(){
+				$("#js_15").removeAttr("onclick");
+				$("#js_15").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	</script>
   </head>
   
   <body>
@@ -43,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     					<td>${c.courseId}</td>
     					<td>${c.courseName}</td>
     					<td>${c.coursePrice}</td>
-    					<td><button class="btn btn-default" onclick="window.location.href='teacherAct!ownCourseInfo.action?course.courseId=${c.courseId}'"><span class="glyphicon glyphicon-eye-open"></span> 查看</button></td>
+    					<td><button id="js_11" class="btn btn-default" onclick="window.location.href='teacherAct!ownCourseInfo.action?course.courseId=${c.courseId}'"><span class="glyphicon glyphicon-eye-open"></span> 查看</button></td>
     					
     					<c:choose>
     						<c:when test="${c.courseAvai==1}">
@@ -60,7 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				<c:choose>
     					<c:when test="${teacher.teacherType == 0}">
     						<tr style="text-align:center;" class="success"><td colspan="7">
-    							<button class="btn btn-default" onclick="window.location.href='teacherAct!addOwnCourse1'">
+    							<button id="js_15" class="btn btn-default" onclick="window.location.href='teacherAct!addOwnCourse1'">
     						<span class="glyphicon glyphicon-plus"></span> 增设课程</button></td></tr>
     					</c:when>
     				</c:choose>

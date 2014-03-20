@@ -212,3 +212,6 @@ var flag1=0,flag2=0,flag3=0,flag4=0;//分别标记教务管理，财务管理，
 				$("#e1").animate({marginLeft:'0px'},200);
 			});
 		});	
+		
+		
+		

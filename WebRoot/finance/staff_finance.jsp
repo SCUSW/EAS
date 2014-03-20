@@ -28,6 +28,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	
+	
+	<script type="text/javascript">
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(9)&&!com.scusw.util.CheckPrivilege.checkPrivilege(8))
+		{
+		%>
+			$(document).ready(function(){
+				$("#cw_zfgz").removeAttr("onclick");
+				$("#cw_zfgz").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(7))
+		{
+		%>
+			$(document).ready(function(){
+				$("#cw_lsjl").removeAttr("onclick");
+				$("#cw_lsjl").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	
+	</script>
+	
   </head>
   
   <body>
@@ -79,8 +105,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			</td>
    			<td><%=totalSalary %></td>
    			<td>
-   			<input onclick="window.location.href='<%=basePath %>staffFinanceAction!payStaff.action?staffFees.sfeesNum=<%=totalSalary %>&staffFees.staffInfo.staffId=<%=s.getStaffId() %>'" type="button" class="btn btn-default" value="支付工资"/>
-   			<input onclick="window.location.href='<%=basePath %>staffFinanceAction!checkHistoryById.action?staffFees.staffInfo.staffId=<%=s.getStaffId() %>'" type="button" class="btn btn-default" value="历史纪录"/>
+   			<input id="cw_zfgz" onclick="window.location.href='<%=basePath %>staffFinanceAction!payStaff.action?staffFees.sfeesNum=<%=totalSalary %>&staffFees.staffInfo.staffId=<%=s.getStaffId() %>'" type="button" class="btn btn-default" value="支付工资"/>
+   			<input id="cw_lsjl" onclick="window.location.href='<%=basePath %>staffFinanceAction!checkHistoryById.action?staffFees.staffInfo.staffId=<%=s.getStaffId() %>'" type="button" class="btn btn-default" value="历史纪录"/>
    			</td>
    			<td>&nbsp;</td>
    			</tr>

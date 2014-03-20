@@ -34,6 +34,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		width:100%;
 	}
 	</style>
+	<script type="text/javascript">
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(2))
+		{
+		%>
+			$(document).ready(function(){
+				$("#cw_ckgszd").removeAttr("onclick");
+				$("#cw_ckgszd").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	
+	<%if(!com.scusw.util.CheckPrivilege.checkPrivilege(3))
+		{
+		%>
+			$(document).ready(function(){
+				$("#cw_zjzdjl").removeAttr("onclick");
+				$("#cw_zjzdjl").attr("disabled","disabled");
+			});
+		<%
+		}
+	%>
+	
+	</script>
+	
   </head>
   
   <body><center>
@@ -44,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <tr>
   	 <td  style="width:40%" class="warning">
   		 <center><br/><br/><br/><br/>当前分公司余额：${totalMoney }<br/><br/><br/></center>
-  		 <center><input type="button" class="btn btn-default" onclick="window.location.href='<%=basePath %>totalFinanceAction!historyFinance.action'" value="查看历史明细"/></center>
+  		 <center><input id="cw_ckgszd" type="button" class="btn btn-default" onclick="window.location.href='<%=basePath %>totalFinanceAction!historyFinance.action'" value="查看历史明细"/></center>
   	 </td>
    	 <td class="success">
 		<form action="<%=basePath %>totalFinanceAction!addFinance.action" method="post">
@@ -57,7 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			<option value="1">收入</option>
    		</select><br/><br/>
    		描述：<textarea name="financialRecords.financialRemark" rows="7" cols="48"></textarea><br/><br/>
-   		<input type="submit" class="btn btn-default" value="提交"/></center>
+   		<input id="cw_zjzdjl" type="submit" class="btn btn-default btn-lg" value="提交"/></center>
    		</form>
 	</td>
 	</tr>

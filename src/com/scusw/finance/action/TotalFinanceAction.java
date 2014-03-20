@@ -62,7 +62,7 @@ public class TotalFinanceAction {
 	}
 
 	public String totalFinance() {
-		if (CheckPrivilege.checkPrivilege(2)) {
+		if (true) {
 
 			totalMoney = totalFinanceService.getTotalMoney();
 //			this.setRequest((Map) ActionContext.getContext().get("request"));
@@ -76,7 +76,7 @@ public class TotalFinanceAction {
 	}
 
 	public String addFinance() {
-		if (CheckPrivilege.checkPrivilege(3)) {
+		if (true) {
 //			totalMoney = totalFinanceService.getTotalMoney();
 //			System.out.println(totalMoney);
 
