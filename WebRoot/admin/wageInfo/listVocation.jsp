@@ -110,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		%>
 	
 				<button class="btn btn-default" onclick="window.location.href='<%=basePath%>vocationManage!listVocation.action?nextPage=1&pageSize=${request.pageSize }'"> 首页</button>&nbsp;&nbsp;
-				<button class="btn btn-default" onclick="window.location.href='href="<%=basePath%>vocationManage!listVocation.action?nextPage=<%=((Integer)request.getAttribute("currentPage")-1) %>&pageSize=${request.pageSize }'">上一页</button>&nbsp;&nbsp;
+				<button class="btn btn-default" onclick="window.location.href='<%=basePath%>vocationManage!listVocation.action?nextPage=<%=((Integer)request.getAttribute("currentPage")-1) %>&pageSize=${request.pageSize }'">上一页</button>&nbsp;&nbsp;
 			<%} %>
 			当前第${request.currentPage }页&nbsp;&nbsp;
 			<%
