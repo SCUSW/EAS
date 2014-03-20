@@ -193,6 +193,20 @@ function createMin(){
 				
 		}
 		
+		//班级管理子导航
+		function setChildStaff(){
+			//改变元素的链接和名字
+			showChildGuide();
+			
+			document.getElementById("td11").href="class!queryClass.action";
+			document.getElementById("td11").innerHTML="查看员工信息";
+			document.getElementById("td12").href="class!addClass.action";
+			document.getElementById("td12").innerHTML="添加员工";
+			document.getElementById("td13").href="attandant!checkStaffAttendant.action?nextPage=1&pageSize=20";
+			document.getElementById("td13").innerHTML="";
+				
+		}
+		
 		$(document).ready(function(){
 			//创建主导航 
 			createMin();

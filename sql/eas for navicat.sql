@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2014-03-19 16:57:43
+Date: 2014-03-21 04:12:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -35,7 +35,7 @@ CREATE TABLE `admin_info` (
 -- ----------------------------
 -- Records of admin_info
 -- ----------------------------
-INSERT INTO `admin_info` VALUES ('1', 'admin', 'E10ADC3949BA59ABBE56E057F20F883E', 'Tom', '12345678900', 'cceasy@hotmail.com', '987654345678909876', '2014-03-12 12:08:46', '1');
+INSERT INTO `admin_info` VALUES ('1', 'admin', 'E10ADC3949BA59ABBE56E057F20F883E', 'Tom', '13656569898', 'cceasy@hotmail.com', '340825199201021512', '2014-03-12 12:08:46', '1');
 
 -- ----------------------------
 -- Table structure for branch_info
@@ -86,7 +86,7 @@ CREATE TABLE `classhour_info` (
   `classhour_avai` int(11) DEFAULT NULL,
   `classhour_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`classhour_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of classhour_info
@@ -124,14 +124,30 @@ CREATE TABLE `classroom_info` (
   `classroom_capacity` int(11) DEFAULT NULL,
   `classroom_remark` text,
   PRIMARY KEY (`classroom_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of classroom_info
 -- ----------------------------
-INSERT INTO `classroom_info` VALUES ('1', '江安一觉A603', '1', '普通教室', '120', '没有备注');
-INSERT INTO `classroom_info` VALUES ('2', '耳机楼B303', '1', '多媒体教室', '100', '没有备注');
-INSERT INTO `classroom_info` VALUES ('3', '综合楼B707', '1', '大教室', '300', '没有备注');
+INSERT INTO `classroom_info` VALUES ('1', '江安一教A603', '1', '普通教室', '120', '上海分公司一个嗯好的教室~');
+INSERT INTO `classroom_info` VALUES ('2', '二机楼A303', '1', '多媒体教室', '100', '上海分公司设备先进');
+INSERT INTO `classroom_info` VALUES ('3', '综合楼A707', '1', '大教室', '300', '上海分公司综合大教室');
+INSERT INTO `classroom_info` VALUES ('4', '江安一教B603', '1', '普通教室', '120', '成都分公司一个嗯好的教室~');
+INSERT INTO `classroom_info` VALUES ('5', '二机楼B303', '1', '多媒体教室', '100', '成都分公司设备先进');
+INSERT INTO `classroom_info` VALUES ('6', '综合楼B707', '1', '大教室', '300', '成都分公司综合大教室');
+INSERT INTO `classroom_info` VALUES ('7', '江安一教C603', '1', '普通教室', '120', '重庆分公司一个嗯好的教室~');
+INSERT INTO `classroom_info` VALUES ('8', '二机楼C303', '1', '多媒体教室', '100', '重庆分公司设备先进');
+INSERT INTO `classroom_info` VALUES ('9', '综合楼C707', '1', '大教室', '300', '重庆分公司综合大教室');
+INSERT INTO `classroom_info` VALUES ('10', '综合楼C107', '1', '大教室', '300', '重庆分公司综合大教室');
+INSERT INTO `classroom_info` VALUES ('11', '江安一教A103', '1', '普通教室', '120', '重庆分公司一个嗯好的教室~');
+INSERT INTO `classroom_info` VALUES ('12', '二机楼A103', '1', '多媒体教室', '100', '重庆分公司设备先进');
+INSERT INTO `classroom_info` VALUES ('13', '综合楼A727', '1', '大教室', '300', '成都分公司综合大教室');
+INSERT INTO `classroom_info` VALUES ('14', '江安一教B633', '1', '普通教室', '120', '成都分公司一个嗯好的教室~');
+INSERT INTO `classroom_info` VALUES ('15', '二机楼B343', '1', '多媒体教室', '100', '成都分公司设备先进');
+INSERT INTO `classroom_info` VALUES ('16', '综合楼B757', '1', '大教室', '300', '成都分公司综合大教室');
+INSERT INTO `classroom_info` VALUES ('17', '江安一教C663', '1', '普通教室', '120', '上海分公司一个嗯好的教室~');
+INSERT INTO `classroom_info` VALUES ('18', '二机楼C373', '1', '多媒体教室', '100', '上海分公司设备先进');
+INSERT INTO `classroom_info` VALUES ('19', '综合楼C787', '1', '大教室', '300', '上海分公司综合大教室');
 
 -- ----------------------------
 -- Table structure for class_info
@@ -145,12 +161,20 @@ CREATE TABLE `class_info` (
   PRIMARY KEY (`class_id`),
   KEY `FK_class_grade` (`grade_id`),
   CONSTRAINT `FK_class_grade` FOREIGN KEY (`grade_id`) REFERENCES `grade_info` (`grade_id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of class_info
 -- ----------------------------
-INSERT INTO `class_info` VALUES ('9', null, '3班', '1');
+INSERT INTO `class_info` VALUES ('1', '1', '2班', '1');
+INSERT INTO `class_info` VALUES ('2', '1', '3班', '1');
+INSERT INTO `class_info` VALUES ('3', '1', '1班', '1');
+INSERT INTO `class_info` VALUES ('4', '2', '2班', '1');
+INSERT INTO `class_info` VALUES ('5', '2', '3班', '1');
+INSERT INTO `class_info` VALUES ('6', '2', '1班', '1');
+INSERT INTO `class_info` VALUES ('7', '3', '2班', '1');
+INSERT INTO `class_info` VALUES ('8', '3', '3班', '1');
+INSERT INTO `class_info` VALUES ('9', '3', '1班', '1');
 INSERT INTO `class_info` VALUES ('10', '4', '1班', '1');
 INSERT INTO `class_info` VALUES ('11', '4', '2班', '1');
 INSERT INTO `class_info` VALUES ('12', '4', '3班', '1');
@@ -160,6 +184,15 @@ INSERT INTO `class_info` VALUES ('15', '5', '3班', '1');
 INSERT INTO `class_info` VALUES ('16', '6', '1班', '1');
 INSERT INTO `class_info` VALUES ('17', '6', '2班', '1');
 INSERT INTO `class_info` VALUES ('18', '6', '3班', '1');
+INSERT INTO `class_info` VALUES ('19', '7', '1班', '1');
+INSERT INTO `class_info` VALUES ('20', '7', '2班', '1');
+INSERT INTO `class_info` VALUES ('21', '7', '3班', '1');
+INSERT INTO `class_info` VALUES ('22', '8', '1班', '1');
+INSERT INTO `class_info` VALUES ('23', '8', '2班', '1');
+INSERT INTO `class_info` VALUES ('24', '8', '3班', '1');
+INSERT INTO `class_info` VALUES ('25', '9', '1班', '1');
+INSERT INTO `class_info` VALUES ('26', '9', '2班', '1');
+INSERT INTO `class_info` VALUES ('27', '9', '3班', '1');
 
 -- ----------------------------
 -- Table structure for consultway_info
@@ -169,14 +202,15 @@ CREATE TABLE `consultway_info` (
   `consultway_id` int(11) NOT NULL AUTO_INCREMENT,
   `consultway_name` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`consultway_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of consultway_info
 -- ----------------------------
-INSERT INTO `consultway_info` VALUES ('1', '报纸了解');
-INSERT INTO `consultway_info` VALUES ('2', '亲友了解');
-INSERT INTO `consultway_info` VALUES ('3', '同学了解');
+INSERT INTO `consultway_info` VALUES ('1', '上网看到的');
+INSERT INTO `consultway_info` VALUES ('2', '听妈妈说的');
+INSERT INTO `consultway_info` VALUES ('3', '同学告诉我的');
+INSERT INTO `consultway_info` VALUES ('4', '其他途径');
 
 -- ----------------------------
 -- Table structure for consult_info
@@ -198,14 +232,14 @@ CREATE TABLE `consult_info` (
   PRIMARY KEY (`consult_id`),
   KEY `FK_consult_salesman` (`staff_id`),
   CONSTRAINT `FK_consult_salesman` FOREIGN KEY (`staff_id`) REFERENCES `salesman_info` (`staff_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of consult_info
 -- ----------------------------
-INSERT INTO `consult_info` VALUES ('1', '5', 'jack1', '1', '18', 'jack1 addr', '4589651', '川大', '软件工程', '咨询方式1', '2014-03-12 12:08:46', 'jack1 remark');
-INSERT INTO `consult_info` VALUES ('2', '6', 'jack2', '0', '18', 'jack2 addr', '4589652', '川大', '软件工程', '咨询方式2', '2014-03-12 12:08:46', 'jack2 remark');
-INSERT INTO `consult_info` VALUES ('3', '7', 'jack3', '1', '18', 'jack3 addr', '4589653', '川大', '软件工程', '咨询方式3', '2014-03-12 12:08:46', 'jack3 remark');
+INSERT INTO `consult_info` VALUES ('1', '6', '柯南', '1', '10', '中国 安徽 安庆 太湖', '13365459878', '川大', '软件工程', '1', '2014-03-19 15:01:12', '这是我的备注。。哈哈');
+INSERT INTO `consult_info` VALUES ('2', '6', '小兰', '2', '14', '四川 成都 江安 川大', '13365459877', '川大', '软件工程', '2', '2014-03-19 15:01:12', '再看我就把你喝掉');
+INSERT INTO `consult_info` VALUES ('3', '6', '小哀', '2', '18', '重庆 重庆 沙坪 地中海', '13365459876', '川大', '软件工程', '3', '2014-03-16 00:51:38', '我喜欢喝茶');
 
 -- ----------------------------
 -- Table structure for course_classhour
@@ -223,15 +257,11 @@ CREATE TABLE `course_classhour` (
   CONSTRAINT `FK_course_classroom` FOREIGN KEY (`classroom_id`) REFERENCES `classroom_info` (`classroom_id`),
   CONSTRAINT `FK_course_etc` FOREIGN KEY (`course_id`) REFERENCES `course_info` (`course_id`),
   CONSTRAINT `FK_course_time` FOREIGN KEY (`classhour_id`) REFERENCES `classhour_info` (`classhour_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=346 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of course_classhour
 -- ----------------------------
-INSERT INTO `course_classhour` VALUES ('1', '1', '1', '1');
-INSERT INTO `course_classhour` VALUES ('2', '2', '1', '2');
-INSERT INTO `course_classhour` VALUES ('3', '3', '1', '3');
-INSERT INTO `course_classhour` VALUES ('7', '1', '2', '2');
 
 -- ----------------------------
 -- Table structure for course_info
@@ -254,27 +284,26 @@ CREATE TABLE `course_info` (
   KEY `FK_teacher_course` (`staff_id`),
   CONSTRAINT `FK_course_major` FOREIGN KEY (`major_id`) REFERENCES `major_info` (`major_id`),
   CONSTRAINT `FK_teacher_course` FOREIGN KEY (`staff_id`) REFERENCES `teacher_info` (`staff_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of course_info
 -- ----------------------------
-INSERT INTO `course_info` VALUES ('1', '1', '2', '线性代数', '2014-03-12', '2014-03-12', '20', '2', '1', '线性代数简介');
-INSERT INTO `course_info` VALUES ('2', '2', '3', '广义相对论', '2014-03-12', '2014-03-12', '20', null, '1', '广义相对论简介');
-INSERT INTO `course_info` VALUES ('3', '3', '4', '大学英语', '2014-03-12', '2014-03-12', '20', null, '1', '大学英语简介');
-INSERT INTO `course_info` VALUES ('4', '1', '2', '狭义相对论', '2014-03-18', '2014-03-12', '1', null, '1', null);
-INSERT INTO `course_info` VALUES ('5', '2', '3', '量子物理', '2014-03-18', '2014-03-12', '2', null, '1', null);
-INSERT INTO `course_info` VALUES ('6', '3', '4', '原子力学', '2014-03-18', '2014-03-12', '3', null, '1', null);
-INSERT INTO `course_info` VALUES ('7', '2', '2', '语文', '2014-03-18', '2014-03-12', '4', null, '1', null);
-INSERT INTO `course_info` VALUES ('8', '3', '3', '数学', '2014-03-18', '2014-03-12', '5', null, '1', null);
-INSERT INTO `course_info` VALUES ('10', '1', '4', '英语', '2014-03-18', '2014-03-12', '3', null, '1', null);
-INSERT INTO `course_info` VALUES ('11', '2', '2', '化学', '2014-03-18', '2014-03-12', '7', null, '1', null);
-INSERT INTO `course_info` VALUES ('12', '3', '2', '生物', '2014-03-18', '2014-03-12', '8', null, '1', null);
-INSERT INTO `course_info` VALUES ('13', '1', '3', '物理', '2014-03-18', '2014-03-12', '9', null, '1', null);
-INSERT INTO `course_info` VALUES ('14', '2', '4', '政治', '2014-03-18', '2014-03-12', '0', null, '1', null);
-INSERT INTO `course_info` VALUES ('15', '3', '3', '历史', '2014-03-18', '2014-03-12', '1', null, '1', null);
-INSERT INTO `course_info` VALUES ('16', '2', '2', '地理', '2014-03-18', '2014-03-12', '2', null, '1', null);
-INSERT INTO `course_info` VALUES ('17', null, null, '', null, null, '0', null, '1', '');
+INSERT INTO `course_info` VALUES ('1', '4', '4', '线性代数', '2014-03-12', '2014-07-12', '20', '2', '1', '线性代数简介');
+INSERT INTO `course_info` VALUES ('2', '2', '3', '广义相对论', '2014-03-12', '2014-07-12', '20', '3', '1', '广义相对论简介');
+INSERT INTO `course_info` VALUES ('3', '6', '5', '大学英语', '2014-03-12', '2014-07-12', '20', '4', '1', '大学英语简介');
+INSERT INTO `course_info` VALUES ('4', '2', '3', '狭义相对论', '2014-03-18', '2014-07-12', '1', '5', '1', '没有简介，想知道去百度google');
+INSERT INTO `course_info` VALUES ('5', '2', '4', '量子物理', '2014-03-18', '2014-07-12', '2', '3', '1', '没有简介，想知道去百度google');
+INSERT INTO `course_info` VALUES ('6', '2', '5', '原子力学', '2014-03-18', '2014-07-12', '3', '2', '1', '没有简介，想知道去百度google');
+INSERT INTO `course_info` VALUES ('7', '5', '3', '语文', '2014-03-18', '2014-07-12', '4', '1', '1', '没有简介，想知道去百度google');
+INSERT INTO `course_info` VALUES ('8', '4', '5', '数学', '2014-03-18', '2014-07-12', '5', '6', '1', '没有简介，想知道去百度google');
+INSERT INTO `course_info` VALUES ('10', '6', '4', '英语', '2014-03-18', '2014-07-12', '3', '8', '1', '没有简介，想知道去百度google');
+INSERT INTO `course_info` VALUES ('11', '3', '5', '化学', '2014-03-18', '2014-07-12', '7', '2', '1', '没有简介，想知道去百度google');
+INSERT INTO `course_info` VALUES ('12', '3', '4', '生物', '2014-03-18', '2014-07-12', '8', '3', '1', '没有简介，想知道去百度google');
+INSERT INTO `course_info` VALUES ('13', '2', '3', '物理', '2014-03-18', '2014-07-12', '9', '4', '1', '没有简介，想知道去百度google');
+INSERT INTO `course_info` VALUES ('14', '5', '3', '政治', '2014-03-18', '2014-07-12', '0', '5', '1', '没有简介，想知道去百度google');
+INSERT INTO `course_info` VALUES ('15', '5', '4', '历史', '2014-03-18', '2014-07-12', '1', '2', '1', '没有简介，想知道去百度google');
+INSERT INTO `course_info` VALUES ('16', '5', '5', '地理', '2014-03-18', '2014-07-12', '2', '4', '1', '没有简介，想知道去百度google');
 
 -- ----------------------------
 -- Table structure for department_info
@@ -320,15 +349,11 @@ CREATE TABLE `financial_records` (
   PRIMARY KEY (`financial_id`),
   KEY `FK_branch_company_financial` (`branch_id`),
   CONSTRAINT `FK_branch_company_financial` FOREIGN KEY (`branch_id`) REFERENCES `branch_info` (`branch_id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of financial_records
 -- ----------------------------
-INSERT INTO `financial_records` VALUES ('1', '1', '1', '2014-03-17 11:21:43', '1', '1', '1');
-INSERT INTO `financial_records` VALUES ('2', null, '7678', '2014-03-17 11:24:14', '7679', 'yzy sb', '');
-INSERT INTO `financial_records` VALUES ('3', null, '2000', '2014-03-19 15:44:21', '9679', '支付职工工资', '职工编号：s1001职工姓名：张三1');
-INSERT INTO `financial_records` VALUES ('4', null, '10000000', '2014-03-19 15:47:51', '10009679', '学生扣费', '学生学号：1143111121学生姓名：jack1');
 
 -- ----------------------------
 -- Table structure for grade_info
@@ -343,16 +368,20 @@ CREATE TABLE `grade_info` (
   PRIMARY KEY (`grade_id`),
   KEY `FK_grade_branch` (`branch_id`),
   CONSTRAINT `FK_grade_branch` FOREIGN KEY (`branch_id`) REFERENCES `branch_info` (`branch_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of grade_info
 -- ----------------------------
+INSERT INTO `grade_info` VALUES ('1', '1', '1年级', '1', '1年级only');
+INSERT INTO `grade_info` VALUES ('2', '1', '2年级', '1', '2年级only');
+INSERT INTO `grade_info` VALUES ('3', '1', '3年级', '1', '3年级only');
 INSERT INTO `grade_info` VALUES ('4', '2', '1年级', '1', '1年级only');
 INSERT INTO `grade_info` VALUES ('5', '2', '2年级', '1', '2年级only');
 INSERT INTO `grade_info` VALUES ('6', '2', '3年级', '1', '3年级only');
-INSERT INTO `grade_info` VALUES ('7', null, '刘家豪你妹', null, null);
-INSERT INTO `grade_info` VALUES ('8', null, '刘家豪你妹', null, null);
+INSERT INTO `grade_info` VALUES ('7', '3', '1年级', '1', '1年级only');
+INSERT INTO `grade_info` VALUES ('8', '3', '2年级', '1', '2年级only');
+INSERT INTO `grade_info` VALUES ('9', '3', '3年级', '1', '3年级only');
 
 -- ----------------------------
 -- Table structure for group_info
@@ -364,14 +393,17 @@ CREATE TABLE `group_info` (
   `group_avai` int(11) DEFAULT NULL,
   `group_remark` text,
   PRIMARY KEY (`group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of group_info
 -- ----------------------------
-INSERT INTO `group_info` VALUES ('1', '第一组', '1', '最厉害的组');
-INSERT INTO `group_info` VALUES ('2', '第二组', '1', '第二厉害的组');
-INSERT INTO `group_info` VALUES ('3', '第三组', '1', '最不厉害的组');
+INSERT INTO `group_info` VALUES ('1', '管理员组', '1', '管理员');
+INSERT INTO `group_info` VALUES ('2', '普通教师', '1', '普通教师');
+INSERT INTO `group_info` VALUES ('3', '营销人员组', '1', '营销人员');
+INSERT INTO `group_info` VALUES ('4', '学生组', '1', '学生');
+INSERT INTO `group_info` VALUES ('5', '主管教师', '1', '主管老师');
+INSERT INTO `group_info` VALUES ('6', '待定', '1', '待定');
 
 -- ----------------------------
 -- Table structure for group_privilege
@@ -386,15 +418,11 @@ CREATE TABLE `group_privilege` (
   KEY `FK_group_gp` (`group_id`),
   CONSTRAINT `FK_gp_privilege` FOREIGN KEY (`privilege_id`) REFERENCES `privilege_info` (`privilege_id`),
   CONSTRAINT `FK_group_gp` FOREIGN KEY (`group_id`) REFERENCES `group_info` (`group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of group_privilege
 -- ----------------------------
-INSERT INTO `group_privilege` VALUES ('1', '1', '1');
-INSERT INTO `group_privilege` VALUES ('2', '2', '2');
-INSERT INTO `group_privilege` VALUES ('3', '3', '3');
-INSERT INTO `group_privilege` VALUES ('4', '1', '2');
 
 -- ----------------------------
 -- Table structure for major_info
@@ -406,14 +434,17 @@ CREATE TABLE `major_info` (
   `major_intr` text,
   `major_avai` int(11) DEFAULT NULL,
   PRIMARY KEY (`major_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of major_info
 -- ----------------------------
 INSERT INTO `major_info` VALUES ('1', '软件工程', '软件工程简介。。。', '1');
 INSERT INTO `major_info` VALUES ('2', '量子物理', '量子物理简介。。。', '1');
-INSERT INTO `major_info` VALUES ('3', '土木工程', '土木工程简介。。。', '1');
+INSERT INTO `major_info` VALUES ('3', '自然', '自然科学简介。。。', '1');
+INSERT INTO `major_info` VALUES ('4', '数学', '数学简介。。。', '1');
+INSERT INTO `major_info` VALUES ('5', '艺术', '艺术简介。。。', '1');
+INSERT INTO `major_info` VALUES ('6', '英语', '英语简介。。。', '1');
 
 -- ----------------------------
 -- Table structure for notice_info
@@ -435,9 +466,6 @@ CREATE TABLE `notice_info` (
 -- ----------------------------
 -- Records of notice_info
 -- ----------------------------
-INSERT INTO `notice_info` VALUES ('1', '1', '公告类型1', '第1个公告', '第1公告内容', '2014-03-12 12:08:46', '1');
-INSERT INTO `notice_info` VALUES ('2', '1', '公告类型2', '第2个公告', '第2个公告内容', '2014-03-12 12:08:46', '1');
-INSERT INTO `notice_info` VALUES ('3', '1', '公告类型3', '第3个公告', '第3个公告内容', '2014-03-12 12:08:46', '1');
 
 -- ----------------------------
 -- Table structure for position_info
@@ -458,33 +486,33 @@ CREATE TABLE `position_info` (
 -- ----------------------------
 -- Records of position_info
 -- ----------------------------
-INSERT INTO `position_info` VALUES ('1', '1', '扫地的职位', '2000', '1', '扫地的备注');
-INSERT INTO `position_info` VALUES ('2', '1', '部门主管的职位', '3000', '1', '部门主管的备注');
-INSERT INTO `position_info` VALUES ('3', '1', '普通员工的职位', '4000', '1', '普通员工的备注');
-INSERT INTO `position_info` VALUES ('4', '2', '扫地的职位', '2000', '1', '扫地的备注');
-INSERT INTO `position_info` VALUES ('5', '2', '部门主管的职位', '3000', '1', '部门主管的备注');
-INSERT INTO `position_info` VALUES ('6', '2', '普通员工的职位', '4000', '1', '普通员工的备注');
-INSERT INTO `position_info` VALUES ('7', '3', '扫地的职位', '2000', '1', '扫地的备注');
-INSERT INTO `position_info` VALUES ('8', '3', '部门主管的职位', '3000', '1', '部门主管的备注');
-INSERT INTO `position_info` VALUES ('9', '3', '普通员工的职位', '4000', '1', '普通员工的备注');
-INSERT INTO `position_info` VALUES ('10', '4', '扫地的职位', '2000', '1', '扫地的备注');
-INSERT INTO `position_info` VALUES ('11', '4', '部门主管的职位', '3000', '1', '部门主管的备注');
-INSERT INTO `position_info` VALUES ('12', '4', '普通员工的职位', '4000', '1', '普通员工的备注');
-INSERT INTO `position_info` VALUES ('13', '5', '扫地的职位', '2000', '1', '扫地的备注');
-INSERT INTO `position_info` VALUES ('14', '5', '部门主管的职位', '3000', '1', '部门主管的备注');
-INSERT INTO `position_info` VALUES ('15', '5', '普通员工的职位', '4000', '1', '普通员工的备注');
-INSERT INTO `position_info` VALUES ('16', '6', '扫地的职位', '2000', '1', '扫地的备注');
-INSERT INTO `position_info` VALUES ('17', '6', '部门主管的职位', '3000', '1', '部门主管的备注');
-INSERT INTO `position_info` VALUES ('18', '6', '普通员工的职位', '4000', '1', '普通员工的备注');
-INSERT INTO `position_info` VALUES ('19', '7', '扫地的职位', '2000', '1', '扫地的备注');
-INSERT INTO `position_info` VALUES ('20', '7', '部门主管的职位', '3000', '1', '部门主管的备注');
-INSERT INTO `position_info` VALUES ('21', '7', '普通员工的职位', '4000', '1', '普通员工的备注');
-INSERT INTO `position_info` VALUES ('22', '8', '扫地的职位', '2000', '1', '扫地的备注');
-INSERT INTO `position_info` VALUES ('23', '8', '部门主管的职位', '3000', '1', '部门主管的备注');
-INSERT INTO `position_info` VALUES ('24', '8', '普通员工的职位', '4000', '1', '普通员工的备注');
-INSERT INTO `position_info` VALUES ('25', '9', '扫地的职位', '2000', '1', '扫地的备注');
-INSERT INTO `position_info` VALUES ('26', '9', '部门主管的职位', '3000', '1', '部门主管的备注');
-INSERT INTO `position_info` VALUES ('27', '9', '普通员工的职位', '4000', '1', '普通员工的备注');
+INSERT INTO `position_info` VALUES ('1', '1', '总经理', '2000', '1', '总经理的备注');
+INSERT INTO `position_info` VALUES ('2', '1', '开发部科长', '3000', '1', '开发部科长的备注');
+INSERT INTO `position_info` VALUES ('3', '1', '教师', '4000', '1', '教师的备注');
+INSERT INTO `position_info` VALUES ('4', '2', '总经理', '2000', '1', '总经理的备注');
+INSERT INTO `position_info` VALUES ('5', '2', '开发部科长', '3000', '1', '开发部科长的备注');
+INSERT INTO `position_info` VALUES ('6', '2', '教师', '4000', '1', '教师的备注');
+INSERT INTO `position_info` VALUES ('7', '3', '总经理', '2000', '1', '总经理的备注');
+INSERT INTO `position_info` VALUES ('8', '3', '开发部科长', '3000', '1', '开发部科长的备注');
+INSERT INTO `position_info` VALUES ('9', '3', '教师', '4000', '1', '教师的备注');
+INSERT INTO `position_info` VALUES ('10', '4', '总经理', '2000', '1', '总经理的备注');
+INSERT INTO `position_info` VALUES ('11', '4', '开发部科长', '3000', '1', '开发部科长的备注');
+INSERT INTO `position_info` VALUES ('12', '4', '教师', '4000', '1', '教师的备注');
+INSERT INTO `position_info` VALUES ('13', '5', '总经理', '2000', '1', '总经理的备注');
+INSERT INTO `position_info` VALUES ('14', '5', '开发部科长', '3000', '1', '开发部科长的备注');
+INSERT INTO `position_info` VALUES ('15', '5', '教师', '4000', '1', '教师的备注');
+INSERT INTO `position_info` VALUES ('16', '6', '总经理', '2000', '1', '总经理的备注');
+INSERT INTO `position_info` VALUES ('17', '6', '开发部科长', '3000', '1', '开发部科长的备注');
+INSERT INTO `position_info` VALUES ('18', '6', '教师', '4000', '1', '教师的备注');
+INSERT INTO `position_info` VALUES ('19', '7', '总经理', '2000', '1', '总经理的备注');
+INSERT INTO `position_info` VALUES ('20', '7', '开发部科长', '3000', '1', '开发部科长的备注');
+INSERT INTO `position_info` VALUES ('21', '7', '教师', '4000', '1', '教师的备注');
+INSERT INTO `position_info` VALUES ('22', '8', '总经理', '2000', '1', '总经理的备注');
+INSERT INTO `position_info` VALUES ('23', '8', '开发部科长', '3000', '1', '开发部科长的备注');
+INSERT INTO `position_info` VALUES ('24', '8', '教师', '4000', '1', '教师的备注');
+INSERT INTO `position_info` VALUES ('25', '9', '总经理', '2000', '1', '总经理的备注');
+INSERT INTO `position_info` VALUES ('26', '9', '开发部科长', '3000', '1', '开发部科长的备注');
+INSERT INTO `position_info` VALUES ('27', '9', '教师', '4000', '1', '教师的备注');
 
 -- ----------------------------
 -- Table structure for privilege_info
@@ -554,26 +582,11 @@ CREATE TABLE `register_info` (
   KEY `FK_student_registercourse` (`student_id`),
   CONSTRAINT `FK_course_register` FOREIGN KEY (`course_id`) REFERENCES `course_info` (`course_id`),
   CONSTRAINT `FK_student_registercourse` FOREIGN KEY (`student_id`) REFERENCES `student_info` (`student_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of register_info
 -- ----------------------------
-INSERT INTO `register_info` VALUES ('1', '1', '1', '100');
-INSERT INTO `register_info` VALUES ('2', '2', '2', '100');
-INSERT INTO `register_info` VALUES ('3', '3', '3', '100');
-INSERT INTO `register_info` VALUES ('4', '1', '2', '0');
-INSERT INTO `register_info` VALUES ('5', '1', '3', '0');
-INSERT INTO `register_info` VALUES ('6', '1', '4', '0');
-INSERT INTO `register_info` VALUES ('7', '1', '5', '0');
-INSERT INTO `register_info` VALUES ('8', '1', '6', '0');
-INSERT INTO `register_info` VALUES ('9', '1', '7', '0');
-INSERT INTO `register_info` VALUES ('10', '1', '8', '0');
-INSERT INTO `register_info` VALUES ('11', '1', '10', '0');
-INSERT INTO `register_info` VALUES ('12', '1', '11', '0');
-INSERT INTO `register_info` VALUES ('13', '1', '12', '0');
-INSERT INTO `register_info` VALUES ('14', '1', '13', '0');
-INSERT INTO `register_info` VALUES ('15', '1', '16', '0');
 
 -- ----------------------------
 -- Table structure for roll_state
@@ -584,7 +597,7 @@ CREATE TABLE `roll_state` (
   `rollstate_name` varchar(64) DEFAULT NULL,
   `rollstate_intr` text,
   PRIMARY KEY (`rollstate_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of roll_state
@@ -592,6 +605,7 @@ CREATE TABLE `roll_state` (
 INSERT INTO `roll_state` VALUES ('1', '在校学生', 'normal');
 INSERT INTO `roll_state` VALUES ('2', '退学', 'unnormal');
 INSERT INTO `roll_state` VALUES ('3', '毕业', 'gtaduate');
+INSERT INTO `roll_state` VALUES ('4', '其它', 'others');
 
 -- ----------------------------
 -- Table structure for salesman_info
@@ -608,9 +622,9 @@ CREATE TABLE `salesman_info` (
 -- ----------------------------
 -- Records of salesman_info
 -- ----------------------------
-INSERT INTO `salesman_info` VALUES ('5', '0', '销售人员1备注');
-INSERT INTO `salesman_info` VALUES ('6', '0', '销售人员2备注');
-INSERT INTO `salesman_info` VALUES ('7', '0', '销售人员3备注');
+INSERT INTO `salesman_info` VALUES ('6', '0', '销售人员1备注');
+INSERT INTO `salesman_info` VALUES ('7', '0', '销售人员2备注');
+INSERT INTO `salesman_info` VALUES ('8', '0', '销售人员3备注');
 
 -- ----------------------------
 -- Table structure for schedule_info
@@ -631,9 +645,6 @@ CREATE TABLE `schedule_info` (
 -- ----------------------------
 -- Records of schedule_info
 -- ----------------------------
-INSERT INTO `schedule_info` VALUES ('1', '1', '2014-03-12 12:08:46', '2014-03-12 12:08:46', '我的工作日程信息哈哈哈1', '1');
-INSERT INTO `schedule_info` VALUES ('2', '2', '2014-03-12 12:08:46', '2014-03-12 12:08:46', '我的工作日程信息哈哈哈2', '1');
-INSERT INTO `schedule_info` VALUES ('3', '3', '2014-03-12 12:08:46', '2014-03-12 12:08:46', '我的工作日程信息哈哈哈3', '1');
 
 -- ----------------------------
 -- Table structure for staff_attandant
@@ -652,111 +663,6 @@ CREATE TABLE `staff_attandant` (
 -- ----------------------------
 -- Records of staff_attandant
 -- ----------------------------
-INSERT INTO `staff_attandant` VALUES ('1', '1', '2014-03-12 17:33:43', null);
-INSERT INTO `staff_attandant` VALUES ('2', '2', '2014-03-12 18:59:43', null);
-INSERT INTO `staff_attandant` VALUES ('3', '4', '2014-03-12 16:59:59', null);
-INSERT INTO `staff_attandant` VALUES ('4', '4', '2014-03-12 16:59:59', '');
-INSERT INTO `staff_attandant` VALUES ('5', '1', '2014-03-13 15:15:52', null);
-INSERT INTO `staff_attandant` VALUES ('6', '2', '2014-03-13 15:15:53', null);
-INSERT INTO `staff_attandant` VALUES ('7', '3', '2014-03-13 15:15:53', null);
-INSERT INTO `staff_attandant` VALUES ('8', '4', '2014-03-13 15:15:54', null);
-INSERT INTO `staff_attandant` VALUES ('9', '5', '2014-03-13 15:15:56', null);
-INSERT INTO `staff_attandant` VALUES ('10', '6', '2014-03-13 15:16:01', null);
-INSERT INTO `staff_attandant` VALUES ('11', '7', '2014-03-13 15:16:02', null);
-INSERT INTO `staff_attandant` VALUES ('12', '8', '2014-03-13 15:16:14', null);
-INSERT INTO `staff_attandant` VALUES ('13', '9', '2014-03-13 15:16:14', null);
-INSERT INTO `staff_attandant` VALUES ('14', '1', '2014-03-13 15:16:20', null);
-INSERT INTO `staff_attandant` VALUES ('15', '2', '2014-03-13 15:16:21', null);
-INSERT INTO `staff_attandant` VALUES ('16', '3', '2014-03-13 15:16:21', null);
-INSERT INTO `staff_attandant` VALUES ('17', '4', '2014-03-13 15:16:23', null);
-INSERT INTO `staff_attandant` VALUES ('18', '5', '2014-03-13 15:18:26', null);
-INSERT INTO `staff_attandant` VALUES ('19', '6', '2014-03-13 15:18:26', null);
-INSERT INTO `staff_attandant` VALUES ('20', '7', '2014-03-13 15:18:27', null);
-INSERT INTO `staff_attandant` VALUES ('21', '8', '2014-03-13 15:18:27', null);
-INSERT INTO `staff_attandant` VALUES ('22', '9', '2014-03-13 15:18:28', null);
-INSERT INTO `staff_attandant` VALUES ('23', '1', '2014-03-13 15:18:30', null);
-INSERT INTO `staff_attandant` VALUES ('24', '2', '2014-03-13 15:18:31', null);
-INSERT INTO `staff_attandant` VALUES ('25', '3', '2014-03-13 15:18:33', null);
-INSERT INTO `staff_attandant` VALUES ('26', '4', '2014-03-13 15:18:34', null);
-INSERT INTO `staff_attandant` VALUES ('27', '5', '2014-03-13 15:18:37', null);
-INSERT INTO `staff_attandant` VALUES ('28', '6', '2014-03-13 15:18:35', null);
-INSERT INTO `staff_attandant` VALUES ('29', '7', '2014-03-13 15:18:36', null);
-INSERT INTO `staff_attandant` VALUES ('30', '8', '2014-03-13 15:18:40', null);
-INSERT INTO `staff_attandant` VALUES ('31', '9', '2014-03-13 16:28:38', null);
-INSERT INTO `staff_attandant` VALUES ('32', '1', '2014-03-13 16:28:40', null);
-INSERT INTO `staff_attandant` VALUES ('33', '2', '2014-03-13 16:28:40', null);
-INSERT INTO `staff_attandant` VALUES ('34', '3', '2014-03-13 16:28:41', null);
-INSERT INTO `staff_attandant` VALUES ('35', '4', '2014-03-13 16:28:41', null);
-INSERT INTO `staff_attandant` VALUES ('36', '5', '2014-03-13 16:28:42', null);
-INSERT INTO `staff_attandant` VALUES ('37', '6', '2014-03-13 16:28:42', null);
-INSERT INTO `staff_attandant` VALUES ('38', '7', '2014-03-13 16:28:43', null);
-INSERT INTO `staff_attandant` VALUES ('39', '8', '2014-03-13 16:28:43', null);
-INSERT INTO `staff_attandant` VALUES ('40', '9', '2014-03-13 16:28:44', null);
-INSERT INTO `staff_attandant` VALUES ('41', '1', '2014-03-13 16:28:45', null);
-INSERT INTO `staff_attandant` VALUES ('42', '2', '2014-03-13 16:28:45', null);
-INSERT INTO `staff_attandant` VALUES ('43', '3', '2014-03-13 16:28:45', null);
-INSERT INTO `staff_attandant` VALUES ('44', '4', '2014-03-13 16:28:46', null);
-INSERT INTO `staff_attandant` VALUES ('45', '5', '2014-03-13 16:28:46', null);
-INSERT INTO `staff_attandant` VALUES ('46', '6', '2014-03-13 16:28:47', null);
-INSERT INTO `staff_attandant` VALUES ('47', '7', '2014-03-13 16:28:47', null);
-INSERT INTO `staff_attandant` VALUES ('48', '8', '2014-03-13 16:28:48', null);
-INSERT INTO `staff_attandant` VALUES ('49', '9', '2014-03-13 16:28:48', null);
-INSERT INTO `staff_attandant` VALUES ('50', '1', '2014-03-13 16:28:51', null);
-INSERT INTO `staff_attandant` VALUES ('51', '2', '2014-03-13 16:28:52', null);
-INSERT INTO `staff_attandant` VALUES ('52', '3', '2014-03-13 16:28:53', null);
-INSERT INTO `staff_attandant` VALUES ('53', '4', '2014-03-13 16:28:53', null);
-INSERT INTO `staff_attandant` VALUES ('54', '5', '2014-03-13 16:28:53', null);
-INSERT INTO `staff_attandant` VALUES ('55', '6', '2014-03-13 16:28:54', null);
-INSERT INTO `staff_attandant` VALUES ('56', '7', '2014-03-13 16:28:54', null);
-INSERT INTO `staff_attandant` VALUES ('57', '8', '2014-03-13 16:28:55', null);
-INSERT INTO `staff_attandant` VALUES ('58', '9', '2014-03-13 16:28:57', null);
-INSERT INTO `staff_attandant` VALUES ('59', '1', '2014-03-13 16:40:17', null);
-INSERT INTO `staff_attandant` VALUES ('60', '2', '2014-03-13 16:40:17', null);
-INSERT INTO `staff_attandant` VALUES ('61', '3', '2014-03-13 16:40:18', null);
-INSERT INTO `staff_attandant` VALUES ('62', '4', '2014-03-13 16:40:18', null);
-INSERT INTO `staff_attandant` VALUES ('63', '5', '2014-03-13 16:40:18', null);
-INSERT INTO `staff_attandant` VALUES ('64', '6', '2014-03-13 16:40:19', null);
-INSERT INTO `staff_attandant` VALUES ('65', '7', '2014-03-13 16:40:19', null);
-INSERT INTO `staff_attandant` VALUES ('66', '8', '2014-03-13 16:40:20', null);
-INSERT INTO `staff_attandant` VALUES ('67', '9', '2014-03-13 16:40:22', null);
-INSERT INTO `staff_attandant` VALUES ('68', '1', '2014-03-13 16:40:23', null);
-INSERT INTO `staff_attandant` VALUES ('69', '2', '2014-03-13 16:40:23', null);
-INSERT INTO `staff_attandant` VALUES ('70', '3', '2014-03-13 16:40:23', null);
-INSERT INTO `staff_attandant` VALUES ('71', '4', '2014-03-13 16:40:24', null);
-INSERT INTO `staff_attandant` VALUES ('72', '5', '2014-03-13 16:40:24', null);
-INSERT INTO `staff_attandant` VALUES ('73', '6', '2014-03-13 16:40:24', null);
-INSERT INTO `staff_attandant` VALUES ('74', '7', '2014-03-13 16:40:25', null);
-INSERT INTO `staff_attandant` VALUES ('75', '8', '2014-03-13 16:40:25', null);
-INSERT INTO `staff_attandant` VALUES ('76', '9', '2014-03-13 16:40:28', null);
-INSERT INTO `staff_attandant` VALUES ('77', '1', '2014-03-17 21:09:51', null);
-INSERT INTO `staff_attandant` VALUES ('78', '1', '2014-03-17 21:09:51', null);
-INSERT INTO `staff_attandant` VALUES ('79', '1', '2014-03-17 21:09:52', null);
-INSERT INTO `staff_attandant` VALUES ('80', '1', '2014-03-17 21:09:52', null);
-INSERT INTO `staff_attandant` VALUES ('81', '1', '2014-03-17 21:09:52', null);
-INSERT INTO `staff_attandant` VALUES ('82', '1', '2014-03-17 21:09:53', null);
-INSERT INTO `staff_attandant` VALUES ('83', '1', '2014-03-17 21:09:53', null);
-INSERT INTO `staff_attandant` VALUES ('84', '1', '2014-03-17 21:09:53', null);
-INSERT INTO `staff_attandant` VALUES ('85', '1', '2014-03-17 21:09:54', null);
-INSERT INTO `staff_attandant` VALUES ('86', '1', '2014-03-17 21:09:54', null);
-INSERT INTO `staff_attandant` VALUES ('87', '1', '2014-03-17 21:09:54', null);
-INSERT INTO `staff_attandant` VALUES ('88', '1', '2014-03-17 21:09:55', null);
-INSERT INTO `staff_attandant` VALUES ('89', '1', '2014-03-17 21:09:55', null);
-INSERT INTO `staff_attandant` VALUES ('90', '1', '2014-03-17 21:09:56', null);
-INSERT INTO `staff_attandant` VALUES ('91', '1', '2014-03-17 21:09:56', null);
-INSERT INTO `staff_attandant` VALUES ('92', '1', '2014-03-17 21:09:56', null);
-INSERT INTO `staff_attandant` VALUES ('93', '1', '2014-03-17 21:09:56', null);
-INSERT INTO `staff_attandant` VALUES ('94', '1', '2014-03-17 21:09:57', null);
-INSERT INTO `staff_attandant` VALUES ('95', '1', '2014-03-17 21:09:58', null);
-INSERT INTO `staff_attandant` VALUES ('96', '1', '2014-03-17 21:09:58', null);
-INSERT INTO `staff_attandant` VALUES ('97', '1', '2014-03-17 21:09:58', null);
-INSERT INTO `staff_attandant` VALUES ('98', '1', '2014-03-17 21:09:59', null);
-INSERT INTO `staff_attandant` VALUES ('99', '1', '2014-03-17 21:09:59', null);
-INSERT INTO `staff_attandant` VALUES ('100', '1', '2014-03-17 21:10:00', null);
-INSERT INTO `staff_attandant` VALUES ('101', '1', '2014-03-17 21:10:00', null);
-INSERT INTO `staff_attandant` VALUES ('102', '1', '2014-03-17 21:10:00', null);
-INSERT INTO `staff_attandant` VALUES ('103', '1', '2014-03-17 21:10:01', null);
-INSERT INTO `staff_attandant` VALUES ('104', '1', '2014-03-17 21:10:01', null);
-INSERT INTO `staff_attandant` VALUES ('105', '1', '2014-03-17 21:10:02', null);
 
 -- ----------------------------
 -- Table structure for staff_fees
@@ -776,7 +682,6 @@ CREATE TABLE `staff_fees` (
 -- ----------------------------
 -- Records of staff_fees
 -- ----------------------------
-INSERT INTO `staff_fees` VALUES ('1', '1', '2000', '2014-03-19 15:44:20', '支付职工工资');
 
 -- ----------------------------
 -- Table structure for staff_info
@@ -803,20 +708,21 @@ CREATE TABLE `staff_info` (
   KEY `FK_staff_position` (`vocation_id`),
   CONSTRAINT `FK_staff_group` FOREIGN KEY (`group_id`) REFERENCES `group_info` (`group_id`),
   CONSTRAINT `FK_staff_position` FOREIGN KEY (`vocation_id`) REFERENCES `position_info` (`vocation_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of staff_info
 -- ----------------------------
-INSERT INTO `staff_info` VALUES ('1', 's1001', 'e10adc3949ba59abbe56e057f20f883e', '1', '1', '1', '张三1', '18255623489', '147895654', '354895214478596548', '2014-03-12 12:08:46', '1', '没有其他信息');
-INSERT INTO `staff_info` VALUES ('2', 's1002', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '2', '2', '张三2', '18255658989', '147895654', '353895214478596548', '2014-03-12 12:14:34', '1', '没有其他信息');
-INSERT INTO `staff_info` VALUES ('3', 's1003', 'e10adc3949ba59abbe56e057f20f883e', '1', '3', '3', '张三3', '18345658989', '147895654', '356895214478596548', '2014-03-12 12:14:36', '1', '没有其他信息');
-INSERT INTO `staff_info` VALUES ('4', 's1004', 'e10adc3949ba59abbe56e057f20f883e', '1', '4', '1', '张三4', '18255888989', '147895654', '354885214478596548', '2014-03-12 12:14:38', '1', '没有其他信息');
-INSERT INTO `staff_info` VALUES ('5', 's1005', 'e10adc3949ba59abbe56e057f20f883e', '1', '5', '2', '张三5', '18255577989', '147895654', '350005214478596548', '2014-03-12 12:14:41', '1', '没有其他信息');
-INSERT INTO `staff_info` VALUES ('6', 's1006', 'e10adc3949ba59abbe56e057f20f883e', '1', '6', '3', '张三6', '18255658989', '147895654', '354847214478596548', '2014-03-12 12:14:44', '1', '没有其他信息');
-INSERT INTO `staff_info` VALUES ('7', 's1007', 'e10adc3949ba59abbe56e057f20f883e', '1', '7', '1', '张三7', '18241448989', '147895654', '354145217478596548', '2014-03-12 12:14:47', '1', '没有其他信息');
-INSERT INTO `staff_info` VALUES ('8', 's1008', 'e10adc3949ba59abbe56e057f20f883e', '1', '8', '2', '张三8', '18286668989', '147895654', '354895227785962548', '2014-03-12 12:14:51', '1', '没有其他信息');
-INSERT INTO `staff_info` VALUES ('9', 's1009', 'e10adc3949ba59abbe56e057f20f883e', '1', '9', '3', '张三9', '18258778989', '147895654', '354895296668596548', '2014-03-12 12:14:55', '1', '没有其他信息');
+INSERT INTO `staff_info` VALUES ('1', 'scu1001', 'e10adc3949ba59abbe56e057f20f883e', '1', '1', '1', 'jane', '18255623489', '147895654', '340825199209151514', '2014-03-12 12:08:46', '1', '没有其他信息');
+INSERT INTO `staff_info` VALUES ('2', 'scu1002', 'e10adc3949ba59abbe56e057f20f883e', '1', '9', '5', '令狐冲', '18255658989', '147895654', '340825199209151515', '2014-03-12 12:14:34', '1', '没有其他信息');
+INSERT INTO `staff_info` VALUES ('3', 'scu1003', 'e10adc3949ba59abbe56e057f20f883e', '0', '9', '5', '东方不败', '18345658989', '147895654', '340825199209151516', '2014-03-12 12:14:36', '1', '没有其他信息');
+INSERT INTO `staff_info` VALUES ('4', 'scu1004', 'e10adc3949ba59abbe56e057f20f883e', '0', '9', '5', '任盈盈', '18255888989', '147895654', '340825199209151517', '2014-03-12 12:14:38', '1', '没有其他信息');
+INSERT INTO `staff_info` VALUES ('5', 'scu1005', 'e10adc3949ba59abbe56e057f20f883e', '0', '9', '5', '仪琳', '18255577989', '147895654', '340825199209151518', '2014-03-12 12:14:41', '1', '没有其他信息');
+INSERT INTO `staff_info` VALUES ('6', 'scu1006', 'e10adc3949ba59abbe56e057f20f883e', '1', '10', '6', '任我行', '18255658989', '147895654', '340825199209151519', '2014-03-12 12:14:44', '1', '没有其他信息');
+INSERT INTO `staff_info` VALUES ('7', 'scu1007', 'e10adc3949ba59abbe56e057f20f883e', '1', '11', '6', '岳不群', '18241448989', '147895654', '340825199209151524', '2014-03-12 12:14:47', '1', '没有其他信息');
+INSERT INTO `staff_info` VALUES ('8', 'scu1008', 'e10adc3949ba59abbe56e057f20f883e', '1', '12', '6', '田伯光', '18286668989', '147895654', '340825199209151534', '2014-03-12 12:14:51', '1', '没有其他信息');
+INSERT INTO `staff_info` VALUES ('9', 'scu1009', 'e10adc3949ba59abbe56e057f20f883e', '1', '22', '6', '方证大师', '18258778989', '147895654', '340825199209151544', '2014-03-12 12:14:55', '1', '没有其他信息');
+INSERT INTO `staff_info` VALUES ('10', 'scu1010', 'e10adc3949ba59abbe56e057f20f883e', '1', '26', '6', '左冷禅', '18258778989', '147895654', '340825199209151554', '2014-03-12 12:14:55', '1', '没有其他信息');
 
 -- ----------------------------
 -- Table structure for student_attendant
@@ -835,31 +741,6 @@ CREATE TABLE `student_attendant` (
 -- ----------------------------
 -- Records of student_attendant
 -- ----------------------------
-INSERT INTO `student_attendant` VALUES ('1', '1', '2014-03-12 20:36:55', '');
-INSERT INTO `student_attendant` VALUES ('2', '1', '2014-03-12 20:36:55', '');
-INSERT INTO `student_attendant` VALUES ('3', '1', '2014-03-12 20:36:55', '');
-INSERT INTO `student_attendant` VALUES ('4', '1', '2014-03-12 20:36:55', '');
-INSERT INTO `student_attendant` VALUES ('5', '1', '2014-03-12 20:36:55', '');
-INSERT INTO `student_attendant` VALUES ('6', '1', '2014-03-12 20:36:55', '');
-INSERT INTO `student_attendant` VALUES ('7', '1', '2014-03-12 20:36:55', '');
-INSERT INTO `student_attendant` VALUES ('8', '1', '2014-03-12 20:36:55', '');
-INSERT INTO `student_attendant` VALUES ('9', '1', '2014-03-12 20:36:55', '');
-INSERT INTO `student_attendant` VALUES ('10', '3', '2014-03-17 23:53:44', null);
-INSERT INTO `student_attendant` VALUES ('11', '1', '2014-03-12 20:36:55', '');
-INSERT INTO `student_attendant` VALUES ('12', '2', '2014-03-17 23:53:08', null);
-INSERT INTO `student_attendant` VALUES ('13', '3', '2014-03-17 23:53:08', null);
-INSERT INTO `student_attendant` VALUES ('16', '3', '2014-03-17 23:53:15', null);
-INSERT INTO `student_attendant` VALUES ('17', '2', '2014-03-17 23:53:16', null);
-INSERT INTO `student_attendant` VALUES ('18', '1', '2014-03-17 23:53:16', null);
-INSERT INTO `student_attendant` VALUES ('19', '2', '2014-03-17 23:53:17', null);
-INSERT INTO `student_attendant` VALUES ('20', '3', '2014-03-17 23:53:17', null);
-INSERT INTO `student_attendant` VALUES ('23', '3', '2014-03-17 23:53:36', null);
-INSERT INTO `student_attendant` VALUES ('24', '1', '2014-03-18 10:28:54', null);
-INSERT INTO `student_attendant` VALUES ('25', '2', '2014-03-18 10:28:57', null);
-INSERT INTO `student_attendant` VALUES ('26', '3', '2014-03-18 10:28:58', null);
-INSERT INTO `student_attendant` VALUES ('28', '3', '2014-03-18 10:29:02', null);
-INSERT INTO `student_attendant` VALUES ('29', '2', '2014-03-18 10:29:03', null);
-INSERT INTO `student_attendant` VALUES ('30', '1', '2014-03-18 10:29:04', null);
 
 -- ----------------------------
 -- Table structure for student_consultway
@@ -879,9 +760,6 @@ CREATE TABLE `student_consultway` (
 -- ----------------------------
 -- Records of student_consultway
 -- ----------------------------
-INSERT INTO `student_consultway` VALUES ('1', '1', '1');
-INSERT INTO `student_consultway` VALUES ('2', '2', '2');
-INSERT INTO `student_consultway` VALUES ('3', '3', '3');
 
 -- ----------------------------
 -- Table structure for student_fees
@@ -896,13 +774,11 @@ CREATE TABLE `student_fees` (
   PRIMARY KEY (`fees_id`),
   KEY `FK_student_pay_fees` (`student_id`),
   CONSTRAINT `FK_student_pay_fees` FOREIGN KEY (`student_id`) REFERENCES `student_info` (`student_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of student_fees
 -- ----------------------------
-INSERT INTO `student_fees` VALUES ('1', '1', '100', '2014-03-19 15:47:39', '充值');
-INSERT INTO `student_fees` VALUES ('2', '1', '-10000000', '2014-03-19 15:47:51', '扣费');
 
 -- ----------------------------
 -- Table structure for student_info
@@ -943,9 +819,9 @@ CREATE TABLE `student_info` (
 -- ----------------------------
 -- Records of student_info
 -- ----------------------------
-INSERT INTO `student_info` VALUES ('1', 'E10ADC3949BA59ABBE56E057F20F883E', '9', '2', '1', '1', '1143111121', 'jack1', '1', null, 'jack1 addr', '123456刻录机￥@￥', '-9989900', '川大', '软件工程', '2014-03-19 15:01:12', '1', 'jack1 remark');
-INSERT INTO `student_info` VALUES ('2', 'E10ADC3949BA59ABBE56E057F20F883E', '9', '2', '1', '1', '1143111122', 'jack1', '1', '18', 'jack1 addr', '1123', '10000', '川大', '软件工程', '2014-03-19 15:01:12', '1', 'jack1 remark');
-INSERT INTO `student_info` VALUES ('3', 'e10adc3949ba59abbe56e057f20f883e', null, '2', '1', '1', '1143111123', 'jack3', '1', '18', 'jack3 addr', '4589653', '10000', '川大', '软件工程', '2014-03-16 00:51:38', '1', 'jack3 remark');
+INSERT INTO `student_info` VALUES ('1', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '4', '1', '1', '1143111421', '柯南', '1', '10', '中国 安徽 安庆 太湖', '13365459878', '10000', '川大', '软件工程', '2014-03-19 15:01:12', '1', '这是我的备注。。哈哈');
+INSERT INTO `student_info` VALUES ('2', 'E10ADC3949BA59ABBE56E057F20F883E', '2', '4', '1', '2', '1143111422', '小兰', '0', '14', '四川 成都 江安 川大', '13365459877', '255', '川大', '软件工程', '2014-03-19 15:01:12', '1', '再看我就把你喝掉');
+INSERT INTO `student_info` VALUES ('3', 'e10adc3949ba59abbe56e057f20f883e', '3', '4', '1', '3', '1143111423', '小哀', '0', '18', '重庆 重庆 沙坪 地中海', '13365459876', '300', '川大', '软件工程', '2014-03-16 00:51:38', '1', '我喜欢喝茶');
 
 -- ----------------------------
 -- Table structure for teacher_info
@@ -969,9 +845,10 @@ CREATE TABLE `teacher_info` (
 -- ----------------------------
 -- Records of teacher_info
 -- ----------------------------
-INSERT INTO `teacher_info` VALUES ('2', '1', '911111', '数学', '川大', '0', '1', '备注1');
-INSERT INTO `teacher_info` VALUES ('3', '2', '932111', '语文', '浙大', '0', '1', '备注2');
-INSERT INTO `teacher_info` VALUES ('4', '3', '911351', '英语', '北大', '0', '1', '备注3');
+INSERT INTO `teacher_info` VALUES ('2', '1', '9115692', '艺术', '川大', '0', '1', '主管老师令狐冲');
+INSERT INTO `teacher_info` VALUES ('3', '2', '9115693', '英语', '浙大', '0', '0', '普通教师东方不败');
+INSERT INTO `teacher_info` VALUES ('4', '3', '9115694', '英语', '北大', '0', '0', '普通教师任盈盈');
+INSERT INTO `teacher_info` VALUES ('5', '3', '9115695', '英语', '川师', '0', '0', '普通教师仪琳');
 
 -- ----------------------------
 -- Table structure for teacher_level
@@ -985,14 +862,14 @@ CREATE TABLE `teacher_level` (
   `level_avai` int(11) DEFAULT NULL,
   `level_remark` text,
   PRIMARY KEY (`level_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of teacher_level
 -- ----------------------------
-INSERT INTO `teacher_level` VALUES ('1', '第1教师等级', '300', '504004', '1', '第1等级教师的备注');
+INSERT INTO `teacher_level` VALUES ('1', '第1教师等级', '30', '500', '1', '第1等级教师的备注');
 INSERT INTO `teacher_level` VALUES ('2', '第2教师等级', '20', '400', '1', '第2等级教师的备注');
-INSERT INTO `teacher_level` VALUES ('3', '第3教师等级', '40', '300', '0', '第3等级教师的备注');
+INSERT INTO `teacher_level` VALUES ('3', '第3教师等级', '10', '300', '1', '第3等级教师的备注');
 
 -- ----------------------------
 -- Table structure for teaching_manage_info
@@ -1014,6 +891,3 @@ CREATE TABLE `teaching_manage_info` (
 -- ----------------------------
 -- Records of teaching_manage_info
 -- ----------------------------
-INSERT INTO `teaching_manage_info` VALUES ('1', '1', '1教学计划的URL', 'upload/upload_39fc3f3a_7e3d_4a99_bf4e_3153e29b05e5_00000002.tmp', '1总结的URL', '2014-03-12 12:08:46', '1');
-INSERT INTO `teaching_manage_info` VALUES ('2', '2', '2教学计划的URL', '2教案的URL', '2总结的URL', '2014-03-12 12:08:46', '1');
-INSERT INTO `teaching_manage_info` VALUES ('3', '3', '3教学计划的URL', '3教案的URL', '3总结的URL', '2014-03-12 12:08:46', '1');
