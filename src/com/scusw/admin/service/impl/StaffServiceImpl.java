@@ -127,8 +127,13 @@ public class StaffServiceImpl implements StaffService {
 	 */
 	public boolean updateStaff(StaffInfo staff) {
 		
-		String passwordCoded = MD5Util.MD5(staff.getStaffPass());
-		staff.setStaffPass(passwordCoded);
+//		if(staff.getStaffPass().equalsIgnoreCase("")){
+//			staff.setStaffPass((staffDao.queryStaffById(staff.getStaffId())).getStaffPass());
+//		}else{
+			String passwordCoded = MD5Util.MD5(staff.getStaffPass());
+			staff.setStaffPass(passwordCoded);
+//		}
+		System.out.println(staff.getStaffPass());
 		logger.info("Update staff --- " + "staffId: " + staff.getStaffId() 
 				+ " staffName: " + staff.getStaffName());
 		return staffDao.updateStaff(staff);

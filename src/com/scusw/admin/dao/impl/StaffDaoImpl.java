@@ -63,7 +63,7 @@ public class StaffDaoImpl extends HibernateDaoSupport implements StaffDao {
 		return true;
 	}
 	
-
+	
 	
 	/**
 	 * query staff by branchId

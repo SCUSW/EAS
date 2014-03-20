@@ -163,10 +163,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    		alert("手机号码格式不对");
 		    		updateStaff.staffPhone.focus();
 		    		return;
-		    	}if(updateStaff.staffPass.value==""){
-		    		alert("请输入员工密码！");
-		    		updateStaff.staffPass.focus();
-		    		return;
 		    	}if((updateStaff.staffQq.value.length>11 || updateStaff.staffQq.value.length<5) && updateStaff.staffQq.value!=""){
 		    		alert("请正确输入QQ！");
 		    		updateStaff.staffQq.focus();
