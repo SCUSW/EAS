@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 }
 		 
 		 function checkAge(){
-		 	if(addConsultInfo.age.value<0){
+		 	if(addConsultInfo.age.value<=0){
 		 		alert("请输入正确的年龄");
 		 		addConsultInfo.age.focus();
 		 		return fales;
@@ -116,7 +116,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					<div class="input-group input-group-sm">
 	 	 				<span class="input-group-addon">学籍状态</span>
-						<input id="rollstate" name="studentInfo.rollState.rollstateId" type="text" class="form-control">
+	 	 				<select name="studentInfo.rollState.rollstateId" type="text" class="form-control">
+							<option value="1">在校学生</option>
+							<option value="2">退学</option>
+							<option value="3">毕业</option>
+						</select>
 					</div>
 					
 					<div class="input-group input-group-sm">
