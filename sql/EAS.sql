@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2014-03-21 03:35:30
+Date: 2014-03-21 08:23:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,6 +33,11 @@ CREATE TABLE `admin_info` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of admin_info
+-- ----------------------------
+INSERT INTO `admin_info` VALUES ('1', 'admin', 'E10ADC3949BA59ABBE56E057F20F883E', 'Tom', '13656569898', 'cceasy@hotmail.com', '340825199201021512', '2014-03-12 12:08:46', '1');
+
+-- ----------------------------
 -- Table structure for branch_info
 -- ----------------------------
 DROP TABLE IF EXISTS `branch_info`;
@@ -44,6 +49,13 @@ CREATE TABLE `branch_info` (
   `branch_intr` text,
   PRIMARY KEY (`branch_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of branch_info
+-- ----------------------------
+INSERT INTO `branch_info` VALUES ('1', '2014-03-12 12:08:46', '上海分公司', '1', '上海分公司的简介哦~');
+INSERT INTO `branch_info` VALUES ('2', '2014-03-12 12:08:46', '成都分公司', '1', '成都分公司的简介哦~');
+INSERT INTO `branch_info` VALUES ('3', '2014-03-12 12:08:46', '重庆分公司', '1', '重庆分公司的简介哦~');
 
 -- ----------------------------
 -- Table structure for check_info
@@ -60,6 +72,10 @@ CREATE TABLE `check_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of check_info
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for classhour_info
 -- ----------------------------
 DROP TABLE IF EXISTS `classhour_info`;
@@ -71,6 +87,30 @@ CREATE TABLE `classhour_info` (
   `classhour_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`classhour_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of classhour_info
+-- ----------------------------
+INSERT INTO `classhour_info` VALUES ('1', '08:00:00', '09:30:00', '1', '周一第一节');
+INSERT INTO `classhour_info` VALUES ('2', '10:00:00', '11:30:00', '1', '周一第二节');
+INSERT INTO `classhour_info` VALUES ('3', '14:00:00', '15:30:00', '1', '周一第三节');
+INSERT INTO `classhour_info` VALUES ('4', '16:00:00', '17:30:00', '1', '周一第四节');
+INSERT INTO `classhour_info` VALUES ('5', '08:00:00', '09:30:00', '1', '周二第一节');
+INSERT INTO `classhour_info` VALUES ('6', '10:00:00', '11:30:00', '1', '周二第二节');
+INSERT INTO `classhour_info` VALUES ('7', '14:00:00', '15:30:00', '1', '周二第三节');
+INSERT INTO `classhour_info` VALUES ('8', '16:00:00', '17:30:00', '1', '周二第四节');
+INSERT INTO `classhour_info` VALUES ('9', '08:00:00', '09:30:00', '1', '周三第一节');
+INSERT INTO `classhour_info` VALUES ('10', '10:00:00', '11:30:00', '1', '周三第二节');
+INSERT INTO `classhour_info` VALUES ('11', '14:00:00', '15:30:00', '1', '周三第三节');
+INSERT INTO `classhour_info` VALUES ('12', '16:00:00', '17:30:00', '1', '周三第四节');
+INSERT INTO `classhour_info` VALUES ('13', '08:00:00', '09:30:00', '1', '周四第一节');
+INSERT INTO `classhour_info` VALUES ('14', '10:00:00', '11:30:00', '1', '周四第二节');
+INSERT INTO `classhour_info` VALUES ('15', '14:00:00', '15:30:00', '1', '周四第三节');
+INSERT INTO `classhour_info` VALUES ('16', '16:00:00', '17:30:00', '1', '周四第四节');
+INSERT INTO `classhour_info` VALUES ('17', '08:00:00', '09:30:00', '1', '周五第一节');
+INSERT INTO `classhour_info` VALUES ('18', '10:00:00', '11:30:00', '1', '周五第二节');
+INSERT INTO `classhour_info` VALUES ('19', '14:00:00', '15:30:00', '1', '周五第三节');
+INSERT INTO `classhour_info` VALUES ('20', '16:00:00', '17:30:00', '1', '周五第四节');
 
 -- ----------------------------
 -- Table structure for classroom_info
@@ -87,6 +127,29 @@ CREATE TABLE `classroom_info` (
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of classroom_info
+-- ----------------------------
+INSERT INTO `classroom_info` VALUES ('1', '江安一教A603', '1', '普通教室', '120', '上海分公司一个嗯好的教室~');
+INSERT INTO `classroom_info` VALUES ('2', '二机楼A303', '1', '多媒体教室', '100', '上海分公司设备先进');
+INSERT INTO `classroom_info` VALUES ('3', '综合楼A707', '1', '大教室', '300', '上海分公司综合大教室');
+INSERT INTO `classroom_info` VALUES ('4', '江安一教B603', '1', '普通教室', '120', '一个嗯好的教室~');
+INSERT INTO `classroom_info` VALUES ('5', '二机楼B303', '1', '多媒体教室', '100', '设备先进');
+INSERT INTO `classroom_info` VALUES ('6', '综合楼B707', '1', '大教室', '300', '综合大教室');
+INSERT INTO `classroom_info` VALUES ('7', '江安一教C603', '1', '普通教室', '120', '一个嗯好的教室~');
+INSERT INTO `classroom_info` VALUES ('8', '二机楼C303', '1', '多媒体教室', '100', '设备先进');
+INSERT INTO `classroom_info` VALUES ('9', '综合楼C707', '1', '大教室', '300', '综合大教室');
+INSERT INTO `classroom_info` VALUES ('10', '综合楼C107', '1', '大教室', '300', '综合大教室');
+INSERT INTO `classroom_info` VALUES ('11', '江安一教A103', '1', '普通教室', '120', '一个嗯好的教室~');
+INSERT INTO `classroom_info` VALUES ('12', '二机楼A103', '1', '多媒体教室', '100', '设备先进');
+INSERT INTO `classroom_info` VALUES ('13', '综合楼A727', '1', '大教室', '300', '综合大教室');
+INSERT INTO `classroom_info` VALUES ('14', '江安一教B633', '1', '普通教室', '120', '一个嗯好的教室~');
+INSERT INTO `classroom_info` VALUES ('15', '二机楼B343', '1', '多媒体教室', '100', '设备先进');
+INSERT INTO `classroom_info` VALUES ('16', '综合楼B757', '1', '大教室', '300', '综合大教室');
+INSERT INTO `classroom_info` VALUES ('17', '江安一教C663', '1', '普通教室', '120', '一个嗯好的教室~');
+INSERT INTO `classroom_info` VALUES ('18', '二机楼C373', '1', '多媒体教室', '100', '设备先进');
+INSERT INTO `classroom_info` VALUES ('19', '综合楼C787', '1', '大教室', '300', '综合大教室');
+
+-- ----------------------------
 -- Table structure for class_info
 -- ----------------------------
 DROP TABLE IF EXISTS `class_info`;
@@ -98,7 +161,38 @@ CREATE TABLE `class_info` (
   PRIMARY KEY (`class_id`),
   KEY `FK_class_grade` (`grade_id`),
   CONSTRAINT `FK_class_grade` FOREIGN KEY (`grade_id`) REFERENCES `grade_info` (`grade_id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of class_info
+-- ----------------------------
+INSERT INTO `class_info` VALUES ('1', '1', '2班', '1');
+INSERT INTO `class_info` VALUES ('2', '1', '3班', '1');
+INSERT INTO `class_info` VALUES ('3', '1', '1班', '1');
+INSERT INTO `class_info` VALUES ('4', '2', '2班', '1');
+INSERT INTO `class_info` VALUES ('5', '2', '3班', '1');
+INSERT INTO `class_info` VALUES ('6', '2', '1班', '1');
+INSERT INTO `class_info` VALUES ('7', '3', '2班', '1');
+INSERT INTO `class_info` VALUES ('8', '3', '3班', '1');
+INSERT INTO `class_info` VALUES ('9', '3', '1班', '1');
+INSERT INTO `class_info` VALUES ('10', '4', '1班', '1');
+INSERT INTO `class_info` VALUES ('11', '4', '2班', '1');
+INSERT INTO `class_info` VALUES ('12', '4', '3班', '1');
+INSERT INTO `class_info` VALUES ('13', '5', '1班', '1');
+INSERT INTO `class_info` VALUES ('14', '5', '2班', '1');
+INSERT INTO `class_info` VALUES ('15', '5', '3班', '1');
+INSERT INTO `class_info` VALUES ('16', '6', '1班', '1');
+INSERT INTO `class_info` VALUES ('17', '6', '2班', '1');
+INSERT INTO `class_info` VALUES ('18', '6', '3班', '1');
+INSERT INTO `class_info` VALUES ('19', '7', '1班', '1');
+INSERT INTO `class_info` VALUES ('20', '7', '2班', '1');
+INSERT INTO `class_info` VALUES ('21', '7', '3班', '1');
+INSERT INTO `class_info` VALUES ('22', '8', '1班', '1');
+INSERT INTO `class_info` VALUES ('23', '8', '2班', '1');
+INSERT INTO `class_info` VALUES ('24', '8', '3班', '1');
+INSERT INTO `class_info` VALUES ('25', '9', '1班', '1');
+INSERT INTO `class_info` VALUES ('26', '9', '2班', '1');
+INSERT INTO `class_info` VALUES ('27', '9', '3班', '1');
 
 -- ----------------------------
 -- Table structure for consultway_info
@@ -108,7 +202,17 @@ CREATE TABLE `consultway_info` (
   `consultway_id` int(11) NOT NULL AUTO_INCREMENT,
   `consultway_name` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`consultway_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of consultway_info
+-- ----------------------------
+INSERT INTO `consultway_info` VALUES ('1', '广告宣传');
+INSERT INTO `consultway_info` VALUES ('2', '活动宣传');
+INSERT INTO `consultway_info` VALUES ('3', '网络渠道');
+INSERT INTO `consultway_info` VALUES ('4', '朋友介绍');
+INSERT INTO `consultway_info` VALUES ('5', '学生介绍');
+INSERT INTO `consultway_info` VALUES ('6', '教师介绍');
 
 -- ----------------------------
 -- Table structure for consult_info
@@ -130,7 +234,14 @@ CREATE TABLE `consult_info` (
   PRIMARY KEY (`consult_id`),
   KEY `FK_consult_salesman` (`staff_id`),
   CONSTRAINT `FK_consult_salesman` FOREIGN KEY (`staff_id`) REFERENCES `salesman_info` (`staff_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of consult_info
+-- ----------------------------
+INSERT INTO `consult_info` VALUES ('1', '6', '柯南', '1', '10', '中国 安徽 安庆 太湖', '13365459878', '川大', '软件工程', '电话咨询', '2011-07-14 08:11:29', '这是我的备注。。哈哈');
+INSERT INTO `consult_info` VALUES ('2', '6', '小兰', '0', '14', '四川 成都 江安 川大', '13365459877', '川大', '软件工程', '现场咨询', '2012-07-12 08:11:33', '再看我就把你喝掉');
+INSERT INTO `consult_info` VALUES ('3', '8', '小哀', '0', '18', '重庆 重庆 沙坪 地中海', '13365459876', '川大', '软件工程', '网站咨询', '2013-06-20 08:12:16', '我喜欢喝茶');
 
 -- ----------------------------
 -- Table structure for course_classhour
@@ -148,7 +259,11 @@ CREATE TABLE `course_classhour` (
   CONSTRAINT `FK_course_classroom` FOREIGN KEY (`classroom_id`) REFERENCES `classroom_info` (`classroom_id`),
   CONSTRAINT `FK_course_etc` FOREIGN KEY (`course_id`) REFERENCES `course_info` (`course_id`),
   CONSTRAINT `FK_course_time` FOREIGN KEY (`classhour_id`) REFERENCES `classhour_info` (`classhour_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=346 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=562 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of course_classhour
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for course_info
@@ -174,6 +289,16 @@ CREATE TABLE `course_info` (
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of course_info
+-- ----------------------------
+INSERT INTO `course_info` VALUES ('1', '4', '4', '线性代数', '2014-03-12', '2014-07-12', '20', '2', '0', '线性代数简介');
+INSERT INTO `course_info` VALUES ('2', '2', '3', '广义相对论', '2014-03-13', '2014-07-08', '20', '1', '0', '广义相对论简介');
+INSERT INTO `course_info` VALUES ('3', '6', '5', '大学英语', '2014-03-26', '2014-05-14', '20', '2', '0', '大学英语简介');
+INSERT INTO `course_info` VALUES ('4', '2', '3', '狭义相对论', '2014-02-18', '2014-08-22', '1', '1', '0', '没有简介，想知道去百度google');
+INSERT INTO `course_info` VALUES ('5', '2', '4', '量子物理', '2014-03-18', '2014-07-12', '2', '1', '0', '没有简介，想知道去百度google');
+INSERT INTO `course_info` VALUES ('6', '2', '5', '原子力学', '2014-03-18', '2014-07-12', '3', '2', '0', '没有简介，想知道去百度google');
+
+-- ----------------------------
 -- Table structure for department_info
 -- ----------------------------
 DROP TABLE IF EXISTS `department_info`;
@@ -190,6 +315,19 @@ CREATE TABLE `department_info` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of department_info
+-- ----------------------------
+INSERT INTO `department_info` VALUES ('1', '1', '财物部', '2014-03-21 07:32:15', '1', '备注');
+INSERT INTO `department_info` VALUES ('2', '1', '教务部', '2014-03-21 07:32:17', '1', '备注');
+INSERT INTO `department_info` VALUES ('3', '1', '营销部', '2014-03-21 07:32:19', '1', '备注');
+INSERT INTO `department_info` VALUES ('4', '2', '财物部', '2014-03-21 07:32:20', '1', '备注');
+INSERT INTO `department_info` VALUES ('5', '2', '教务部', '2014-03-21 07:32:22', '1', '备注');
+INSERT INTO `department_info` VALUES ('6', '2', '营销部', '2014-03-21 07:32:24', '1', '备注');
+INSERT INTO `department_info` VALUES ('7', '3', '财物部', '2014-03-21 07:32:26', '1', '备注');
+INSERT INTO `department_info` VALUES ('8', '3', '教务部', '2014-03-21 07:32:28', '1', '备注');
+INSERT INTO `department_info` VALUES ('9', '3', '营销部', '2014-03-21 07:32:41', '1', '备注');
+
+-- ----------------------------
 -- Table structure for financial_records
 -- ----------------------------
 DROP TABLE IF EXISTS `financial_records`;
@@ -204,7 +342,12 @@ CREATE TABLE `financial_records` (
   PRIMARY KEY (`financial_id`),
   KEY `FK_branch_company_financial` (`branch_id`),
   CONSTRAINT `FK_branch_company_financial` FOREIGN KEY (`branch_id`) REFERENCES `branch_info` (`branch_id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of financial_records
+-- ----------------------------
+INSERT INTO `financial_records` VALUES ('1', '1', '1000', '2014-03-21 08:16:42', '10000', 'make money', 'yes..hello');
 
 -- ----------------------------
 -- Table structure for grade_info
@@ -219,7 +362,20 @@ CREATE TABLE `grade_info` (
   PRIMARY KEY (`grade_id`),
   KEY `FK_grade_branch` (`branch_id`),
   CONSTRAINT `FK_grade_branch` FOREIGN KEY (`branch_id`) REFERENCES `branch_info` (`branch_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of grade_info
+-- ----------------------------
+INSERT INTO `grade_info` VALUES ('1', '1', '1年级', '1', '1年级only');
+INSERT INTO `grade_info` VALUES ('2', '1', '2年级', '1', '2年级only');
+INSERT INTO `grade_info` VALUES ('3', '1', '3年级', '1', '3年级only');
+INSERT INTO `grade_info` VALUES ('4', '2', '1年级', '1', '1年级only');
+INSERT INTO `grade_info` VALUES ('5', '2', '2年级', '1', '2年级only');
+INSERT INTO `grade_info` VALUES ('6', '2', '3年级', '1', '3年级only');
+INSERT INTO `grade_info` VALUES ('7', '3', '1年级', '1', '1年级only');
+INSERT INTO `grade_info` VALUES ('8', '3', '2年级', '1', '2年级only');
+INSERT INTO `grade_info` VALUES ('9', '3', '3年级', '1', '3年级only');
 
 -- ----------------------------
 -- Table structure for group_info
@@ -231,7 +387,19 @@ CREATE TABLE `group_info` (
   `group_avai` int(11) DEFAULT NULL,
   `group_remark` text,
   PRIMARY KEY (`group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of group_info
+-- ----------------------------
+INSERT INTO `group_info` VALUES ('1', '管理员组 ', '1', '管理员');
+INSERT INTO `group_info` VALUES ('2', '普通教师 ', '1', '普通教师');
+INSERT INTO `group_info` VALUES ('3', '主管教师 ', '1', '主管老师');
+INSERT INTO `group_info` VALUES ('4', '学生组', '1', '学生');
+INSERT INTO `group_info` VALUES ('5', '营销人员组 ', '1', '营销人员');
+INSERT INTO `group_info` VALUES ('6', '营销主管', '1', '营销主管');
+INSERT INTO `group_info` VALUES ('7', '财物人员', '1', '财物人员');
+INSERT INTO `group_info` VALUES ('8', '教务组', '1', '教务主管');
 
 -- ----------------------------
 -- Table structure for group_privilege
@@ -246,7 +414,11 @@ CREATE TABLE `group_privilege` (
   KEY `FK_group_gp` (`group_id`),
   CONSTRAINT `FK_gp_privilege` FOREIGN KEY (`privilege_id`) REFERENCES `privilege_info` (`privilege_id`),
   CONSTRAINT `FK_group_gp` FOREIGN KEY (`group_id`) REFERENCES `group_info` (`group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of group_privilege
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for major_info
@@ -258,7 +430,17 @@ CREATE TABLE `major_info` (
   `major_intr` text,
   `major_avai` int(11) DEFAULT NULL,
   PRIMARY KEY (`major_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of major_info
+-- ----------------------------
+INSERT INTO `major_info` VALUES ('1', '软件工程', '软件工程简介。。。', '1');
+INSERT INTO `major_info` VALUES ('2', '量子物理', '量子物理简介。。。', '1');
+INSERT INTO `major_info` VALUES ('3', '自然', '自然科学简介。。。', '1');
+INSERT INTO `major_info` VALUES ('4', '数学', '数学简介。。。', '1');
+INSERT INTO `major_info` VALUES ('5', '艺术', '艺术简介。。。', '1');
+INSERT INTO `major_info` VALUES ('6', '英语', '英语简介。。。', '1');
 
 -- ----------------------------
 -- Table structure for notice_info
@@ -275,7 +457,14 @@ CREATE TABLE `notice_info` (
   PRIMARY KEY (`notice_id`),
   KEY `FK_public_announcement` (`staff_id`),
   CONSTRAINT `FK_public_announcement` FOREIGN KEY (`staff_id`) REFERENCES `staff_info` (`staff_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of notice_info
+-- ----------------------------
+INSERT INTO `notice_info` VALUES ('1', '10', '通知', '明天不上班了', '通知，明天放假', '2014-03-19 08:17:43', '1');
+INSERT INTO `notice_info` VALUES ('2', '10', '通知', '熬夜', '我勒个去又是通宵啊', '2014-03-20 08:17:46', '1');
+INSERT INTO `notice_info` VALUES ('3', '10', '紧急通知', '马上就要放假了！！', '提高思想认识，加强组织领导。机关值班和安全保卫工作是各级机关搞好自身管理的重要组成部分，是维护机关工作秩序、保持上下联系畅通的必要保证，也关系到整体工作的大局。各级各部门一定要站在讲政治、讲大局、讲稳定的高度，充分认识加强机关值班和安全保卫工作的重要性，真正摆上重要位置，认真研究和及时解决工作中存在的问题。', '2014-03-21 08:19:21', '1');
 
 -- ----------------------------
 -- Table structure for position_info
@@ -294,6 +483,37 @@ CREATE TABLE `position_info` (
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of position_info
+-- ----------------------------
+INSERT INTO `position_info` VALUES ('1', '1', '财物主管', '2000', '1', '财物主管的备注');
+INSERT INTO `position_info` VALUES ('2', '1', '会计', '3000', '1', '会计备注');
+INSERT INTO `position_info` VALUES ('3', '1', '出纳', '4000', '1', '出纳的备注');
+INSERT INTO `position_info` VALUES ('4', '2', '教务主管', '2000', '1', '教务主管的备注');
+INSERT INTO `position_info` VALUES ('5', '2', '教务人员', '3000', '1', '主管教师的备注');
+INSERT INTO `position_info` VALUES ('6', '2', '教师', '4000', '1', '教师的备注');
+INSERT INTO `position_info` VALUES ('7', '3', '营销主管', '2000', '1', '营销主管的备注');
+INSERT INTO `position_info` VALUES ('8', '3', '营销人员', '3000', '1', '营销人员的备注');
+INSERT INTO `position_info` VALUES ('9', '4', '教师', '4000', '1', '教师的备注');
+INSERT INTO `position_info` VALUES ('10', '4', '总经理', '2000', '1', '总经理的备注');
+INSERT INTO `position_info` VALUES ('11', '4', '开发部科长', '3000', '1', '开发部科长的备注');
+INSERT INTO `position_info` VALUES ('12', '4', '教师', '4000', '1', '教师的备注');
+INSERT INTO `position_info` VALUES ('13', '5', '总经理', '2000', '1', '总经理的备注');
+INSERT INTO `position_info` VALUES ('14', '5', '开发部科长', '3000', '1', '开发部科长的备注');
+INSERT INTO `position_info` VALUES ('15', '5', '教师', '4000', '1', '教师的备注');
+INSERT INTO `position_info` VALUES ('16', '6', '总经理', '2000', '1', '总经理的备注');
+INSERT INTO `position_info` VALUES ('17', '6', '开发部科长', '3000', '1', '开发部科长的备注');
+INSERT INTO `position_info` VALUES ('18', '6', '教师', '4000', '1', '教师的备注');
+INSERT INTO `position_info` VALUES ('19', '7', '总经理', '2000', '1', '总经理的备注');
+INSERT INTO `position_info` VALUES ('20', '7', '开发部科长', '3000', '1', '开发部科长的备注');
+INSERT INTO `position_info` VALUES ('21', '7', '教师', '4000', '1', '教师的备注');
+INSERT INTO `position_info` VALUES ('22', '8', '总经理', '2000', '1', '总经理的备注');
+INSERT INTO `position_info` VALUES ('23', '8', '开发部科长', '3000', '1', '开发部科长的备注');
+INSERT INTO `position_info` VALUES ('24', '8', '教师', '4000', '1', '教师的备注');
+INSERT INTO `position_info` VALUES ('25', '9', '总经理', '2000', '1', '总经理的备注');
+INSERT INTO `position_info` VALUES ('26', '9', '开发部科长', '3000', '1', '开发部科长的备注');
+INSERT INTO `position_info` VALUES ('27', '9', '教师', '4000', '1', '教师的备注');
+
+-- ----------------------------
 -- Table structure for privilege_info
 -- ----------------------------
 DROP TABLE IF EXISTS `privilege_info`;
@@ -302,7 +522,51 @@ CREATE TABLE `privilege_info` (
   `privilege_name` varchar(64) DEFAULT NULL,
   `privilege_desc` text,
   PRIMARY KEY (`privilege_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of privilege_info
+-- ----------------------------
+INSERT INTO `privilege_info` VALUES ('1', '系统管理员', '管理系统权限');
+INSERT INTO `privilege_info` VALUES ('2', '查看公司账单', '财务');
+INSERT INTO `privilege_info` VALUES ('3', '增加公司账单记录', '财务');
+INSERT INTO `privilege_info` VALUES ('4', '查看学员详细信息', '财务');
+INSERT INTO `privilege_info` VALUES ('5', '修改学员余额', '财务');
+INSERT INTO `privilege_info` VALUES ('6', '查看职工详细信息', '财务');
+INSERT INTO `privilege_info` VALUES ('7', '查看职工收入明细', '财务');
+INSERT INTO `privilege_info` VALUES ('8', '修改营销人员绩效', '财务');
+INSERT INTO `privilege_info` VALUES ('9', '修改教师提成', '财务');
+INSERT INTO `privilege_info` VALUES ('10', '查看学生信息', '教师');
+INSERT INTO `privilege_info` VALUES ('11', '查看自己开设的课程', '教师');
+INSERT INTO `privilege_info` VALUES ('12', '给课程学生评分', '教师');
+INSERT INTO `privilege_info` VALUES ('13', '查看学生考勤', '教师');
+INSERT INTO `privilege_info` VALUES ('14', '增加学生考勤', '教师');
+INSERT INTO `privilege_info` VALUES ('15', '开设课程', '教师');
+INSERT INTO `privilege_info` VALUES ('16', '上传教案', '教师');
+INSERT INTO `privilege_info` VALUES ('17', '上传总结', '教师');
+INSERT INTO `privilege_info` VALUES ('18', '查看任课教师信息', '教师');
+INSERT INTO `privilege_info` VALUES ('19', '查看任课教师考勤', '教师');
+INSERT INTO `privilege_info` VALUES ('20', '增加任课教师考勤', '教师');
+INSERT INTO `privilege_info` VALUES ('21', '查看任课教师课程', '教师');
+INSERT INTO `privilege_info` VALUES ('22', '设置任课教师课程价格', '教师');
+INSERT INTO `privilege_info` VALUES ('23', '查看任课教师教案', '教师');
+INSERT INTO `privilege_info` VALUES ('24', '查看任课教师总结', '教师');
+INSERT INTO `privilege_info` VALUES ('25', '学生基本信息查看', '教务');
+INSERT INTO `privilege_info` VALUES ('26', '确认学生考勤', '教务');
+INSERT INTO `privilege_info` VALUES ('27', '教师基本信息查看', '教务');
+INSERT INTO `privilege_info` VALUES ('28', '教师课程信息查看', '教务');
+INSERT INTO `privilege_info` VALUES ('29', '教师工资清单查看确认', '教务');
+INSERT INTO `privilege_info` VALUES ('30', '添加教师', '教务');
+INSERT INTO `privilege_info` VALUES ('31', '修改课程信息', '教务');
+INSERT INTO `privilege_info` VALUES ('32', '添加课程信息', '教务');
+INSERT INTO `privilege_info` VALUES ('33', '删除课程信息', '教务');
+INSERT INTO `privilege_info` VALUES ('34', '智能排课', '教务');
+INSERT INTO `privilege_info` VALUES ('35', '查看教学日历', '教务');
+INSERT INTO `privilege_info` VALUES ('36', '添加咨询信息', '营销');
+INSERT INTO `privilege_info` VALUES ('37', '查询营销人员信息', '营销');
+INSERT INTO `privilege_info` VALUES ('38', '查看营销人员绩效', '营销');
+INSERT INTO `privilege_info` VALUES ('39', '设置提成比例', '营销');
+INSERT INTO `privilege_info` VALUES ('40', '添加学生', '营销');
 
 -- ----------------------------
 -- Table structure for register_info
@@ -318,7 +582,11 @@ CREATE TABLE `register_info` (
   KEY `FK_student_registercourse` (`student_id`),
   CONSTRAINT `FK_course_register` FOREIGN KEY (`course_id`) REFERENCES `course_info` (`course_id`),
   CONSTRAINT `FK_student_registercourse` FOREIGN KEY (`student_id`) REFERENCES `student_info` (`student_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of register_info
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for roll_state
@@ -329,7 +597,14 @@ CREATE TABLE `roll_state` (
   `rollstate_name` varchar(64) DEFAULT NULL,
   `rollstate_intr` text,
   PRIMARY KEY (`rollstate_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of roll_state
+-- ----------------------------
+INSERT INTO `roll_state` VALUES ('1', '在校学生', 'normal');
+INSERT INTO `roll_state` VALUES ('2', '退学', 'unnormal');
+INSERT INTO `roll_state` VALUES ('3', '毕业', 'gtaduate');
 
 -- ----------------------------
 -- Table structure for salesman_info
@@ -342,6 +617,13 @@ CREATE TABLE `salesman_info` (
   PRIMARY KEY (`staff_id`),
   CONSTRAINT `FK_salesman_staff` FOREIGN KEY (`staff_id`) REFERENCES `staff_info` (`staff_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of salesman_info
+-- ----------------------------
+INSERT INTO `salesman_info` VALUES ('6', '0', '销售主管');
+INSERT INTO `salesman_info` VALUES ('7', '0', '销售人员');
+INSERT INTO `salesman_info` VALUES ('8', '0', '销售人员');
 
 -- ----------------------------
 -- Table structure for schedule_info
@@ -360,6 +642,10 @@ CREATE TABLE `schedule_info` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of schedule_info
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for staff_attandant
 -- ----------------------------
 DROP TABLE IF EXISTS `staff_attandant`;
@@ -374,6 +660,13 @@ CREATE TABLE `staff_attandant` (
 ) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of staff_attandant
+-- ----------------------------
+INSERT INTO `staff_attandant` VALUES ('1', '3', '2014-03-21 08:22:05', '');
+INSERT INTO `staff_attandant` VALUES ('2', '4', '2014-03-21 08:22:15', null);
+INSERT INTO `staff_attandant` VALUES ('3', '5', '2014-03-21 08:22:26', null);
+
+-- ----------------------------
 -- Table structure for staff_fees
 -- ----------------------------
 DROP TABLE IF EXISTS `staff_fees`;
@@ -386,7 +679,11 @@ CREATE TABLE `staff_fees` (
   PRIMARY KEY (`sfees_id`),
   KEY `FK_staff_get_fees` (`staff_id`),
   CONSTRAINT `FK_staff_get_fees` FOREIGN KEY (`staff_id`) REFERENCES `staff_info` (`staff_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of staff_fees
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for staff_info
@@ -416,6 +713,20 @@ CREATE TABLE `staff_info` (
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of staff_info
+-- ----------------------------
+INSERT INTO `staff_info` VALUES ('1', 'scu1001', 'e10adc3949ba59abbe56e057f20f883e', '1', '3', '7', 'jane', '18255623489', '147895654', '340825199209151514', '2014-03-21 08:04:12', '1', '没有其他信息');
+INSERT INTO `staff_info` VALUES ('2', 'scu1002', 'e10adc3949ba59abbe56e057f20f883e', '1', '6', '3', '令狐冲', '18255658989', '147895654', '340825199209151515', '2014-03-21 08:04:20', '1', '主管教师');
+INSERT INTO `staff_info` VALUES ('3', 'scu1003', 'e10adc3949ba59abbe56e057f20f883e', '0', '6', '2', '东方不败', '18345658989', '147895654', '340825199209151516', '2014-03-21 08:04:23', '1', '教师');
+INSERT INTO `staff_info` VALUES ('4', 'scu1004', 'e10adc3949ba59abbe56e057f20f883e', '0', '6', '2', '任盈盈', '18255888989', '147895654', '340825199209151517', '2014-03-21 08:04:26', '1', '教师');
+INSERT INTO `staff_info` VALUES ('5', 'scu1005', 'e10adc3949ba59abbe56e057f20f883e', '0', '6', '2', '仪琳', '18255577989', '147895654', '340825199209151518', '2014-03-21 08:04:52', '1', '教师');
+INSERT INTO `staff_info` VALUES ('6', 'scu1006', 'e10adc3949ba59abbe56e057f20f883e', '1', '7', '6', '任我行', '18255658989', '147895654', '340825199209151519', '2014-03-21 08:00:59', '1', '营销主管');
+INSERT INTO `staff_info` VALUES ('7', 'scu1007', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '8', '5', '岳不群', '18241448989', '147895654', '340825199209151524', '2014-03-21 08:04:56', '1', '营销人员');
+INSERT INTO `staff_info` VALUES ('8', 'scu1008', 'e10adc3949ba59abbe56e057f20f883e', '1', '8', '5', '田伯光', '18286668989', '147895654', '340825199209151534', '2014-03-21 08:05:13', '1', '营销人员');
+INSERT INTO `staff_info` VALUES ('9', 'scu1009', 'e10adc3949ba59abbe56e057f20f883e', '1', '1', '7', '方证大师', '18258778989', '147895654', '340825199209151544', '2014-03-21 08:05:57', '1', '财物人员');
+INSERT INTO `staff_info` VALUES ('10', 'scu1010', 'e10adc3949ba59abbe56e057f20f883e', '1', '4', '8', '左冷禅', '18258778989', '147895654', '340825199209151554', '2014-03-21 08:06:33', '1', '教务主管');
+
+-- ----------------------------
 -- Table structure for student_attendant
 -- ----------------------------
 DROP TABLE IF EXISTS `student_attendant`;
@@ -430,6 +741,10 @@ CREATE TABLE `student_attendant` (
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of student_attendant
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for student_consultway
 -- ----------------------------
 DROP TABLE IF EXISTS `student_consultway`;
@@ -442,7 +757,11 @@ CREATE TABLE `student_consultway` (
   KEY `FK_consultway_info` (`consult_id`),
   CONSTRAINT `FK_consultway_info` FOREIGN KEY (`consult_id`) REFERENCES `consult_info` (`consult_id`),
   CONSTRAINT `FK_consult_way` FOREIGN KEY (`consultway_id`) REFERENCES `consultway_info` (`consultway_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of student_consultway
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for student_fees
@@ -458,6 +777,10 @@ CREATE TABLE `student_fees` (
   KEY `FK_student_pay_fees` (`student_id`),
   CONSTRAINT `FK_student_pay_fees` FOREIGN KEY (`student_id`) REFERENCES `student_info` (`student_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of student_fees
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for student_info
@@ -493,7 +816,14 @@ CREATE TABLE `student_info` (
   CONSTRAINT `FK_student_consult` FOREIGN KEY (`consult_id`) REFERENCES `consult_info` (`consult_id`),
   CONSTRAINT `FK_student_group` FOREIGN KEY (`group_id`) REFERENCES `group_info` (`group_id`),
   CONSTRAINT `FK_student_tollstate` FOREIGN KEY (`rollstate_id`) REFERENCES `roll_state` (`rollstate_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of student_info
+-- ----------------------------
+INSERT INTO `student_info` VALUES ('1', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '4', '1', '1', '1143111121', '柯南', '1', '10', '中国 安徽 安庆 太湖', '13365459878', '10000', '川大', '软件工程', '2011-07-14 08:11:29', '1', '这是我的备注。。哈哈');
+INSERT INTO `student_info` VALUES ('2', 'E10ADC3949BA59ABBE56E057F20F883E', '2', '4', '1', '2', '1143111122', '小兰', '0', '14', '四川 成都 江安 川大', '13365459877', '255', '川大', '软件工程', '2012-07-12 08:11:33', '1', '再看我就把你喝掉');
+INSERT INTO `student_info` VALUES ('3', 'e10adc3949ba59abbe56e057f20f883e', '3', '4', '1', '3', '1143111123', '小哀', '0', '18', '重庆 重庆 沙坪 地中海', '13365459876', '300', '川大', '软件工程', '2013-06-20 08:12:16', '1', '我喜欢喝茶');
 
 -- ----------------------------
 -- Table structure for teacher_info
@@ -515,6 +845,14 @@ CREATE TABLE `teacher_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of teacher_info
+-- ----------------------------
+INSERT INTO `teacher_info` VALUES ('2', '1', '9115692', '艺术', '川大', '0', '1', '主管老师令狐冲');
+INSERT INTO `teacher_info` VALUES ('3', '2', '9115693', '英语', '浙大', '0', '0', '普通教师东方不败');
+INSERT INTO `teacher_info` VALUES ('4', '3', '9115694', '英语', '北大', '0', '0', '普通教师任盈盈');
+INSERT INTO `teacher_info` VALUES ('5', '3', '9115695', '英语', '川师', '0', '0', '普通教师仪琳');
+
+-- ----------------------------
 -- Table structure for teacher_level
 -- ----------------------------
 DROP TABLE IF EXISTS `teacher_level`;
@@ -526,7 +864,14 @@ CREATE TABLE `teacher_level` (
   `level_avai` int(11) DEFAULT NULL,
   `level_remark` text,
   PRIMARY KEY (`level_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of teacher_level
+-- ----------------------------
+INSERT INTO `teacher_level` VALUES ('1', '教授', '30', '500', '1', '教授的备注');
+INSERT INTO `teacher_level` VALUES ('2', '副教授', '20', '400', '1', '副教授的备注');
+INSERT INTO `teacher_level` VALUES ('3', '讲师', '10', '300', '1', '讲师的备注');
 
 -- ----------------------------
 -- Table structure for teaching_manage_info
@@ -544,3 +889,7 @@ CREATE TABLE `teaching_manage_info` (
   KEY `FK_course_teachinfo` (`course_id`),
   CONSTRAINT `FK_course_teachinfo` FOREIGN KEY (`course_id`) REFERENCES `course_info` (`course_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of teaching_manage_info
+-- ----------------------------

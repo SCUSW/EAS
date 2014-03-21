@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			else{
 				return true;
 			}
-		}
+		
 	</script>
   
   <body>
